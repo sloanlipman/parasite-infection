@@ -47,12 +47,12 @@ TagManager:
   - name: Decoration
     uniqueID: 2419524619
     locked: 0
+  - name: Characters
+    uniqueID: 1993003049
+    locked: 0
   - name: Collision
     uniqueID: 3981012195
     locked: 0
   - name: Foreground
     uniqueID: 884288523
-    locked: 0
-  - name: Characters
-    uniqueID: 1993003049
     locked: 0
