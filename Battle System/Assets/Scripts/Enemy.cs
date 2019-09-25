@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : Character {
   public void Act() {
     int dieRoll = Random.Range(0,2);
-    // Character target = BattleController.Instance.GetRandomPlayer();
+    Character target = BattleController.Instance.GetRandomPlayer();
     switch(dieRoll) {
       case 0: {
         Defend();
@@ -14,15 +14,15 @@ public class Enemy : Character {
       case 1: {
         Ability abilityToCast = GetRandomAbility();
         if (abilityToCast.abilityType == Ability.AbilityType.Heal) {
-          // get friendly weak target
+          target = BattleController.Instance.GetWeakestEnemy();
         }
         if (!CastAbility(abilityToCast, null)) {
-          // attack
+          BattleController.Instance.DoAttack(this, target);
         }
         break;
       }
       case 2: {
-        // attack
+          BattleController.Instance.DoAttack(this, target);
         break;
       }
     }
@@ -34,5 +34,6 @@ public class Enemy : Character {
 
   public override void Die() {
     base.Die();
+    BattleController.Instance.characters[1].Remove(this);
   }
 }

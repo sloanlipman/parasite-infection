@@ -9,6 +9,7 @@ public class Character : MonoBehaviour {
   public int attackPower;
   public int defensePower;
   public int energyPoints;
+  // public int maxEnergyPoints; //TODO add max mana, add energy recovery
   public List<Ability> abilities;
 
   public void Hurt (int amount) {

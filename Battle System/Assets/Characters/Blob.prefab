@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7264005851067476652}
   - component: {fileID: 7264005851067476655}
   m_Layer: 0
-  m_Name: Infected Android 1
+  m_Name: Blob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1712907361
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1834843311711284257, guid: e138b47a89ba5464d9995d1d7e652129,
     type: 3}

@@ -52,6 +52,7 @@ MonoBehaviour:
   energyPoints: 15
   abilities:
   - {fileID: 2214528129449449433, guid: 9ba1a3eaa3bd5054aba51b7dd107402e, type: 3}
+  - {fileID: 2214528129449449433, guid: c910bf225296a50418cb14f898de85d6, type: 3}
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,8 +88,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1712907361
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -4682181287699625984, guid: e138b47a89ba5464d9995d1d7e652129,
     type: 3}
