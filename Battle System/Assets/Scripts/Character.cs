@@ -13,7 +13,7 @@ public class Character : MonoBehaviour {
   public List<Ability> abilities;
 
   public void Hurt (int amount) {
-    int damageAmount = Random.Range(0,1) * (amount - defensePower);
+    int damageAmount = amount - defensePower;
     health = Mathf.Max(health - damageAmount, 0);
     if (health == 0) {
       Die();
@@ -30,7 +30,7 @@ public class Character : MonoBehaviour {
     Debug.Log("Defense increased to: " + defensePower);
   }
 
-  public bool CastAbility(Ability ability, Character targetCharacter) {
+  public bool UseAbility(Ability ability, Character targetCharacter) {
     bool successful = energyPoints >= ability.energyCost;
     if (successful) {
       Ability abilityToCast = Instantiate<Ability>(ability, transform.position, Quaternion.identity);

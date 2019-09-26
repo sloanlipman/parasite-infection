@@ -9,7 +9,7 @@ public class BattleController : MonoBehaviour {
 
   public Dictionary<int, List<Character>> characters = new Dictionary<int, List<Character>>();
   public int characterTurnIndex;
-  public Ability playerSelectedAbility;
+  public Ability abilityToBeUsed;
   public bool playerIsAttacking;
 
   [SerializeField] private BattleSpawnPoint[] spawnPoints;
@@ -21,7 +21,7 @@ public class BattleController : MonoBehaviour {
   }
 
   private bool IsAnEnemyAlive() {
-    return characters[1].Count > 0;
+    return GetEnemyList().Count > 0;
   }
 
   public List<Character> GetPlayerList() {
@@ -36,12 +36,16 @@ public class BattleController : MonoBehaviour {
     return characters[1];
   }
 
-  public Character GetEnemy(int index) {
-    return GetEnemyList()[index];
+  public Character GetSelectedEnemy(int selectedEnemyIndex) {
+    return GetEnemyList()[selectedEnemyIndex];
+  }
+
+    public Character GetCurrentCharacter() {
+    return characters[actTurn][characterTurnIndex];
   }
 
   private bool HasEveryCharacterGone() {
-    return characterTurnIndex > characters[actTurn].Count - 1;
+    return characterTurnIndex < (characters[actTurn].Count) - 1;
   }
 
   // Start is called before the first frame update
@@ -55,15 +59,27 @@ public class BattleController : MonoBehaviour {
 
     characters.Add(0, new List<Character>()); // players
     characters.Add(1, new List<Character>()); // enemies
+    FindObjectOfType<BattleLauncher>().Launch();
+  }
+
+    public void StartBattle(List<Character> players, List<Character> enemies) {
+    for (int i = 0; i < players.Count; i++) {
+      GetPlayerList().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
+    }
+    for (int i = 0; i < enemies.Count; i++) {
+     GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2
+    }
   }
 
   public Character GetRandomPlayer() {
-    return GetPlayerList()[Random.Range(0, GetPlayerList().Count - 1)];
+    List<Character> playerList = GetPlayerList();
+    return playerList[Random.Range(0, playerList.Count - 1)];
   }
 
   public Character GetWeakestEnemy() {
-    Character weakestEnemy = GetEnemyList()[0];
-    foreach (Character enemy in GetEnemyList()) {
+    List<Character> enemyList = GetEnemyList();
+    Character weakestEnemy = enemyList[0];
+    foreach (Character enemy in enemyList) {
         if (enemy.health < weakestEnemy.health) {
           weakestEnemy = enemy;
         }
@@ -71,23 +87,15 @@ public class BattleController : MonoBehaviour {
     return weakestEnemy;
   }
 
-  public void StartBattle(List<Character> players, List<Character> enemies) {
-    Debug.Log("Battle is being set up!");
-    for (int i = 0; i < players.Count; i++) {
-      GetPlayerList().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
-    }
-    for (int i = 0; i < enemies.Count; i++) {
-      GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2
-    }
-  }
-
   private void NextTurn() {
     actTurn = actTurn == 0? 1 : 0; // Swap between Players & Enemies
   }
 
-  private void NextAct() {
+  public void NextAct() {
     if (IsAPlayerAlive() && IsAnEnemyAlive()) {
-      if (!HasEveryCharacterGone()) { // If not every player has gone
+      // if (HasEveryCharacterGone()) { // If not every player has gone
+
+      if ( characterTurnIndex < (characters[actTurn].Count) - 1) {
         characterTurnIndex++;
       }
       else {
@@ -95,7 +103,7 @@ public class BattleController : MonoBehaviour {
         characterTurnIndex = 0;
         Debug.Log("Turn has changed. Now it is the turn for: " + actTurn);
       }
-
+    Debug.Log("Next turn goes to " + GetCurrentCharacter().characterName);
       switch(actTurn) {
         case 0: {
           uiController.ToggleActionState(true);
@@ -124,12 +132,12 @@ public class BattleController : MonoBehaviour {
     NextAct();
   }
 
-  public void SelectCharacter(Character character) {
+  public void SelectTarget(Character target) {
     if (playerIsAttacking) {
-      DoAttack(GetCurrentCharacter(), character);
+      DoAttack(GetCurrentCharacter(), target);
     }
-    else if (playerSelectedAbility != null) {
-      if (GetCurrentCharacter().CastAbility(playerSelectedAbility, character)) {
+    else if (abilityToBeUsed != null) {
+      if (GetCurrentCharacter().UseAbility(abilityToBeUsed, target)) {
         NextAct();
       }
       else {
@@ -138,11 +146,9 @@ public class BattleController : MonoBehaviour {
     }
   }
 
-  public Character GetCurrentCharacter() {
-    return characters[actTurn][characterTurnIndex];
-  }
-
   public void DoAttack(Character attacker, Character target) {
+    Debug.Log(attacker.characterName + " is attacking " + target.characterName);
     target.Hurt(attacker.attackPower);
+    NextAct();
   }
 }

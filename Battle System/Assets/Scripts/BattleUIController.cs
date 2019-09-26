@@ -14,18 +14,18 @@ public class BattleUIController : MonoBehaviour {
     abilityPanel.SetActive(false);
   }
 
-  void Update() {
+  void Update () {
     if (Input.GetMouseButtonDown(0)) {
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
       RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction);
       if (hitInfo.collider != null && hitInfo.collider.CompareTag("Character")) {
-        BattleController.Instance.SelectCharacter(hitInfo.collider.GetComponent<Character>());
+        BattleController.Instance.SelectTarget(hitInfo.collider.GetComponent<Character>());
       }
     }
-  }
+	}
 
   public void ToggleActionState(bool state) {
-    ToggleAbilityPanel(state);
+    ToggleAbilityPanel(false);
     foreach(Button button in actionButtons) {
       button.interactable = state;
     }
@@ -60,17 +60,21 @@ public class BattleUIController : MonoBehaviour {
   }
 
   void SelectAbility(Ability ability) {
-    BattleController.Instance.playerSelectedAbility = ability;
+    BattleController.Instance.abilityToBeUsed = ability;
     BattleController.Instance.playerIsAttacking = false;
   }
 
   public void SelectAttack() {
     Debug.Log("Attack!!!!");
-    BattleController.Instance.playerSelectedAbility = null;
+    BattleController.Instance.abilityToBeUsed = null;
     BattleController.Instance.playerIsAttacking = true;
+    ToggleAbilityPanel(false);
   }
 
   public void Defend() {
+    BattleController.Instance.abilityToBeUsed = null;
+    BattleController.Instance.playerIsAttacking = false;
     BattleController.Instance.GetCurrentCharacter().Defend();
+    ToggleAbilityPanel(false);
   }
 }

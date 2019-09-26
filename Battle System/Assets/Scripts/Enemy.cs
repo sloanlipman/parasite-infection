@@ -16,7 +16,7 @@ public class Enemy : Character {
         if (abilityToCast.abilityType == Ability.AbilityType.Heal) {
           target = BattleController.Instance.GetWeakestEnemy();
         }
-        if (!CastAbility(abilityToCast, null)) {
+        if (!UseAbility(abilityToCast, target)) {
           BattleController.Instance.DoAttack(this, target);
         }
         break;
