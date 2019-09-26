@@ -40,6 +40,7 @@ public class BattleUIController : MonoBehaviour {
   }
 
   public void UpdateCharacterUI() {
+    int currentPlayerIndex = BattleController.Instance.characterTurnIndex;
     for (int i = 0; i < BattleController.Instance.GetPlayerList().Count; i++) {
       Character character = BattleController.Instance.GetPlayer(i);
       characterInfo[i].text = string.Format("{0} hp: {1}/{2}, ep: {3}/{4}", character.characterName, character.health, character.maxHealth, character.energyPoints, character.maxEnergyPoints);
@@ -79,5 +80,9 @@ public class BattleUIController : MonoBehaviour {
 
   public void Deselect() {
     GameObject.Find("EventSystem").GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+  }
+
+  public void SetColor(int index, Color color) {
+    characterInfo[index].color = color;
   }
 }

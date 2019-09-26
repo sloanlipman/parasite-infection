@@ -64,8 +64,6 @@ public class Character : MonoBehaviour {
     return health < maxHealth;
   }
 
-
-
   public virtual void Die() {
     Destroy(this.gameObject);
     Debug.LogFormat("{0} has died!", characterName);

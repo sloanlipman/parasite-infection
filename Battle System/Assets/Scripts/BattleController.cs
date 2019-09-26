@@ -17,6 +17,10 @@ public class BattleController : MonoBehaviour {
   private int actTurn; // act refers to Action (i.e. who is up on the current side?)
                       // Turn refers to are Enemies going or are players going?
 
+  public bool IsItPlayerTurn() {
+    return actTurn == 0;
+  }
+
   private bool IsCharacterAPlayer(Character character) {
     return GetPlayerList().Contains(character);
   }
@@ -45,7 +49,7 @@ public class BattleController : MonoBehaviour {
     return GetEnemyList()[selectedEnemyIndex];
   }
 
-    public Character GetCurrentCharacter() {
+  public Character GetCurrentCharacter() {
     return characters[actTurn][characterTurnIndex];
   }
 
@@ -74,6 +78,7 @@ public class BattleController : MonoBehaviour {
     for (int i = 0; i < enemies.Count; i++) {
      GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2
     }
+    uiController.SetColor(0, Color.red);
   }
 
   public Character GetRandomPlayer() {
@@ -94,9 +99,20 @@ public class BattleController : MonoBehaviour {
 
   private void NextTurn() {
     actTurn = actTurn == 0? 1 : 0; // Swap between Players & Enemies
+    if (IsItPlayerTurn()) {
+      uiController.SetColor(0, Color.red);
+    } else {
+      List<Character> playerList = GetPlayerList();
+      for (int i = 0; i < playerList.Count; i++) {
+        uiController.SetColor(i, Color.white);
+      }
+    }
   }
 
   public void NextAct() {
+    if (IsItPlayerTurn()) {
+      uiController.SetColor(characterTurnIndex, Color.white);
+      }
     Character currentCharacter = GetCurrentCharacter();
     int energyToRecover = (int)Mathf.Round(0.1f * currentCharacter.maxEnergyPoints);
     if (IsCharacterAPlayer(currentCharacter) && abilityToBeUsed == null) {
@@ -111,6 +127,9 @@ public class BattleController : MonoBehaviour {
     if (IsAPlayerAlive() && IsAnEnemyAlive()) {
       if (HasACharacterNotGone()) {
         characterTurnIndex++;
+        if (IsItPlayerTurn()) {
+          uiController.SetColor(characterTurnIndex, Color.red);
+        }
       }
       else {
         NextTurn();
