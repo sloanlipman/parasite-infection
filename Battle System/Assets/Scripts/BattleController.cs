@@ -11,6 +11,7 @@ public class BattleController : MonoBehaviour {
   public int characterTurnIndex;
   public Ability abilityToBeUsed;
   public bool playerIsAttacking;
+  private bool didEnemyUseAbility;
 
   [SerializeField] private BattleSpawnPoint[] spawnPoints;
   private int actTurn; // act refers to Action (i.e. who is up on the current side?)
@@ -48,8 +49,8 @@ public class BattleController : MonoBehaviour {
     return characters[actTurn][characterTurnIndex];
   }
 
-  private bool HasEveryCharacterGone() {
-    return characterTurnIndex < (characters[actTurn].Count) - 1;
+  private bool HasACharacterNotGone() {
+    return characterTurnIndex < characters[actTurn].Count - 1;
   }
 
   // Start is called before the first frame update
@@ -96,12 +97,19 @@ public class BattleController : MonoBehaviour {
   }
 
   public void NextAct() {
+    Character currentCharacter = GetCurrentCharacter();
+    int energyToRecover = (int)Mathf.Round(0.1f * currentCharacter.maxEnergyPoints);
+    if (IsCharacterAPlayer(currentCharacter) && abilityToBeUsed == null) {
+      Debug.Log("Player turn and ability was not used");
+      Debug.Log("Previous EP was: " + currentCharacter.energyPoints);
+      currentCharacter.RecoverEnergy(energyToRecover);
+      Debug.Log("New EP is: " + currentCharacter.energyPoints);
+    }
+    uiController.UpdateCharacterUI();
     uiController.ToggleAbilityPanel(false);
 
     if (IsAPlayerAlive() && IsAnEnemyAlive()) {
-      // if (HasEveryCharacterGone()) { // If not every player has gone
-
-      if ( characterTurnIndex < (characters[actTurn].Count) - 1) {
+      if (HasACharacterNotGone()) {
         characterTurnIndex++;
       }
       else {
@@ -132,8 +140,12 @@ public class BattleController : MonoBehaviour {
   IEnumerator PerformAct() {
     yield return new WaitForSeconds(0.75f);
     if (GetCurrentCharacter().health > 0) { // actTurn should always be 1 for enemies here!
-      GetCurrentCharacter().GetComponent<Enemy>().Act();
-    }
+     bool didEnemyUseAbility =  GetCurrentCharacter().GetComponent<Enemy>().Act();
+     if (!didEnemyUseAbility) {
+      int energyToRecover = (int)Mathf.Round(0.1f * GetCurrentCharacter().maxEnergyPoints);
+      GetCurrentCharacter().RecoverEnergy(energyToRecover);
+      }
+     }
     uiController.UpdateCharacterUI();
     yield return new WaitForSeconds(1f);
     NextAct();
@@ -141,14 +153,23 @@ public class BattleController : MonoBehaviour {
 
   public void SelectTarget(Character target) {
     if (playerIsAttacking) {
-      DoAttack(GetCurrentCharacter(), target);
+      if (IsCharacterAPlayer(target)) {
+        Debug.Log("Don't target your own team!");
+      } else {
+       DoAttack(GetCurrentCharacter(), target);
+      }
     }
     else if (abilityToBeUsed != null) {
-      if (abilityToBeUsed.abilityType == Ability.AbilityType.Heal) {
-        if (!IsCharacterAPlayer(target) || !(target.isCharacterDamaged())) {
+      if (abilityToBeUsed.abilityType == Ability.AbilityType.Heal) { // TODO Could add support spells here too
+        if (!IsCharacterAPlayer(target) || !(target.IsCharacterDamaged())) {
           Debug.Log("You can't heal your enemies, or your health is already maxed out!!");
           return;
         }
+      } else if (abilityToBeUsed.abilityType == Ability.AbilityType.Attack) { // TODO Could add debuff spells here too
+          if (IsCharacterAPlayer(target)) {
+            Debug.Log("Don't target your own team!");
+            return;
+          }
       }
       Debug.Log("Ability to be used is " + abilityToBeUsed.abilityName);
       Debug.Log("Target is " + target.characterName);

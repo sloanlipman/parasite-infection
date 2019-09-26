@@ -10,7 +10,6 @@ public class Character : MonoBehaviour {
   public int defensePower;
   public int energyPoints;
   public int maxEnergyPoints;
-  // public int maxEnergyPoints; //TODO add max mana, add energy recovery
   public List<Ability> abilities;
 
   public void Hurt (int amount) {
@@ -38,8 +37,16 @@ public class Character : MonoBehaviour {
   }
 
   public void Defend() {
-    defensePower += (int) (defensePower * 0.33);
+    defensePower += (int) Mathf.Round(defensePower * 0.25f);
     Debug.Log("Defense increased to: " + defensePower);
+  }
+
+  public void RecoverEnergy(int amount) {
+    Debug.Log("Amount is" + amount);
+    energyPoints += amount;
+    if (energyPoints > maxEnergyPoints) {
+      energyPoints = maxEnergyPoints;
+    }
   }
 
   public bool UseAbility(Ability ability, Character targetCharacter) {
@@ -53,9 +60,11 @@ public class Character : MonoBehaviour {
     return successful;
   }
 
-  public bool isCharacterDamaged() {
+  public bool IsCharacterDamaged() {
     return health < maxHealth;
   }
+
+
 
   public virtual void Die() {
     Destroy(this.gameObject);

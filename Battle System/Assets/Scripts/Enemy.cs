@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : Character {
-  public void Act() {
+
+  public bool Act() {
+    bool didEnemyUseAbility = false;
     int dieRoll = Random.Range(0,2);
     Character target = BattleController.Instance.GetRandomPlayer();
     switch(dieRoll) {
@@ -17,6 +19,7 @@ public class Enemy : Character {
           target = BattleController.Instance.GetWeakestEnemy();
         }
         if (!UseAbility(abilityToCast, target)) {
+          didEnemyUseAbility = true;
           BattleController.Instance.DoAttack(this, target);
         }
         break;
@@ -26,6 +29,7 @@ public class Enemy : Character {
         break;
       }
     }
+    return didEnemyUseAbility;
   }
 
   Ability GetRandomAbility() {

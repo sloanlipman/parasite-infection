@@ -42,7 +42,7 @@ public class BattleUIController : MonoBehaviour {
   public void UpdateCharacterUI() {
     for (int i = 0; i < BattleController.Instance.GetPlayerList().Count; i++) {
       Character character = BattleController.Instance.GetPlayer(i);
-      characterInfo[i].text = string.Format("{0} hp: {1}/{2}, ep: {3}", character.characterName, character.health, character.maxHealth, character.energyPoints);
+      characterInfo[i].text = string.Format("{0} hp: {1}/{2}, ep: {3}/{4}", character.characterName, character.health, character.maxHealth, character.energyPoints, character.maxEnergyPoints);
     }
   }
 
