@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -9158124002496624605}
   m_Layer: 0
   m_Name: Alan
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   attackPower: 5
   defensePower: 3
   energyPoints: 15
+  maxEnergyPoints: 15
   abilities:
   - {fileID: 2214528129449449433, guid: 9ba1a3eaa3bd5054aba51b7dd107402e, type: 3}
   - {fileID: 2214528129449449433, guid: c910bf225296a50418cb14f898de85d6, type: 3}

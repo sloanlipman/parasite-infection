@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087b8276716727547b17795e7aebc66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Fireball
+  abilityName: Hydroblast
   power: 5
   energyCost: 5
   abilityType: 0

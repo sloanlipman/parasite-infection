@@ -51,6 +51,7 @@ MonoBehaviour:
   attackPower: 5
   defensePower: 1
   energyPoints: 30
+  maxEnergyPoints: 30
   abilities:
   - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
 --- !u!212 &7264005851067476655

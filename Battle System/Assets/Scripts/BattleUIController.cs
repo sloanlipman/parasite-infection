@@ -12,6 +12,7 @@ public class BattleUIController : MonoBehaviour {
 
   void Start() {
     abilityPanel.SetActive(false);
+    UpdateCharacterUI();
   }
 
   void Update () {
@@ -25,7 +26,7 @@ public class BattleUIController : MonoBehaviour {
 	}
 
   public void ToggleActionState(bool state) {
-    ToggleAbilityPanel(false);
+    // ToggleAbilityPanel(state);
     foreach(Button button in actionButtons) {
       button.interactable = state;
     }
@@ -68,13 +69,15 @@ public class BattleUIController : MonoBehaviour {
     Debug.Log("Attack!!!!");
     BattleController.Instance.abilityToBeUsed = null;
     BattleController.Instance.playerIsAttacking = true;
-    ToggleAbilityPanel(false);
   }
 
   public void Defend() {
-    BattleController.Instance.abilityToBeUsed = null;
-    BattleController.Instance.playerIsAttacking = false;
     BattleController.Instance.GetCurrentCharacter().Defend();
-    ToggleAbilityPanel(false);
+    BattleController.Instance.NextAct();
+    Deselect();
+  }
+
+  public void Deselect() {
+    GameObject.Find("EventSystem").GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
   }
 }

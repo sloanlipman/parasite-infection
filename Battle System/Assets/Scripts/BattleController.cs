@@ -16,6 +16,10 @@ public class BattleController : MonoBehaviour {
   private int actTurn; // act refers to Action (i.e. who is up on the current side?)
                       // Turn refers to are Enemies going or are players going?
 
+  private bool IsCharacterAPlayer(Character character) {
+    return GetPlayerList().Contains(character);
+  }
+
   private bool IsAPlayerAlive() {
     return GetPlayerList().Count > 0;
   }
@@ -92,6 +96,8 @@ public class BattleController : MonoBehaviour {
   }
 
   public void NextAct() {
+    uiController.ToggleAbilityPanel(false);
+
     if (IsAPlayerAlive() && IsAnEnemyAlive()) {
       // if (HasEveryCharacterGone()) { // If not every player has gone
 
@@ -128,6 +134,7 @@ public class BattleController : MonoBehaviour {
     if (GetCurrentCharacter().health > 0) { // actTurn should always be 1 for enemies here!
       GetCurrentCharacter().GetComponent<Enemy>().Act();
     }
+    uiController.UpdateCharacterUI();
     yield return new WaitForSeconds(1f);
     NextAct();
   }
@@ -137,7 +144,16 @@ public class BattleController : MonoBehaviour {
       DoAttack(GetCurrentCharacter(), target);
     }
     else if (abilityToBeUsed != null) {
+      if (abilityToBeUsed.abilityType == Ability.AbilityType.Heal) {
+        if (!IsCharacterAPlayer(target) || !(target.isCharacterDamaged())) {
+          Debug.Log("You can't heal your enemies, or your health is already maxed out!!");
+          return;
+        }
+      }
+      Debug.Log("Ability to be used is " + abilityToBeUsed.abilityName);
+      Debug.Log("Target is " + target.characterName);
       if (GetCurrentCharacter().UseAbility(abilityToBeUsed, target)) {
+        uiController.UpdateCharacterUI();
         NextAct();
       }
       else {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3610265836862040037}
   m_Layer: 0
   m_Name: Barry
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   attackPower: 5
   defensePower: 3
   energyPoints: 15
+  maxEnergyPoints: 15
   abilities:
   - {fileID: 2214528129449449433, guid: 9ba1a3eaa3bd5054aba51b7dd107402e, type: 3}
 --- !u!212 &7264005851067476655
