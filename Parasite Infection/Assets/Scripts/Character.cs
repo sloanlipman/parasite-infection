@@ -14,6 +14,7 @@ public class Character : MonoBehaviour {
 
     body = GetComponent<Rigidbody2D>();
     sprite = GetComponent<SpriteRenderer>();
+    
   }
 
   public void Move (Vector2 inputVector) {
