@@ -10,7 +10,7 @@ namespace QuestSystem {
 
         
     [SerializeField] private QuestUIItem questUIItem;
-    
+    [SerializeField] private GameObject questPanel;
     [SerializeField] private Transform questUIParent;
 
     private QuestDatabase questDatabase;
@@ -24,6 +24,13 @@ namespace QuestSystem {
       SceneManager.sceneLoaded += Populate;
       EventController.OnQuestCompleted += RemoveCompletedQuest;
       questDatabase = GetComponent<QuestDatabase>();
+    }
+
+    private void Update() {
+      if (Input.GetButtonDown("ToggleQuest"))  {
+        questPanel.SetActive(!questPanel.activeSelf);
+      }
+      
     }
 
     public bool IsQuestCompleted(string questName) {

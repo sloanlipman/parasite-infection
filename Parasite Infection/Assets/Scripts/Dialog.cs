@@ -17,10 +17,6 @@ public class Dialog : MonoBehaviour {
     dialogText.text = dialog[0];
   }
 
-  public void Click () {
-    print("Clicked!");
-  }
-
   public void NextLine() {
     dialogIndex = Mathf.Min(dialogIndex + 1, dialog.Length);
     if (dialogIndex >= this.dialog.Length) {
