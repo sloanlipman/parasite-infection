@@ -24,7 +24,6 @@ namespace QuestSystem {
       SceneManager.sceneLoaded += Populate;
       EventController.OnQuestCompleted += RemoveCompletedQuest;
       questDatabase = GetComponent<QuestDatabase>();
-      // questPanel = GameObject.FindWithTag("UI/Quest Panel");
     }
 
     private void Update() {
