@@ -10,4 +10,4 @@ Sloan Lipman (sloan.lipman@gmail.com)
   -@dbhvk
 - <https://opengameart.org/content/3x-updated-32x32-scifi-roguelike-enemies>
   -Stephen Challener (Redshrike)
--<https://www.freepik.com/premium-photo/view-planet-earth-from-huge-spaceship-window-3d-rendering-elements-this-image-furnished-by-nasa_5074337.htm>
+- <https://www.freepik.com/premium-photo/view-planet-earth-from-huge-spaceship-window-3d-rendering-elements-this-image-furnished-by-nasa_5074337.htm>
