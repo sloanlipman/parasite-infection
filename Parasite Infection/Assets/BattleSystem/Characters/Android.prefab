@@ -52,6 +52,7 @@ MonoBehaviour:
   defensePower: 5
   energyPoints: 15
   maxEnergyPoints: 15
+  enemyId: 0
   abilities:
   - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
 --- !u!212 &7264005851067476655
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 930162341
+  m_SortingLayerID: 1993003049
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -6443697809571845576, guid: e138b47a89ba5464d9995d1d7e652129,

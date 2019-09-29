@@ -15,7 +15,6 @@ namespace QuestSystem {
     }
 
     public void Setup(Quest questToSetup) {
-      Debug.Log(questToSetup.goal.countNeeded);
       quest = questToSetup;
       questName.text = questToSetup.questName;
       questProgress.text = questToSetup.goal.countCurrent + "/" + questToSetup.goal.countNeeded;

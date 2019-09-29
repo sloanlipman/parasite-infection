@@ -38,7 +38,9 @@ public class NPC : Character {
         dialogData = questCompletedDialogData;
       }
     }
-    dialog.StartDialog(dialogData.dialog);
+    if (dialogData != null) {
+      dialog.StartDialog(dialogData.dialog);
+    }
   }
 
   public void Wander() {

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Character
+  - UI/Quest UI Item
+  - UI/Quest Panel
+  - UI/Quest Item Parent
   layers:
   - Default
   - TransparentFX

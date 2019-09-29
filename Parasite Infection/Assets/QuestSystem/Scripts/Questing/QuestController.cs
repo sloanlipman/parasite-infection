@@ -10,7 +10,7 @@ namespace QuestSystem {
 
         
     [SerializeField] private QuestUIItem questUIItem;
-    [SerializeField] private GameObject questPanel;
+    // [SerializeField] private GameObject questPanel;
     [SerializeField] private Transform questUIParent;
 
     private QuestDatabase questDatabase;
@@ -24,10 +24,14 @@ namespace QuestSystem {
       SceneManager.sceneLoaded += Populate;
       EventController.OnQuestCompleted += RemoveCompletedQuest;
       questDatabase = GetComponent<QuestDatabase>();
+      // questPanel = GameObject.FindWithTag("UI/Quest Panel");
     }
 
     private void Update() {
       if (Input.GetButtonDown("ToggleQuest"))  {
+        Transform viewPort = questUIParent.transform.parent;
+        Transform scrollView = viewPort.transform.parent;
+        GameObject questPanel = scrollView.transform.parent.gameObject;
         questPanel.SetActive(!questPanel.activeSelf);
       }
       
@@ -71,7 +75,7 @@ namespace QuestSystem {
     }
 
     private void Populate(Scene scene, LoadSceneMode sceneMode) {
-      questUIParent = GameObject.FindGameObjectWithTag("UI/Quest Panel").transform;
+      questUIParent = GameObject.FindGameObjectWithTag("UI/Quest Item Parent").transform;
       if (assignedQuests.Count > 0) {
         for (int i = 0; i < assignedQuests.Count; i++) {
           AssignQuest(assignedQuests[i].slug); //Reassign from a UI perspective

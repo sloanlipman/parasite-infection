@@ -31,7 +31,6 @@ namespace QuestSystem {
 
     public bool Completed(string questName) {
       if (quests.ContainsKey(questName)) {
-        Debug.Log("Completed?" + questName + System.Convert.ToBoolean(quests[questName][0]));
         return System.Convert.ToBoolean(quests[questName][0]);
       }
       return false;
