@@ -8,6 +8,11 @@ namespace QuestSystem {
     public Goal goal;
     public bool completed;
     public List<string> itemRewards;
+    private Inventory inventory;
+
+    private void Start() {
+      inventory = FindObjectOfType<Inventory>();
+    }
 
     public virtual void Complete() {
       Debug.Log("Quest completed!");
@@ -20,6 +25,7 @@ namespace QuestSystem {
       Debug.Log("Turning in quest... granting reward");
       foreach(string item in itemRewards) {
         Debug.Log("Rewarded with: " + item);
+        inventory.GiveItem(item);
       }
     }
   }

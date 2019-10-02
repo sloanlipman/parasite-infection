@@ -6,11 +6,11 @@ public class KillBlobsQuest : Quest {
     slug = "KillBlobsQuest";    
     questName = "Kill Blobs";
     description = "Let's see you kill some blobs";
-    itemRewards = new List<string>() { "Med Pack" };
+    itemRewards = new List<string>() { "Fire Module" };
     goal = new KillGoal(2, 0, this);
   }
 
     public override void Complete() {
-        base.Complete();
+      base.Complete();
     }
 }

@@ -10,7 +10,6 @@ namespace QuestSystem {
 
         
     [SerializeField] private QuestUIItem questUIItem;
-    // [SerializeField] private GameObject questPanel;
     [SerializeField] private Transform questUIParent;
 
     private QuestDatabase questDatabase;
@@ -27,7 +26,7 @@ namespace QuestSystem {
     }
 
     private void Update() {
-      if (Input.GetButtonDown("ToggleQuest"))  {
+      if (Input.GetKeyDown(KeyCode.Q))  {
         Transform viewPort = questUIParent.transform.parent;
         Transform scrollView = viewPort.transform.parent;
         GameObject questPanel = scrollView.transform.parent.gameObject;
