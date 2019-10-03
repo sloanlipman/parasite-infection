@@ -22,6 +22,11 @@ public class Character : MonoBehaviour {
       sprite.flipX = inputVector.normalized.x < 0;
     }
 
+    // if (inputVector.x == -1) {
+    //   Vector3 position = DataSerializer.LoadPosition("PlayerPosition");
+    //   TeleportTo(position);
+    // }
+
     inputVector = inputVector.normalized * movementSpeed;
     body.velocity = inputVector;
   }

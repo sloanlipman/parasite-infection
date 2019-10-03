@@ -10,9 +10,12 @@ public class Player : Character  {
   }
 
   private void OnTriggerStay2D(Collider2D collision) {
+    Debug.Log("Position is: " + transform.position);
+    // DataSerializer.SavePosition("PlayerPosition", transform.position);
     if (Input.GetButtonDown("Fire1") && collision.GetComponent<NPC>() != null) {
       collision.GetComponent<NPC>().Interact(this);
     }
   }
+
 
 }
