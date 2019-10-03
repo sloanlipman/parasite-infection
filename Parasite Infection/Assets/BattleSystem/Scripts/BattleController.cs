@@ -7,6 +7,8 @@ namespace BattleSystem {
 
     public static BattleController Instance { get; set; }
     [SerializeField] private BattleUIController uiController;
+    private UIInventory inventoryPanel;
+    private QuestSystem.QuestPanel questPanel;
 
     public Dictionary<int, List<BattleCharacter>> characters = new Dictionary<int, List<BattleCharacter>>();
     public int characterTurnIndex;
@@ -56,6 +58,22 @@ namespace BattleSystem {
 
     private bool HasACharacterNotGone() {
       return characterTurnIndex < characters[actTurn].Count - 1;
+    }
+
+    private void HideMenus() {
+      questPanel = FindObjectOfType<QuestSystem.QuestPanel>();
+      inventoryPanel = FindObjectOfType<UIInventory>();
+      if (questPanel != null) {
+        questPanel.gameObject.SetActive(false);
+      }
+
+      if (inventoryPanel != null) {
+        inventoryPanel.gameObject.SetActive(false);
+      }
+    }
+
+    private void Awake() {
+      HideMenus();
     }
 
     // Start is called before the first frame update

@@ -7,12 +7,10 @@ namespace QuestSystem {
   public class QuestController : MonoBehaviour {
     public List<Quest> assignedQuests = new List<Quest>();
     public List <string> completedQuests = new List<string>();
-
-        
     [SerializeField] private QuestUIItem questUIItem;
     [SerializeField] private Transform questUIParent;
-
     private QuestDatabase questDatabase;
+    [SerializeField] private QuestPanel questPanel;
 
     private void Start() {
       if (FindObjectsOfType<QuestController>().Length > 1) {
@@ -20,19 +18,20 @@ namespace QuestSystem {
       }
 
       DontDestroyOnLoad(this.gameObject);
-      SceneManager.sceneLoaded += Populate;
+      // SceneManager.sceneLoaded += Populate;
       EventController.OnQuestCompleted += RemoveCompletedQuest;
       questDatabase = GetComponent<QuestDatabase>();
+
+      if (questPanel != null) {
+        questPanel.gameObject.SetActive(false);
+      }
+
     }
 
     private void Update() {
-      if (Input.GetKeyDown(KeyCode.Q))  {
-        Transform viewPort = questUIParent.transform.parent;
-        Transform scrollView = viewPort.transform.parent;
-        GameObject questPanel = scrollView.transform.parent.gameObject;
-        questPanel.SetActive(!questPanel.activeSelf);
+      if (!Helper.isBattleCurrentScene() && Input.GetKeyDown(KeyCode.Q)) {
+        questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
       }
-      
     }
 
     public bool IsQuestCompleted(string questName) {
@@ -51,7 +50,6 @@ namespace QuestSystem {
       } else {
         questToAdd = (Quest) gameObject.GetComponent(System.Type.GetType(questSlug));
       }
-
 
       if (wasQuestAdded || !questDatabase.Completed(questToAdd.questName)) {
         QuestUIItem questUI = Instantiate(questUIItem, questUIParent);
@@ -72,13 +70,14 @@ namespace QuestSystem {
       return GetComponent(System.Type.GetType(questSlug)) as Quest;
     }
 
-    private void Populate(Scene scene, LoadSceneMode sceneMode) {
-      questUIParent = GameObject.FindGameObjectWithTag("UI/Quest Item Parent").transform;
-      if (assignedQuests.Count > 0) {
-        for (int i = 0; i < assignedQuests.Count; i++) {
-          AssignQuest(assignedQuests[i].slug); //Reassign from a UI perspective
-        }
-      }
-    }
+// As of 10/2/19, this method doesn't seem to be needed
+    // private void Populate(Scene scene, LoadSceneMode sceneMode) {
+    //   questUIParent = GameObject.FindGameObjectWithTag("UI/Quest Item Parent").transform;
+    //   if (assignedQuests.Count > 0) {
+    //     for (int i = 0; i < assignedQuests.Count; i++) {
+    //       AssignQuest(assignedQuests[i].slug); //Reassign from a UI perspective
+    //     }
+    //   }
+    // }
   }
 }

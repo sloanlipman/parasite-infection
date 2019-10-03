@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour {
   public List<Item> playerItems = new List<Item>();
@@ -17,13 +18,16 @@ public class Inventory : MonoBehaviour {
   }
 
   private void Start() {
+
     GiveItem(6);
     GiveItem(9);
     GiveItem(10);
+
+    inventoryUI.gameObject.SetActive(false);
   }
 
   private void Update() {
-    if (Input.GetKeyDown(KeyCode.I)) {
+    if (!Helper.isBattleCurrentScene() && Input.GetKeyDown(KeyCode.I)) {
       inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
     }
   }
