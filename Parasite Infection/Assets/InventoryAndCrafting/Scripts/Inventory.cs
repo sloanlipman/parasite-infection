@@ -8,6 +8,14 @@ public class Inventory : MonoBehaviour {
   [SerializeField] private UIInventory inventoryUI;
   ItemDatabase itemDatabase;
 
+  public void Save() {
+    ES3.Save<List<Item>>("Inventory", playerItems);
+  }
+
+  public void Load() {
+    ES3.Load<List<Item>>("Inventory", this.playerItems);
+  }
+
   void Awake() {
     if (FindObjectsOfType<Inventory>().Length > 1) {
       Destroy(this.gameObject);
@@ -18,10 +26,13 @@ public class Inventory : MonoBehaviour {
   }
 
   private void Start() {
-
-    GiveItem(6);
-    GiveItem(9);
-    GiveItem(10);
+    Load();
+    if (playerItems.Count == 0) {
+      GiveItem(6);
+      GiveItem(9);
+      GiveItem(10);
+      Save();
+    }
 
     inventoryUI.gameObject.SetActive(false);
   }

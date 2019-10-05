@@ -10,7 +10,7 @@ public class Character : MonoBehaviour {
   [SerializeField]
   private float movementSpeed;
   private SpriteRenderer sprite;
-  void Start() {
+  void Awake() {
 
     body = GetComponent<Rigidbody2D>();
     sprite = GetComponent<SpriteRenderer>();

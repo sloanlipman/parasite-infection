@@ -33,3 +33,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+#Easy Save
+Parasite Infection/Assets/Easy Save 2/
+Parasite Infection/Assets/Easy Save 2.meta
+Parasite Infection/Assets/Plugins
+Parasite Infection/Assets/Plugins.meta
