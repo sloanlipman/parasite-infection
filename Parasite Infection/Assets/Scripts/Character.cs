@@ -22,17 +22,13 @@ public class Character : MonoBehaviour {
       sprite.flipX = inputVector.normalized.x < 0;
     }
 
-    // if (inputVector.x == -1) {
-    //   Vector3 position = DataSerializer.LoadPosition("PlayerPosition");
-    //   TeleportTo(position);
-    // }
-
     inputVector = inputVector.normalized * movementSpeed;
     body.velocity = inputVector;
   }
 
   public void TeleportTo(Vector2 targetPosition) {
     transform.position = targetPosition;
+    FindObjectOfType<Inventory>().Save();
   }
 
   public IEnumerator MoveTo(Vector2 targetPosition, System.Action callback, float delay = 0f) {

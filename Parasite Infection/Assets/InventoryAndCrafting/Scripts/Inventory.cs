@@ -13,7 +13,13 @@ public class Inventory : MonoBehaviour {
   }
 
   public void Load() {
-    ES3.Load<List<Item>>("Inventory", this.playerItems);
+    // try {
+      List<Item> itemsToLoad = ES3.Load<List<Item>>("Inventory", this.playerItems);
+      itemsToLoad.ForEach(item => GiveItem(itemDatabase.GetItemId(item)));
+
+    // } catch {
+
+    // }
   }
 
   void Awake() {
@@ -21,19 +27,19 @@ public class Inventory : MonoBehaviour {
       Destroy(this.gameObject);
     }
     DontDestroyOnLoad(this.gameObject);
-  
     itemDatabase = FindObjectOfType<ItemDatabase>();
+
   }
 
   private void Start() {
     Load();
+
     if (playerItems.Count == 0) {
       GiveItem(6);
       GiveItem(9);
       GiveItem(10);
-      Save();
     }
-
+    Save();
     inventoryUI.gameObject.SetActive(false);
   }
 

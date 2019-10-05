@@ -22,6 +22,18 @@ public class ItemDatabase : MonoBehaviour {
     return items.Find(item => item.itemName == itemName);
   }
 
+  public int GetItemId(Item item) {
+    int index = -1;
+    for (int i = 0; i < items.Count; i++) {
+      if (item.itemName == items[i].itemName) {
+        index = items[i].id;
+        break;
+      }
+    }
+
+    return index;
+  }
+
   void BuildItemDatabase() {
     items = new List<Item>() {
       new Item(1, "Heavy Suit", "An upgrade to your regular suit. Unlocks Barrage",
