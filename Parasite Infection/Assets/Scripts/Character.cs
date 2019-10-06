@@ -18,7 +18,7 @@ public class Character : MonoBehaviour {
   }
 
   public void Move (Vector2 inputVector) {
-    if (inputVector != Vector2.zero) {
+    if (Time.timeScale == 1 && inputVector != Vector2.zero) {
       sprite.flipX = inputVector.normalized.x < 0;
     }
 
@@ -37,6 +37,6 @@ public class Character : MonoBehaviour {
       yield return null;
     }
     yield return new WaitForSeconds(delay);
-    callback(); 
+    callback();
   }
 }

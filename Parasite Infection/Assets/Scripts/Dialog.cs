@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dialog : MonoBehaviour {
-  [SerializeField]
-  private UnityEngine.UI.Text dialogText;
-  [SerializeField]
-  private GameObject dialogPanel;
+  [SerializeField] private UnityEngine.UI.Text dialogText;
+  [SerializeField] private GameObject dialogPanel;
   private string[] dialog;
   private int dialogIndex;
 
