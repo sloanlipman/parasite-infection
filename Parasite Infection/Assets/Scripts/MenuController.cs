@@ -45,11 +45,11 @@ public class MenuController : MonoBehaviour {
 
   }
 
-  public void ToggleInventoryCanvas() {
+  public void ToggleUIInventory() {
     inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
   }
 
-  public void ToggleQuestCanvas() {
+  public void ToggleQuestPanel() {
     questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
   }
 }

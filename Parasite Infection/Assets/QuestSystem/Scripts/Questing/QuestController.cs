@@ -25,13 +25,6 @@ namespace QuestSystem {
       if (questPanel != null) {
         questPanel.gameObject.SetActive(false);
       }
-
-    }
-
-    private void Update() {
-      if (!Helper.isBattleCurrentScene() && Input.GetKeyDown(KeyCode.Q)) {
-        questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
-      }
     }
 
     public bool IsQuestCompleted(string questName) {

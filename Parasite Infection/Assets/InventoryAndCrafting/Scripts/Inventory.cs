@@ -44,9 +44,9 @@ public class Inventory : MonoBehaviour {
   }
 
   private void Update() {
-    if (!Helper.isBattleCurrentScene() && Input.GetKeyDown(KeyCode.I)) {
-      inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
-    }
+    // if (!Helper.isBattleCurrentScene() && Input.GetKeyDown(KeyCode.I)) {
+    //   inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
+    // }
   }
 
   public void GiveItem(int id) {

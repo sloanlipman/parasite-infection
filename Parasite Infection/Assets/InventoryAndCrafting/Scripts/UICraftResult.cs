@@ -7,10 +7,6 @@ public class UICraftResult : MonoBehaviour {
   public SlotPanel slotPanel;
   public Inventory inventory;
 
-  // public void Start() {
-  //   inventory = FindObjectOfType<Inventory>();
-
-  // }
   public void PickItem() {
     inventory.playerItems.Add(GetComponent<UIItem>().item);
   }
