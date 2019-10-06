@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
   [SerializeField] private Button[] dialogButtons;
   [SerializeField] private GameObject menuPanel;
   [SerializeField] private UIInventory inventory;
   [SerializeField] private QuestSystem.QuestPanel questPanel;
-  private bool wasDialogActive;
+
+  public static bool IsBattleCurrentScene() {
+    return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
+  }
 
   private void Awake() {
     if (FindObjectsOfType<MenuController>().Length > 1) {
@@ -18,31 +22,35 @@ public class MenuController : MonoBehaviour {
   }
 
   void Start() {
-    menuPanel.gameObject.SetActive(false);
-
+    ToggleMenu(false);
   }
 
   void Update() {
-    if (!Helper.isBattleCurrentScene() && Input.GetKeyDown(KeyCode.Escape)) {
-      foreach(Button b in dialogButtons) {
-        if (b != null) {
-          b.interactable = false;
-        }
+    if (CanPause()) {
+      if (menuPanel.gameObject.activeSelf) {
+        UnpauseGame();
+      } else {
+        PauseGame();
       }
-      menuPanel.gameObject.SetActive(!menuPanel.gameObject.activeSelf);
-      Time.timeScale = Time.timeScale == 1 ? 0 : 1;
-      if (!menuPanel.gameObject.activeSelf) {
-      foreach(Button b in dialogButtons) {
-        if (b != null) {
-          b.interactable = true;
-        }
-      }
-        inventory.gameObject.SetActive(false);
-        questPanel.gameObject.SetActive(false);
-      }
+      // ToggleMenu(!menuPanel.gameObject.activeSelf);
     }
+  }
 
+  public bool CanPause() {
+    return !IsBattleCurrentScene() && Input.GetKeyDown(KeyCode.Escape);
+  }
+  public void PauseGame() {
+    ToggleDialogButtons(false);
+    ToggleMenu(true);
+    Time.timeScale = 0;
+  }
 
+  public void UnpauseGame() {
+    ToggleDialogButtons(true);
+    inventory.gameObject.SetActive(false);
+    questPanel.gameObject.SetActive(false);
+    ToggleMenu(false);
+    Time.timeScale = 1;
   }
 
   public void ToggleUIInventory() {
@@ -51,5 +59,17 @@ public class MenuController : MonoBehaviour {
 
   public void ToggleQuestPanel() {
     questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
+  }
+
+  public void ToggleMenu(bool state) {
+    menuPanel.gameObject.SetActive(state);
+  }
+
+  public void ToggleDialogButtons(bool state) {
+    foreach(Button b in dialogButtons) {
+      if (b != null) {
+        b.interactable = false;
+      }
+    }
   }
 }

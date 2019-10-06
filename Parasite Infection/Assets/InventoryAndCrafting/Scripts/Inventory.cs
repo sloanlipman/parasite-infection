@@ -9,17 +9,19 @@ public class Inventory : MonoBehaviour {
   ItemDatabase itemDatabase;
 
   public void Save() {
-    ES3.Save<List<Item>>("Inventory", playerItems);
+    ES3.Save<List<Item>>("Inventory", playerItems, "Inventory.txt");
   }
 
   public void Load() {
-    // try {
-      List<Item> itemsToLoad = ES3.Load<List<Item>>("Inventory", this.playerItems);
+    try {
+      List<Item> itemsToLoad = ES3.Load<List<Item>>("Inventory", "Inventory.txt", playerItems);
       itemsToLoad.ForEach(item => GiveItem(itemDatabase.GetItemId(item)));
 
-    // } catch {
-
-    // }
+    } catch {
+      GiveItem(6);
+      GiveItem(9);
+      GiveItem(10);
+    }
   }
 
   void Awake() {
@@ -32,21 +34,7 @@ public class Inventory : MonoBehaviour {
   }
 
   private void Start() {
-    Load();
-
-    if (playerItems.Count == 0) {
-      GiveItem(6);
-      GiveItem(9);
-      GiveItem(10);
-    }
-    Save();
     inventoryUI.gameObject.SetActive(false);
-  }
-
-  private void Update() {
-    // if (!Helper.isBattleCurrentScene() && Input.GetKeyDown(KeyCode.I)) {
-    //   inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
-    // }
   }
 
   public void GiveItem(int id) {

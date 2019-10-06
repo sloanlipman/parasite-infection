@@ -5,25 +5,42 @@ using QuestSystem;
 
 public class SaveService : MonoBehaviour {
 
-  private Inventory inventory;
-  private QuestDatabase questDatabase;
+   private Inventory inventory;
+   private QuestDatabase questDatabase;
+   private QuestController questController;
+   private MenuController menuController;
+   private Player player;
   // Start is called before the first frame update
-  void Save() {
+  public void Save() {
+
     inventory.Save();
+    questController.Save();
     // questDatabase.Save();
-    
+    player = FindObjectOfType<Player>();
+    player.Save();
   }
 
-  void Load() {
+  public void Load() {
     inventory.Load();
+    questController.Load();
     // questDatabase.Load();
+    menuController.UnpauseGame();
+    player = FindObjectOfType<Player>();
+    player.Load();
   }
 
   // Update is called once per frame
   void Awake() {
     inventory = FindObjectOfType<Inventory>();
     questDatabase = FindObjectOfType<QuestDatabase>();
+    questController = FindObjectOfType<QuestController>();
+    menuController = FindObjectOfType<MenuController>();
+  }
 
-    Load();
+  void Start() {
+    if (FindObjectsOfType<SaveService>().Length > 1) {
+      Destroy(this.gameObject);
+    }
+    DontDestroyOnLoad(this.gameObject);
   }
 }

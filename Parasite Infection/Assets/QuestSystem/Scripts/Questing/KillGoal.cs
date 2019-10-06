@@ -2,6 +2,8 @@
   public class KillGoal : Goal {
     public int enemyId;
 
+    public KillGoal() {}
+
     public KillGoal(int amountNeeded, int enemyId, Quest quest) {
       countCurrent = 0;
       countNeeded = amountNeeded;

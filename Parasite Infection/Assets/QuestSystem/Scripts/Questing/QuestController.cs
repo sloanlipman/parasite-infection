@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace QuestSystem {
   public class QuestController : MonoBehaviour {
@@ -18,13 +17,22 @@ namespace QuestSystem {
       }
 
       DontDestroyOnLoad(this.gameObject);
-      // SceneManager.sceneLoaded += Populate;
       EventController.OnQuestCompleted += RemoveCompletedQuest;
       questDatabase = GetComponent<QuestDatabase>();
 
       if (questPanel != null) {
         questPanel.gameObject.SetActive(false);
       }
+    }
+
+    public void Save() {
+      ES3.Save<List<Quest>>("AssignedQuests", assignedQuests);
+      ES3.Save<List<string>>("CompletedQuests", completedQuests);
+    }
+
+    public void Load() {
+      assignedQuests = ES3.Load<List<QuestSystem.Quest>>("AssignedQuests");
+      completedQuests = ES3.Load<List<string>>("CompletedQuests");
     }
 
     public bool IsQuestCompleted(string questName) {
@@ -62,15 +70,5 @@ namespace QuestSystem {
     public Quest FindActiveQuest(string questSlug) {
       return GetComponent(System.Type.GetType(questSlug)) as Quest;
     }
-
-// As of 10/2/19, this method doesn't seem to be needed
-    // private void Populate(Scene scene, LoadSceneMode sceneMode) {
-    //   questUIParent = GameObject.FindGameObjectWithTag("UI/Quest Item Parent").transform;
-    //   if (assignedQuests.Count > 0) {
-    //     for (int i = 0; i < assignedQuests.Count; i++) {
-    //       AssignQuest(assignedQuests[i].slug); //Reassign from a UI perspective
-    //     }
-    //   }
-    // }
   }
 }

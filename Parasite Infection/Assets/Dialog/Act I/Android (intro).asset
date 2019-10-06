@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog:
   - Gear up.
+  - Kill some aliens.
