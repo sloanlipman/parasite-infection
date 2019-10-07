@@ -12,21 +12,25 @@ public class SaveService : MonoBehaviour {
    private Player player;
   // Start is called before the first frame update
   public void Save() {
-
     inventory.Save();
     questController.Save();
-    // questDatabase.Save();
     player = FindObjectOfType<Player>();
     player.Save();
   }
 
   public void Load() {
+    ClearAll();
     inventory.Load();
     questController.Load();
-    // questDatabase.Load();
     menuController.UnpauseGame();
     player = FindObjectOfType<Player>();
-    player.Load();
+    player.Load();  }
+
+  private void ClearAll() {
+    inventory.ClearInventory();
+    questController.assignedQuests.Clear();
+    questController.completedQuests.Clear();
+    questDatabase.quests.Clear();
   }
 
   // Update is called once per frame

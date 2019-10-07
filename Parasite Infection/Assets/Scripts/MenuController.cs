@@ -32,7 +32,6 @@ public class MenuController : MonoBehaviour {
       } else {
         PauseGame();
       }
-      // ToggleMenu(!menuPanel.gameObject.activeSelf);
     }
   }
 
@@ -68,7 +67,7 @@ public class MenuController : MonoBehaviour {
   public void ToggleDialogButtons(bool state) {
     foreach(Button b in dialogButtons) {
       if (b != null) {
-        b.interactable = false;
+        b.interactable = state;
       }
     }
   }

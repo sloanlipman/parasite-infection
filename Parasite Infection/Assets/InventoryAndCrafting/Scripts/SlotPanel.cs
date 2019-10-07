@@ -16,6 +16,10 @@ public class SlotPanel : MonoBehaviour {
       uiItems[i].item = null;
     }
   }
+  
+  public void ClearSlot(int slot) {
+    uiItems[slot].UpdateItem(null);
+  }
 
   public void UpdateSlot(int slot, Item item) {
     uiItems[slot].UpdateItem(item);
@@ -29,7 +33,7 @@ public class SlotPanel : MonoBehaviour {
     UpdateSlot(uiItems.FindIndex(i => i.item == item), null);
   }
 
-    public void EmptyAllSlots() {
+  public void EmptyAllSlots() {
     uiItems.ForEach(item => item.UpdateItem(null));
   }
 

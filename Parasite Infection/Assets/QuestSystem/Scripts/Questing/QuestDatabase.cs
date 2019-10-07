@@ -4,6 +4,10 @@ namespace QuestSystem {
   public class QuestDatabase : MonoBehaviour {
     public Dictionary<string, int[]> quests = new Dictionary<string, int[]>();
 
+    public void Save() {
+      ES3.Save<Dictionary<string, int[]>>("QuestDatabase", quests);
+    }
+
     private void Awake() {
       EventController.OnQuestProgressChanged += UpdateQuestData;
       EventController.OnQuestCompleted += CompleteQuest;
@@ -11,27 +15,35 @@ namespace QuestSystem {
 
     public bool AddQuest(Quest quest) {
       bool wasQuestAdded = false;
-      if (!Completed(quest.questName)) {
-        quests.Add(quest.questName, new int[] { 0, 0 }); // First is completion status (T or F), second one is the count
+      if (!Completed(quest.slug)) {
+        quests.Add(quest.slug, new int[] { 0, 0 }); // First is completion status (T or F), second one is the count
         wasQuestAdded = true;
       }
       return wasQuestAdded;
     }
 
     public void UpdateQuestData(Quest quest) {
-      quests[quest.questName] = new int[] { System.Convert.ToInt32(quest.completed), quest.goal.countCurrent};
-      Debug.Log("Data updated for: " + quest.questName);
+      quests[quest.slug] = new int[] { System.Convert.ToInt32(quest.completed), quest.goal.countCurrent};
+      Debug.Log("Data updated for: " + quest.slug);
     }
 
-    public void CompleteQuest(Quest quest) {
-      if (quests.ContainsKey(quest.questName)) {
-        quests[quest.questName][0] = 1;
+    public int GetCurrentQuestCount(string slug) {
+      if (quests.ContainsKey(slug)) {
+        return quests[slug][1];
+      } else {
+        return -1;
       }
     }
 
-    public bool Completed(string questName) {
-      if (quests.ContainsKey(questName)) {
-        return System.Convert.ToBoolean(quests[questName][0]);
+    public void CompleteQuest(Quest quest) {
+      if (quests.ContainsKey(quest.slug)) {
+        quests[quest.slug][0] = 1;
+      }
+    }
+
+    public bool Completed(string slug) {
+      if (quests.ContainsKey(slug)) {
+        return System.Convert.ToBoolean(quests[slug][0]);
       }
       return false;
     }

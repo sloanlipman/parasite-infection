@@ -9,19 +9,13 @@ public class Inventory : MonoBehaviour {
   ItemDatabase itemDatabase;
 
   public void Save() {
-    ES3.Save<List<Item>>("Inventory", playerItems, "Inventory.txt");
+    ES3.Save<List<Item>>("Inventory", playerItems);
   }
 
   public void Load() {
-    try {
-      List<Item> itemsToLoad = ES3.Load<List<Item>>("Inventory", "Inventory.txt", playerItems);
-      itemsToLoad.ForEach(item => GiveItem(itemDatabase.GetItemId(item)));
-
-    } catch {
-      GiveItem(6);
-      GiveItem(9);
-      GiveItem(10);
-    }
+    // TODO see if the correct inventory is loaded or if it gets appended to something else
+    List<Item> itemsToLoad = ES3.Load<List<Item>>("Inventory");
+    itemsToLoad.ForEach(item => GiveItem(itemDatabase.GetItemId(item)));
   }
 
   void Awake() {
@@ -74,5 +68,10 @@ public class Inventory : MonoBehaviour {
     if (itemToRemove != null) {
       playerItems.Remove(itemToRemove);
     }
+  }
+
+  public void ClearInventory() {
+    inventoryUI.ClearSlots();
+    playerItems.Clear();
   }
 }
