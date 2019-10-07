@@ -6,9 +6,9 @@ using QuestSystem;
 public class SaveService : MonoBehaviour {
 
    private Inventory inventory;
-   private QuestDatabase questDatabase;
    private QuestController questController;
    private MenuController menuController;
+   private Dialog dialogPanel;
    private Player player;
   // Start is called before the first frame update
   public void Save() {
@@ -23,20 +23,30 @@ public class SaveService : MonoBehaviour {
     inventory.Load();
     questController.Load();
     menuController.UnpauseGame();
-    player = FindObjectOfType<Player>();
-    player.Load();  }
+    LoadPlayer();
+    ResetDialog();
+  }
 
   private void ClearAll() {
     inventory.ClearInventory();
-    questController.assignedQuests.Clear();
-    questController.completedQuests.Clear();
-    questDatabase.quests.Clear();
+    questController.ClearQuests();
+  }
+
+  private void LoadPlayer() {
+    player = FindObjectOfType<Player>();
+    player.Load();
+  }
+
+  private void ResetDialog() {
+    dialogPanel = FindObjectOfType<Dialog>();
+    if (dialogPanel != null) {
+      dialogPanel.ResetDialog();
+    }
   }
 
   // Update is called once per frame
   void Awake() {
     inventory = FindObjectOfType<Inventory>();
-    questDatabase = FindObjectOfType<QuestDatabase>();
     questController = FindObjectOfType<QuestController>();
     menuController = FindObjectOfType<MenuController>();
   }

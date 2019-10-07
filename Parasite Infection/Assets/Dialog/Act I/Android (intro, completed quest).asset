@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Android (intro, completed quest)
   m_EditorClassIdentifier: 
   dialog:
-  - Gear up.
+  - You're ready.

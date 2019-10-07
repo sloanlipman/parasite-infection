@@ -29,24 +29,23 @@ namespace QuestSystem {
       ES3.Save<Dictionary<string, int[]>>("QuestDatabase", questDatabase.quests);
     }
 
-    public void Load() {
-    // Clear the Lists
-      assignedQuests.Clear();
-      completedQuests.Clear();
-      questDatabase.quests.Clear();
-
-    // Clear the UI
+    public void ClearQuests() {
       foreach (QuestUIItem quest in questUIParent.GetComponentsInChildren<QuestUIItem>()) {
         Destroy(quest.gameObject);
       }
 
+    assignedQuests.Clear();
+    completedQuests.Clear();
+    questDatabase.quests.Clear();
+    }
+
+    public void Load() {
     // Load the DB
       questDatabase.quests = ES3.Load<Dictionary<string, int[]>>("QuestDatabase");
       List<string> questNamesToAdd = new List<string>();
     // Get a list of quest slugs that were loaded
       foreach(var quest in questDatabase.quests) {
         questNamesToAdd.Add(quest.Key);
-        Debug.Log("Adding quest " + quest.Key);
       }
       // Assign IP quests, mark completed quests as completed
         foreach (string questName in questNamesToAdd) {
@@ -56,12 +55,6 @@ namespace QuestSystem {
             AssignQuest(questName);
           }
         }
-    // Update UI
-      assignedQuests.ForEach(quest => {
-        quest.goal.Increment(questDatabase.GetCurrentQuestCount(quest.slug));
-        // questUIItem.UpdateProgress(quest);
-        
-      });
     }
 
     public bool IsQuestCompleted(string questName) {
@@ -78,7 +71,7 @@ namespace QuestSystem {
         try {
           wasQuestAdded = questDatabase.AddQuest(questToAdd);
         } catch {
-          Debug.Log(questSlug + " already exists in the datbase");
+          questToAdd.goal.countCurrent = questDatabase.GetCurrentQuestCount(questSlug);
         }
 
       } else {
@@ -101,7 +94,6 @@ namespace QuestSystem {
     }
 
     public Quest FindActiveQuest(string questSlug) {
-      Debug.Log("Finding active quest for " + questSlug);
       return GetComponent(System.Type.GetType(questSlug)) as Quest;
     }
   }

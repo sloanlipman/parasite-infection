@@ -30,8 +30,8 @@ public class NPC : Character {
     if (GetComponent<BattleLaunchCharacter>() != null) {
       GetComponent<BattleLaunchCharacter>().PrepareBattle(player);
     }
-    if (questName != "") {
-      if (quest == null) {
+    if (questName != "") { // If NPC gives a quest
+      if (quest == null && !IsQuestAssigned() && !IsQuestCompleted()) {
         quest = questController.AssignQuest(questName);
       }
       if (quest == null & questCompletedDialogData != null) {
@@ -52,5 +52,23 @@ public class NPC : Character {
     } else {
       StartCoroutine(MoveTo(spawnPosition, Wander, Random.Range(2,5)));
     }
+  }
+
+  public bool IsQuestAssigned() {
+    bool isQuestAssigned = false;
+    quest = questController.assignedQuests.Find(quest => quest.slug == this.questName);
+    if (quest != null) {
+      isQuestAssigned = true;
+    }
+
+    return isQuestAssigned;
+  }
+
+  public bool IsQuestCompleted() {
+    bool isQuestCompleted = false;
+    if (questController.completedQuests.Find(quest => quest == this.questName) != null) {
+      isQuestCompleted = true;
+    }
+    return isQuestCompleted;
   }
 }
