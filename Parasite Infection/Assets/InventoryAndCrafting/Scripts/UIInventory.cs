@@ -13,9 +13,4 @@ public class UIInventory : MonoBehaviour {
       }
     }
   }
-  public void ClearSlots() {
-    for (int i = 0; i < slotPanels.Length; i++){
-      slotPanels[i].ClearSlot(i);
-    }
-  }
 }

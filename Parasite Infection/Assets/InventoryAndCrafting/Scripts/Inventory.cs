@@ -71,7 +71,6 @@ public class Inventory : MonoBehaviour {
   }
 
   public void ClearInventory() {
-    inventoryUI.ClearSlots();
     playerItems.Clear();
   }
 }

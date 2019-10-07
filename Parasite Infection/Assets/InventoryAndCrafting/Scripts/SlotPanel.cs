@@ -39,7 +39,7 @@ public class SlotPanel : MonoBehaviour {
 
   public bool ContainsEmptySlot() {
     foreach (UIItem uiItem in uiItems) {
-      if (uiItem.item == null) {
+      if (uiItem.item == null && !uiItem.isCraftingSlot) {
         return true;
       }
     }

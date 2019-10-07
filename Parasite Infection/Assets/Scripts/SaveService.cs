@@ -10,6 +10,7 @@ public class SaveService : MonoBehaviour {
    private MenuController menuController;
    private Dialog dialogPanel;
    private Player player;
+   private SlotPanel[] slotPanels;
   // Start is called before the first frame update
   public void Save() {
     inventory.Save();
@@ -28,6 +29,10 @@ public class SaveService : MonoBehaviour {
   }
 
   private void ClearAll() {
+    slotPanels = Resources.FindObjectsOfTypeAll(typeof(SlotPanel)) as SlotPanel[];
+    foreach(SlotPanel panel in slotPanels) {
+      panel.EmptyAllSlots();
+    }
     inventory.ClearInventory();
     questController.ClearQuests();
   }

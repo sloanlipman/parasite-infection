@@ -12,6 +12,10 @@ public class CraftingSlots : MonoBehaviour {
     uIItems.ForEach(item => item.isCraftingSlot = true);
   }
 
+  public void ClearCraftingSlots() {
+    uIItems.ForEach(item => item = null);
+  }
+
   public void UpdateRecipe() {
     int[] itemTable = new int[uIItems.Count];
     for (int i = 0; i < uIItems.Count; i++) {
