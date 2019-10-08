@@ -19,7 +19,6 @@ public class Inventory : MonoBehaviour {
   }
 
   public void Load() {
-    // TODO see if the correct inventory is loaded or if it gets appended to something else
     int[] itemsToLoad = ES3.Load<int[]>("Inventory", "Inventory.es3");
     foreach(int id in itemsToLoad) {
       GiveItem(id);

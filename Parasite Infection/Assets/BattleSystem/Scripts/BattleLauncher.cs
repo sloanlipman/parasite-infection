@@ -10,6 +10,7 @@ namespace BattleSystem {
 
     private Vector2 worldPosition;
     private int worldSceneIndex;
+    private GameObject activatingNPC;
     
     private void Awake() {
 
@@ -20,9 +21,10 @@ namespace BattleSystem {
       EventController.OnBattleCompleted += ReturnToWorld;
     }
     
-    public void PrepareBattle(List<BattleCharacter> enemies, List<BattleCharacter> players, Vector2 position) {
+    public void PrepareBattle(List<BattleCharacter> enemies, List<BattleCharacter> players, Vector2 position, NPC npc) {
       worldPosition = position;
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
+      activatingNPC = npc.gameObject;
       Players = players;
       Enemies = enemies;
       SceneManager.LoadScene("Battle");
@@ -35,6 +37,9 @@ namespace BattleSystem {
     private void ReturnToWorld() {
       GatewayManager.Instance.SetSpawnPosition(worldPosition);
       SceneManager.LoadScene(worldSceneIndex);
+      if (activatingNPC != null) {
+        Destroy(activatingNPC);
+      }
 
     }
   }

@@ -10,7 +10,7 @@ public class BattleLaunchCharacter : MonoBehaviour {
     launcher = FindObjectOfType<BattleSystem.BattleLauncher>();
   }
 
-  public void PrepareBattle(Character character) {
-    launcher.PrepareBattle(enemies, players, character.transform.position);
+  public void PrepareBattle(Character character, NPC npc) {
+    launcher.PrepareBattle(enemies, players, character.transform.position, npc);
   }
 }

@@ -10,22 +10,25 @@ public class SaveService : MonoBehaviour {
    private MenuController menuController;
    private Dialog dialogPanel;
    private Player player;
+   private NPC[] NPCs;
    private SlotPanel[] slotPanels;
   // Start is called before the first frame update
   public void Save() {
     inventory.Save();
     questController.Save();
-    player = FindObjectOfType<Player>();
-    player.Save();
+    SavePlayer();
+    SaveNPCs();
   }
 
   public void Load() {
     if (ES3.FileExists() && ES3.FileExists("PlayerInfo.es3")) {
       ClearAll();
+
       inventory.Load();
       questController.Load();
       menuController.UnpauseGame();
       LoadPlayer();
+      LoadNPCs();
       ResetDialog();
     } else {
       Debug.LogWarning("No file to load from!");
@@ -42,9 +45,33 @@ public class SaveService : MonoBehaviour {
     questController.ClearQuests();
   }
 
-  private void LoadPlayer() {
+  private void GetPlayer() {
     player = FindObjectOfType<Player>();
+  }
+
+  private void GetNPCs() {
+    NPCs = FindObjectsOfType(typeof(NPC)) as NPC[];
+  }
+
+  private void SavePlayer() {
+    GetPlayer();
+    player.Save();
+  }
+
+  private void LoadPlayer() {
+    GetPlayer();
     player.Load();
+  }
+
+  private void SaveNPCs() {
+    GetNPCs();
+    ES3.Save<GameObject[]>("NPC", NPCs, "NPCs.es3");
+
+  }
+
+  private void LoadNPCs() {
+    GetNPCs();
+    ES3.Load<GameObject[]>("NPC", "NPCs.es3");
   }
 
   private void ResetDialog() {
