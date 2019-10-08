@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character  {
-
   public void Save() {
-    ES3.Save<Vector3>("PlayerPosition", transform.position);
+    ES3.Save<GameObject>("Player", this.gameObject, "PlayerInfo.es3");
   }
 
   public void Load() {
-    transform.position = ES3.Load<Vector3>("PlayerPosition");
+      ES3.Load<GameObject>("Player", "PlayerInfo.es3");
   }
   // Update is called once per frame
   void Update() {

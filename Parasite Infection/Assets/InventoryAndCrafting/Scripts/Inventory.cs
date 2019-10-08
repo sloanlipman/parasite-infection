@@ -9,13 +9,21 @@ public class Inventory : MonoBehaviour {
   ItemDatabase itemDatabase;
 
   public void Save() {
-    ES3.Save<List<Item>>("Inventory", playerItems);
+    int[] itemIds = new int[playerItems.Count];
+    int i = 0;
+    playerItems.ForEach(item => {
+      itemIds[i] = (itemDatabase.GetItemId(item));
+      i++;
+    }); 
+    ES3.Save<int[]>("Inventory", itemIds, "Inventory.es3");
   }
 
   public void Load() {
     // TODO see if the correct inventory is loaded or if it gets appended to something else
-    List<Item> itemsToLoad = ES3.Load<List<Item>>("Inventory");
-    itemsToLoad.ForEach(item => GiveItem(itemDatabase.GetItemId(item)));
+    int[] itemsToLoad = ES3.Load<int[]>("Inventory", "Inventory.es3");
+    foreach(int id in itemsToLoad) {
+      GiveItem(id);
+    };
   }
 
   void Awake() {
@@ -28,6 +36,9 @@ public class Inventory : MonoBehaviour {
   }
 
   private void Start() {
+    GiveItem(6);
+    GiveItem(9);
+    GiveItem(10);
     inventoryUI.gameObject.SetActive(false);
   }
 

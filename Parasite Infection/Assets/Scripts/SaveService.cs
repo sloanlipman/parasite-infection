@@ -20,12 +20,17 @@ public class SaveService : MonoBehaviour {
   }
 
   public void Load() {
-    ClearAll();
-    inventory.Load();
-    questController.Load();
-    menuController.UnpauseGame();
-    LoadPlayer();
-    ResetDialog();
+    if (ES3.FileExists() && ES3.FileExists("PlayerInfo.es3")) {
+      ClearAll();
+      inventory.Load();
+      questController.Load();
+      menuController.UnpauseGame();
+      LoadPlayer();
+      ResetDialog();
+    } else {
+      Debug.LogWarning("No file to load from!");
+    }
+
   }
 
   private void ClearAll() {
