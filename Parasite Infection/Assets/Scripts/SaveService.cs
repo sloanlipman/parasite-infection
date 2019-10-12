@@ -83,6 +83,10 @@ public class SaveService : MonoBehaviour {
 
   // Update is called once per frame
   void Awake() {
+    if (FindObjectsOfType<SaveService>().Length > 1) {
+      Destroy(this.gameObject);
+    }
+    DontDestroyOnLoad(this.gameObject);
     inventory = FindObjectOfType<Inventory>();
     questController = FindObjectOfType<QuestController>();
     menuController = FindObjectOfType<MenuController>();

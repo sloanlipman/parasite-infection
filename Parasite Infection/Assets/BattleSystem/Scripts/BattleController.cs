@@ -7,6 +7,8 @@ namespace BattleSystem {
 
     public static BattleController Instance { get; set; }
     [SerializeField] private BattleUIController uiController;
+    [SerializeField] private BattleSpawnPoint[] spawnPoints;
+    private BattleSummaryPanel battleSummaryPanel;
     private UIInventory inventoryPanel;
     private QuestSystem.QuestPanel questPanel;
 
@@ -16,7 +18,6 @@ namespace BattleSystem {
     public bool playerIsAttacking;
     private bool didEnemyUseAbility;
 
-    [SerializeField] private BattleSpawnPoint[] spawnPoints;
     private int actTurn; // act refers to Action (i.e. who is up on the current side?)
                         // Turn refers to are Enemies going or are players going?
 
@@ -63,12 +64,17 @@ namespace BattleSystem {
     private void HideMenus() {
       questPanel = FindObjectOfType<QuestSystem.QuestPanel>();
       inventoryPanel = FindObjectOfType<UIInventory>();
+      battleSummaryPanel = FindObjectOfType<BattleSummaryPanel>();
       if (questPanel != null) {
         questPanel.gameObject.SetActive(false);
       }
 
       if (inventoryPanel != null) {
         inventoryPanel.gameObject.SetActive(false);
+      }
+
+      if (battleSummaryPanel != null) {
+        battleSummaryPanel.gameObject.SetActive(false);
       }
     }
 
@@ -168,7 +174,11 @@ namespace BattleSystem {
       }
       else {
         Debug.LogWarning("Battle is over!");
-        EventController.BattleCompleted();
+        if (IsAPlayerAlive()) {
+          battleSummaryPanel.ShowVictoryPanel();
+        } else {
+          battleSummaryPanel.ShowDefeatPanel();
+        }
       }
     }
 

@@ -8,6 +8,9 @@ TagManager:
   - UI/Quest UI Item
   - UI/Quest Panel
   - UI/Quest Item Parent
+  - UI/Battle Summary Title
+  - UI/Load Last Save
+  - UI/Back To World
   layers:
   - Default
   - TransparentFX

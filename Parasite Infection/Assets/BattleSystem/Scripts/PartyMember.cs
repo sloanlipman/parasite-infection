@@ -6,7 +6,7 @@ namespace BattleSystem {
   public class PartyMember : BattleCharacter {
     public override void Die() {
       base.Die();
-      BattleController.Instance.characters[1].Remove(this);
+      BattleController.Instance.characters[0].Remove(this);
     }
   }
 }
