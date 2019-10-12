@@ -19,10 +19,11 @@ public class MenuController : MonoBehaviour {
       Destroy(this.gameObject);
     }
     DontDestroyOnLoad(this.gameObject);
+        ToggleMenu(false);
   }
 
   void Start() {
-    ToggleMenu(false);
+
   }
 
   void Update() {

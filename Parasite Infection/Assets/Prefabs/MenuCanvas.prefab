@@ -1133,6 +1133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotPanel: {fileID: 657839088194782041}
   inventory: {fileID: 0}
+  craftingSlots: {fileID: 0}
 --- !u!1 &3924455838898662593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1350,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5035597201399607809}
   m_HandleRect: {fileID: 5035597201399607814}
   m_Direction: 0
-  m_Value: 0
+  m_Value: -0.00005702552
   m_Size: 0.73714495
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1389,7 +1390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00390625, y: -0.000045776367}
   m_SizeDelta: {x: 68.5, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5035597201225245568
@@ -1988,7 +1989,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quests (Press Q to toggle)
+  m_Text: Active Quests
 --- !u!1 &5035597201789451773
 GameObject:
   m_ObjectHideFlags: 0
