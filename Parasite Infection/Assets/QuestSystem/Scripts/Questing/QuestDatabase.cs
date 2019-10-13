@@ -46,9 +46,17 @@ namespace QuestSystem {
         pendingQuests.ForEach(quest => {
           quest.GrantReward();
           EventController.QuestCompleted(quest);
-          pendingQuests.Remove(quest);
         });
       }
+    }
+
+    public void ClearPendingQuests() {
+      pendingQuests.Clear();
+    }
+
+    public void ClearAll() {
+      ClearPendingQuests();
+      quests.Clear();
     }
 
     public void MarkQuestAsPending(Quest quest) {

@@ -66,25 +66,22 @@ public class SaveService : MonoBehaviour {
 
   private void SaveNPCs() {
     NPC[] currentNPCs = GetNPCs();
-    // NPCs = GetNPCs();
     for (int i = 0; i < currentNPCs.Length; i++) {
-      // ES3.Save<GameObject>("NPC" + i, NPCs[i], "NPCs.es3");
-    ES3.Save<GameObject>("NPC" + i, currentNPCs[i].gameObject, "NPCs.es3");
+      ES3.Save<GameObject>("NPCGameObject" + i, currentNPCs[i].gameObject, "NPCs.es3");
+      ES3.Save<NPC>("NPC" + i, currentNPCs[i], "NPCs.es3");
     }
   }
 
   private void LoadNPCs() {
-    // NPCs = GetNPCs();
     NPC[] currentNPCs = GetNPCs();
     for (int i = 0; i < currentNPCs.Length; i++) {
       try {
-        ES3.LoadInto<GameObject>("NPC" + i, "NPCs.es3", currentNPCs[i].gameObject);
+        ES3.LoadInto<NPC>("NPC" + i, "NPCs.es3", currentNPCs[i]);
+        ES3.LoadInto<GameObject>("NPCGameObject" + i, "NPCs.es3", currentNPCs[i].gameObject);
       } catch {
         Debug.LogWarning("At index " + i + " something went wrong loading an NPC");
       }
-      // ES3.Load<GameObject>("NPC" + i, "NPCs.es3");
     }
-    Debug.Log("After loading NPCs, we have this many: " + GetNPCs().Length);
   }
 
   private void ResetDialog() {

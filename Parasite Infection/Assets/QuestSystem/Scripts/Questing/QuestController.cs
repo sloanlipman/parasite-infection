@@ -35,12 +35,12 @@ namespace QuestSystem {
 
     public void ClearQuests() {
       foreach (QuestUIItem quest in questUIParent.GetComponentsInChildren<QuestUIItem>()) {
+        Debug.Log("Attempting to destroy: " + quest);
         Destroy(quest.gameObject);
       }
-
-    assignedQuests.Clear();
-    completedQuests.Clear();
-    questDatabase.quests.Clear();
+      assignedQuests.Clear();
+      completedQuests.Clear();
+      questDatabase.ClearAll();
     }
 
     public void Load() {
@@ -56,7 +56,7 @@ namespace QuestSystem {
           if (questDatabase.Completed(questName)) {
             completedQuests.Add(questName);
           } else {
-            AssignQuest(questName);
+            AssignQuest(questName, true);
           }
         }
     }
@@ -65,11 +65,12 @@ namespace QuestSystem {
       return questDatabase.Completed(questName);
     }
 
-    public Quest AssignQuest(string questSlug) {
+    public Quest AssignQuest(string questSlug, bool loadingFromSave = false) {
       bool wasQuestAdded = false;
       Quest questToAdd = null;
 
-      if (FindActiveQuest(questSlug) == null) {
+      if (FindActiveQuest(questSlug) == null || loadingFromSave) {
+
         questToAdd = (Quest) gameObject.AddComponent(System.Type.GetType(questSlug));
         assignedQuests.Add(questToAdd);
         try {
@@ -103,6 +104,7 @@ namespace QuestSystem {
 
     public void CompletePendingQuests() {
       questDatabase.CompletePendingQuests();
+      questDatabase.ClearPendingQuests();
     }
   }
 }

@@ -7,15 +7,18 @@ namespace QuestSystem {
     private void Start() {
       EventController.OnQuestCompleted += QuestCompleted;
       EventController.OnQuestProgressChanged += UpdateProgress;
+      if (this.quest != null) {
+        if (!this.quest.completed) {
+          UpdateProgress(this.quest);
+        } else {
+          QuestCompleted(this.quest);
+        }
+      }
     }
 
     private void OnDestroy() {
       EventController.OnQuestProgressChanged -= UpdateProgress;
       EventController.OnQuestCompleted -= QuestCompleted;
-    }
-
-    private void OnEnable() {
-      UpdateProgress(this.quest);
     }
 
     public void Setup(Quest questToSetup) {

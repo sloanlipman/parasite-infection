@@ -22,7 +22,7 @@ namespace BattleSystem {
     }
 
     void Update () {
-      if (BattleController.Instance.IsBattleActive() && Input.GetMouseButtonDown(0)) {
+      if (Input.GetMouseButtonDown(0)) {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction);
         if (hitInfo.collider != null && hitInfo.collider.CompareTag("Character")) {
@@ -32,7 +32,6 @@ namespace BattleSystem {
     }
 
     public void ToggleActionState(bool state) {
-      // ToggleAbilityPanel(state);
       foreach(Button button in actionButtons) {
         button.interactable = state;
       }
