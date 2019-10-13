@@ -5,7 +5,8 @@ public class EventController : MonoBehaviour {
   public static event System.Action<int> OnItemCollected = delegate { };
   public static event System.Action<QuestSystem.Quest> OnQuestProgressChanged = delegate {};
   public static event System.Action<QuestSystem.Quest> OnQuestCompleted = delegate {};
-  public static event System.Action OnBattleCompleted = delegate {};
+  public static event System.Action OnBattleWon = delegate {};
+  public static event System.Action OnBattleLost = delegate {};
 
   public static void EnemyDied(int enemyId) {
     OnEnemyDied(enemyId);
@@ -23,7 +24,11 @@ public class EventController : MonoBehaviour {
     OnQuestCompleted(quest);
   }
 
-  public static void BattleCompleted() {
-    OnBattleCompleted();
+  public static void BattleWon() {
+    OnBattleWon();
+  }
+
+  public static void BattleLost() {
+    OnBattleLost();
   }
 }

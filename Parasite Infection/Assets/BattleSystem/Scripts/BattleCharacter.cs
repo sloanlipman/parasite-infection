@@ -11,7 +11,6 @@ namespace BattleSystem {
     public int defensePower;
     public int energyPoints;
     public int maxEnergyPoints;
-    public int enemyId;
     public List<Ability> abilities;
 
     public void Hurt (int amount) {
@@ -62,7 +61,6 @@ namespace BattleSystem {
     }
 
     public virtual void Die() {
-      EventController.EnemyDied(enemyId);
       Destroy(this.gameObject);
       Debug.LogFormat("{0} has died!", characterName);
     }

@@ -25,7 +25,6 @@ public class GatewayManager : MonoBehaviour {
     if (spawnPrepared) {
       MovePosition();
     }
-
   }
 
   public void SetSpawnPosition (Vector2 spawnPosition) {

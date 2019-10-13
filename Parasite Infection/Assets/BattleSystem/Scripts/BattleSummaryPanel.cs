@@ -8,16 +8,7 @@ public class BattleSummaryPanel : MonoBehaviour {
   [SerializeField] private Text titleText;
   [SerializeField] private Button loadLastSave;
   [SerializeField] private Button backToWorld;
-  private SaveService saveService;
 
-
-  void Start() {
-    saveService = FindObjectOfType<SaveService>();
-  }
-
-  void Update() {
-
-  }
 
   public void ShowVictoryPanel() {
     gameObject.SetActive(true);
@@ -32,11 +23,10 @@ public class BattleSummaryPanel : MonoBehaviour {
   }
 
   public void LoadLastSave() {
-    EndBattle();
-    saveService.Load();
+    EventController.BattleLost();
   }
 
   public void EndBattle() {
-    EventController.BattleCompleted();
+    EventController.BattleWon();
   }
 }

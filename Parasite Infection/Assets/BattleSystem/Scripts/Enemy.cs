@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class Enemy : BattleCharacter {
+    public int enemyId;
 
     public bool Act() {
       bool didEnemyUseAbility = false;
@@ -39,6 +40,7 @@ namespace BattleSystem {
 
     public override void Die() {
       base.Die();
+      EventController.EnemyDied(enemyId);
       BattleController.Instance.characters[1].Remove(this);
     }
   }

@@ -97,7 +97,7 @@ namespace BattleSystem {
       FindObjectOfType<BattleLauncher>().Launch();
     }
 
-      public void StartBattle(List<BattleCharacter> players, List<BattleCharacter> enemies) {
+    public void StartBattle(List<BattleCharacter> players, List<BattleCharacter> enemies) {
 
       for (int i = 0; i < players.Count; i++) {
         GetPlayerList().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
