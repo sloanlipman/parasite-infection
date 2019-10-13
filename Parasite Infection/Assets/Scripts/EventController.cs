@@ -5,6 +5,7 @@ public class EventController : MonoBehaviour {
   public static event System.Action<int> OnItemCollected = delegate { };
   public static event System.Action<QuestSystem.Quest> OnQuestProgressChanged = delegate {};
   public static event System.Action<QuestSystem.Quest> OnQuestCompleted = delegate {};
+  public static event System.Action<QuestSystem.Quest> OnQuestSetToPending = delegate {};
   public static event System.Action OnBattleWon = delegate {};
   public static event System.Action OnBattleLost = delegate {};
 
@@ -22,6 +23,10 @@ public class EventController : MonoBehaviour {
 
   public static void QuestCompleted(QuestSystem.Quest quest) {
     OnQuestCompleted(quest);
+  }
+
+  public static void QuestSetToPending(QuestSystem.Quest quest) {
+    OnQuestSetToPending(quest);
   }
 
   public static void BattleWon() {

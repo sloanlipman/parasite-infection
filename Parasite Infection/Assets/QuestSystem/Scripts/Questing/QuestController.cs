@@ -96,5 +96,9 @@ namespace QuestSystem {
     public Quest FindActiveQuest(string questSlug) {
       return GetComponent(System.Type.GetType(questSlug)) as Quest;
     }
+
+    public void CompletePendingQuests() {
+      questDatabase.CompletePendingQuests();
+    }
   }
 }

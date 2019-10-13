@@ -3,14 +3,16 @@ using UnityEngine;
 namespace QuestSystem {
   public class QuestDatabase : MonoBehaviour {
     public Dictionary<string, int[]> quests = new Dictionary<string, int[]>();
-
+    public List<Quest> pendingQuests = new List<Quest>();
+  
     public void Save() {
       ES3.Save<Dictionary<string, int[]>>("QuestDatabase", quests);
     }
 
     private void Awake() {
       EventController.OnQuestProgressChanged += UpdateQuestData;
-      EventController.OnQuestCompleted += CompleteQuest;
+      // EventController.OnQuestCompleted += CompleteQuest;
+      EventController.OnQuestSetToPending += MarkQuestAsPending;
     }
 
     public bool AddQuest(Quest quest) {
@@ -35,9 +37,18 @@ namespace QuestSystem {
       }
     }
 
-    public void CompleteQuest(Quest quest) {
+    public void CompletePendingQuests() {
+      pendingQuests.ForEach(quest => {
+        pendingQuests.Remove(quest);
+        quest.GrantReward();
+        EventController.QuestCompleted(quest);
+      });
+    }
+
+    public void MarkQuestAsPending(Quest quest) {
       if (quests.ContainsKey(quest.slug)) {
         quests[quest.slug][0] = 1;
+        pendingQuests.Add(quest);
       }
     }
 

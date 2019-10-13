@@ -7,13 +7,15 @@ namespace BattleSystem {
   public class BattleLauncher : MonoBehaviour {
     public List<BattleCharacter> players { get; set; }
     public List<BattleCharacter> enemies { get; set; }
-    private Player worldPlayer;
-    private NPC[] worldNPCs = new NPC[] {};
+
+    [SerializeField] private Dialog dialog;
+
     private Vector2 worldPosition;
     private int worldSceneIndex;
+
     private GameObject activatingNPC;
-    [SerializeField] private Dialog dialog;
     private bool battleWasLost;
+    private QuestSystem.QuestController questController;
 
     private void Awake() {
 
@@ -21,6 +23,7 @@ namespace BattleSystem {
         Destroy(this.gameObject);
       }
       DontDestroyOnLoad(this.gameObject);
+      questController = FindObjectOfType<QuestSystem.QuestController>();
       EventController.OnBattleWon += ReturnToWorld;
       EventController.OnBattleLost += LoadLastSave;
       SceneManager.sceneLoaded += OnSceneLoaded;
@@ -29,7 +32,7 @@ namespace BattleSystem {
     public void PrepareBattle(List<BattleCharacter> enemies, List<BattleCharacter> players, Vector2 position, NPC npc) {
       worldPosition = position;
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
-      activatingNPC = npc.gameObject;
+      activatingNPC =  npc.gameObject; // TODO gets set to null after battle loads  
       this.players = players;
       this.enemies = enemies;
       SceneManager.LoadScene("Battle");
@@ -46,6 +49,7 @@ namespace BattleSystem {
       GatewayManager.Instance.SetSpawnPosition(worldPosition);
       SceneManager.LoadScene(worldSceneIndex);
       battleWasLost = true;
+      questController.CompletePendingQuests();
     }
 
     private void LoadLastSave() {

@@ -51,15 +51,6 @@ public class SaveService : MonoBehaviour {
   }
 
   public NPC[] GetNPCs() {
-    // NPC[] npcsToGet = FindObjectsOfType(typeof(NPC)) as NPC[];
-    // Debug.Log("npcsToGet = " + npcsToGet);
-    // Debug.Log("# is: " + npcsToGet.Length);
-    // List<GameObject> npcListToGet = new List<GameObject>();
-    // foreach(NPC n in npcsToGet) {
-    //   Debug.Log("NPC to get is " + n);
-    //   npcListToGet.Add(n.gameObject);
-    // }
-    // return npcListToGet.ToArray();
     return FindObjectsOfType(typeof(NPC)) as NPC[];
   }
 
@@ -68,9 +59,6 @@ public class SaveService : MonoBehaviour {
   }
 
   private void LoadPlayer() {
-    // if (GetPlayer().gameObject != null) {
-    //   Destroy(GetPlayer().gameObject);
-    // }
     if (GetPlayer() != null) {
       ES3.Load<GameObject>("Player", "PlayerInfo.es3");
     }
@@ -115,8 +103,7 @@ public class SaveService : MonoBehaviour {
   void Start() {
     if (Instance != null && Instance != this) {
       Destroy(this.gameObject);
-    }
-    else {
+    } else {
       Instance = this;
     }
 
