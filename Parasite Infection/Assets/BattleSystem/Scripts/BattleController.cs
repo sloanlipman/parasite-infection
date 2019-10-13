@@ -37,6 +37,10 @@ namespace BattleSystem {
       return GetEnemyList().Count > 0;
     }
 
+    public bool IsBattleActive() {
+      return IsAnEnemyAlive() && IsAnEnemyAlive();
+    }
+
     public List<BattleCharacter> GetPlayerList() {
       return characters[0];
     }

@@ -11,6 +11,11 @@ namespace QuestSystem {
     private QuestDatabase questDatabase;
     [SerializeField] private QuestPanel questPanel;
 
+    private void Awake() {
+      questDatabase = GetComponent<QuestDatabase>();
+
+    }
+
     private void Start() {
       if (FindObjectsOfType<QuestController>().Length > 1) {
         Destroy(this.gameObject);
@@ -18,7 +23,6 @@ namespace QuestSystem {
 
       DontDestroyOnLoad(this.gameObject);
       EventController.OnQuestCompleted += RemoveCompletedQuest;
-      questDatabase = GetComponent<QuestDatabase>();
 
       if (questPanel != null) {
         questPanel.gameObject.SetActive(false);

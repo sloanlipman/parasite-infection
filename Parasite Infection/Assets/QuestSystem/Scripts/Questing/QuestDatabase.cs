@@ -11,8 +11,12 @@ namespace QuestSystem {
 
     private void Awake() {
       EventController.OnQuestProgressChanged += UpdateQuestData;
-      // EventController.OnQuestCompleted += CompleteQuest;
       EventController.OnQuestSetToPending += MarkQuestAsPending;
+    }
+
+      private void OnDestroy() {
+      EventController.OnQuestProgressChanged -= UpdateQuestData;
+      EventController.OnQuestSetToPending -= MarkQuestAsPending;
     }
 
     public bool AddQuest(Quest quest) {
@@ -38,11 +42,13 @@ namespace QuestSystem {
     }
 
     public void CompletePendingQuests() {
-      pendingQuests.ForEach(quest => {
-        pendingQuests.Remove(quest);
-        quest.GrantReward();
-        EventController.QuestCompleted(quest);
-      });
+      if (pendingQuests.Count > 0) {
+        pendingQuests.ForEach(quest => {
+          quest.GrantReward();
+          EventController.QuestCompleted(quest);
+          pendingQuests.Remove(quest);
+        });
+      }
     }
 
     public void MarkQuestAsPending(Quest quest) {

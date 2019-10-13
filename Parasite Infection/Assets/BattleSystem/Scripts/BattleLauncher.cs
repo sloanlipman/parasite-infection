@@ -18,15 +18,11 @@ namespace BattleSystem {
     private QuestSystem.QuestController questController;
 
     private void Awake() {
-
       if (FindObjectsOfType<BattleLauncher>().Length > 1) {
         Destroy(this.gameObject);
       }
       DontDestroyOnLoad(this.gameObject);
       questController = FindObjectOfType<QuestSystem.QuestController>();
-      EventController.OnBattleWon += ReturnToWorld;
-      EventController.OnBattleLost += LoadLastSave;
-      SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void PrepareBattle(List<BattleCharacter> enemies, List<BattleCharacter> players, Vector2 position, NPC npc) {
@@ -45,29 +41,16 @@ namespace BattleSystem {
       BattleController.Instance.StartBattle(players, enemies);
     }
 
-    private void ReturnToWorld() {
-      GatewayManager.Instance.SetSpawnPosition(worldPosition);
-      SceneManager.LoadScene(worldSceneIndex);
-      battleWasLost = true;
-      questController.CompletePendingQuests();
+    public int GetWorldSceneIndex() {
+      return worldSceneIndex;
     }
 
-    private void LoadLastSave() {
-      battleWasLost = true;
-      SceneManager.LoadScene(worldSceneIndex);
+    public Vector2 GetWorldPosition() {
+      return worldPosition;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-      if (battleWasLost) {
-        SaveService.Instance.Load();
-      }
-      battleWasLost = false;
-
-      if (activatingNPC != null) {
-        Destroy(activatingNPC);
-      }
-
-      Debug.Log("OnSceneLoaded: " + scene.name);
+    public GameObject GetActivatingNPC() {
+      return activatingNPC;
     }
   }
 }

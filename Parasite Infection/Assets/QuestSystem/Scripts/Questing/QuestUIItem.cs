@@ -14,6 +14,10 @@ namespace QuestSystem {
       EventController.OnQuestCompleted -= QuestCompleted;
     }
 
+    private void OnEnable() {
+      UpdateProgress(this.quest);
+    }
+
     public void Setup(Quest questToSetup) {
       quest = questToSetup;
       questName.text = questToSetup.questName;
