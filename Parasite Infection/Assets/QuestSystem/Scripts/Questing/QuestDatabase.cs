@@ -9,12 +9,12 @@ namespace QuestSystem {
       ES3.Save<Dictionary<string, int[]>>("QuestDatabase", quests);
     }
 
-    private void Awake() {
+    private void Start() {
       EventController.OnQuestProgressChanged += UpdateQuestData;
       EventController.OnQuestSetToPending += MarkQuestAsPending;
     }
 
-      private void OnDestroy() {
+    private void OnDestroy() {
       EventController.OnQuestProgressChanged -= UpdateQuestData;
       EventController.OnQuestSetToPending -= MarkQuestAsPending;
     }
@@ -29,8 +29,9 @@ namespace QuestSystem {
     }
 
     public void UpdateQuestData(Quest quest) {
-      quests[quest.slug] = new int[] { System.Convert.ToInt32(quest.completed), quest.goal.countCurrent};
-      Debug.Log("Data updated for: " + quest.slug);
+      if (quest != null) {
+        quests[quest.slug] = new int[] { System.Convert.ToInt32(quest.completed), quest.goal.countCurrent};
+      }
     }
 
     public int GetCurrentQuestCount(string slug) {
@@ -51,12 +52,16 @@ namespace QuestSystem {
     }
 
     public void ClearPendingQuests() {
-      pendingQuests.Clear();
+      if (pendingQuests.Count > 0) {
+        pendingQuests.Clear();
+      }
     }
 
     public void ClearAll() {
       ClearPendingQuests();
-      quests.Clear();
+      if (quests.Count > 0 ) {
+        quests.Clear();
+      }
     }
 
     public void MarkQuestAsPending(Quest quest) {

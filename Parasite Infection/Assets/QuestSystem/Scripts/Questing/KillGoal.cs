@@ -1,6 +1,10 @@
-﻿namespace QuestSystem { 
+﻿using UnityEngine;
+
+namespace QuestSystem {
   public class KillGoal : Goal {
     public int enemyId;
+
+    public KillGoal() {}
 
     public KillGoal(int amountNeeded, int enemyId, Quest quest) {
       countCurrent = 0;
@@ -9,6 +13,11 @@
       this.enemyId = enemyId;
       this.quest = quest;
       EventController.OnEnemyDied += EnemyKilled;
+      EventController.OnGameReloaded += DestroyKillGoal;
+    }
+
+    public void DestroyKillGoal() {
+      EventController.OnEnemyDied -= EnemyKilled;
     }
 
     void EnemyKilled(int enemyId) {

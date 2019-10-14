@@ -16,8 +16,10 @@ namespace QuestSystem {
 
     public virtual void Complete() {
       Debug.Log("Quest completed!");
-      completed = true;
-      EventController.QuestSetToPending(this);
+      if (!this.completed) {
+        completed = true;
+        EventController.QuestSetToPending(this);
+      }
     }
 
     public void GrantReward() {

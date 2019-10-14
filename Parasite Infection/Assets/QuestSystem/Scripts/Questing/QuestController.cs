@@ -34,16 +34,29 @@ namespace QuestSystem {
     }
 
     public void ClearQuests() {
-      foreach (QuestUIItem quest in questUIParent.GetComponentsInChildren<QuestUIItem>()) {
-        Debug.Log("Attempting to destroy: " + quest);
-        Destroy(quest.gameObject);
+      ClearActiveQuests();
+      ClearQuestUI();
+      if (assignedQuests.Count > 0) {
+        assignedQuests.Clear();
       }
-      assignedQuests.Clear();
-      completedQuests.Clear();
+      if (completedQuests.Count > 0) {
+        completedQuests.Clear();
+      }
       questDatabase.ClearAll();
     }
 
+    public void ClearQuestUI() {
+      foreach (QuestUIItem quest in questUIParent.GetComponentsInChildren<QuestUIItem>()) {
+        Destroy(quest.gameObject);
+      }
+    }
+
+    public void ClearActiveQuests() {
+      assignedQuests.ForEach(quest => Destroy(quest));
+    }
+
     public void Load() {
+      EventController.GameReloaded();
     // Load the DB
       questDatabase.quests = ES3.Load<Dictionary<string, int[]>>("QuestDatabase");
       List<string> questNamesToAdd = new List<string>();
@@ -66,24 +79,25 @@ namespace QuestSystem {
     }
 
     public Quest AssignQuest(string questSlug, bool loadingFromSave = false) {
-      bool wasQuestAdded = false;
+      bool isNewQuest = false;
       Quest questToAdd = null;
 
-      if (FindActiveQuest(questSlug) == null || loadingFromSave) {
-
+      if (!IsQuestCompleted(questSlug) && FindActiveQuest(questSlug) == null || loadingFromSave) {
+        // Add a new quest
         questToAdd = (Quest) gameObject.AddComponent(System.Type.GetType(questSlug));
         assignedQuests.Add(questToAdd);
         try {
-          wasQuestAdded = questDatabase.AddQuest(questToAdd);
+          isNewQuest = questDatabase.AddQuest(questToAdd);
         } catch {
           questToAdd.goal.countCurrent = questDatabase.GetCurrentQuestCount(questSlug);
         }
 
       } else {
+        // Quest already exists - Find instance of it
         questToAdd = (Quest) gameObject.GetComponent(System.Type.GetType(questSlug));
       }
 
-      if (wasQuestAdded || !questDatabase.Completed(questToAdd.slug)) {
+      if (isNewQuest || !questDatabase.Completed(questToAdd.slug)) {
         QuestUIItem questUI = Instantiate(questUIItem, questUIParent);
 
         questUI.Setup(questToAdd);
@@ -95,6 +109,7 @@ namespace QuestSystem {
 
     private void RemoveCompletedQuest (Quest quest) {
       assignedQuests.Remove(quest);
+      completedQuests.Add(quest.questName);
       Destroy(quest);
     }
 

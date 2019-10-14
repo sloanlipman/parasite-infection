@@ -7,18 +7,29 @@ namespace QuestSystem {
     private void Start() {
       EventController.OnQuestCompleted += QuestCompleted;
       EventController.OnQuestProgressChanged += UpdateProgress;
-      if (this.quest != null) {
-        if (!this.quest.completed) {
-          UpdateProgress(this.quest);
-        } else {
-          QuestCompleted(this.quest);
-        }
-      }
     }
 
     private void OnDestroy() {
       EventController.OnQuestProgressChanged -= UpdateProgress;
       EventController.OnQuestCompleted -= QuestCompleted;
+    }
+
+    private void OnEnable() {
+      if (this.quest != null) {
+        if (!this.quest.goal.completed) {
+          UpdateProgress(this.quest);
+        } else {
+          QuestCompleted(this.quest);
+        }
+      } else {
+        Debug.LogWarning("There was no quest to load when enabling the panel");
+        Transform parent = GameObject.FindGameObjectWithTag("UI/Quest Item Parent").transform;
+        foreach (QuestUIItem quest in parent.GetComponentsInChildren<QuestUIItem>()) {
+          Debug.Log("Attempting to destroy: " + quest);
+          Destroy(quest.gameObject);
+        }
+      }
+
     }
 
     public void Setup(Quest questToSetup) {

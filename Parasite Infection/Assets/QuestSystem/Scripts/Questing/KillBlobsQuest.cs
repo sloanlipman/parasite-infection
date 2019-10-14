@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using QuestSystem;
+using UnityEngine;
 
 public class KillBlobsQuest : Quest {
   void Awake() {
@@ -10,7 +11,7 @@ public class KillBlobsQuest : Quest {
     goal = new KillGoal(2, 0, this);
   }
 
-    public override void Complete() {
-      base.Complete();
-    }
+  public override void Complete() {
+    base.Complete();
+  }
 }
