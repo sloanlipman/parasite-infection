@@ -13,7 +13,6 @@ namespace BattleSystem {
     private Vector2 worldPosition;
     private int worldSceneIndex;
 
-    private GameObject activatingNPC;
     private bool battleWasLost;
     private QuestSystem.QuestController questController;
 
@@ -25,10 +24,9 @@ namespace BattleSystem {
       questController = FindObjectOfType<QuestSystem.QuestController>();
     }
 
-    public void PrepareBattle(List<BattleCharacter> enemies, List<BattleCharacter> players, Vector2 position, NPC npc) {
+    public void PrepareBattle(List<BattleCharacter> enemies, List<BattleCharacter> players, Vector2 position) {
       worldPosition = position;
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
-      activatingNPC =  npc.gameObject; // TODO gets set to null after battle loads  
       this.players = players;
       this.enemies = enemies;
       SceneManager.LoadScene("Battle");
@@ -47,10 +45,6 @@ namespace BattleSystem {
 
     public Vector2 GetWorldPosition() {
       return worldPosition;
-    }
-
-    public GameObject GetActivatingNPC() {
-      return activatingNPC;
     }
   }
 }

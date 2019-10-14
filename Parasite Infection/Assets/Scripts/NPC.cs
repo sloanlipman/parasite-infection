@@ -29,7 +29,7 @@ public class NPC : Character {
 
   public void Interact(Character player = null) {
     if (GetComponent<BattleLaunchCharacter>() != null) {
-      GetComponent<BattleLaunchCharacter>().PrepareBattle(player, this);
+      GetComponent<BattleLaunchCharacter>().PrepareBattle(player);
     }
     if (questName != "") { // If NPC gives a quest
       if (quest == null && !IsQuestAssigned() && !IsQuestCompleted()) {

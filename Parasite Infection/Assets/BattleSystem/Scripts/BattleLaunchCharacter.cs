@@ -13,8 +13,8 @@ namespace BattleSystem {
       players = Party.Instance.GetPartyMembers();
     }
 
-    public void PrepareBattle(Character character, NPC npc) {
-      launcher.PrepareBattle(enemies, players, character.transform.position, npc);
+    public void PrepareBattle(Character character) {
+      launcher.PrepareBattle(enemies, players, character.transform.position);
     }
   }
 }

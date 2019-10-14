@@ -53,12 +53,6 @@ namespace BattleSystem {
       }
       battleWasLost = false;
       SceneManager.sceneLoaded -= OnSceneLoaded;
-
-      if (battleLauncher.GetActivatingNPC() != null) {
-        Debug.Log("Found NPC");
-        Destroy(battleLauncher.GetActivatingNPC());
-      }
-
     }
   }
 }
