@@ -24,13 +24,15 @@ public class SaveService : MonoBehaviour {
   public void Load() {
     if (ES3.FileExists() && ES3.FileExists("PlayerInfo.es3")) {
       ClearAll();
+      menuController.CloseAllMenus();
 
       inventory.Load();
       questController.Load();
-      menuController.UnpauseGame();
       LoadPlayer();
       LoadNPCs();
       ResetDialog();
+    menuController.UnpauseGame();
+
     } else {
       Debug.LogWarning("No file to load from!");
     }

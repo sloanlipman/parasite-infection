@@ -14,6 +14,24 @@ public class MenuController : MonoBehaviour {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
   }
 
+  private void PauseGame() {
+    ToggleDialogButtons(false);
+    ToggleMenu(true);
+    Time.timeScale = 0;
+  }
+
+  public void UnpauseGame() {
+    CloseAllMenus();
+    Time.timeScale = 1;
+  }
+
+  public void CloseAllMenus() {
+    ToggleDialogButtons(true);
+    inventory.gameObject.SetActive(false);
+    questPanel.gameObject.SetActive(false);
+    ToggleMenu(false);
+  }
+
   private void Awake() {
     if (FindObjectsOfType<MenuController>().Length > 1) {
       Destroy(this.gameObject);
@@ -21,13 +39,13 @@ public class MenuController : MonoBehaviour {
     DontDestroyOnLoad(this.gameObject);
   }
 
-  void Start() {
+  private void Start() {
     ToggleMenu(false);
   }
 
-  void Update() {
+  private void Update() {
     if (CanPause()) {
-      if (menuPanel.gameObject.activeSelf) {
+      if (IsPaused()) {
         UnpauseGame();
       } else {
         PauseGame();
@@ -35,36 +53,27 @@ public class MenuController : MonoBehaviour {
     }
   }
 
-  public bool CanPause() {
+  private bool CanPause() {
     return !IsBattleCurrentScene() && Input.GetKeyDown(KeyCode.Escape);
   }
-  public void PauseGame() {
-    ToggleDialogButtons(false);
-    ToggleMenu(true);
-    Time.timeScale = 0;
+
+  private bool IsPaused() {
+    return menuPanel.gameObject.activeSelf;
   }
 
-  public void UnpauseGame() {
-    ToggleDialogButtons(true);
-    inventory.gameObject.SetActive(false);
-    questPanel.gameObject.SetActive(false);
-    ToggleMenu(false);
-    Time.timeScale = 1;
-  }
-
-  public void ToggleUIInventory() {
+  private void ToggleUIInventory() {
     inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
   }
 
-  public void ToggleQuestPanel() {
+  private void ToggleQuestPanel() {
     questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
   }
 
-  public void ToggleMenu(bool state) {
+  private void ToggleMenu(bool state) {
     menuPanel.gameObject.SetActive(state);
   }
 
-  public void ToggleDialogButtons(bool state) {
+  private void ToggleDialogButtons(bool state) {
     foreach(Button b in dialogButtons) {
       if (b != null) {
         b.interactable = state;
