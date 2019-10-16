@@ -20,6 +20,4 @@ public class Player : Character  {
       collision.GetComponent<NPC>().Interact(this);
     }
   }
-
-
 }

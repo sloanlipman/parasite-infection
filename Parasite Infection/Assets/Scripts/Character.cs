@@ -26,6 +26,10 @@ public class Character : MonoBehaviour {
     body.velocity = inputVector;
   }
 
+  public Rigidbody2D GetRigidbody() {
+    return body;
+  }
+
   public void TeleportTo(Vector2 targetPosition) {
     transform.position = targetPosition;
     FindObjectOfType<Inventory>().Save();

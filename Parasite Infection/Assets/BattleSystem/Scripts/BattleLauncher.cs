@@ -7,14 +7,40 @@ namespace BattleSystem {
   public class BattleLauncher : MonoBehaviour {
     public List<BattleCharacter> players { get; set; }
     public List<BattleCharacter> enemies { get; set; }
+    private List<BattleCharacter> currentParty;
+    private Player player;
+    private int random;
+    private int numberOfSteps;
 
-    [SerializeField] private Dialog dialog;
+    [SerializeField] private DialogPanel dialog;
 
     private Vector2 worldPosition;
     private int worldSceneIndex;
 
     private bool battleWasLost;
     private QuestSystem.QuestController questController;
+
+
+    
+    void Start() {
+      player = FindObjectOfType<Player>();
+    }
+
+    private void Update() {
+      currentParty = Party.Instance.GetPartyMembers();
+      if (player.GetRigidbody().velocity != Vector2.zero) {
+        random = Random.Range(0, 100);
+        numberOfSteps++;
+        Debug.Log("# of steps is: " + numberOfSteps);
+        // Debug.Log("Random # is: " + random);
+        if (numberOfSteps > 100) {
+          numberOfSteps = 0;
+          if (random >= 50) {
+            PrepareBattle(null, this.currentParty, player.transform.position);
+          }
+        }
+      }
+    }
 
     private void Awake() {
       if (FindObjectsOfType<BattleLauncher>().Length > 1) {

@@ -10,7 +10,7 @@ public class SaveService : MonoBehaviour {
   private Inventory inventory;
   private QuestController questController;
   private MenuController menuController;
-  private Dialog dialogPanel;
+  private DialogPanel dialogPanel;
   private SlotPanel[] slotPanels = new SlotPanel[] {};
 
   // Start is called before the first frame update
@@ -87,7 +87,7 @@ public class SaveService : MonoBehaviour {
   }
 
   private void ResetDialog() {
-    dialogPanel = FindObjectOfType<Dialog>();
+    dialogPanel = FindObjectOfType<DialogPanel>();
     if (dialogPanel != null) {
       dialogPanel.ResetDialog();
     }

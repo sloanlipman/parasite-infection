@@ -11,6 +11,7 @@ TagManager:
   - UI/Battle Summary Title
   - UI/Load Last Save
   - UI/Back To World
+  - Random Encounter Zone
   layers:
   - Default
   - TransparentFX

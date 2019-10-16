@@ -17,7 +17,7 @@ public class NPC : Character {
   [SerializeField] private DialogData dialogData;
   [SerializeField] private DialogData questCompletedDialogData;
 
-  [SerializeField] private Dialog dialog;
+  [SerializeField] private DialogPanel dialog;
   // Start is called before the first frame update
   void Start() {
     questController = FindObjectOfType<QuestSystem.QuestController>();

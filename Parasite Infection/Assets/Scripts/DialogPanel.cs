@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialog : MonoBehaviour {
+public class DialogPanel : MonoBehaviour {
   [SerializeField] private UnityEngine.UI.Text dialogText;
   [SerializeField] private GameObject dialogPanel;
   private string[] dialog;
   private int dialogIndex;
+
+  void Start() {
+    if (FindObjectsOfType<DialogPanel>().Length > 1) {
+      Destroy(this.gameObject);
+    }
+    DontDestroyOnLoad(this.gameObject);
+  }
 
   public void StartDialog(string[] dialog) {
     dialogIndex = 0;
