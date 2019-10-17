@@ -101,13 +101,21 @@ namespace BattleSystem {
       FindObjectOfType<BattleLauncher>().Launch();
     }
 
-    public void StartBattle(List<BattleCharacter> players, List<BattleCharacter> enemies) {
+    public void StartBattle(List<PartyMemberEntry> players, List<EnemyEntry> enemies) {
 
+  //  .ForEach(member => {
+  //       PartyMember newPartyMember = gameObject.AddComponent<PartyMember>();
+  //       newPartyMember.SetupPartyMember(member);
+  //     });
+    //  .ForEach((System.Action<EnemyEntry>)(enemy => {
+    //     EnemyEntry newEnemy = gameObject.AddComponent<EnemyEntry>();
+    //     newEnemy.SetupEnemy(enemy);
+    //   }));
       for (int i = 0; i < players.Count; i++) {
-        GetPlayerList().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
+        GetPlayerList().Add(spawnPoints[i+3].SpawnPartyMember(players[i])); // Add Players to spawn points 3-5
       }
       for (int i = 0; i < enemies.Count; i++) {
-      GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2
+        GetEnemyList().Add(spawnPoints[i].SpawnEnemy(enemies[i])); // Add Enemies to spawn points 0-2
       }
     }
 
@@ -144,8 +152,8 @@ namespace BattleSystem {
         uiController.SetColor(characterTurnIndex, Color.white);
         }
       BattleCharacter currentCharacter = GetCurrentCharacter();
-      int energyToRecover = (int)Mathf.Round(0.1f * currentCharacter.maxEnergyPoints);
       if (IsCharacterAPlayer(currentCharacter) && abilityToBeUsed == null) {
+        int energyToRecover = (int)Mathf.Round(0.1f * currentCharacter.maxEnergyPoints);
         currentCharacter.RecoverEnergy(energyToRecover);
       }
       uiController.UpdateCharacterUI();
@@ -189,7 +197,8 @@ namespace BattleSystem {
     IEnumerator PerformAct() {
       yield return new WaitForSeconds(0.75f);
       if (GetCurrentCharacter().health > 0) { // actTurn should always be 1 for enemies here!
-      bool didEnemyUseAbility =  GetCurrentCharacter().GetComponent<Enemy>().Act();
+      Enemy enemy = GetCurrentCharacter() as Enemy;
+      bool didEnemyUseAbility = enemy.Act();
       if (!didEnemyUseAbility) {
         int energyToRecover = (int)Mathf.Round(0.1f * GetCurrentCharacter().maxEnergyPoints);
         GetCurrentCharacter().RecoverEnergy(energyToRecover);

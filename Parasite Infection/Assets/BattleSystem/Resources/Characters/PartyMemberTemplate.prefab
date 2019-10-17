@@ -52,9 +52,12 @@ MonoBehaviour:
   defensePower: 3
   energyPoints: 15
   maxEnergyPoints: 15
-  enemyId: 0
+  speed: 0
   abilities:
   - {fileID: 2214528129449449433, guid: 9ba1a3eaa3bd5054aba51b7dd107402e, type: 3}
+  sprite: {fileID: 0}
+  level: 0
+  experience: 0
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0

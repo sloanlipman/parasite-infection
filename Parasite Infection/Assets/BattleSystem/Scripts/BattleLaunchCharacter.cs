@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class BattleLaunchCharacter : MonoBehaviour {
-    [SerializeField] private List<BattleCharacter> enemies;
+    [SerializeField] private List<EnemyEntry> enemies;
     [SerializeField] private BattleLauncher launcher;
-    private List<BattleCharacter> players;
+    private List<PartyMemberEntry> players;
 
     void Start() {
       launcher = FindObjectOfType<BattleLauncher>();
-      players = Party.Instance.GetPartyMembers();
+      players = CharacterDatabase.Instance.GetPartyMembers();
     }
 
     public void PrepareBattle(Character character) {
-      launcher.PrepareBattle(enemies, players, character.transform.position);
+      launcher.PrepareBattle(character.transform.position);
     }
   }
 }

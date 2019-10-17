@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -152,8 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61407d131926624491de80af3418d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 7264005851067476652, guid: ec0025cada695ab4d94d36f850c6e8ec, type: 3}
   enemies:
   - {fileID: 4451484942459561568, guid: 79c397dc105b09d47a3fd5a125ac0d1c, type: 3}
   - {fileID: 4451484942459561568, guid: 79c397dc105b09d47a3fd5a125ac0d1c, type: 3}

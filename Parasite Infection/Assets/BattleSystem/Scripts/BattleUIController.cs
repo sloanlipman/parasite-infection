@@ -69,10 +69,12 @@ namespace BattleSystem {
         }
       }
 
+    if (abilities != null) {
       foreach (Ability ability in abilities) {
         Button abilityButton = Instantiate<Button>(button, abilityPanel.transform);
         abilityButton.GetComponentInChildren<Text>().text = ability.abilityName;
         abilityButton.onClick.AddListener(() => SelectAbility(ability));
+       }
       }
     }
 
