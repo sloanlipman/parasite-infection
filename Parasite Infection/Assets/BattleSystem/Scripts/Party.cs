@@ -12,7 +12,7 @@ namespace BattleSystem {
       return currentParty;
     }
   
-    void Start() {
+    void Awake() {
       if (Instance != null && Instance != this) {
         Destroy(this.gameObject);
       } else {

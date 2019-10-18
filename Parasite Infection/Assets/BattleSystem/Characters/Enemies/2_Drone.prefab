@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7264005851067476653}
   - component: {fileID: 7264005851067476655}
-  - component: {fileID: 3924562713174096799}
-  - component: {fileID: 5126930062819720034}
+  - component: {fileID: 2822308888312228272}
+  - component: {fileID: 9192391036177522714}
   m_Layer: 0
-  m_Name: Hatchling
+  m_Name: Drone
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,19 +71,19 @@ SpriteRenderer:
   m_SortingLayerID: 1993003049
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1874821813152386329, guid: e138b47a89ba5464d9995d1d7e652129,
+  m_Sprite: {fileID: 7594697043243188203, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.21, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3924562713174096799
+--- !u!114 &2822308888312228272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,17 +95,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Hatchling
+  characterName: Drone
   health: 10
-  maxHealth: 10
-  attackPower: 5
-  defensePower: 20
-  energyPoints: 10
-  maxEnergyPoints: 10
-  enemyId: 0
+  maxHealth: 25
+  attackPower: 7
+  defensePower: 3
+  energyPoints: 15
+  maxEnergyPoints: 15
   abilities:
+  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
   - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
---- !u!61 &5126930062819720034
+  enemyId: 2
+--- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +123,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.78125, y: 0.59375}
+    newSize: {x: 0.21, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

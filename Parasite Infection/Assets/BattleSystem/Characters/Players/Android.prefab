@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7264005851067476653}
+  - component: {fileID: 7264005851067476652}
   - component: {fileID: 7264005851067476655}
-  - component: {fileID: 2822308888312228272}
-  - component: {fileID: 9192391036177522714}
+  - component: {fileID: 8662831416866578704}
   m_Layer: 0
-  m_Name: Infected Android
+  m_Name: Android
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +33,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7264005851067476652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264005851067476654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b2b96c5066bd64fba0471f3507af4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Android
+  health: 15
+  maxHealth: 15
+  attackPower: 5
+  defensePower: 5
+  energyPoints: 15
+  maxEnergyPoints: 15
+  abilities:
+  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -71,41 +92,19 @@ SpriteRenderer:
   m_SortingLayerID: 1993003049
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4265467980624224368, guid: e138b47a89ba5464d9995d1d7e652129,
+  m_Sprite: {fileID: 8405052368512661918, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.24, y: 0.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2822308888312228272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7264005851067476654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: Infected Android
-  health: 25
-  maxHealth: 25
-  attackPower: 7
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
-  enemyId: 2
-  abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
---- !u!61 &9192391036177522714
+--- !u!61 &8662831416866578704
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +121,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.24, y: 0.31}
+    newSize: {x: 0.24, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
