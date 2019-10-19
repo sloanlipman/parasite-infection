@@ -11,8 +11,13 @@ namespace BattleSystem {
     public List<Ability> abilityList = new List<Ability>();
 
     public List<PartyMember> GetPartyMembers() {
-      partyMembers.ForEach(member => Debug.Log(member.characterName));
-      return partyMembers;
+      List<PartyMember> currentParty = new List<PartyMember>();
+      partyMembers.ForEach(member => {
+        if (member.IsInParty()) {
+          currentParty.Add(member);
+        }
+      });
+      return currentParty;
     }
     
     public List<Enemy> GetEnemies() {
@@ -55,6 +60,8 @@ namespace BattleSystem {
       Resources.Load<PartyMember>("Players/Android"),
       Resources.Load<PartyMember>("Players/Alan")
     };
+
+    partyMembers[0].ToggleInParty(true);
 
   }
 
