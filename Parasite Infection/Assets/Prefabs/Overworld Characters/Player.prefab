@@ -79,11 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-<<<<<<< HEAD:Parasite Infection/Assets/Prefabs/Player.prefab
-  m_Size: {x: 1, y: 1}
-=======
   m_Size: {x: 0.78125, y: 0.9375}
->>>>>>> b4cb319... Fix Sprites, add more Sprites, add more enemy prefabs:Parasite Infection/Assets/Prefabs/Overworld Characters/Player.prefab
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
