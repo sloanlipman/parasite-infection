@@ -5,27 +5,7 @@ using UnityEngine;
 namespace BattleSystem {
   public class Enemy : BattleCharacter {
     public int enemyId;
-
     public Enemy() {}
-
-    public Enemy SetupEnemy (EnemyEntry enemy) {
-      this.characterName = enemy.characterName;
-      this.health = enemy.stats["health"];
-      this.maxHealth = enemy.stats["maxHealth"];
-      this.attackPower = enemy.stats["attackPower"];
-      this.defensePower = enemy.stats["defensePower"];
-      this.energyPoints = enemy.stats["energyPoints"];
-      this.maxEnergyPoints = enemy.stats["maxEnergyPoints"];
-      this.speed = enemy.stats["speed"];
-      this.abilities = enemy.abilities;
-      if (enemy.sprite != null) {
-        this.sprite.sprite = enemy.sprite;
-      }
-      this.equipment = enemy.equipment;
-      this.level = enemy.level;
-      this.experience = enemy.level;
-      return this;
-    }
 
     public bool Act() {
       bool didEnemyUseAbility = false;

@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class BattleCharacter : MonoBehaviour {
-    public int id;
     public string characterName;
     public int health;
     public int maxHealth;
@@ -14,8 +13,6 @@ namespace BattleSystem {
     public int maxEnergyPoints;
     public int speed;
     public List<Ability> abilities;
-    public Dictionary<string, int> stats;
-    public SpriteRenderer sprite;
     public int level;
     public int experience;
     public List<Item> equipment;

@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class BattleLaunchCharacter : MonoBehaviour {
-    [SerializeField] private List<EnemyEntry> enemies;
+    [SerializeField] private List<Enemy> enemies;
     [SerializeField] private BattleLauncher launcher;
-    private List<PartyMemberEntry> players;
+    // private List<PartyMemberEntry> players;
+    private List<PartyMember> players;
 
     void Start() {
       launcher = FindObjectOfType<BattleLauncher>();

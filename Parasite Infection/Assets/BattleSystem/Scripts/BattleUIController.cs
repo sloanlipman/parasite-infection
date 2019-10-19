@@ -46,7 +46,6 @@ namespace BattleSystem {
 
     public void GenerateCharacterUI() {
       List<BattleCharacter> players = BattleController.Instance.GetPlayerList();
-      // Instantiate(characterInfo, characterInfoTextArea);
       for (int i = 0; i < players.Count; i++) {
         Text infoToAdd = Instantiate(characterInfoText, characterInfoParent);
         characterInfo.Add(infoToAdd);
