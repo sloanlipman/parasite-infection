@@ -5,30 +5,31 @@ using UnityEngine;
 namespace BattleSystem {
   public class CharacterDatabase : MonoBehaviour {
     public static CharacterDatabase Instance {get; set;}
-    public List<Enemy> enemiesList = new List<Enemy>();
-    public List<PartyMember> partyMembers = new List<PartyMember>();
+    private List<Enemy> enemyList = new List<Enemy>();
+    private List<PartyMember> partyMembers = new List<PartyMember>();
 
     public List<Ability> abilityList = new List<Ability>();
+    public void AddPartyMember(PartyMember partyMember) {
+    }
 
     public List<PartyMember> GetPartyMembers() {
-      List<PartyMember> currentParty = new List<PartyMember>();
-      partyMembers.ForEach(member => {
-        if (member.IsInParty()) {
-          currentParty.Add(member);
-        }
-      });
-      return currentParty;
+      return partyMembers;
     }
-    
+
     public List<Enemy> GetEnemies() {
-      return enemiesList;
+      return enemyList;
     }
 
-    public void AddPartyMember(PartyMember partyMember) {
-      
+    public void Load() {
+      partyMembers = ES3.Load<List<PartyMember>>("PartyMembers", "characters.es3");
+      enemyList = ES3.Load<List<Enemy>>("PartyMembers", "characters.es3");
     }
 
-  
+    public void ClearAll() {
+      partyMembers.Clear();
+      enemyList.Clear();
+    }
+
     void Awake() {
       if (Instance != null && Instance != this) {
         Destroy(this.gameObject);
@@ -66,7 +67,7 @@ namespace BattleSystem {
   }
 
   void BuildEnemyDatabase() {
-    enemiesList = new List<Enemy>() {
+    enemyList = new List<Enemy>() {
       Resources.Load<Enemy>("Enemies/0_Blob"),
       Resources.Load<Enemy>("Enemies/Drill"),
       Resources.Load<Enemy>("Enemies/2_Drone"),

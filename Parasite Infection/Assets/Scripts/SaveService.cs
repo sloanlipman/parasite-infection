@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using QuestSystem;
+using BattleSystem;
 
 public class SaveService : MonoBehaviour {
 
   public static SaveService Instance {get; set;}
-
+  private BattleSystem.CharacterController characterController;
   private Inventory inventory;
   private QuestController questController;
   private MenuController menuController;
@@ -17,6 +18,8 @@ public class SaveService : MonoBehaviour {
   public void Save() {
     inventory.Save();
     questController.Save();
+    characterController.Save();
+
     SavePlayer();
     SaveNPCs();
   }
@@ -25,13 +28,13 @@ public class SaveService : MonoBehaviour {
     if (ES3.FileExists() && ES3.FileExists("PlayerInfo.es3")) {
       ClearAll();
       menuController.CloseAllMenus();
-
       inventory.Load();
       questController.Load();
+      characterController.Load();
       LoadPlayer();
       LoadNPCs();
       ResetDialog();
-    menuController.UnpauseGame();
+      menuController.UnpauseGame();
 
     } else {
       Debug.LogWarning("No file to load from!");
@@ -46,6 +49,7 @@ public class SaveService : MonoBehaviour {
     }
     inventory.ClearInventory();
     questController.ClearQuests();
+    characterController.ClearCharacters();
   }
 
   private Player GetPlayer() {
@@ -97,6 +101,7 @@ public class SaveService : MonoBehaviour {
     inventory = FindObjectOfType<Inventory>();
     questController = FindObjectOfType<QuestController>();
     menuController = FindObjectOfType<MenuController>();
+    characterController = FindObjectOfType<CharacterController>();
   }
 
   void Start() {

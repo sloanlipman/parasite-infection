@@ -5,10 +5,6 @@ namespace QuestSystem {
     public Dictionary<string, int[]> quests = new Dictionary<string, int[]>();
     public List<Quest> pendingQuests = new List<Quest>();
   
-    public void Save() {
-      ES3.Save<Dictionary<string, int[]>>("QuestDatabase", quests);
-    }
-
     private void Start() {
       EventController.OnQuestProgressChanged += UpdateQuestData;
       EventController.OnQuestSetToPending += MarkQuestAsPending;
