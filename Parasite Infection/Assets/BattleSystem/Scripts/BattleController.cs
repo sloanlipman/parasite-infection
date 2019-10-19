@@ -101,21 +101,12 @@ namespace BattleSystem {
       FindObjectOfType<BattleLauncher>().Launch();
     }
 
-    public void StartBattle(List<PartyMemberEntry> players, List<EnemyEntry> enemies) {
-
-  //  .ForEach(member => {
-  //       PartyMember newPartyMember = gameObject.AddComponent<PartyMember>();
-  //       newPartyMember.SetupPartyMember(member);
-  //     });
-    //  .ForEach((System.Action<EnemyEntry>)(enemy => {
-    //     EnemyEntry newEnemy = gameObject.AddComponent<EnemyEntry>();
-    //     newEnemy.SetupEnemy(enemy);
-    //   }));
+    public void StartBattle(List<PartyMember> players, List<Enemy> enemies) {
       for (int i = 0; i < players.Count; i++) {
-        GetPlayerList().Add(spawnPoints[i+3].SpawnPartyMember(players[i])); // Add Players to spawn points 3-5
+        GetPlayerList().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
       }
       for (int i = 0; i < enemies.Count; i++) {
-        GetEnemyList().Add(spawnPoints[i].SpawnEnemy(enemies[i])); // Add Enemies to spawn points 0-2
+        GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2
       }
     }
 
@@ -161,6 +152,8 @@ namespace BattleSystem {
 
       if (IsAPlayerAlive() && IsAnEnemyAlive()) {
         if (HasACharacterNotGone()) {
+          abilityToBeUsed = null;
+          playerIsAttacking = false;
           characterTurnIndex++;
           if (IsItPlayerTurn()) {
             uiController.SetColor(characterTurnIndex, Color.red);

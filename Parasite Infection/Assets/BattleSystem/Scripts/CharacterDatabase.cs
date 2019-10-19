@@ -5,18 +5,17 @@ using UnityEngine;
 namespace BattleSystem {
   public class CharacterDatabase : MonoBehaviour {
     public static CharacterDatabase Instance {get; set;}
-
-    public List<PartyMemberEntry> partyMembers = new List<PartyMemberEntry>();
-    public List<EnemyEntry> enemiesList = new List<EnemyEntry>();
+    public List<Enemy> enemiesList = new List<Enemy>();
+    public List<PartyMember> partyMembers = new List<PartyMember>();
 
     public List<Ability> abilityList = new List<Ability>();
 
-    public List<PartyMemberEntry> GetPartyMembers() {
+    public List<PartyMember> GetPartyMembers() {
       partyMembers.ForEach(member => Debug.Log(member.characterName));
       return partyMembers;
     }
     
-    public List<EnemyEntry> GetEnemies() {
+    public List<Enemy> GetEnemies() {
       return enemiesList;
     }
 
@@ -32,7 +31,6 @@ namespace BattleSystem {
         Instance = this;
       }
       DontDestroyOnLoad(this.gameObject);
-
       BuildAbilityList();
       BuildPartyDatabase();
       BuildEnemyDatabase();
@@ -51,85 +49,26 @@ namespace BattleSystem {
       };
     }
 
+  void BuildPartyDatabase() {
+    partyMembers = new List<PartyMember>() {
+      Resources.Load<PartyMember>("Players/Barry"),
+      Resources.Load<PartyMember>("Players/Android"),
+      Resources.Load<PartyMember>("Players/Alan")
+    };
 
+  }
 
-    void BuildPartyDatabase() {
-      partyMembers = new List<PartyMemberEntry>() {
-        new PartyMemberEntry(0, "Barry",
-        new Dictionary<string, int> {
-          {"health", 15},
-          {"maxHealth", 15},
-          {"energyPoints", 15},
-          {"maxEnergyPoints", 15},
-          {"attackPower", 5},
-          {"defensePower", 3},
-          {"speed", 5}
-        }),
-        new PartyMemberEntry(1, "Alan",
-        new Dictionary<string, int> {
-          {"health", 15},
-          {"maxHealth", 15},
-          {"energyPoints", 15},
-          {"maxEnergyPoints", 15},
-          {"attackPower", 5},
-          {"defensePower", 3},
-          {"speed", 5}
-        }),
-        new PartyMemberEntry(2, "Android",
-        new Dictionary<string, int> {
-          {"health", 15},
-          {"maxHealth", 15},
-          {"energyPoints", 15},
-          {"maxEnergyPoints", 15},
-          {"attackPower", 5},
-          {"defensePower", 3},
-          {"speed", 5}
-        })
-      };
-    }
-
-    void BuildEnemyDatabase() {
-        enemiesList = new List<EnemyEntry>() {
-        new EnemyEntry(0, "Blob",
-        new Dictionary<string, int> {
-          {"health", 10},
-          {"maxHealth", 10},
-          {"energyPoints", 15},
-          {"maxEnergyPoints", 15},
-          {"attackPower", 5},
-          {"defensePower", 1},
-          {"speed", 7}
-        },
-        new List<Ability>{
-          GetAbility("Fireball")
-        }),
-       new EnemyEntry(1, "Hatchling",
-        new Dictionary<string, int> {
-          {"health", 10},
-          {"maxHealth", 10},
-          {"energyPoints", 10},
-          {"maxEnergyPoints", 10},
-          {"attackPower", 5},
-          {"defensePower", 20},
-          {"speed", 2}
-        },
-        new List<Ability>{
-          GetAbility("Heal")
-        }),
-        new EnemyEntry(2, "InfectedAndroid",
-        new Dictionary<string, int> {
-          {"health", 25},
-          {"maxHealth", 25},
-          {"energyPoints", 15},
-          {"maxEnergyPoints", 15},
-          {"attackPower", 7},
-          {"defensePower", 3},
-          {"speed", 10}
-        },
-        new List<Ability>{
-          GetAbility("Barrage")
-        }),
-      };
-    }
+  void BuildEnemyDatabase() {
+    enemiesList = new List<Enemy>() {
+      Resources.Load<Enemy>("Enemies/0_Blob"),
+      Resources.Load<Enemy>("Enemies/Drill"),
+      Resources.Load<Enemy>("Enemies/2_Drone"),
+      Resources.Load<Enemy>("Enemies/3_Hatchling"),
+      Resources.Load<Enemy>("Enemies/4_Infected Android"),
+      Resources.Load<Enemy>("Enemies/5_Octopus Monster"),
+      Resources.Load<Enemy>("Enemies/6_Tentacle Monster"),
+      Resources.Load<Enemy>("Enemies/7_The Eye")
+    };
+   }
   }
 }
