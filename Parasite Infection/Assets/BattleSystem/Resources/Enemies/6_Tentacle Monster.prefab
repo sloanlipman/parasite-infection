@@ -106,6 +106,9 @@ MonoBehaviour:
   abilities:
   - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
   - {fileID: 2214528129449449433, guid: c910bf225296a50418cb14f898de85d6, type: 3}
+  abilitiesList:
+  - Heal
+  - Hydroblast
   level: 0
   experience: 0
   enemyId: 6

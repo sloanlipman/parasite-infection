@@ -105,6 +105,8 @@ MonoBehaviour:
   speed: 0
   abilities:
   - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
+  abilitiesList:
+  - Heal
   level: 0
   experience: 0
   enemyId: 3

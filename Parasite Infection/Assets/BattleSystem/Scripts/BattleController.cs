@@ -6,6 +6,7 @@ namespace BattleSystem {
   public class BattleController : MonoBehaviour {
 
     public static BattleController Instance { get; set; }
+    private CharacterController characterController;
     [SerializeField] private BattleUIController uiController;
     [SerializeField] private BattleSpawnPoint[] spawnPoints;
     private BattleSummaryPanel battleSummaryPanel;
@@ -83,6 +84,7 @@ namespace BattleSystem {
     }
 
     private void Awake() {
+      characterController = FindObjectOfType<CharacterController>();
       HideMenus();
     }
 
@@ -104,9 +106,19 @@ namespace BattleSystem {
     public void StartBattle(List<PartyMember> players, List<Enemy> enemies) {
       for (int i = 0; i < players.Count; i++) {
         GetPlayerList().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
+        GetPlayerList()[i].abilities.Clear();
+        for (int j = 0; j < GetPlayerList()[i].abilitiesList.Count; j++) {
+          GetPlayerList()[i].abilities.Add(characterController.GetAbility(GetPlayerList()[i].abilitiesList[j]));
+        }
       }
+
+
       for (int i = 0; i < enemies.Count; i++) {
         GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2
+        GetEnemyList()[i].abilities.Clear();
+        for (int j = 0; j < GetEnemyList()[i].abilitiesList.Count; j++) {
+          GetEnemyList()[i].abilities.Add(characterController.GetAbility(GetEnemyList()[i].abilitiesList[j]));
+        }
       }
     }
 

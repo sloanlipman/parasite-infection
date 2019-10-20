@@ -13,6 +13,7 @@ namespace BattleSystem {
     public int maxEnergyPoints;
     public int speed;
     public List<Ability> abilities;
+    public List<string> abilitiesList;
     public int level;
     public int experience;
     public List<Item> equipment;

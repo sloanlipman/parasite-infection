@@ -39,10 +39,10 @@ namespace BattleSystem {
       }
 
       DontDestroyOnLoad(this.gameObject);
+    }
 
-      // if (questPanel != null) {
-      //   questPanel.gameObject.SetActive(false);
-      // }
+    public Ability GetAbility(string abilityName) {
+      return characterDatabase.GetAbility(abilityName);
     }
    }
 }

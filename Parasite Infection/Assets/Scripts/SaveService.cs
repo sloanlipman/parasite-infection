@@ -49,7 +49,7 @@ public class SaveService : MonoBehaviour {
     }
     inventory.ClearInventory();
     questController.ClearQuests();
-    characterController.ClearCharacters();
+    // characterController.ClearCharacters();
   }
 
   private Player GetPlayer() {
