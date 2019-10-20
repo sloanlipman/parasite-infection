@@ -19,6 +19,7 @@ namespace BattleSystem {
 
     private bool battleWasLost;
     private QuestSystem.QuestController questController;
+    private CharacterController characterController;
 
     private void Update() {
       if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle")) {
@@ -46,6 +47,7 @@ namespace BattleSystem {
       }
       DontDestroyOnLoad(this.gameObject);
       questController = FindObjectOfType<QuestSystem.QuestController>();
+      characterController = FindObjectOfType<CharacterController>();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -58,8 +60,8 @@ namespace BattleSystem {
       worldPosition = position;
       Debug.Log("Position is: " + position);
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
-      this.players =  CharacterDatabase.Instance.GetPartyMembers();
-      this.enemies =  CharacterDatabase.Instance.GetEnemies();
+      this.players = characterController.GetActiveParty();
+      this.enemies = characterController.GetEnemies();
 
       SceneManager.LoadScene("Battle");
       if (dialog != null) {

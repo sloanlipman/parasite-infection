@@ -8,10 +8,12 @@ namespace BattleSystem {
     [SerializeField] private BattleLauncher launcher;
     // private List<PartyMemberEntry> players;
     private List<PartyMember> players;
+    private CharacterController characterController;
 
     void Start() {
       launcher = FindObjectOfType<BattleLauncher>();
-      players = CharacterDatabase.Instance.GetPartyMembers();
+      characterController = FindObjectOfType<CharacterController>();
+      players = characterController.GetActiveParty();
     }
 
     public void PrepareBattle(Character character) {

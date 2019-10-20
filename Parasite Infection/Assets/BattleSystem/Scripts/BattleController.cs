@@ -151,9 +151,9 @@ namespace BattleSystem {
       uiController.ToggleAbilityPanel(false);
 
       if (IsAPlayerAlive() && IsAnEnemyAlive()) {
-        if (HasACharacterNotGone()) {
           abilityToBeUsed = null;
           playerIsAttacking = false;
+        if (HasACharacterNotGone()) {
           characterTurnIndex++;
           if (IsItPlayerTurn()) {
             uiController.SetColor(characterTurnIndex, Color.red);

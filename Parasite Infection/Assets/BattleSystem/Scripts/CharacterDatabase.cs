@@ -5,11 +5,16 @@ using UnityEngine;
 namespace BattleSystem {
   public class CharacterDatabase : MonoBehaviour {
     public static CharacterDatabase Instance {get; set;}
-    private List<Enemy> enemyList = new List<Enemy>();
-    private List<PartyMember> partyMembers = new List<PartyMember>();
+    public List<Enemy> enemyList = new List<Enemy>();
+    public List<PartyMember> partyMembers = new List<PartyMember>();
+    public List<PartyMember> activePartyMembers = new List<PartyMember>();
 
     public List<Ability> abilityList = new List<Ability>();
     public void AddPartyMember(PartyMember partyMember) {
+    }
+
+    public List<PartyMember> GetActiveParty() {
+      return activePartyMembers;
     }
 
     public List<PartyMember> GetPartyMembers() {
@@ -21,13 +26,15 @@ namespace BattleSystem {
     }
 
     public void Load() {
-      partyMembers = ES3.Load<List<PartyMember>>("PartyMembers", "characters.es3");
-      enemyList = ES3.Load<List<Enemy>>("PartyMembers", "characters.es3");
+      ES3.LoadInto("PartyMembers", "Party.ES3", partyMembers);
+      ES3.LoadInto("ActiveParty", "ActiveParty.ES3", activePartyMembers);
+      ES3.LoadInto("Enemies", "Enemies.ES3", enemyList);
     }
 
     public void ClearAll() {
-      partyMembers.Clear();
-      enemyList.Clear();
+      // partyMembers.Clear();
+      // activePartyMembers.Clear();
+      // enemyList.Clear();
     }
 
     void Awake() {
@@ -40,6 +47,7 @@ namespace BattleSystem {
       BuildAbilityList();
       BuildPartyDatabase();
       BuildEnemyDatabase();
+      EventController.OnKillBlobsQuestCompleted += AddAndroidToParty;
     }
 
     public Ability GetAbility(string abilityName) {
@@ -62,14 +70,21 @@ namespace BattleSystem {
       Resources.Load<PartyMember>("Players/Alan")
     };
 
-    partyMembers[0].ToggleInParty(true);
+    activePartyMembers.Add(partyMembers[0]);
+  }
 
+  private void AddAndroidToParty() {
+    activePartyMembers.Add(partyMembers[1]);
+  }
+
+  private void RemoveAndroidFromParty() {
+    activePartyMembers.Remove(partyMembers[1]);
   }
 
   void BuildEnemyDatabase() {
     enemyList = new List<Enemy>() {
       Resources.Load<Enemy>("Enemies/0_Blob"),
-      Resources.Load<Enemy>("Enemies/Drill"),
+      Resources.Load<Enemy>("Enemies/1_Drill"),
       Resources.Load<Enemy>("Enemies/2_Drone"),
       Resources.Load<Enemy>("Enemies/3_Hatchling"),
       Resources.Load<Enemy>("Enemies/4_Infected Android"),

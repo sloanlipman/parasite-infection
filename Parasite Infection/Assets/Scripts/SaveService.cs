@@ -101,7 +101,7 @@ public class SaveService : MonoBehaviour {
     inventory = FindObjectOfType<Inventory>();
     questController = FindObjectOfType<QuestController>();
     menuController = FindObjectOfType<MenuController>();
-    characterController = FindObjectOfType<CharacterController>();
+    characterController = FindObjectOfType<BattleSystem.CharacterController>();
   }
 
   void Start() {

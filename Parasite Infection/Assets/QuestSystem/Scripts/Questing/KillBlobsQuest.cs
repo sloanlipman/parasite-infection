@@ -12,6 +12,7 @@ public class KillBlobsQuest : Quest {
   }
 
   public override void Complete() {
+    EventController.CompleteKillBlobsQuest();
     base.Complete();
   }
 }

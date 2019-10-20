@@ -4,16 +4,8 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class PartyMember : BattleCharacter {
-    private bool inParty;
+    [SerializeField] private bool inParty = false;
     public PartyMember() {}
-
-    public bool IsInParty() {
-      return inParty;
-    }
-
-    public void ToggleInParty(bool state) {
-      inParty = state;
-    }
 
     public override void Die() {
       base.Die();

@@ -52,8 +52,12 @@ MonoBehaviour:
   defensePower: 5
   energyPoints: 15
   maxEnergyPoints: 15
+  speed: 0
   abilities:
   - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
+  level: 0
+  experience: 0
+  inParty: 0
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -121,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.24, y: 0.31}
+    oldSize: {x: 0.75, y: 0.96875}
     newSize: {x: 0.24, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
