@@ -8,34 +8,22 @@ namespace BattleSystem {
     public static CharacterDatabase Instance {get; set;}
     public List<Enemy> enemyList = new List<Enemy>();
     public List<PartyMember> partyMembers = new List<PartyMember>();
-    public List<PartyMember> activePartyMembers = new List<PartyMember>();
-
+    public List<string> activePartyMembers = new List<string>();
     public Dictionary<string, Ability> abilityList = new Dictionary<string, Ability>();
-    public void AddPartyMember(PartyMember partyMember) {
+
+
+    private void AddAndroidToParty() {
+      activePartyMembers.Add("Android"); // TODO generalize this method
     }
 
-    public List<PartyMember> GetActiveParty() {
-      return activePartyMembers;
-    }
-
-    public List<PartyMember> GetPartyMembers() {
-      return partyMembers;
-    }
-
-    public List<Enemy> GetEnemies() {
-      return enemyList;
+    private void RemoveAndroidFromParty() {
+      activePartyMembers.Remove("Android");
     }
 
     public void Load() {
       ES3.LoadInto("PartyMembers", "Party.ES3", partyMembers);
-      ES3.LoadInto("ActiveParty", "ActiveParty.ES3", activePartyMembers);
       ES3.LoadInto("Enemies", "Enemies.ES3", enemyList);
-    }
-
-    public void ClearAll() {
-      partyMembers.Clear();
-      activePartyMembers.Clear();
-      enemyList.Clear();
+      activePartyMembers = ES3.Load<List<string>>("ActiveParty", "ActiveParty.ES3");
     }
 
     void Awake() {
@@ -49,6 +37,30 @@ namespace BattleSystem {
       BuildPartyDatabase();
       BuildEnemyDatabase();
       EventController.OnKillBlobsQuestCompleted += AddAndroidToParty;
+    }
+
+    public List<PartyMember> GetActiveParty() {
+      List<PartyMember> activePartyMemberList = new List<PartyMember>();
+      activePartyMembers.ForEach(name => {
+        partyMembers.ForEach(member => {
+          if (member.characterName == name) {
+            activePartyMemberList.Add(member);
+          }
+        });
+      });
+        return activePartyMemberList;
+      }
+
+    public List<PartyMember> GetPartyMembers() {
+      return partyMembers;
+    }
+
+    public List<string> GetActivePartyList() {
+      return activePartyMembers;
+    }
+
+    public List<Enemy> GetEnemies() {
+      return enemyList;
     }
 
     public Ability GetAbility(string abilityName) {
@@ -76,7 +88,7 @@ namespace BattleSystem {
       };
 
       LoadPlayerAbilities();
-      activePartyMembers.Add(partyMembers[0]);
+      activePartyMembers.Add("Barry");
     }
 
     public void LoadPlayerAbilities() {
@@ -96,14 +108,6 @@ namespace BattleSystem {
           
         }
       });
-    }
-
-    private void AddAndroidToParty() {
-      activePartyMembers.Add(partyMembers[1]);
-    }
-
-    private void RemoveAndroidFromParty() {
-      activePartyMembers.Remove(partyMembers[1]);
     }
 
     void BuildEnemyDatabase() {

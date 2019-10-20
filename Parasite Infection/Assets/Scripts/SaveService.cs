@@ -49,7 +49,6 @@ public class SaveService : MonoBehaviour {
     }
     inventory.ClearInventory();
     questController.ClearQuests();
-    // characterController.ClearCharacters();
   }
 
   private Player GetPlayer() {
@@ -73,7 +72,7 @@ public class SaveService : MonoBehaviour {
   private void SaveNPCs() {
     NPC[] currentNPCs = GetNPCs();
     for (int i = 0; i < currentNPCs.Length; i++) {
-      ES3.Save<GameObject>("NPCGameObject" + i, currentNPCs[i].gameObject, "NPCs.es3");
+      // ES3.Save<NPC>("NPCGameObject" + i, currentNPCs[i], "NPCs.es3");
       ES3.Save<NPC>("NPC" + i, currentNPCs[i], "NPCs.es3");
     }
   }
@@ -83,7 +82,7 @@ public class SaveService : MonoBehaviour {
     for (int i = 0; i < currentNPCs.Length; i++) {
       try {
         ES3.LoadInto<NPC>("NPC" + i, "NPCs.es3", currentNPCs[i]);
-        ES3.LoadInto<GameObject>("NPCGameObject" + i, "NPCs.es3", currentNPCs[i].gameObject);
+        // ES3.LoadInto<GameObject>("NPCGameObject" + i, "NPCs.es3", currentNPCs[i].gameObject);
       } catch {
         Debug.LogWarning("At index " + i + " something went wrong loading an NPC");
       }

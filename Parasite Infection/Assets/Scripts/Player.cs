@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character  {
+  public Player() {}
   public void Save() {
     ES3.Save<GameObject>("Player", this.gameObject, "PlayerInfo.es3");
   }

@@ -7,21 +7,25 @@ namespace BattleSystem {
     private CharacterDatabase characterDatabase;
 
     public void Save() {
-      ES3.Save<List<PartyMember>>("PartyMembers", characterDatabase.GetPartyMembers(), "Party.ES3");
-      ES3.Save<List<PartyMember>>("ActiveParty", GetActiveParty(), "ActiveParty.ES3");
-      ES3.Save<List<Enemy>>("Enemies", characterDatabase.GetEnemies(), "Enemies.ES3");
+      ES3.Save<List<PartyMember>>("PartyMembers", GetPartyMembers(), "Party.ES3");
+      ES3.Save<List<string>>("ActiveParty", GetActivePartyList(), "ActiveParty.ES3");
+      ES3.Save<List<Enemy>>("Enemies", GetEnemies(), "Enemies.ES3");
     }
 
     public void Load() {
       characterDatabase.Load();
     }
 
-    public void ClearCharacters() {
-      characterDatabase.ClearAll();
+    private List<PartyMember> GetPartyMembers() {
+      return characterDatabase.GetPartyMembers();
     }
 
     public List<PartyMember> GetActiveParty() {
       return characterDatabase.GetActiveParty();
+    }
+
+    private List<string> GetActivePartyList() {
+      return characterDatabase.GetActivePartyList();
     }
     
     public List<Enemy> GetEnemies() {
