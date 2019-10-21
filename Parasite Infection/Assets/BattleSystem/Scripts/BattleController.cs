@@ -196,7 +196,7 @@ namespace BattleSystem {
         Debug.LogWarning("Battle is over!");
         Debug.Log("Experience gained: " + xpToReward);
         if (IsAPlayerAlive()) {
-          battleSummaryPanel.ShowVictoryPanel();
+          battleSummaryPanel.ShowVictoryPanel(xpToReward);
           characterController.UpdatePlayers(GetPlayerList(), xpToReward);
         } else {
           battleSummaryPanel.ShowDefeatPanel();

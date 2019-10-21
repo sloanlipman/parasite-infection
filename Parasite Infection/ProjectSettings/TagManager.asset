@@ -12,6 +12,7 @@ TagManager:
   - UI/Load Last Save
   - UI/Back To World
   - Random Encounter Zone
+  - UI/Battle Summary Experience
   layers:
   - Default
   - TransparentFX

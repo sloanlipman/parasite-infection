@@ -7,6 +7,7 @@ namespace BattleSystem {
   public class BattleSummaryPanel : MonoBehaviour {
 
     [SerializeField] private Text titleText;
+    [SerializeField] private Text xpText;
     [SerializeField] private Button loadLastSave;
     [SerializeField] private Button backToWorld;
     private BattleLauncher battleLauncher;
@@ -21,15 +22,17 @@ namespace BattleSystem {
     }
 
 
-    public void ShowVictoryPanel() {
+    public void ShowVictoryPanel(int xp) {
       gameObject.SetActive(true);
       titleText.text = "Victory!";
+      xpText.text = "Experience Gained: " + xp;
       battleWasLost = false;
       loadLastSave.gameObject.SetActive(false);
     }
 
     public void ShowDefeatPanel() {
       gameObject.SetActive(true);
+      xpText.text = "";
       titleText.text = "You're dead!";
       battleWasLost = true;
       backToWorld.gameObject.SetActive(false);
