@@ -9,6 +9,7 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private GameObject menuPanel;
   [SerializeField] private UIInventory inventory;
   [SerializeField] private QuestSystem.QuestPanel questPanel;
+  [SerializeField] private UIPartyPanel partyPanel;
 
   public static bool IsBattleCurrentScene() {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
@@ -29,6 +30,7 @@ public class MenuController : MonoBehaviour {
     ToggleDialogButtons(true);
     inventory.gameObject.SetActive(false);
     questPanel.gameObject.SetActive(false);
+    partyPanel.gameObject.SetActive(false);
     ToggleMenu(false);
   }
 
@@ -40,6 +42,7 @@ public class MenuController : MonoBehaviour {
   }
 
   private void Start() {
+    CloseAllMenus();
     ToggleMenu(false);
   }
 
@@ -61,19 +64,32 @@ public class MenuController : MonoBehaviour {
     return menuPanel.gameObject.activeSelf;
   }
 
-  private void ToggleUIInventory() {
+  public void ToggleUIInventory() {
     inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
   }
 
-  private void ToggleQuestPanel() {
+  public void ToggleQuestPanel() {
+    if (partyPanel.gameObject.activeSelf) {
+      partyPanel.gameObject.SetActive(false);
+    }
     questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
   }
 
-  private void ToggleMenu(bool state) {
+  public void TogglePartyPanel() {
+    if (questPanel.gameObject.activeSelf) {
+        questPanel.gameObject.SetActive(false);
+      }
+    partyPanel.gameObject.SetActive(!partyPanel.gameObject.activeSelf);
+    if (partyPanel.gameObject.activeSelf) {
+      partyPanel.Populate();
+    }
+  }
+
+  public void ToggleMenu(bool state) {
     menuPanel.gameObject.SetActive(state);
   }
 
-  private void ToggleDialogButtons(bool state) {
+  public void ToggleDialogButtons(bool state) {
     foreach(Button b in dialogButtons) {
       if (b != null) {
         b.interactable = state;
