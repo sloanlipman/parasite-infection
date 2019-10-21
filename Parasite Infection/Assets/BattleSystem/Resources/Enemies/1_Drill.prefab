@@ -104,11 +104,11 @@ MonoBehaviour:
   maxEnergyPoints: 15
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
+  - {fileID: 0}
   abilitiesList:
   - Barrage
   level: 0
-  experience: 0
+  experience: 10
   enemyId: 1
 --- !u!61 &9192391036177522714
 BoxCollider2D:

@@ -22,6 +22,8 @@ namespace BattleSystem {
     private int actTurn; // act refers to Action (i.e. who is up on the current side?)
                         // Turn refers to are Enemies going or are players going?
 
+    private int xpToReward;
+
     public bool IsItPlayerTurn() {
       return actTurn == 0;
     }
@@ -85,6 +87,7 @@ namespace BattleSystem {
 
     private void Awake() {
       characterController = FindObjectOfType<CharacterController>();
+      EventController.OnEnemyDied += AddEnemyExperience;
       HideMenus();
     }
 
@@ -191,8 +194,10 @@ namespace BattleSystem {
       }
       else {
         Debug.LogWarning("Battle is over!");
+        Debug.Log("Experience gained: " + xpToReward);
         if (IsAPlayerAlive()) {
           battleSummaryPanel.ShowVictoryPanel();
+          characterController.UpdatePlayers(GetPlayerList(), xpToReward);
         } else {
           battleSummaryPanel.ShowDefeatPanel();
         }
@@ -249,5 +254,9 @@ namespace BattleSystem {
       target.Hurt(attacker.attackPower);
       NextAct();
     }
+    private void AddEnemyExperience(int enemyId) {
+      Enemy killedEnemy = characterController.FindEnemyById(enemyId);
+      xpToReward += killedEnemy.experience;
+   }
   }
 }

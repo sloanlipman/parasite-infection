@@ -54,13 +54,13 @@ MonoBehaviour:
   maxEnergyPoints: 15
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
-  - {fileID: 2214528129449449433, guid: 9ba1a3eaa3bd5054aba51b7dd107402e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   abilitiesList:
   - Heal
   - Fireball
   level: 0
-  experience: 0
+  experience: 30
   enemyId: 0
 --- !u!212 &7264005851067476655
 SpriteRenderer:

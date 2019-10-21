@@ -108,7 +108,7 @@ MonoBehaviour:
   abilitiesList:
   - Barrage
   level: 0
-  experience: 0
+  experience: 25
   enemyId: 4
 --- !u!61 &9192391036177522714
 BoxCollider2D:

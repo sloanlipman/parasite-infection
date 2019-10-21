@@ -91,6 +91,10 @@ namespace BattleSystem {
       activePartyMembers.Add("Barry");
     }
 
+    public PartyMember FindPartyMemberByName(string name) {
+      return partyMembers.Find(member => member.characterName == name);
+    }
+
     public void LoadPlayerAbilities() {
       partyMembers.ForEach(member => {
         for (int i = 0; i < member.abilities.Count; i++) {
@@ -108,6 +112,10 @@ namespace BattleSystem {
           
         }
       });
+    }
+
+    public Enemy FindEnemyById(int enemyId) {
+      return enemyList.Find(enemy => enemy.enemyId == enemyId);
     }
 
     void BuildEnemyDatabase() {

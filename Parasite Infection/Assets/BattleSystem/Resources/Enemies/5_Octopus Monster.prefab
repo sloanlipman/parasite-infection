@@ -104,11 +104,11 @@ MonoBehaviour:
   maxEnergyPoints: 15
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: c910bf225296a50418cb14f898de85d6, type: 3}
+  - {fileID: 0}
   abilitiesList:
   - Hydroblast
   level: 0
-  experience: 0
+  experience: 30
   enemyId: 5
 --- !u!61 &9192391036177522714
 BoxCollider2D:

@@ -32,6 +32,9 @@ namespace BattleSystem {
       return characterDatabase.GetEnemies(); 
     }
 
+    public Enemy FindEnemyById(int enemyId) {
+      return characterDatabase.FindEnemyById(enemyId);
+    }
 
     private void Awake() {
       characterDatabase = GetComponent<CharacterDatabase>();
@@ -47,6 +50,16 @@ namespace BattleSystem {
 
     public Ability GetAbility(string abilityName) {
       return characterDatabase.GetAbility(abilityName);
+    }
+
+    public void UpdatePlayers(List<BattleCharacter> partyMembers, int xp) {
+      partyMembers.ForEach(member => {
+        PartyMember p = characterDatabase.FindPartyMemberByName(member.characterName);
+        p.health = member.health;
+        p.energyPoints = member.energyPoints;
+        p.experience += xp;
+        // Level up
+      });
     }
    }
 }

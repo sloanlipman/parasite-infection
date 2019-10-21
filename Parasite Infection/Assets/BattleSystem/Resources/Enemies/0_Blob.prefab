@@ -60,7 +60,7 @@ MonoBehaviour:
   - Fireball
   - Hydroblast
   level: 0
-  experience: 0
+  experience: 5
   enemyId: 0
 --- !u!212 &7264005851067476655
 SpriteRenderer:
