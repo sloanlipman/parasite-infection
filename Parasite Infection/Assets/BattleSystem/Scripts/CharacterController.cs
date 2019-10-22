@@ -57,6 +57,13 @@ namespace BattleSystem {
     }
 
     public void UpdatePlayers(List<BattleCharacter> partyMembers, int xp) {
+
+  // Set all to a default value
+      GetActiveParty().ForEach(member => {
+        member.health = 1;
+        member.energyPoints = member.maxEnergyPoints / 2; // Recover a bit if they died. Should capture the last value from before they died though.
+      });
+  // Survivors only
       partyMembers.ForEach(member => {
         PartyMember p = characterDatabase.FindPartyMemberByName(member.characterName);
         p.health = member.health;

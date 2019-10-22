@@ -31,6 +31,14 @@ namespace BattleSystem {
       }
     }
 
+    public void ResetCharacterInfo() {
+      foreach(Text text in characterInfoParent.GetComponentsInChildren<Text>()) {
+        Destroy(text.gameObject);
+      }
+      characterInfo.Clear();
+      GenerateCharacterUI();
+    }
+
     public void ToggleActionState(bool state) {
       foreach(Button button in actionButtons) {
         button.interactable = state;
@@ -45,7 +53,7 @@ namespace BattleSystem {
     }
 
     public void GenerateCharacterUI() {
-      List<BattleCharacter> players = BattleController.Instance.GetPlayerList();
+      List<BattleCharacter> players = BattleController.Instance.GetListOfAlivePlayers();
       for (int i = 0; i < players.Count; i++) {
         Text infoToAdd = Instantiate(characterInfoText, characterInfoParent);
         characterInfo.Add(infoToAdd);
@@ -55,7 +63,7 @@ namespace BattleSystem {
 
     public void UpdateCharacterUI() {
       int currentPlayerIndex = BattleController.Instance.characterTurnIndex;
-      for (int i = 0; i < BattleController.Instance.GetPlayerList().Count; i++) {
+      for (int i = 0; i < BattleController.Instance.GetListOfAlivePlayers().Count; i++) {
         BattleCharacter character = BattleController.Instance.GetPlayer(i);
         characterInfo[i].text = string.Format("{0} hp: {1}/{2}, ep: {3}/{4}", character.characterName, character.health, character.maxHealth, character.energyPoints, character.maxEnergyPoints);
       }

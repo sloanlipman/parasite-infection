@@ -50,7 +50,7 @@ MonoBehaviour:
   maxHealth: 15
   attackPower: 5
   defensePower: 3
-  energyPoints: 15
+  energyPoints: 3
   maxEnergyPoints: 15
   speed: 0
   abilities:
@@ -58,7 +58,7 @@ MonoBehaviour:
   abilitiesList:
   - Fireball
   level: 0
-  experience: 0
+  experience: 40
   inParty: 0
 --- !u!212 &7264005851067476655
 SpriteRenderer:

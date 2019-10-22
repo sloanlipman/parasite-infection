@@ -25,6 +25,7 @@ public class UIPlayerInfoPanel : MonoBehaviour {
     ep.text = string.Format("Energy: {0}/{1}", partyMember.energyPoints, partyMember.maxEnergyPoints);
     level.text = "Level: " + partyMember.level;
     levelUpIn.text = "TODO";
+    Debug.Log("Experience is: " + partyMember.experience);
   }
 
   // Update is called once per frame

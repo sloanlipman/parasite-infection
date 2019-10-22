@@ -24,32 +24,36 @@ namespace BattleSystem {
 
     private int xpToReward;
 
-    public bool IsItPlayerTurn() {
+    public bool IsCurrentTurnPlayerTurn() {
       return actTurn == 0;
     }
 
+    public void ResetUIPlayerInfo() {
+      uiController.ResetCharacterInfo();
+    }
+
     private bool IsCharacterAPlayer(BattleCharacter character) {
-      return GetPlayerList().Contains(character);
+      return GetListOfAlivePlayers().Contains(character);
     }
 
-    private bool IsAPlayerAlive() {
-      return GetPlayerList().Count > 0;
+    private bool AreAnyPlayersAlive() {
+      return GetListOfAlivePlayers().Count > 0;
     }
 
-    private bool IsAnEnemyAlive() {
+    private bool AreAnyEnemiesAlive() {
       return GetEnemyList().Count > 0;
     }
 
     public bool IsBattleActive() {
-      return IsAnEnemyAlive() && IsAnEnemyAlive();
+      return AreAnyPlayersAlive() && AreAnyEnemiesAlive();
     }
 
-    public List<BattleCharacter> GetPlayerList() {
+    public List<BattleCharacter> GetListOfAlivePlayers() {
       return characters[0];
     }
 
     public BattleCharacter GetPlayer(int index) {
-      return GetPlayerList()[index];
+      return GetListOfAlivePlayers()[index];
     }
 
     public List<BattleCharacter> GetEnemyList() {
@@ -108,10 +112,10 @@ namespace BattleSystem {
 
     public void StartBattle(List<PartyMember> players, List<Enemy> enemies) {
       for (int i = 0; i < players.Count; i++) {
-        GetPlayerList().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
-        GetPlayerList()[i].abilities.Clear();
-        for (int j = 0; j < GetPlayerList()[i].abilitiesList.Count; j++) {
-          GetPlayerList()[i].abilities.Add(characterController.GetAbility(GetPlayerList()[i].abilitiesList[j]));
+        GetListOfAlivePlayers().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
+        GetListOfAlivePlayers()[i].abilities.Clear();
+        for (int j = 0; j < GetListOfAlivePlayers()[i].abilitiesList.Count; j++) {
+          GetListOfAlivePlayers()[i].abilities.Add(characterController.GetAbility(GetListOfAlivePlayers()[i].abilitiesList[j]));
         }
       }
 
@@ -126,7 +130,7 @@ namespace BattleSystem {
     }
 
     public BattleCharacter GetRandomPlayer() {
-      List<BattleCharacter> playerList = GetPlayerList();
+      List<BattleCharacter> playerList = GetListOfAlivePlayers();
       return playerList[Random.Range(0, playerList.Count - 1)];
     }
 
@@ -143,10 +147,10 @@ namespace BattleSystem {
 
     private void NextTurn() {
       actTurn = actTurn == 0? 1 : 0; // Swap between Players & Enemies
-      if (IsItPlayerTurn()) {
+      if (IsCurrentTurnPlayerTurn()) {
         uiController.SetColor(0, Color.red);
       } else {
-        List<BattleCharacter> playerList = GetPlayerList();
+        List<BattleCharacter> playerList = GetListOfAlivePlayers();
         for (int i = 0; i < playerList.Count; i++) {
           uiController.SetColor(i, Color.white);
         }
@@ -154,7 +158,7 @@ namespace BattleSystem {
     }
 
     public void NextAct() {
-      if (IsItPlayerTurn()) {
+      if (IsCurrentTurnPlayerTurn()) {
         uiController.SetColor(characterTurnIndex, Color.white);
         }
       BattleCharacter currentCharacter = GetCurrentCharacter();
@@ -165,12 +169,12 @@ namespace BattleSystem {
       uiController.UpdateCharacterUI();
       uiController.ToggleAbilityPanel(false);
 
-      if (IsAPlayerAlive() && IsAnEnemyAlive()) {
+      if (AreAnyPlayersAlive() && AreAnyEnemiesAlive()) {
           abilityToBeUsed = null;
           playerIsAttacking = false;
         if (HasACharacterNotGone()) {
           characterTurnIndex++;
-          if (IsItPlayerTurn()) {
+          if (IsCurrentTurnPlayerTurn()) {
             uiController.SetColor(characterTurnIndex, Color.red);
           }
         }
@@ -195,9 +199,9 @@ namespace BattleSystem {
       else {
         Debug.LogWarning("Battle is over!");
         Debug.Log("Experience gained: " + xpToReward);
-        if (IsAPlayerAlive()) {
+        if (AreAnyPlayersAlive()) {
           battleSummaryPanel.ShowVictoryPanel(xpToReward);
-          characterController.UpdatePlayers(GetPlayerList(), xpToReward);
+          characterController.UpdatePlayers(GetListOfAlivePlayers(), xpToReward);
         } else {
           battleSummaryPanel.ShowDefeatPanel();
         }

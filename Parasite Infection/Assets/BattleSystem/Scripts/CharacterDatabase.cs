@@ -92,6 +92,7 @@ namespace BattleSystem {
     }
 
     public PartyMember FindPartyMemberByName(string name) {
+      Debug.Log("Looking for PM by name: " + name);
       return partyMembers.Find(member => member.characterName == name);
     }
 

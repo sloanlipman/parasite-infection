@@ -19,7 +19,8 @@ namespace BattleSystem {
 
     public override void Die() {
       base.Die();
-      BattleController.Instance.characters[0].Remove(this);
+      BattleController.Instance.GetListOfAlivePlayers().Remove(this);
+      BattleController.Instance.ResetUIPlayerInfo();
     }
   }
 }

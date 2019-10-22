@@ -42,8 +42,6 @@ public class UIPartyPanel : MonoBehaviour {
       buttonList.Add(button);
       button.GetComponentInChildren<Text>().text = member.characterName;
       button.GetComponent<Button>().onClick.AddListener(() => {
-        Debug.Log("Selected member is: " + selectedPartyMember);
-        Debug.Log("Clicked on: " + member.characterName);
         if (selectedPartyMember != member.characterName) {
           AddPlayerEquipmentSlots(member);
         }
@@ -53,15 +51,7 @@ public class UIPartyPanel : MonoBehaviour {
   }
 
   private void AddPlayerEquipmentSlots(PartyMember member) {
-    Debug.Log("setting up green panels for: " + member.characterName);
     selectedPartyMember = member.characterName;
-    // slotList.ForEach(slot => {
-    //   Destroy(slot.gameObject);
-    // });
-    // slotList.Clear();
-    // if (slotPanel != null) {
-    //   slotPanel.DeleteAllSlots();
-    // }
     if (!playerEquipment.gameObject.activeSelf) {
       playerEquipment.SetActive(true);
     }
@@ -69,11 +59,5 @@ public class UIPartyPanel : MonoBehaviour {
       playerInfo.gameObject.SetActive(true);
     }
     playerInfo.Populate(selectedPartyMember);
-
-    // slotPanel = Instantiate(Resources.Load("Prefabs/PlayerEquipmentPanel"), playerEquipment.transform) as SlotPanel; 
-
-    // slotPanel.numberOfSlots = member.GetModSlots();
-    // slotPanel.gameObject.SetActive(true);
-    // slotPanel.SetUpSlots();
   }
 }
