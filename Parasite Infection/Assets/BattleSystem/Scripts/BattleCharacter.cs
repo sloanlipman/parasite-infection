@@ -14,7 +14,7 @@ namespace BattleSystem {
     public int speed;
     public List<Ability> abilities;
     public List<string> abilitiesList;
-    public int level;
+    public int level = 1;
     public int experience;
     public List<Item> equipment;
 

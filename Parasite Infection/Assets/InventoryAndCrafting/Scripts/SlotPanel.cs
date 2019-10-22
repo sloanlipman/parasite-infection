@@ -5,16 +5,32 @@ using UnityEngine;
 public class SlotPanel : MonoBehaviour {
 
   public List<UIItem> uiItems = new List<UIItem>();
+  private List<GameObject> slots = new List<GameObject>();
   public int numberOfSlots;
   public GameObject slotPrefab;
   
   void Awake() {
+    SetUpSlots();
+  }
+
+  public void SetUpSlots() {
     for (int i = 0; i < numberOfSlots; i++) {
       GameObject instance = Instantiate(slotPrefab);
+      slots.Add(instance);
       instance.transform.SetParent(transform);
       uiItems.Add(instance.GetComponentInChildren<UIItem>());
       uiItems[i].item = null;
     }
+  }
+
+  public void DeleteAllSlots() {
+    EmptyAllSlots();
+    slots.ForEach(slot => {
+      if (slot != null) {
+        Destroy(slot.gameObject);
+      }
+    });
+    slots.Clear();
   }
   
   public void ClearSlot(int slot) {

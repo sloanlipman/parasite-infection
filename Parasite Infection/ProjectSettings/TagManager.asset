@@ -13,6 +13,8 @@ TagManager:
   - UI/Back To World
   - Random Encounter Zone
   - UI/Battle Summary Experience
+  - UI/Player Equipment
+  - UI/Player Info
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,8 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private UIInventory inventory;
   [SerializeField] private QuestSystem.QuestPanel questPanel;
   [SerializeField] private UIPartyPanel partyPanel;
+  [SerializeField] private GameObject playerEquipment;
+  [SerializeField] private UIPlayerInfoPanel playerInfo;
 
   public static bool IsBattleCurrentScene() {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
@@ -31,6 +33,8 @@ public class MenuController : MonoBehaviour {
     inventory.gameObject.SetActive(false);
     questPanel.gameObject.SetActive(false);
     partyPanel.gameObject.SetActive(false);
+    playerEquipment.gameObject.SetActive(false);
+    playerInfo.gameObject.SetActive(false);
     ToggleMenu(false);
   }
 
@@ -81,7 +85,12 @@ public class MenuController : MonoBehaviour {
       }
     partyPanel.gameObject.SetActive(!partyPanel.gameObject.activeSelf);
     if (partyPanel.gameObject.activeSelf) {
+      partyPanel.ResetActiveEquipment();
       partyPanel.Populate();
+      // playerEquipment.gameObject.SetActive(true);
+    } else {
+      playerEquipment.gameObject.SetActive(false);
+      playerInfo.gameObject.SetActive(false);
     }
   }
 

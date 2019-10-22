@@ -52,6 +52,10 @@ namespace BattleSystem {
       return characterDatabase.GetAbility(abilityName);
     }
 
+    public PartyMember FindPartyMemberByName(string characterName) {
+      return characterDatabase.FindPartyMemberByName(characterName);
+    }
+
     public void UpdatePlayers(List<BattleCharacter> partyMembers, int xp) {
       partyMembers.ForEach(member => {
         PartyMember p = characterDatabase.FindPartyMemberByName(member.characterName);

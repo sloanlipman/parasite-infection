@@ -12,6 +12,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
   private Tooltip tooltip;
   public bool isCraftingSlot = false;
   public bool isCraftingResultSlot = false;
+  public bool isPlayerEquipmentSlot = false;
 
   private void Awake() {
     craftingSlots = FindObjectOfType<CraftingSlots>();
