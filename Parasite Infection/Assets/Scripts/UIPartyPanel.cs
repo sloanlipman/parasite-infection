@@ -8,6 +8,7 @@ public class UIPartyPanel : MonoBehaviour {
   [SerializeField] private Button partyMemberButton;
   [SerializeField] private GameObject playerEquipment;
   [SerializeField] private UIPlayerInfoPanel playerInfo;
+  [SerializeField] private GameObject[] slots = new GameObject[]{};
   private string selectedPartyMember;
 
   private List<Button> buttonList = new List<Button>();
@@ -52,11 +53,20 @@ public class UIPartyPanel : MonoBehaviour {
 
   private void AddPlayerEquipmentSlots(PartyMember member) {
     selectedPartyMember = member.characterName;
+    int numberOfSlots = member.GetModSlots();
     if (!playerEquipment.gameObject.activeSelf) {
       playerEquipment.SetActive(true);
     }
     if (!playerInfo.gameObject.activeSelf) {
       playerInfo.gameObject.SetActive(true);
+    }
+
+    for (int i = 0; i < slots.Length; i++) {
+      if (i < numberOfSlots) {
+        slots[i].SetActive(true);
+      } else {
+        slots[i].SetActive(false);
+      }
     }
     playerInfo.Populate(selectedPartyMember);
   }
