@@ -52,6 +52,10 @@ namespace BattleSystem {
       return characterDatabase.GetAbility(abilityName);
     }
 
+    public Dictionary<string, Ability> GetAbilityList() {
+      return characterDatabase.GetAbilityList();
+    }
+
     public PartyMember FindPartyMemberByName(string characterName) {
       return characterDatabase.FindPartyMemberByName(characterName);
     }

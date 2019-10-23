@@ -9,6 +9,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
   private Image spriteImage;
   private UIItem selectedItem;
   private CraftingSlots craftingSlots;
+  private UIPartyPanel partyPanel;
   private Tooltip tooltip;
   public bool isCraftingSlot = false;
   public bool isCraftingResultSlot = false;
@@ -16,6 +17,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
   private void Awake() {
     craftingSlots = FindObjectOfType<CraftingSlots>();
+    partyPanel = FindObjectOfType<UIPartyPanel>();
     tooltip = FindObjectOfType<Tooltip>();
     selectedItem = GameObject.Find("SelectedItem").GetComponent<UIItem>();
     spriteImage = GetComponent<Image>();
@@ -33,6 +35,13 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     if (isCraftingSlot) {
       craftingSlots.UpdateRecipe();
+    }
+
+    if (isPlayerEquipmentSlot) {
+      if (item != null) {
+        Debug.Log("Item is: "+ item.stats["Ability"]);
+      }
+      partyPanel.UpdatePlayerAbilities();
     }
   }
 
