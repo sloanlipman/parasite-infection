@@ -9,6 +9,7 @@ public class UIPartyPanel : MonoBehaviour {
   [SerializeField] private UIPlayerInfoPanel playerInfo;
   [SerializeField] private GameObject[] slots = new GameObject[]{};
   [SerializeField] private GameObject equipmentSlots;
+  private UIInventory uiInventory;
   private Inventory inventory;
   private string selectedPartyMember;
 
@@ -21,6 +22,7 @@ public class UIPartyPanel : MonoBehaviour {
   private BattleSystem.CharacterController characterController;
   void Awake() {
     inventory = FindObjectOfType<Inventory>();
+    uiInventory = FindObjectOfType<UIInventory>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
     ClearSlots();
@@ -56,6 +58,7 @@ public class UIPartyPanel : MonoBehaviour {
       buttonList.Add(button);
       button.GetComponentInChildren<Text>().text = member.characterName;
       button.GetComponent<Button>().onClick.AddListener(() => {
+        uiInventory.gameObject.SetActive(true);
         if (selectedPartyMember != member.characterName) {
           AddPlayerEquipmentSlots(member);
         }
