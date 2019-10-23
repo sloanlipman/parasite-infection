@@ -26,12 +26,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
   
   public void UpdateItem(Item item) {
     this.item = item;
-    if (this.item != null) {
-      spriteImage.color = Color.white;
-      spriteImage.sprite = item.icon;
-    } else {
-      spriteImage.color = Color.clear;
-    }
+    SetSprite(item);
 
     if (isCraftingSlot) {
       craftingSlots.UpdateRecipe();
@@ -39,9 +34,17 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     if (isPlayerEquipmentSlot) {
       if (item != null) {
-        Debug.Log("Item is: "+ item.stats["Ability"]);
-      }
-      partyPanel.UpdatePlayerAbilities();
+        partyPanel.UpdatePartyMemberEquipment();
+       }
+    }
+  }
+
+  public void SetSprite(Item item) {
+    if (this.item != null) {
+      spriteImage.color = Color.white;
+      spriteImage.sprite = item.icon;
+    } else {
+      spriteImage.color = Color.clear;
     }
   }
 

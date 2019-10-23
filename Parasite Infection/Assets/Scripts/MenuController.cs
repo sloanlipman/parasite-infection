@@ -85,9 +85,8 @@ public class MenuController : MonoBehaviour {
       }
     partyPanel.gameObject.SetActive(!partyPanel.gameObject.activeSelf);
     if (partyPanel.gameObject.activeSelf) {
-      partyPanel.ResetActiveEquipment();
+      partyPanel.ResetSelectedPartyMember();
       partyPanel.Populate();
-      // playerEquipment.gameObject.SetActive(true);
     } else {
       playerEquipment.gameObject.SetActive(false);
       playerInfo.gameObject.SetActive(false);

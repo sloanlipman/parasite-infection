@@ -64,7 +64,8 @@ namespace BattleSystem {
     }
 
     public Ability GetAbility(string abilityName) {
-      return abilityList.ContainsKey(abilityName) ? abilityList[abilityName] : null;
+      Ability ability = abilityList.ContainsKey(abilityName) ? abilityList[abilityName] : null;
+      return ability;
     }
 
     void BuildAbilityList() {

@@ -49,7 +49,8 @@ namespace BattleSystem {
     }
 
     public Ability GetAbility(string abilityName) {
-      return characterDatabase.GetAbility(abilityName);
+      Ability ability = characterDatabase.GetAbility(abilityName);
+      return ability;
     }
 
     public Dictionary<string, Ability> GetAbilityList() {

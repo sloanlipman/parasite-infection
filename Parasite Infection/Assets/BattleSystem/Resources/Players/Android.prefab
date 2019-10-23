@@ -53,10 +53,8 @@ MonoBehaviour:
   energyPoints: 15
   maxEnergyPoints: 15
   speed: 0
-  abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
-  abilitiesList:
-  - Barrage
+  abilities: []
+  abilitiesList: []
   level: 0
   experience: 0
   inParty: 0

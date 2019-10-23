@@ -53,14 +53,8 @@ MonoBehaviour:
   energyPoints: 15
   maxEnergyPoints: 15
   speed: 0
-  abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
-  - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
-  - {fileID: 2214528129449449433, guid: c910bf225296a50418cb14f898de85d6, type: 3}
-  abilitiesList:
-  - Barrage
-  - Heal
-  - Hydroblast
+  abilities: []
+  abilitiesList: []
   level: 0
   experience: 0
   inParty: 0

@@ -26,13 +26,10 @@ namespace BattleSystem {
         if (player.GetRigidbody().velocity != Vector2.zero) {
           random = Random.Range(0, 100);
           numberOfSteps++;
-          Debug.Log("# of steps is: " + numberOfSteps);
-          Debug.Log("Random # is: " + random);
           if (numberOfSteps > 100) {
             numberOfSteps = 0;
             // if (random >= 50) {
               if (random > 0) {
-              Debug.Log("Position is: " + player.transform.position);
               PrepareBattle(player.transform.position);
             }
           }
@@ -71,6 +68,10 @@ namespace BattleSystem {
 
     public void Launch() {
       List<Enemy> e = new List<Enemy>(){enemies[0]};
+      players.ForEach(player => {
+        player.abilities.Clear();
+        player.abilitiesList.Clear();
+      });
       BattleController.Instance.StartBattle(players, e);
     }
 

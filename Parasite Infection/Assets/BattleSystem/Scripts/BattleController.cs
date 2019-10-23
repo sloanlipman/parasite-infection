@@ -65,7 +65,8 @@ namespace BattleSystem {
     }
 
     public BattleCharacter GetCurrentCharacter() {
-      return characters[actTurn][characterTurnIndex];
+      BattleCharacter character = characters[actTurn][characterTurnIndex];
+      return character;
     }
 
     private bool HasACharacterNotGone() {
@@ -110,15 +111,26 @@ namespace BattleSystem {
       FindObjectOfType<BattleLauncher>().Launch();
     }
 
+
     public void StartBattle(List<PartyMember> players, List<Enemy> enemies) {
+
+/**
+
       for (int i = 0; i < players.Count; i++) {
         GetListOfAlivePlayers().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
-        GetListOfAlivePlayers()[i].abilities.Clear();
-        for (int j = 0; j < GetListOfAlivePlayers()[i].abilitiesList.Count; j++) {
+        for (int j = 0; j < players[i].equipment.Count; j++) {
+          players[i].AddAbilityFromEquipment(players[i].equipment[j]);
+          players[i].abilities.Add(characterController.GetAbility(players[i].abilitiesList[j]));
+        }
+      } */
+
+      for (int i = 0; i < players.Count; i++) {
+        GetListOfAlivePlayers().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
+        for (int j = 0; j < players[i].equipment.Count; j++) {
+          GetListOfAlivePlayers()[i].AddAbilityFromEquipment(players[i].equipment[j]);
           GetListOfAlivePlayers()[i].abilities.Add(characterController.GetAbility(GetListOfAlivePlayers()[i].abilitiesList[j]));
         }
       }
-
 
       for (int i = 0; i < enemies.Count; i++) {
         GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2

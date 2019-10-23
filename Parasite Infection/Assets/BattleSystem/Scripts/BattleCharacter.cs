@@ -12,11 +12,15 @@ namespace BattleSystem {
     public int energyPoints;
     public int maxEnergyPoints;
     public int speed;
-    public List<Ability> abilities;
-    public List<string> abilitiesList;
+    public List<Ability> abilities = new List<Ability>();
+    public List<string> abilitiesList = new List<string>();
     public int level = 1;
     public int experience;
-    public List<Item> equipment;
+    public List<Item> equipment = new List<Item>();
+
+    public List<Item> GetEquipment() {
+      return equipment;
+    }
 
     public void Hurt (int amount) {
       int damageAmount;
@@ -68,6 +72,39 @@ namespace BattleSystem {
     public virtual void Die() {
       Destroy(this.gameObject);
       Debug.LogFormat("{0} has died!", characterName);
+    }
+
+     public void AddAbilityFromEquipment(Item item) {
+        string abilityToAdd;
+          if (item.stats.ContainsKey("Ability")) {
+            switch (item.stats["Ability"]) {
+              case 1: {
+                abilityToAdd = "Barrage";
+                break;
+              }
+              
+              case 2: {
+                abilityToAdd = "Fireball";
+                break;
+              }
+              case 3: {
+                abilityToAdd = "Hydroblast";
+                break;
+              }
+              case 4: {
+                abilityToAdd = "Heal";
+                break;
+              }
+              default: {
+                abilityToAdd = null;
+                break;
+              }
+            }
+
+            if (abilityToAdd != null && !abilitiesList.Contains(abilityToAdd)) {
+              abilitiesList.Add(abilityToAdd);
+            }
+          }
     }
   }
 }

@@ -9,6 +9,7 @@ public class UIPartyPanel : MonoBehaviour {
   [SerializeField] private UIPlayerInfoPanel playerInfo;
   [SerializeField] private GameObject[] slots = new GameObject[]{};
   [SerializeField] private GameObject equipmentSlots;
+  private Inventory inventory;
   private string selectedPartyMember;
 
   private List<Button> buttonList = new List<Button>();
@@ -19,20 +20,29 @@ public class UIPartyPanel : MonoBehaviour {
   private List<PartyMember> party = new List<PartyMember>();
   private BattleSystem.CharacterController characterController;
   void Awake() {
+    inventory = FindObjectOfType<Inventory>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
+    ClearSlots();
   }
 
   public GameObject GetPlayerEquipmentPanel() {
     return equipmentSlots.gameObject;
   }
 
-  public void ResetActiveEquipment() {
+  public void ResetSelectedPartyMember() {
     selectedPartyMember = "";
   }
 
   public string GetSelectedPartyMember() {
     return selectedPartyMember;
+  }
+
+  void ClearSlots() {
+    foreach (var slot in slots) {
+      UIItem uiItem = slot.GetComponentInChildren<UIItem>();
+      uiItem.UpdateItem(null);
+    }
   }
 
   public void Populate() {
@@ -51,12 +61,9 @@ public class UIPartyPanel : MonoBehaviour {
         }
       });
     });
-
   }
 
   private void AddPlayerEquipmentSlots(PartyMember member) {
-    selectedPartyMember = member.characterName;
-    int numberOfSlots = member.GetModSlots();
     if (!equipmentSlots.gameObject.activeSelf) {
       equipmentSlots.gameObject.SetActive(true);
     }
@@ -64,6 +71,11 @@ public class UIPartyPanel : MonoBehaviour {
       playerInfo.gameObject.SetActive(true);
     }
 
+    ClearSlots();
+
+// Set the right # of slots
+    selectedPartyMember = member.characterName;
+    int numberOfSlots = member.GetModSlots();
     for (int i = 0; i < slots.Length; i++) {
       if (i < numberOfSlots) {
         slots[i].SetActive(true);
@@ -71,47 +83,30 @@ public class UIPartyPanel : MonoBehaviour {
         slots[i].SetActive(false);
       }
     }
+    
+    for (int j = 0; j < member.equipment.Count; j++) {
+      if (member.equipment[j] != null) {
+        UIItem uiItem = slots[j].GetComponentInChildren<UIItem>();
+        uiItem.UpdateItem(member.equipment[j]);
+      }
+    }
     playerInfo.Populate(selectedPartyMember);
   }
 
-  public void UpdatePlayerAbilities() {
+  public void UpdatePartyMemberEquipment() {
     if (selectedPartyMember != null) {
       PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
-      member.abilities.Clear();
-      member.abilitiesList.Clear();
+      // member.abilities.Clear();
+      // member.abilitiesList.Clear();
+      if (member.equipment != null) {
+        member.equipment.Clear();
+      }
       foreach(GameObject slot in slots) {
         if (slot.gameObject.activeSelf) {
           UIItem uiItem = slot.GetComponentInChildren<UIItem>();
-          Item item = uiItem.item;
-          string abilityToAdd;
-          if (item.stats.ContainsKey("Ability")) {
-            switch (item.stats["Ability"]) {
-              case 1: {
-                abilityToAdd = "Barrage";
-                break;
-              }
-              
-              case 2: {
-                abilityToAdd = "Fireball";
-                break;
-              }
-              case 3: {
-                abilityToAdd = "Hydroblast";
-                break;
-              }
-              case 4: {
-                abilityToAdd = "Heal";
-                break;
-              }
-              default: {
-                abilityToAdd = null;
-                break;
-              }
-            }
-
-            if (abilityToAdd != null && !member.abilitiesList.Contains(abilityToAdd)) {
-              member.abilitiesList.Add(abilityToAdd);
-            }
+          if (uiItem.item != null) {
+            inventory.RemoveItem(uiItem.item.id);
+            member.equipment.Add(uiItem.item);
           }
         }
       }
