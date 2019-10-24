@@ -24,9 +24,14 @@ namespace BattleSystem {
       ES3.LoadInto("PartyMembers", "Party.ES3", partyMembers);
       ES3.LoadInto("Enemies", "Enemies.ES3", enemyList);
       activePartyMembers = ES3.Load<List<string>>("ActiveParty", "ActiveParty.ES3");
-      // partyMembers.ForEach(member => {
-      //   ES3.LoadInto(member.characterName + "Equipment", "PartyEquipment.ES3", member.equipment);
-      // });
+
+      partyMembers.ForEach(member => {
+        foreach(Item item in member.equipment) {
+          if (item != null && item.icon == null) {
+            item.LoadSprite();
+          }
+        }
+      });
     }
 
     void Awake() {

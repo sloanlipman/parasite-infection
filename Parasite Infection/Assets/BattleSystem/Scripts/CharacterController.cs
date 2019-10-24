@@ -10,15 +10,7 @@ namespace BattleSystem {
       ES3.Save<List<PartyMember>>("PartyMembers", GetPartyMembers(), "Party.ES3");
       ES3.Save<List<string>>("ActiveParty", GetActivePartyList(), "ActiveParty.ES3");
       ES3.Save<List<Enemy>>("Enemies", GetEnemies(), "Enemies.ES3");
-      // SaveEquipment();
     }
-
-    // private void SaveEquipment() {
-    //   List<PartyMember> party = GetPartyMembers();
-    //   party.ForEach(member => {
-    //     ES3.Save<Item[]>(member.characterName + "Equipment", member.equipment, "PartyEquipment.ES3");
-    //   });
-    // }
 
     public void Load() {
       characterDatabase.Load();
