@@ -24,6 +24,9 @@ namespace BattleSystem {
       ES3.LoadInto("PartyMembers", "Party.ES3", partyMembers);
       ES3.LoadInto("Enemies", "Enemies.ES3", enemyList);
       activePartyMembers = ES3.Load<List<string>>("ActiveParty", "ActiveParty.ES3");
+      // partyMembers.ForEach(member => {
+      //   ES3.LoadInto(member.characterName + "Equipment", "PartyEquipment.ES3", member.equipment);
+      // });
     }
 
     void Awake() {
@@ -93,7 +96,6 @@ namespace BattleSystem {
     }
 
     public PartyMember FindPartyMemberByName(string name) {
-      Debug.Log("Looking for PM by name: " + name);
       return partyMembers.Find(member => member.characterName == name);
     }
 

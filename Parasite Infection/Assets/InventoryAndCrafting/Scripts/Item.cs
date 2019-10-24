@@ -14,8 +14,12 @@ public class Item {
     this.id = id;
     this.itemName = itemName;
     this.description = description;
-    this.icon = Resources.Load<Sprite>("Items/" + itemName);
     this.stats = stats;
+    LoadSprite();
+  }
+
+  public void LoadSprite() {
+    this.icon = Resources.Load<Sprite>("Items/" + itemName);
   }
 
   public Item(Item item) {

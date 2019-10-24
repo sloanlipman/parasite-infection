@@ -126,9 +126,14 @@ namespace BattleSystem {
 
       for (int i = 0; i < players.Count; i++) {
         GetListOfAlivePlayers().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
-        for (int j = 0; j < players[i].equipment.Count; j++) {
-          GetListOfAlivePlayers()[i].AddAbilityFromEquipment(players[i].equipment[j]);
-          GetListOfAlivePlayers()[i].abilities.Add(characterController.GetAbility(GetListOfAlivePlayers()[i].abilitiesList[j]));
+        for (int j = 0; j < players[i].equipment.Length; j++) {
+          if (players[i].equipment[j] != null) {
+            string abilityToAdd = GetListOfAlivePlayers()[i].AddAbilityFromEquipment(players[i].equipment[j]);
+            if (abilityToAdd != "") {
+              if (!DoesPlayerAlreadyHaveAbility(GetListOfAlivePlayers()[i], abilityToAdd))
+              GetListOfAlivePlayers()[i].abilities.Add(characterController.GetAbility(abilityToAdd));
+            }
+          }
         }
       }
 
@@ -139,6 +144,10 @@ namespace BattleSystem {
           GetEnemyList()[i].abilities.Add(characterController.GetAbility(GetEnemyList()[i].abilitiesList[j]));
         }
       }
+    }
+
+    public bool DoesPlayerAlreadyHaveAbility(BattleCharacter player, string abilityName) {
+     return player.abilities.Contains(characterController.GetAbility(abilityName));
     }
 
     public BattleCharacter GetRandomPlayer() {

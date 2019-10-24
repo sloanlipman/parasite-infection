@@ -60,6 +60,7 @@ public class UIPartyPanel : MonoBehaviour {
       button.GetComponent<Button>().onClick.AddListener(() => {
         uiInventory.gameObject.SetActive(true);
         if (selectedPartyMember != member.characterName) {
+          Debug.LogWarning("Clicked on: " + member.characterName);
           AddPlayerEquipmentSlots(member);
         }
       });
@@ -73,6 +74,7 @@ public class UIPartyPanel : MonoBehaviour {
     if (!playerInfo.gameObject.activeSelf) {
       playerInfo.gameObject.SetActive(true);
     }
+    Debug.LogWarning("# equipment: " + member.equipment.Length);
 
     ClearSlots();
 
@@ -86,30 +88,33 @@ public class UIPartyPanel : MonoBehaviour {
         slots[i].SetActive(false);
       }
     }
-    
-    for (int j = 0; j < member.equipment.Count; j++) {
-      if (member.equipment[j] != null) {
-        UIItem uiItem = slots[j].GetComponentInChildren<UIItem>();
-        uiItem.UpdateItem(member.equipment[j]);
-      }
+    UpdatePartyMemberEquipment();
+    for (int j = 0; j < member.equipment.Length; j++) {
+      UIItem uiItem = slots[j].GetComponentInChildren<UIItem>();
+      uiItem.UpdateItem(member.equipment[j]);
     }
     playerInfo.Populate(selectedPartyMember);
+  }
+
+  public void RemoveItem(int index) {
+    PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
+    Item item = member.equipment[index];
+    if (item != null) {
+      member.equipment[index] = null;
+    }
   }
 
   public void UpdatePartyMemberEquipment() {
     if (selectedPartyMember != null) {
       PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
-      // member.abilities.Clear();
-      // member.abilitiesList.Clear();
-      if (member.equipment != null) {
-        member.equipment.Clear();
-      }
-      foreach(GameObject slot in slots) {
-        if (slot.gameObject.activeSelf) {
-          UIItem uiItem = slot.GetComponentInChildren<UIItem>();
+
+      for (int i = 0; i < slots.Length; i++) {
+        if (slots[i].gameObject.activeSelf) {
+          UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
           if (uiItem.item != null) {
             inventory.RemoveItem(uiItem.item.id);
-            member.equipment.Add(uiItem.item);
+            member.equipment[i] = uiItem.item;
+            uiItem.item = member.equipment[i];
           }
         }
       }

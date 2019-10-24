@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler {
+public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler {
   public Item item;
   private Image spriteImage;
   private UIItem selectedItem;
   private CraftingSlots craftingSlots;
   private UIPartyPanel partyPanel;
+  private EquipmentSlots equipmentSlots;
   private Tooltip tooltip;
   public bool isCraftingSlot = false;
   public bool isCraftingResultSlot = false;
@@ -17,6 +18,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
   private void Awake() {
     craftingSlots = FindObjectOfType<CraftingSlots>();
+    equipmentSlots = FindObjectOfType<EquipmentSlots>();
     partyPanel = FindObjectOfType<UIPartyPanel>();
     tooltip = FindObjectOfType<Tooltip>();
     selectedItem = GameObject.Find("SelectedItem").GetComponent<UIItem>();
@@ -50,6 +52,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
   public void OnPointerDown(PointerEventData eventData) {
     if (this.item != null) {
+      Debug.Log("Item clicked was: " + this.item.itemName);
       UICraftResult craftResult = GetComponent<UICraftResult>();
       if (craftResult != null && this.item != null && selectedItem.item == null) { // Successful craft
         craftResult.PickItem();
@@ -70,6 +73,21 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
       UpdateItem(selectedItem.item);
       selectedItem.UpdateItem(null);
     }
+  }
+
+// Remove item from player's equipment slots
+  public void OnPointerUp(PointerEventData eventData) {
+    if (isPlayerEquipmentSlot && selectedItem.item != null) {
+        GameObject[] slots = equipmentSlots.GetSlots();
+        for (int i = 0; i < slots.Length; i++) {
+          UIItem item = slots[i].GetComponentInChildren<UIItem>();
+          if (this == item) {
+            partyPanel.RemoveItem(i);
+            break;
+          }
+        }
+        UpdateItem(null);
+      }
   }
 
   public void OnPointerEnter(PointerEventData eventData) {

@@ -6,7 +6,7 @@ namespace BattleSystem {
   public class PartyMember : BattleCharacter {
     [SerializeField] private bool inParty = false;
     int upgradePoints = 0;
-    private int modSlots = 1;
+    public int modSlots = 2;
     public PartyMember() {}
 
     public int GetModSlots() {

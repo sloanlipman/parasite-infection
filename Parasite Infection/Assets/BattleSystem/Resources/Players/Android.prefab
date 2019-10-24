@@ -50,14 +50,15 @@ MonoBehaviour:
   maxHealth: 15
   attackPower: 5
   defensePower: 5
-  energyPoints: 15
+  energyPoints: 2
   maxEnergyPoints: 15
   speed: 0
   abilities: []
   abilitiesList: []
   level: 0
-  experience: 0
+  experience: 15
   inParty: 0
+  modSlots: 2
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0

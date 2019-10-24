@@ -82,7 +82,7 @@ namespace ES3Types
 						instance.experience = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					case "equipment":
-						instance.equipment = reader.Read<System.Collections.Generic.List<Item>>();
+						instance.equipment = reader.Read<Item[]>();
 						break;
 					default:
 						reader.Skip();

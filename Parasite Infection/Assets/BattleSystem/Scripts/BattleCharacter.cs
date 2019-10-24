@@ -16,9 +16,9 @@ namespace BattleSystem {
     public List<string> abilitiesList = new List<string>();
     public int level = 1;
     public int experience;
-    public List<Item> equipment = new List<Item>();
+    public Item[] equipment = new Item[4];
 
-    public List<Item> GetEquipment() {
+    public Item[] GetEquipment() {
       return equipment;
     }
 
@@ -74,37 +74,38 @@ namespace BattleSystem {
       Debug.LogFormat("{0} has died!", characterName);
     }
 
-     public void AddAbilityFromEquipment(Item item) {
-        string abilityToAdd;
-          if (item.stats.ContainsKey("Ability")) {
-            switch (item.stats["Ability"]) {
-              case 1: {
-                abilityToAdd = "Barrage";
-                break;
-              }
-              
-              case 2: {
-                abilityToAdd = "Fireball";
-                break;
-              }
-              case 3: {
-                abilityToAdd = "Hydroblast";
-                break;
-              }
-              case 4: {
-                abilityToAdd = "Heal";
-                break;
-              }
-              default: {
-                abilityToAdd = null;
-                break;
-              }
-            }
-
-            if (abilityToAdd != null && !abilitiesList.Contains(abilityToAdd)) {
-              abilitiesList.Add(abilityToAdd);
-            }
+  public string AddAbilityFromEquipment(Item item) {
+    string abilityToAdd = "";
+      if (item.stats.ContainsKey("Ability")) {
+        switch (item.stats["Ability"]) {
+          case 1: {
+            abilityToAdd = "Barrage";
+            break;
           }
-    }
+          
+          case 2: {
+            abilityToAdd = "Fireball";
+            break;
+          }
+          case 3: {
+            abilityToAdd = "Hydroblast";
+            break;
+          }
+          case 4: {
+            abilityToAdd = "Heal";
+            break;
+          }
+          default: {
+            abilityToAdd = "";
+            break;
+          }
+        }
+
+        if (abilityToAdd != null && !abilitiesList.Contains(abilityToAdd)) {
+          abilitiesList.Add(abilityToAdd);
+        }
+      }
+       return abilityToAdd;
+      }
   }
 }
