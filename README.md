@@ -15,3 +15,6 @@ Sloan Lipman (sloan.lipman@gmail.com)
 - <https://www.freepik.com/premium-photo/view-planet-earth-from-huge-spaceship-window-3d-rendering-elements-this-image-furnished-by-nasa_5074337.htm>
 - <https://thkaspar.itch.io/sci-fi-robot-parts>
 - <https://adamatomic.itch.io/sci-fi-inventory>
+- <https://icons8.com/icons/set/integrated-circuit>
+- <https://icons8.com/icons/set/battery>
+- <https://assetstore.unity.com/packages/2d/textures-materials/2d-sci-fi-weapons-pack-22679>

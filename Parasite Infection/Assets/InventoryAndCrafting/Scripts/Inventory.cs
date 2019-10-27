@@ -37,11 +37,18 @@ public class Inventory : MonoBehaviour {
   }
 
   private void Start() {
-    GiveItem(6);
+    for (int i = 1; i <= itemDatabase.items.Count; i++) {
+      GiveItem(i);
+    }
+    // GiveItem(6);
+    // GiveItem(9);
+    // GiveItem(10);
+    // GiveItem(2);
+    // GiveItem(2);
+    GiveItem(9);
     GiveItem(9);
     GiveItem(10);
-    GiveItem(2);
-    GiveItem(2);
+    GiveItem(10);
     inventoryUI.gameObject.SetActive(false);
   }
 

@@ -36,7 +36,7 @@ public class ItemDatabase : MonoBehaviour {
 
   void BuildItemDatabase() {
     items = new List<Item>() {
-      new Item(1, "Heavy Suit", "An upgrade to your regular suit. Unlocks Barrage",
+      new Item(1, "Heavy Module", "An upgrade to your regular suit. Unlocks Barrage",
       new Dictionary<string, int> {
         { "Ability", 1 }
       }),
@@ -68,7 +68,7 @@ public class ItemDatabase : MonoBehaviour {
       new Dictionary<string, int> {
         { "CoreID", 4}
       }),
-      new Item(9, "Modulator", "Required component to craft any module", 
+      new Item(9, "Battery", "Required component to craft any module", 
       new Dictionary<string, int> {
         { "Value", 100 }
       }),
