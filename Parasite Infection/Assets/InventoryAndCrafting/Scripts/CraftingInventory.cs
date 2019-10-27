@@ -26,6 +26,10 @@ public class CraftingInventory : Inventory {
 
   // Start is called before the first frame update
   void Start() {
+    UIItem[] craftingInventorySlots = inventoryUI.GetComponentsInChildren<UIItem>();
+    foreach(UIItem item in craftingInventorySlots) {
+      item.isCraftingInventorySlot = true;
+    }
    for (int i = 1; i <= itemDatabase.items.Count; i++) {
      if (IsCraftingItem(i)) {
       GiveItem(i);

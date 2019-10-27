@@ -11,11 +11,14 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
   private CraftingSlots craftingSlots;
   private UIPartyPanel partyPanel;
   private EquipmentSlots equipmentSlots;
+  private ConsumableInventory consumableInventory;
+  private CraftingInventory craftingInventory;
   private Tooltip tooltip;
   public bool isCraftingSlot = false;
   public bool isCraftingResultSlot = false;
   public bool isPlayerEquipmentSlot = false;
   public bool isConsumableInventorySlot = false;
+  public bool isCraftingInventorySlot;
 
   private void Awake() {
     craftingSlots = FindObjectOfType<CraftingSlots>();
@@ -24,6 +27,9 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     tooltip = FindObjectOfType<Tooltip>();
     selectedItem = GameObject.Find("SelectedItem").GetComponent<UIItem>();
     spriteImage = GetComponent<Image>();
+    consumableInventory = FindObjectOfType<ConsumableInventory>();
+    craftingInventory = FindObjectOfType<CraftingInventory>();
+
     UpdateItem(null);
   }
   
@@ -39,6 +45,18 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
       if (item != null) {
         partyPanel.UpdatePartyMemberEquipment(item);
        }
+    }
+
+    if (item != null && isConsumableInventorySlot) {
+      if (consumableInventory.IsCraftingItem(item.id)) {
+        UpdateItem(null);
+        consumableInventory.DeselectItem();
+      }
+    } else if (item != null && isCraftingInventorySlot) {
+      if (!craftingInventory.IsCraftingItem(item.id)) {
+        UpdateItem(null);
+        craftingInventory.DeselectItem();
+      }
     }
   }
 

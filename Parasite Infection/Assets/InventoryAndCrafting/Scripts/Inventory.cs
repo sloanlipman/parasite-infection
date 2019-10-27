@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Inventory : MonoBehaviour {
   public List<Item> playerItems = new List<Item>();
   [SerializeField] protected UIInventory inventoryUI;
-  [SerializeField] private UIItem selectedUIItem;
   protected ItemDatabase itemDatabase;
 
   void Awake() {
@@ -14,6 +13,10 @@ public class Inventory : MonoBehaviour {
 
   private void Start() {
 
+  }
+
+  public UIInventory GetUIInventory() {
+    return inventoryUI;
   }
 
   public void GiveItem(int id) {
@@ -59,7 +62,19 @@ public class Inventory : MonoBehaviour {
   }
 
   public void DeselectItem() {
-    inventoryUI.AddItemToUI(selectedUIItem.GetSelectedItem().item);
-    selectedUIItem.GetSelectedItem().UpdateItem(null);
+    GameObject uiItem = GameObject.Find("SelectedItem");
+    if (uiItem != null) {
+      UIItem selectedUIItem = uiItem.GetComponent<UIItem>();
+      if (selectedUIItem != null && selectedUIItem.item != null) {
+        UIInventory inventoryUIToUse;
+        if (IsCraftingItem(selectedUIItem.item.id)) {
+          inventoryUIToUse = FindObjectOfType<CraftingInventory>().inventoryUI;
+        } else {
+          inventoryUIToUse = FindObjectOfType<ConsumableInventory>().inventoryUI;
+        }
+        inventoryUIToUse.AddItemToUI(selectedUIItem.item);
+        selectedUIItem.UpdateItem(null);
+      }
+    }
   }
 }
