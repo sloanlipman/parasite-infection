@@ -5,51 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour {
   public List<Item> playerItems = new List<Item>();
-  [SerializeField] private UIInventory inventoryUI;
-  ItemDatabase itemDatabase;
-
-  public void Save() {
-    UpdateIndices();
-    List<Item> itemsToSave = new List<Item>();
-    itemsToSave = inventoryUI.GetMainInventoryItems();
-    int[] itemIds = new int[itemsToSave.Count];
-    int i = 0;
-    itemsToSave.ForEach(item => {
-      itemIds[i] = (itemDatabase.GetItemId(item));
-      i++;
-    }); 
-    ES3.Save<int[]>("Inventory", itemIds, "Inventory.es3");
-  }
-
-  public void Load() {
-    int[] itemsToLoad = ES3.Load<int[]>("Inventory", "Inventory.es3");
-    foreach(int id in itemsToLoad) {
-      GiveItem(id);
-    };
-  }
+  [SerializeField] protected UIInventory inventoryUI;
+  [SerializeField] private UIItem selectedUIItem;
+  protected ItemDatabase itemDatabase;
 
   void Awake() {
-    if (FindObjectsOfType<Inventory>().Length > 1) {
-      Destroy(this.gameObject);
-    }
-    DontDestroyOnLoad(this.gameObject);
-    itemDatabase = FindObjectOfType<ItemDatabase>();
   }
 
   private void Start() {
-    for (int i = 1; i <= itemDatabase.items.Count; i++) {
-      GiveItem(i);
-    }
-    // GiveItem(6);
-    // GiveItem(9);
-    // GiveItem(10);
-    // GiveItem(2);
-    // GiveItem(2);
-    GiveItem(9);
-    GiveItem(9);
-    GiveItem(10);
-    GiveItem(10);
-    inventoryUI.gameObject.SetActive(false);
+
   }
 
   public void GiveItem(int id) {
@@ -74,7 +38,10 @@ public class Inventory : MonoBehaviour {
     playerItems[index] = null;
   }
 
-
+  public bool IsCraftingItem(int id) {
+    Item item = itemDatabase.GetItem(id);
+    return item.stats["Crafting"] == 1;
+  }
 
   public void UpdateIndices() {
     for (int i = playerItems.Count -1; i > -1; i--) {
@@ -89,5 +56,10 @@ public class Inventory : MonoBehaviour {
 
   public void ClearInventory() {
     playerItems.Clear();
+  }
+
+  public void DeselectItem() {
+    inventoryUI.AddItemToUI(selectedUIItem.GetSelectedItem().item);
+    selectedUIItem.GetSelectedItem().UpdateItem(null);
   }
 }

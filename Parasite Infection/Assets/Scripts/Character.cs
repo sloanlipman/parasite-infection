@@ -32,7 +32,8 @@ public class Character : MonoBehaviour {
 
   public void TeleportTo(Vector2 targetPosition) {
     transform.position = targetPosition;
-    FindObjectOfType<Inventory>().Save();
+    FindObjectOfType<CraftingInventory>().Save();
+    FindObjectOfType<ConsumableInventory>().Save();
   }
 
   public IEnumerator MoveTo(Vector2 targetPosition, System.Action callback, float delay = 0f) {

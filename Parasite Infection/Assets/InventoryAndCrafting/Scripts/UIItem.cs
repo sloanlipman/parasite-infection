@@ -15,6 +15,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
   public bool isCraftingSlot = false;
   public bool isCraftingResultSlot = false;
   public bool isPlayerEquipmentSlot = false;
+  public bool isConsumableInventorySlot = false;
 
   private void Awake() {
     craftingSlots = FindObjectOfType<CraftingSlots>();
@@ -98,5 +99,9 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
   public void OnPointerExit(PointerEventData eventData) {
     tooltip.gameObject.SetActive(false);
+  }
+
+  public UIItem GetSelectedItem() {
+    return selectedItem;
   }
 }

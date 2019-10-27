@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
   [SerializeField] private Button[] dialogButtons;
   [SerializeField] private GameObject menuPanel;
-  [SerializeField] private UIInventory inventory;
+  [SerializeField] private UIInventory craftingInventory;
+  [SerializeField] private UIInventory consumableInventory;
   [SerializeField] private QuestSystem.QuestPanel questPanel;
   [SerializeField] private UIPartyPanel partyPanel;
   [SerializeField] private GameObject playerEquipment;
@@ -30,11 +31,14 @@ public class MenuController : MonoBehaviour {
 
   public void CloseAllMenus() {
     ToggleDialogButtons(true);
-    inventory.gameObject.SetActive(false);
+    craftingInventory.gameObject.SetActive(false);
+    consumableInventory.gameObject.SetActive(false);
     questPanel.gameObject.SetActive(false);
     partyPanel.gameObject.SetActive(false);
     playerEquipment.gameObject.SetActive(false);
     playerInfo.gameObject.SetActive(false);
+    DeselectConsumableItem();
+    DeselectCraftingItem();
     ToggleMenu(false);
   }
 
@@ -47,7 +51,6 @@ public class MenuController : MonoBehaviour {
 
   private void Start() {
     CloseAllMenus();
-    ToggleMenu(false);
   }
 
   private void Update() {
@@ -68,8 +71,31 @@ public class MenuController : MonoBehaviour {
     return menuPanel.gameObject.activeSelf;
   }
 
-  public void ToggleUIInventory() {
-    inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
+  private void DeselectCraftingItem() {
+
+      FindObjectOfType<CraftingInventory>().DeselectItem();
+    
+  }
+  
+  private void DeselectConsumableItem() {
+      FindObjectOfType<ConsumableInventory>().DeselectItem();
+    
+  }
+
+  public void ToggleCraftingInventory() {
+    DeselectConsumableItem();
+    craftingInventory.gameObject.SetActive(!craftingInventory.gameObject.activeSelf);
+    consumableInventory.gameObject.SetActive(false);
+    DeselectCraftingItem();
+
+  }
+
+  public void ToggleConsumableInventory() {
+    DeselectCraftingItem();
+    consumableInventory.gameObject.SetActive(!consumableInventory.gameObject.activeSelf);
+    craftingInventory.gameObject.SetActive(false);
+    DeselectConsumableItem();
+
   }
 
   public void ToggleQuestPanel() {

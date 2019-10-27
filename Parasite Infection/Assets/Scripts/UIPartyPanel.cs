@@ -8,8 +8,8 @@ public class UIPartyPanel : MonoBehaviour {
   [SerializeField] private UIPlayerInfoPanel playerInfo;
   [SerializeField] private GameObject[] slots = new GameObject[]{};
   [SerializeField] private GameObject equipmentSlots;
-  private UIInventory uiInventory;
-  private Inventory inventory;
+  private CraftingInventory craftingInventory;
+  private ConsumableInventory consumableInventory;
   private string selectedPartyMember;
 
   private List<Button> buttonList = new List<Button>();
@@ -20,8 +20,8 @@ public class UIPartyPanel : MonoBehaviour {
   private List<PartyMember> party = new List<PartyMember>();
   private BattleSystem.CharacterController characterController;
   void Awake() {
-    inventory = FindObjectOfType<Inventory>();
-    uiInventory = FindObjectOfType<UIInventory>();
+    craftingInventory = FindObjectOfType<CraftingInventory>();
+    consumableInventory = FindObjectOfType<ConsumableInventory>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
     ClearSlots();
@@ -57,7 +57,8 @@ public class UIPartyPanel : MonoBehaviour {
       buttonList.Add(button);
       button.GetComponentInChildren<Text>().text = member.characterName;
       button.GetComponent<Button>().onClick.AddListener(() => {
-        uiInventory.gameObject.SetActive(true);
+        craftingInventory.gameObject.SetActive(true);
+        
         if (selectedPartyMember != member.characterName) {
           Debug.LogWarning("Clicked on: " + member.characterName);
           AddPlayerEquipmentSlots(member);
@@ -109,11 +110,16 @@ public class UIPartyPanel : MonoBehaviour {
       for (int i = 0; i < slots.Length; i++) {
         if (slots[i].gameObject.activeSelf) {
           UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
-          if (uiItem.item == item) {
-            inventory.RemoveItem(item.index);
-            member.equipment[i] = item;
-            uiItem.item = member.equipment[i];
-          }
+          if (craftingInventory.IsCraftingItem(item.id)) {
+            if (uiItem.item == item) {           // If item in slot equals item we want to update
+              craftingInventory.RemoveItem(item.index); // Remove from inventory
+              member.equipment[i] = item; // Set as item
+              uiItem.item = member.equipment[i]; // Set the UI
+            } 
+          } else  {
+            consumableInventory.DeselectItem();
+            uiItem.UpdateItem(null);
+          } 
         }
       }
     }

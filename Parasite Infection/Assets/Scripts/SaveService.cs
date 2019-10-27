@@ -8,7 +8,8 @@ public class SaveService : MonoBehaviour {
 
   public static SaveService Instance {get; set;}
   private BattleSystem.CharacterController characterController;
-  private Inventory inventory;
+  private CraftingInventory craftingInventory;
+  private ConsumableInventory consumableInventory;
   private QuestController questController;
   private MenuController menuController;
   private DialogPanel dialogPanel;
@@ -16,7 +17,8 @@ public class SaveService : MonoBehaviour {
 
   // Start is called before the first frame update
   public void Save() {
-    inventory.Save();
+    craftingInventory.Save();
+    consumableInventory.Save();
     questController.Save();
     characterController.Save();
 
@@ -28,7 +30,8 @@ public class SaveService : MonoBehaviour {
     if (ES3.FileExists() && ES3.FileExists("PlayerInfo.es3")) {
       ClearAll();
       menuController.CloseAllMenus();
-      inventory.Load();
+      craftingInventory.Load();
+      consumableInventory.Load();
       questController.Load();
       characterController.Load();
       LoadPlayer();
@@ -47,7 +50,8 @@ public class SaveService : MonoBehaviour {
     foreach(SlotPanel panel in slotPanels) {
       panel.EmptyAllSlots();
     }
-    inventory.ClearInventory();
+    craftingInventory.ClearInventory();
+    consumableInventory.ClearInventory();
     questController.ClearQuests();
   }
 
@@ -97,7 +101,8 @@ public class SaveService : MonoBehaviour {
   }
 
   void Awake() {
-    inventory = FindObjectOfType<Inventory>();
+    craftingInventory = FindObjectOfType<CraftingInventory>();
+    consumableInventory = FindObjectOfType<ConsumableInventory>();
     questController = FindObjectOfType<QuestController>();
     menuController = FindObjectOfType<MenuController>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();

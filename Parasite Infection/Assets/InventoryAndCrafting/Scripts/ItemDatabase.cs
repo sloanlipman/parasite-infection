@@ -38,43 +38,58 @@ public class ItemDatabase : MonoBehaviour {
     items = new List<Item>() {
       new Item(1, "Heavy Module", "An upgrade to your regular suit. Unlocks Barrage",
       new Dictionary<string, int> {
-        { "Ability", 1 }
+        { "Ability", 1 },
+        { "Crafting", 1}
       }),
       new Item(2, "Fire Module", "A suit upgrade. Unlocks Fireball.",
       new Dictionary<string, int> {
-        { "Ability", 2 }
+        { "Ability", 2 },
+        { "Crafting", 1}
       }),
       new Item(3, "Water Module", "A suit upgrade. Unlocks Hydroblast.",
       new Dictionary<string, int> {
-        { "Ability", 3 }
+        { "Ability", 3 },
+        { "Crafting", 1}
       }),
       new Item(4, "Medic Module", "A suit upgrade. Unlocks Heal.",
       new Dictionary<string, int> {
-        { "Ability", 4 }
+        { "Ability", 4 },
+        { "Crafting", 1}
       }),
       new Item(5, "Heavy Core", "Required component to craft the Heavy Suit.",
       new Dictionary<string, int> {
-        { "CoreID", 1}
+        { "CoreID", 1},
+        { "Crafting", 1}
       }),
       new Item(6, "Fire Core", "Required component to craft the Fire Module.",
       new Dictionary<string, int> {
-        { "CoreID", 2}
+        { "CoreID", 2},
+        { "Crafting", 1}
       }),
       new Item(7, "Water Core", "Required component to craft the Water Module.",
       new Dictionary<string, int> {
-        { "CoreID", 3}
+        { "CoreID", 3},
+        { "Crafting", 1}
       }),
       new Item(8, "Medic Core", "Required component to craft the Medic Module.",
       new Dictionary<string, int> {
-        { "CoreID", 4}
+        { "CoreID", 4},
+        { "Crafting", 1}
       }),
       new Item(9, "Battery", "Required component to craft any module", 
       new Dictionary<string, int> {
-        { "Value", 100 }
+        { "Value", 100 },
+        { "Crafting", 1}
       }),
       new Item(10, "Integrated Circuit", "Required component to craft any module", 
       new Dictionary<string, int> {
-      { "Value", 100 }
+      { "Value", 100 },
+      { "Crafting", 1}
+      }),
+      new Item(11, "Medkit", "Restores 5 HP", 
+      new Dictionary<string, int> {
+      { "Value", 5 },
+      { "Crafting", 0}
       })
     };
   }
