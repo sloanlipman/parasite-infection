@@ -9,9 +9,12 @@ public class Inventory : MonoBehaviour {
   ItemDatabase itemDatabase;
 
   public void Save() {
-    int[] itemIds = new int[playerItems.Count];
+    UpdateIndices();
+    List<Item> itemsToSave = new List<Item>();
+    itemsToSave = inventoryUI.GetMainInventoryItems();
+    int[] itemIds = new int[itemsToSave.Count];
     int i = 0;
-    playerItems.ForEach(item => {
+    itemsToSave.ForEach(item => {
       itemIds[i] = (itemDatabase.GetItemId(item));
       i++;
     }); 
@@ -31,7 +34,6 @@ public class Inventory : MonoBehaviour {
     }
     DontDestroyOnLoad(this.gameObject);
     itemDatabase = FindObjectOfType<ItemDatabase>();
-
   }
 
   private void Start() {
@@ -45,40 +47,36 @@ public class Inventory : MonoBehaviour {
 
   public void GiveItem(int id) {
     Item itemToAdd = itemDatabase.GetItem(id);
+    itemToAdd.index = playerItems.Count;
     PerformGiveItem(itemToAdd);
   }
 
   public void GiveItem(string itemName) {
     Item itemToAdd = itemDatabase.GetItem(itemName);
+    itemToAdd.index = playerItems.Count;
     PerformGiveItem(itemToAdd);
   }
 
   private void PerformGiveItem(Item itemToAdd) {
     inventoryUI.AddItemToUI(itemToAdd);
     playerItems.Add(itemToAdd);
+    UpdateIndices();
   }
 
-  public Item CheckForItem(int id) {
-    return playerItems.Find(item => item.id == id);
+  public void RemoveItem(int index) {
+    playerItems[index] = null;
   }
 
-  public Item CheckForItem(string itemName) {
-    return playerItems.Find(item => item.itemName == itemName);
-  }
 
-  public void RemoveItem(int id) {
-    Item itemToRemove = CheckForItem(id);
-    PerformRemoveItem(itemToRemove);
-  }
 
-  public void RemoveItem(string itemName) {
-    Item itemToRemove = CheckForItem(itemName);
-    PerformRemoveItem(itemToRemove);
-  }
-
-  private void PerformRemoveItem(Item itemToRemove) {
-    if (itemToRemove != null) {
-      playerItems.Remove(itemToRemove);
+  public void UpdateIndices() {
+    for (int i = playerItems.Count -1; i > -1; i--) {
+      if (playerItems[i] == null) {
+        playerItems.RemoveAt(i);
+      }
+    }
+    for (int j = 0; j < playerItems.Count; j++) {
+      playerItems[j].index = j;
     }
   }
 

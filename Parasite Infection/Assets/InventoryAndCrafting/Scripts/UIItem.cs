@@ -36,7 +36,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
     if (isPlayerEquipmentSlot) {
       if (item != null) {
-        partyPanel.UpdatePartyMemberEquipment();
+        partyPanel.UpdatePartyMemberEquipment(item);
        }
     }
   }

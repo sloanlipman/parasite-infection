@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using BattleSystem;
@@ -88,7 +87,6 @@ public class UIPartyPanel : MonoBehaviour {
         slots[i].SetActive(false);
       }
     }
-    UpdatePartyMemberEquipment();
     for (int j = 0; j < member.equipment.Length; j++) {
       UIItem uiItem = slots[j].GetComponentInChildren<UIItem>();
       uiItem.UpdateItem(member.equipment[j]);
@@ -104,16 +102,16 @@ public class UIPartyPanel : MonoBehaviour {
     }
   }
 
-  public void UpdatePartyMemberEquipment() {
+  public void UpdatePartyMemberEquipment(Item item) {
     if (selectedPartyMember != null) {
       PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
 
       for (int i = 0; i < slots.Length; i++) {
         if (slots[i].gameObject.activeSelf) {
           UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
-          if (uiItem.item != null) {
-            inventory.RemoveItem(uiItem.item.id);
-            member.equipment[i] = uiItem.item;
+          if (uiItem.item == item) {
+            inventory.RemoveItem(item.index);
+            member.equipment[i] = item;
             uiItem.item = member.equipment[i];
           }
         }

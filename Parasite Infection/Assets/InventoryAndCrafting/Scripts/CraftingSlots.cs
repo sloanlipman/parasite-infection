@@ -17,10 +17,13 @@ public class CraftingSlots : MonoBehaviour {
   }
 
   public void ClearCraftingSlots() {
+    int i = 0;
     uIItems.ForEach(item => {
-      inventory.RemoveItem(itemDatabase.GetItemId(item.item));
+      inventory.RemoveItem(item.item.index);
       item = null;
+      i++;
     });
+    inventory.UpdateIndices();
   }
 
   public void UpdateRecipe() {

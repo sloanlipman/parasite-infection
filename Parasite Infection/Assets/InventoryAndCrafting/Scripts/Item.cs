@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Item {
   public int id;
+  public int index;
   public string itemName;
   public string description;
   public Sprite icon;
