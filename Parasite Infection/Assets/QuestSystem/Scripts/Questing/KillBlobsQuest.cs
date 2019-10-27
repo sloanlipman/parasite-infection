@@ -12,7 +12,7 @@ public class KillBlobsQuest : Quest {
   }
 
   public override void Complete() {
-    EventController.CompleteKillBlobsQuest();
+    EventController.CompleteKillBlobsQuest("Android");
     base.Complete();
   }
 }

@@ -12,12 +12,12 @@ namespace BattleSystem {
     public Dictionary<string, Ability> abilityList = new Dictionary<string, Ability>();
 
 
-    private void AddAndroidToParty() {
-      activePartyMembers.Add("Android"); // TODO generalize this method
+    private void AddPlayerToParty(string name) {
+      activePartyMembers.Add(name);
     }
 
-    private void RemoveAndroidFromParty() {
-      activePartyMembers.Remove("Android");
+    private void RemovePlayerFromParty(string name) {
+      activePartyMembers.Remove(name);
     }
 
     public void Load() {
@@ -44,7 +44,7 @@ namespace BattleSystem {
       BuildAbilityList();
       BuildPartyDatabase();
       BuildEnemyDatabase();
-      EventController.OnKillBlobsQuestCompleted += AddAndroidToParty;
+      EventController.OnKillBlobsQuestCompleted += AddPlayerToParty;
     }
 
     public List<PartyMember> GetActiveParty() {
@@ -90,12 +90,12 @@ namespace BattleSystem {
     }
 
     void BuildPartyDatabase() {
-      partyMembers = new List<PartyMember>() {
-        Resources.Load<PartyMember>("Players/Barry"),
-        Resources.Load<PartyMember>("Players/Android"),
-        Resources.Load<PartyMember>("Players/Alan")
-      };
-
+      PartyMember[] members = Resources.LoadAll<PartyMember>("Players");
+      foreach(PartyMember member in members) {
+        if (!partyMembers.Contains(member)) {
+          partyMembers.Add(member);
+        }
+      }
       LoadPlayerAbilities();
       activePartyMembers.Add("Barry");
     }
