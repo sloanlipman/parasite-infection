@@ -110,13 +110,13 @@ public class UIPartyPanel : MonoBehaviour {
       for (int i = 0; i < slots.Length; i++) {
         if (slots[i].gameObject.activeSelf) {
           UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
-          if (craftingInventory.IsCraftingItem(item.id)) {
+          if (craftingInventory.IsEquippable(item.id)) {
             if (uiItem.item == item) {           // If item in slot equals item we want to update
               craftingInventory.RemoveItem(item.index); // Remove from inventory
               member.equipment[i] = item; // Set as item
               uiItem.item = member.equipment[i]; // Set the UI
             } 
-          } else  {
+          } else {
             consumableInventory.DeselectItem();
             uiItem.UpdateItem(null);
           } 

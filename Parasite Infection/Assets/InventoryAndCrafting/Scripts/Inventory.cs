@@ -46,6 +46,11 @@ public class Inventory : MonoBehaviour {
     return item.stats["Crafting"] == 1;
   }
 
+  public bool IsEquippable(int id) {
+    Item item = itemDatabase.GetItem(id);
+    return item.stats["Equippable"] == 1;
+  }
+
   public void UpdateIndices() {
     for (int i = playerItems.Count -1; i > -1; i--) {
       if (playerItems[i] == null) {

@@ -15,7 +15,11 @@ public class Tooltip : MonoBehaviour {
     string statText = "";
     foreach(var stat in item.stats) {
       if (stat.Key.ToString() != "CoreID") {
-        statText += "\n" + stat.Key.ToString() + ": " + GetValue(stat.Key, stat.Value);
+        if (stat.Key.ToString() == "Crafting" || stat.Key.ToString() == "Equippable") {
+          statText += "\n" + TranslateValue(stat.Key, stat.Value);
+        } else {
+          statText += "\n" + stat.Key.ToString() + ": " + TranslateValue(stat.Key, stat.Value);
+        }
       }
     }
     string tooltip = string.Format("<b>{0}</b>\n{1}\n{2}", item.itemName, item.description, statText);
@@ -23,7 +27,7 @@ public class Tooltip : MonoBehaviour {
     gameObject.SetActive(true);
   }
 
-  private string GetValue(string key, int value) {
+  private string TranslateValue(string key, int value) {
     switch (key) {
       case "Ability": {
         switch(value) {
@@ -34,15 +38,20 @@ public class Tooltip : MonoBehaviour {
           default: { return "Ability Unknown";}
         }
       }
-      // case "CoreID": {
-      //   switch(value) {
-      //     case 1: { return "Heavy"; }
-      //     case 2: { return "Fire"; }
-      //     case 3: { return "Water"; }
-      //     case 4: { return "Medic"; }
-      //     default: { return "Unknown CoreID"; }
-      //   }
-      // }
+
+      case "Crafting": {
+        switch(value) {
+          case 1: { return "Crafting Item"; }
+          default: { return "Consumable Item"; }
+        }
+      }
+
+      case "Equippable": {
+        switch(value) {
+          case 1: { return "Equippable Item"; }
+          default: { return "Non-equppable Item"; }
+        }
+      }
       default: { return value.ToString(); } 
     }
   }
