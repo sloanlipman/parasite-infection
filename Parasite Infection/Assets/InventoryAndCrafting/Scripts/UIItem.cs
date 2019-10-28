@@ -13,6 +13,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
   private EquipmentSlots equipmentSlots;
   private ConsumableInventory consumableInventory;
   private CraftingInventory craftingInventory;
+  private InventoryController inventoryController;
   private Tooltip tooltip;
   public bool isCraftingSlot = false;
   public bool isCraftingResultSlot = false;
@@ -29,8 +30,13 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     spriteImage = GetComponent<Image>();
     consumableInventory = FindObjectOfType<ConsumableInventory>();
     craftingInventory = FindObjectOfType<CraftingInventory>();
-
+    inventoryController = FindObjectOfType<InventoryController>();
     UpdateItem(null);
+  }
+
+  public void DirectlyNullifyItem() {
+    this.item = null;
+    SetSprite(null);
   }
   
   public void UpdateItem(Item item) {
@@ -48,14 +54,14 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     }
 
     if (item != null && isConsumableInventorySlot) {
-      if (consumableInventory.IsCraftingItem(item.id)) {
+      if (inventoryController.IsCraftingItem(item.id)) {
         UpdateItem(null);
-        consumableInventory.DeselectItem();
+        inventoryController.DeselectItem();
       }
     } else if (item != null && isCraftingInventorySlot) {
-      if (!craftingInventory.IsCraftingItem(item.id)) {
+      if (!inventoryController.IsCraftingItem(item.id)) {
         UpdateItem(null);
-        craftingInventory.DeselectItem();
+        inventoryController.DeselectItem();
       }
     }
   }
@@ -80,9 +86,15 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
       } else if (!isCraftingResultSlot) {
           if (selectedItem.item != null) {
             // Swap the item you clicked with the item currently being dragged
-            Item clone = new Item(selectedItem.item);
-            selectedItem.UpdateItem(this.item);
-            UpdateItem(clone);
+            if (isPlayerEquipmentSlot) {
+              if (inventoryController.IsEquippable(selectedItem.item.id)) {
+                ReplaceItem();
+              } else {
+                inventoryController.DeselectItem();
+              }
+            } else {
+              ReplaceItem();
+            }
           } else {
             selectedItem.UpdateItem(this.item);
             UpdateItem(null);
@@ -92,6 +104,12 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
       UpdateItem(selectedItem.item);
       selectedItem.UpdateItem(null);
     }
+  }
+
+  public void ReplaceItem() {
+    Item clone = new Item(selectedItem.item);
+    selectedItem.UpdateItem(this.item);
+    UpdateItem(clone);
   }
 
 // Remove item from player's equipment slots

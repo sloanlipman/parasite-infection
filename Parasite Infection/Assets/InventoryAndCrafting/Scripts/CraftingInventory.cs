@@ -31,7 +31,7 @@ public class CraftingInventory : Inventory {
       item.isCraftingInventorySlot = true;
     }
    for (int i = 1; i <= itemDatabase.items.Count; i++) {
-     if (IsCraftingItem(i)) {
+     if (inventoryController.IsCraftingItem(i)) {
       GiveItem(i);
      }
     }
@@ -52,6 +52,7 @@ public class CraftingInventory : Inventory {
       Destroy(this.gameObject);
     }
     DontDestroyOnLoad(this.gameObject);
+    inventoryController = FindObjectOfType<InventoryController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
   }
 }

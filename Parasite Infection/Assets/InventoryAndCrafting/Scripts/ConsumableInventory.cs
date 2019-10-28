@@ -25,7 +25,7 @@ public class ConsumableInventory : Inventory {
   }
   void Start() {
    for (int i = 1; i <= itemDatabase.items.Count; i++) {
-     if (!IsCraftingItem(i)) {
+     if (!inventoryController.IsCraftingItem(i)) {
       GiveItem(i);
      }
     }    inventoryUI.gameObject.SetActive(false);
@@ -40,6 +40,7 @@ public class ConsumableInventory : Inventory {
       Destroy(this.gameObject);
     }
     DontDestroyOnLoad(this.gameObject);
+    inventoryController = FindObjectOfType<InventoryController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
   }
 }

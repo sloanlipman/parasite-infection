@@ -37,8 +37,7 @@ public class MenuController : MonoBehaviour {
     partyPanel.gameObject.SetActive(false);
     playerEquipment.gameObject.SetActive(false);
     playerInfo.gameObject.SetActive(false);
-    DeselectConsumableItem();
-    DeselectCraftingItem();
+    DeselectItem();
     ToggleMenu(false);
   }
 
@@ -71,27 +70,21 @@ public class MenuController : MonoBehaviour {
     return menuPanel.gameObject.activeSelf;
   }
 
-  private void DeselectCraftingItem() {
-    FindObjectOfType<CraftingInventory>().DeselectItem(); 
-  }
-  
-  private void DeselectConsumableItem() {
-    FindObjectOfType<ConsumableInventory>().DeselectItem();
+  private void DeselectItem() {
+    FindObjectOfType<InventoryController>().DeselectItem();
   }
 
   public void ToggleCraftingInventory() {
-    DeselectConsumableItem();
+    DeselectItem();
     craftingInventory.gameObject.SetActive(!craftingInventory.gameObject.activeSelf);
     consumableInventory.gameObject.SetActive(false);
-    DeselectCraftingItem();
 
   }
 
   public void ToggleConsumableInventory() {
-    DeselectCraftingItem();
+    DeselectItem();
     consumableInventory.gameObject.SetActive(!consumableInventory.gameObject.activeSelf);
     craftingInventory.gameObject.SetActive(false);
-    DeselectConsumableItem();
   }
 
   public void ToggleQuestPanel() {

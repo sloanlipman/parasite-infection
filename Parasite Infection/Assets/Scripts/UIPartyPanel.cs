@@ -10,6 +10,7 @@ public class UIPartyPanel : MonoBehaviour {
   [SerializeField] private GameObject equipmentSlots;
   private CraftingInventory craftingInventory;
   private ConsumableInventory consumableInventory;
+  private InventoryController inventoryController;
   private string selectedPartyMember;
 
   private List<Button> buttonList = new List<Button>();
@@ -23,6 +24,7 @@ public class UIPartyPanel : MonoBehaviour {
     craftingInventory = FindObjectOfType<CraftingInventory>();
     consumableInventory = FindObjectOfType<ConsumableInventory>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
+    inventoryController = FindObjectOfType<InventoryController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
     ClearSlots();
   }
@@ -110,15 +112,17 @@ public class UIPartyPanel : MonoBehaviour {
       for (int i = 0; i < slots.Length; i++) {
         if (slots[i].gameObject.activeSelf) {
           UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
-          if (craftingInventory.IsEquippable(item.id)) {
-            if (uiItem.item == item) {           // If item in slot equals item we want to update
+          Item currentItem = member.equipment[i];
+
+          if (inventoryController.IsEquippable(item.id)) {
+            if (uiItem.item != null) {         // If item in slot equals item we want to update
               craftingInventory.RemoveItem(item.index); // Remove from inventory
               member.equipment[i] = item; // Set as item
               uiItem.item = member.equipment[i]; // Set the UI
-            } 
+            }
           } else {
-            consumableInventory.DeselectItem();
-            uiItem.UpdateItem(null);
+            inventoryController.DeselectItem();
+            uiItem.DirectlyNullifyItem();
           } 
         }
       }
