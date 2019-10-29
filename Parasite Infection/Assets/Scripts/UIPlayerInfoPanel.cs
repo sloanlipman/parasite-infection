@@ -19,13 +19,11 @@ public class UIPlayerInfoPanel : MonoBehaviour {
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     partyMemberName = partyPanel.GetSelectedPartyMember();
     partyMember = characterController.FindPartyMemberByName(partyMemberName);
-    Debug.Log("looked up Party member and got: " + partyMember.characterName);
     characterName.text = "Name: " + partyMember.characterName;
     hp.text = string.Format("HP: {0}/{1}", partyMember.health, partyMember.maxHealth);
     ep.text = string.Format("Energy: {0}/{1}", partyMember.energyPoints, partyMember.maxEnergyPoints);
     level.text = "Level: " + partyMember.level;
     levelUpIn.text = "TODO";
-    Debug.Log("Experience is: " + partyMember.experience);
   }
 
   // Update is called once per frame

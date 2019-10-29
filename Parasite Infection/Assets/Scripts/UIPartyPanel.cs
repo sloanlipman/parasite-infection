@@ -59,10 +59,10 @@ public class UIPartyPanel : MonoBehaviour {
       buttonList.Add(button);
       button.GetComponentInChildren<Text>().text = member.characterName;
       button.GetComponent<Button>().onClick.AddListener(() => {
-        craftingInventory.gameObject.SetActive(true);
+        consumableInventory.GetUIInventory().gameObject.SetActive(false);
+        craftingInventory.GetUIInventory().gameObject.SetActive(true);
         
         if (selectedPartyMember != member.characterName) {
-          Debug.LogWarning("Clicked on: " + member.characterName);
           AddPlayerEquipmentSlots(member);
         }
       });
@@ -76,7 +76,6 @@ public class UIPartyPanel : MonoBehaviour {
     if (!playerInfo.gameObject.activeSelf) {
       playerInfo.gameObject.SetActive(true);
     }
-    Debug.LogWarning("# equipment: " + member.equipment.Length);
 
     ClearSlots();
 
@@ -105,7 +104,32 @@ public class UIPartyPanel : MonoBehaviour {
     }
   }
 
+  public void PrintCurrentEquipment(int index) {
+    if (selectedPartyMember != null) {
+      PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
+      for (int i = 0; i < slots.Length; i++) {
+
+      UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
+      Item currentItem = member.equipment[i];
+      if (uiItem != null && uiItem.item != null) {
+      Debug.Log("At index " + i + "uiItem is " + uiItem.item.itemName + index);
+      } else {
+        Debug.Log("At index " + i + "uiItem is null" + index);
+
+      }
+
+      if (currentItem != null) {
+      Debug.Log("At index " + i + "current item is " + currentItem.itemName + index);
+
+      } else {
+        Debug.Log("At Index " + i + "current item is null" + index);
+      }
+      }
+    }
+  }
+
   public void UpdatePartyMemberEquipment(Item item) {
+    Debug.Log("Updating for " + item.itemName);
     if (selectedPartyMember != null) {
       PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
 
@@ -113,18 +137,23 @@ public class UIPartyPanel : MonoBehaviour {
         if (slots[i].gameObject.activeSelf) {
           UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
           Item currentItem = member.equipment[i];
-
-          if (inventoryController.IsEquippable(item.id)) {
-            if (uiItem.item != null) {         // If item in slot equals item we want to update
-              craftingInventory.RemoveItem(item.index); // Remove from inventory
-              member.equipment[i] = item; // Set as item
-              uiItem.item = member.equipment[i]; // Set the UI
+          if (inventoryController.IsEquippable(item)) {
+            Debug.Log("Item is equippable: " + item.itemName);
+            if (uiItem.item != null) { // The item has been swapped out
+            // Debug.Log("uiItem.item is " + uiItem.item.itemName + " and current item is " + currentItem.itemName);
+              craftingInventory.RemoveItem(item); // Remove from inventory
+              member.equipment[i] = uiItem.item; // Set as item
+              // uiItem.item = member.equipment[i]; // Set the UI
+            } else {
+              member.equipment[i] = null;
+              Debug.LogWarning("Need to handle the error here!!!!");
             }
           } else {
+            Debug.Log("Got into the else block");
             inventoryController.DeselectItem();
             uiItem.DirectlyNullifyItem();
           } 
-        }
+        } else { Debug.LogWarning("Was not equippable");}
       }
     }
   }

@@ -49,17 +49,21 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
     if (isPlayerEquipmentSlot) {
       if (item != null) {
+        Debug.Log("Printing info before updating the equipment");
+        partyPanel.PrintCurrentEquipment(100);
+        Debug.Log("End of print");
         partyPanel.UpdatePartyMemberEquipment(item);
+        partyPanel.PrintCurrentEquipment(200);
        }
     }
 
     if (item != null && isConsumableInventorySlot) {
-      if (inventoryController.IsCraftingItem(item.id)) {
+      if (inventoryController.IsCraftingItem(item)) {
         UpdateItem(null);
         inventoryController.DeselectItem();
       }
     } else if (item != null && isCraftingInventorySlot) {
-      if (!inventoryController.IsCraftingItem(item.id)) {
+      if (!inventoryController.IsCraftingItem(item)) {
         UpdateItem(null);
         inventoryController.DeselectItem();
       }
@@ -77,23 +81,24 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
   public void OnPointerDown(PointerEventData eventData) {
     if (this.item != null) {
-      Debug.Log("Item clicked was: " + this.item.itemName);
       UICraftResult craftResult = GetComponent<UICraftResult>();
-      if (craftResult != null && this.item != null && selectedItem.item == null) { // Successful craft
+      if (craftResult != null && selectedItem.item == null) { // Successful craft
         craftResult.PickItem();
         selectedItem.UpdateItem(this.item);
         craftResult.ClearSlots();
       } else if (!isCraftingResultSlot) {
           if (selectedItem.item != null) {
-            // Swap the item you clicked with the item currently being dragged
             if (isPlayerEquipmentSlot) {
-              if (inventoryController.IsEquippable(selectedItem.item.id)) {
-                ReplaceItem();
+              if (inventoryController.IsEquippable(selectedItem.item)) {
+                Debug.Log("Selected item is equippable");
+                SwapItems();
+                Debug.Log("After the swap: Selected item is " + selectedItem.item.itemName);
+                Debug.Log("After the swap: Item in slot is: " + this.item.itemName);
               } else {
                 inventoryController.DeselectItem();
               }
             } else {
-              ReplaceItem();
+              SwapItems();
             }
           } else {
             selectedItem.UpdateItem(this.item);
@@ -101,12 +106,17 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
         }
       }
     } else if (selectedItem.item != null && !isCraftingResultSlot) {
-      UpdateItem(selectedItem.item);
-      selectedItem.UpdateItem(null);
+        if (isPlayerEquipmentSlot && !inventoryController.IsEquippable(selectedItem.item)) {
+          inventoryController.DeselectItem();
+        } else {
+          UpdateItem(selectedItem.item);
+          selectedItem.UpdateItem(null);
+      }
     }
   }
 
-  public void ReplaceItem() {
+  public void SwapItems() {
+    // Swap the item you clicked with the item currently being dragged
     Item clone = new Item(selectedItem.item);
     selectedItem.UpdateItem(this.item);
     UpdateItem(clone);
@@ -139,5 +149,9 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
   public UIItem GetSelectedItem() {
     return selectedItem;
+  }
+
+  public void SetSelectedItem(Item item) {
+    selectedItem.item = item;
   }
 }

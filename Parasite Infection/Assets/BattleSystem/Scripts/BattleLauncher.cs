@@ -55,7 +55,6 @@ namespace BattleSystem {
 
     public void PrepareBattle(Vector2 position) {
       worldPosition = position;
-      Debug.Log("Position is: " + position);
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
       this.players = characterController.GetActiveParty();
       this.enemies = characterController.GetEnemies();

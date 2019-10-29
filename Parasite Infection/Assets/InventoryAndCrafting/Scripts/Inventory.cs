@@ -31,8 +31,10 @@ public class Inventory : MonoBehaviour {
     UpdateIndices();
   }
 
-  public void RemoveItem(int index) {
-    playerItems[index] = null;
+  public void RemoveItem(Item item) {
+    if (playerItems[item.index] != null) {
+      playerItems[item.index] = null;
+    }
   }
 
   public void UpdateIndices() {

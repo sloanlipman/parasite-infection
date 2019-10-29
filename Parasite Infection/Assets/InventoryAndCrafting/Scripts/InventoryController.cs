@@ -38,13 +38,21 @@ public class InventoryController : MonoBehaviour {
     return item.stats["Equippable"] == 1;
   }
 
+  public bool IsCraftingItem(Item item) {
+    return item.stats["Crafting"] == 1;
+  }
+
+  public bool IsEquippable(Item item) {
+    return item.stats["Equippable"] == 1;
+  }
+
   public void DeselectItem() {
     GameObject uiItem = GameObject.Find("SelectedItem");
     if (uiItem != null) {
       UIItem selectedUIItem = uiItem.GetComponent<UIItem>();
       if (selectedUIItem != null && selectedUIItem.item != null) {
         UIInventory inventoryUIToUse;
-        if (IsCraftingItem(selectedUIItem.item.id)) {
+        if (IsCraftingItem(selectedUIItem.item)) {
           inventoryUIToUse = FindObjectOfType<CraftingInventory>().GetUIInventory();
         } else {
           inventoryUIToUse = FindObjectOfType<ConsumableInventory>().GetUIInventory();

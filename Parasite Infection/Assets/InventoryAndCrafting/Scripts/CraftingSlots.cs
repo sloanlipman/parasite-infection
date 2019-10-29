@@ -19,7 +19,7 @@ public class CraftingSlots : MonoBehaviour {
   public void ClearCraftingSlots() {
     int i = 0;
     uIItems.ForEach(item => {
-      inventory.RemoveItem(item.item.index);
+      inventory.RemoveItem(item.item);
       item = null;
       i++;
     });

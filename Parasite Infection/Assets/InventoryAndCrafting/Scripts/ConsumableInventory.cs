@@ -28,7 +28,8 @@ public class ConsumableInventory : Inventory {
      if (!inventoryController.IsCraftingItem(i)) {
       GiveItem(i);
      }
-    }    inventoryUI.gameObject.SetActive(false);
+    }
+    inventoryUI.gameObject.SetActive(false);
     UIItem[] consumableInventorySlots = inventoryUI.GetComponentsInChildren<UIItem>();
     foreach(UIItem item in consumableInventorySlots) {
       item.isConsumableInventorySlot = true;
