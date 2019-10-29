@@ -90,10 +90,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
           if (selectedItem.item != null) {
             if (isPlayerEquipmentSlot) {
               if (inventoryController.IsEquippable(selectedItem.item)) {
-                Debug.Log("Selected item is equippable");
                 SwapItems();
-                Debug.Log("After the swap: Selected item is " + selectedItem.item.itemName);
-                Debug.Log("After the swap: Item in slot is: " + this.item.itemName);
               } else {
                 inventoryController.DeselectItem();
               }
@@ -125,16 +122,15 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 // Remove item from player's equipment slots
   public void OnPointerUp(PointerEventData eventData) {
     if (isPlayerEquipmentSlot && selectedItem.item != null) {
-        GameObject[] slots = equipmentSlots.GetSlots();
-        for (int i = 0; i < slots.Length; i++) {
-          UIItem item = slots[i].GetComponentInChildren<UIItem>();
-          if (this == item) {
-            partyPanel.RemoveItem(i);
-            break;
-          }
+      GameObject[] slots = equipmentSlots.GetSlots();
+      for (int i = 0; i < slots.Length; i++) {
+        UIItem item = slots[i].GetComponentInChildren<UIItem>();
+        if (this == item) {
+          partyPanel.RemoveItem(i);
+          break;
         }
-        UpdateItem(null);
       }
+    }
   }
 
   public void OnPointerEnter(PointerEventData eventData) {

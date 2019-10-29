@@ -63,7 +63,11 @@ public class UIPartyPanel : MonoBehaviour {
         craftingInventory.GetUIInventory().gameObject.SetActive(true);
         
         if (selectedPartyMember != member.characterName) {
+          if (equipmentSlots.gameObject.activeSelf) {
+            ParseUIForCurrentEquipment(); // If another party member's equipment is open, save the currenytly opened one
+          }
           AddPlayerEquipmentSlots(member);
+          RestoreUIForCurrentEquipment();
         }
       });
     });
@@ -89,10 +93,11 @@ public class UIPartyPanel : MonoBehaviour {
         slots[i].SetActive(false);
       }
     }
-    for (int j = 0; j < member.equipment.Length; j++) {
-      UIItem uiItem = slots[j].GetComponentInChildren<UIItem>();
-      uiItem.UpdateItem(member.equipment[j]);
-    }
+    RestoreUIForCurrentEquipment();
+    // for (int j = 0; j < member.equipment.Length; j++) {
+    //   UIItem uiItem = slots[j].GetComponentInChildren<UIItem>();
+    //   uiItem.UpdateItem(member.equipment[j]);
+    // }
     playerInfo.Populate(selectedPartyMember);
   }
 
@@ -128,8 +133,36 @@ public class UIPartyPanel : MonoBehaviour {
     }
   }
 
+  public void ParseUIForCurrentEquipment() {
+    if (selectedPartyMember != null) {
+      PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
+      for (int i = 0; i < slots.Length; i++) {
+        UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
+          if (uiItem.item != null) { // The item has been swapped out
+            member.equipment[i] = uiItem.item; // Set as item
+          } else {
+            member.equipment[i] = null;
+          }
+        }
+      }
+    }
+
+  public void RestoreUIForCurrentEquipment() {
+    if (selectedPartyMember != null) {
+      PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
+      for (int i = 0; i < slots.Length; i++) {
+        UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
+          if (member.equipment[i] != null) { // The item has been swapped out
+            uiItem.item = member.equipment[i]; // Set as item
+            uiItem.SetSprite(uiItem.item);
+          } else {
+           uiItem.DirectlyNullifyItem();
+          }
+        }
+      }
+  }
+
   public void UpdatePartyMemberEquipment(Item item) {
-    Debug.Log("Updating for " + item.itemName);
     if (selectedPartyMember != null) {
       PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
 
@@ -140,10 +173,8 @@ public class UIPartyPanel : MonoBehaviour {
           if (inventoryController.IsEquippable(item)) {
             Debug.Log("Item is equippable: " + item.itemName);
             if (uiItem.item != null) { // The item has been swapped out
-            // Debug.Log("uiItem.item is " + uiItem.item.itemName + " and current item is " + currentItem.itemName);
               craftingInventory.RemoveItem(item); // Remove from inventory
               member.equipment[i] = uiItem.item; // Set as item
-              // uiItem.item = member.equipment[i]; // Set the UI
             } else {
               member.equipment[i] = null;
               Debug.LogWarning("Need to handle the error here!!!!");

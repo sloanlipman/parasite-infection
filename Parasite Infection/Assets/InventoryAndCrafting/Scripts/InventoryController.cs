@@ -46,7 +46,7 @@ public class InventoryController : MonoBehaviour {
     return item.stats["Equippable"] == 1;
   }
 
-  public void DeselectItem() {
+  public void DeselectItem(bool returnToInventory = true) {
     GameObject uiItem = GameObject.Find("SelectedItem");
     if (uiItem != null) {
       UIItem selectedUIItem = uiItem.GetComponent<UIItem>();
@@ -57,7 +57,9 @@ public class InventoryController : MonoBehaviour {
         } else {
           inventoryUIToUse = FindObjectOfType<ConsumableInventory>().GetUIInventory();
         }
-        inventoryUIToUse.AddItemToUI(selectedUIItem.item);
+        if (returnToInventory) {
+          inventoryUIToUse.AddItemToUI(selectedUIItem.item);
+        }
         selectedUIItem.DirectlyNullifyItem();
       }
     }

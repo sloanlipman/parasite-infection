@@ -8,6 +8,7 @@ public class SaveService : MonoBehaviour {
 
   public static SaveService Instance {get; set;}
   private BattleSystem.CharacterController characterController;
+  private InventoryController inventoryController;
   private CraftingInventory craftingInventory;
   private ConsumableInventory consumableInventory;
   private QuestController questController;
@@ -29,6 +30,7 @@ public class SaveService : MonoBehaviour {
   public void Load() {
     if (ES3.FileExists() && ES3.FileExists("PlayerInfo.es3")) {
       ClearAll();
+      inventoryController.DeselectItem(false);
       menuController.CloseAllMenus();
       craftingInventory.Load();
       consumableInventory.Load();
@@ -106,6 +108,7 @@ public class SaveService : MonoBehaviour {
     questController = FindObjectOfType<QuestController>();
     menuController = FindObjectOfType<MenuController>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
+    inventoryController = FindObjectOfType<InventoryController>();
   }
 
   void Start() {
