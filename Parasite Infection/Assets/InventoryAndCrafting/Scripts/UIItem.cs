@@ -49,11 +49,8 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
     if (isPlayerEquipmentSlot) {
       if (item != null) {
-        Debug.Log("Printing info before updating the equipment");
-        partyPanel.PrintCurrentEquipment(100);
-        Debug.Log("End of print");
-        partyPanel.UpdatePartyMemberEquipment(item);
-        partyPanel.PrintCurrentEquipment(200);
+        partyPanel.ParseUIForCurrentEquipment();
+        craftingInventory.RemoveItem(item);
        }
     }
 
@@ -79,6 +76,10 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     }
   }
 
+  private bool IsEquippable(UIItem item) {
+    return inventoryController.IsEquippable(item.item);
+  }
+
   public void OnPointerDown(PointerEventData eventData) {
     if (this.item != null) {
       UICraftResult craftResult = GetComponent<UICraftResult>();
@@ -89,7 +90,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
       } else if (!isCraftingResultSlot) {
           if (selectedItem.item != null) {
             if (isPlayerEquipmentSlot) {
-              if (inventoryController.IsEquippable(selectedItem.item)) {
+              if (IsEquippable(selectedItem)) {
                 SwapItems();
               } else {
                 inventoryController.DeselectItem();
@@ -103,7 +104,8 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
         }
       }
     } else if (selectedItem.item != null && !isCraftingResultSlot) {
-        if (isPlayerEquipmentSlot && !inventoryController.IsEquippable(selectedItem.item)) {
+        if (isPlayerEquipmentSlot && !IsEquippable(selectedItem)) {
+          Debug.Log("is equip slot && selected item is not equippable");
           inventoryController.DeselectItem();
         } else {
           UpdateItem(selectedItem.item);
@@ -121,16 +123,16 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
 // Remove item from player's equipment slots
   public void OnPointerUp(PointerEventData eventData) {
-    if (isPlayerEquipmentSlot && selectedItem.item != null) {
-      GameObject[] slots = equipmentSlots.GetSlots();
-      for (int i = 0; i < slots.Length; i++) {
-        UIItem item = slots[i].GetComponentInChildren<UIItem>();
-        if (this == item) {
-          partyPanel.RemoveItem(i);
-          break;
-        }
-      }
-    }
+  //   if (isPlayerEquipmentSlot && selectedItem.item != null) {
+  //     GameObject[] slots = equipmentSlots.GetSlots();
+  //     for (int i = 0; i < slots.Length; i++) {
+  //       UIItem item = slots[i].GetComponentInChildren<UIItem>();
+  //       if (this == item) {
+  //         partyPanel.RemoveItem(i);
+  //         break;
+  //       }
+  //     }
+  //   }
   }
 
   public void OnPointerEnter(PointerEventData eventData) {

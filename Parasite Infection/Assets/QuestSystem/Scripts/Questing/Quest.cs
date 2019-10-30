@@ -8,10 +8,14 @@ namespace QuestSystem {
     public Goal goal;
     public bool completed;
     public List<string> itemRewards;
-    private Inventory inventory;
+    private InventoryController inventoryController;
+    private CraftingInventory craftingInventory;
+    private ConsumableInventory consumableInventory;
 
     private void Start() {
-      inventory = FindObjectOfType<Inventory>();
+      inventoryController = FindObjectOfType<InventoryController>();
+      craftingInventory = FindObjectOfType<CraftingInventory>();
+      consumableInventory = FindObjectOfType<ConsumableInventory>();
     }
 
     public virtual void Complete() {
@@ -23,10 +27,12 @@ namespace QuestSystem {
     }
 
     public void GrantReward() {
+      
       Debug.Log("Turning in quest... granting reward");
       foreach(string item in itemRewards) {
+        UIInventory inventory = inventoryController.SelectCorrectInventoryUI(item);
         Debug.Log("Rewarded with: " + item);
-        inventory.GiveItem(item);
+        craftingInventory.GiveItem(item);
       }
     }
   }

@@ -6,11 +6,11 @@ public class CraftingSlots : MonoBehaviour {
   public CraftRecipeDatabase recipeDatabase;
   private List<UIItem> uIItems = new List<UIItem>();
   public UIItem craftResultSlot;
-  private Inventory inventory;
+  private CraftingInventory craftingInventory;
   private ItemDatabase itemDatabase;
 
   private void Start() {
-    inventory = FindObjectOfType<Inventory>();
+    craftingInventory = FindObjectOfType<CraftingInventory>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
     uIItems = GetComponent<SlotPanel>().uiItems;
     uIItems.ForEach(item => item.isCraftingSlot = true);
@@ -19,11 +19,11 @@ public class CraftingSlots : MonoBehaviour {
   public void ClearCraftingSlots() {
     int i = 0;
     uIItems.ForEach(item => {
-      inventory.RemoveItem(item.item);
+      craftingInventory.RemoveItem(item.item);
       item = null;
       i++;
     });
-    inventory.UpdateIndices();
+    craftingInventory.UpdateIndices();
   }
 
   public void UpdateRecipe() {

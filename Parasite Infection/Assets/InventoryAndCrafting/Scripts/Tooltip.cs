@@ -11,12 +11,6 @@ public class Tooltip : MonoBehaviour {
     gameObject.SetActive(false);
   }
 
-  // void Update() {
-  //   if (Time.timeScale == 1) {
-  //     gameObject.SetActive(false);
-  //   }
-  // }
-
   public void GenerateTooltip(Item item) {
     string statText = "";
     foreach(var stat in item.stats) {

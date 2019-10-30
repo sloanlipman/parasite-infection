@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private UIPartyPanel partyPanel;
   [SerializeField] private GameObject playerEquipment;
   [SerializeField] private UIPlayerInfoPanel playerInfo;
+  [SerializeField] private Tooltip tooltip;
 
   public static bool IsBattleCurrentScene() {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
@@ -26,6 +27,9 @@ public class MenuController : MonoBehaviour {
 
   public void UnpauseGame() {
     CloseAllMenus();
+    if (tooltip.gameObject.activeSelf) {
+      tooltip.gameObject.SetActive(false);
+    }
     Time.timeScale = 1;
   }
 
@@ -71,6 +75,7 @@ public class MenuController : MonoBehaviour {
   }
 
   private void DeselectItem() {
+    partyPanel.ParseUIForCurrentEquipment();
     FindObjectOfType<InventoryController>().DeselectItem();
   }
 

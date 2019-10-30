@@ -46,19 +46,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Barry
-  health: 15
+  health: 11
   maxHealth: 15
   attackPower: 5
   defensePower: 3
-  energyPoints: 15
+  energyPoints: 85
   maxEnergyPoints: 15
   speed: 0
   abilities: []
   abilitiesList: []
   level: 0
-  experience: 50
+  experience: 90
   inParty: 0
-  modSlots: 2
+  modSlots: 4
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0

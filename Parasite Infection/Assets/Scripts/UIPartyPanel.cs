@@ -41,6 +41,14 @@ public class UIPartyPanel : MonoBehaviour {
     return selectedPartyMember;
   }
 
+  public PartyMember LookUpSelectedPartyMember() {
+    // if (selectedPartyMember != null) {
+      return characterController.FindPartyMemberByName(selectedPartyMember);
+    // } else {
+    //   return null;
+    // }
+  }
+
   void ClearSlots() {
     foreach (var slot in slots) {
       UIItem uiItem = slot.GetComponentInChildren<UIItem>();
@@ -94,48 +102,21 @@ public class UIPartyPanel : MonoBehaviour {
       }
     }
     RestoreUIForCurrentEquipment();
-    // for (int j = 0; j < member.equipment.Length; j++) {
-    //   UIItem uiItem = slots[j].GetComponentInChildren<UIItem>();
-    //   uiItem.UpdateItem(member.equipment[j]);
-    // }
     playerInfo.Populate(selectedPartyMember);
   }
 
   public void RemoveItem(int index) {
-    PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
+    PartyMember member = LookUpSelectedPartyMember();
     Item item = member.equipment[index];
     if (item != null) {
       member.equipment[index] = null;
     }
   }
 
-  public void PrintCurrentEquipment(int index) {
-    if (selectedPartyMember != null) {
-      PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
-      for (int i = 0; i < slots.Length; i++) {
-
-      UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
-      Item currentItem = member.equipment[i];
-      if (uiItem != null && uiItem.item != null) {
-      Debug.Log("At index " + i + "uiItem is " + uiItem.item.itemName + index);
-      } else {
-        Debug.Log("At index " + i + "uiItem is null" + index);
-
-      }
-
-      if (currentItem != null) {
-      Debug.Log("At index " + i + "current item is " + currentItem.itemName + index);
-
-      } else {
-        Debug.Log("At Index " + i + "current item is null" + index);
-      }
-      }
-    }
-  }
-
+// Save the current items
   public void ParseUIForCurrentEquipment() {
     if (selectedPartyMember != null) {
-      PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
+      PartyMember member = LookUpSelectedPartyMember();
       for (int i = 0; i < slots.Length; i++) {
         UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
           if (uiItem.item != null) { // The item has been swapped out
@@ -147,44 +128,18 @@ public class UIPartyPanel : MonoBehaviour {
       }
     }
 
+// Load the previous items
   public void RestoreUIForCurrentEquipment() {
     if (selectedPartyMember != null) {
-      PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
+      PartyMember member = LookUpSelectedPartyMember();
       for (int i = 0; i < slots.Length; i++) {
         UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
-          if (member.equipment[i] != null) { // The item has been swapped out
-            uiItem.item = member.equipment[i]; // Set as item
-            uiItem.SetSprite(uiItem.item);
-          } else {
-           uiItem.DirectlyNullifyItem();
-          }
+        if (member.equipment[i] != null) { // The item has been swapped out
+          uiItem.item = member.equipment[i]; // Set as item
+          uiItem.SetSprite(uiItem.item);
+        } else {
+          uiItem.DirectlyNullifyItem();
         }
-      }
-  }
-
-  public void UpdatePartyMemberEquipment(Item item) {
-    if (selectedPartyMember != null) {
-      PartyMember member = characterController.FindPartyMemberByName(selectedPartyMember);
-
-      for (int i = 0; i < slots.Length; i++) {
-        if (slots[i].gameObject.activeSelf) {
-          UIItem uiItem = slots[i].GetComponentInChildren<UIItem>();
-          Item currentItem = member.equipment[i];
-          if (inventoryController.IsEquippable(item)) {
-            Debug.Log("Item is equippable: " + item.itemName);
-            if (uiItem.item != null) { // The item has been swapped out
-              craftingInventory.RemoveItem(item); // Remove from inventory
-              member.equipment[i] = uiItem.item; // Set as item
-            } else {
-              member.equipment[i] = null;
-              Debug.LogWarning("Need to handle the error here!!!!");
-            }
-          } else {
-            Debug.Log("Got into the else block");
-            inventoryController.DeselectItem();
-            uiItem.DirectlyNullifyItem();
-          } 
-        } else { Debug.LogWarning("Was not equippable");}
       }
     }
   }

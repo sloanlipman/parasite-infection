@@ -5,12 +5,12 @@ using UnityEngine.EventSystems;
 
 public class UICraftResult : MonoBehaviour {
   public SlotPanel slotPanel;
-  public Inventory inventory;
+  public CraftingInventory craftingInventory;
   [SerializeField] private CraftingSlots craftingSlots;
 
   public void PickItem() {
     craftingSlots.ClearCraftingSlots();
-    inventory.playerItems.Add(GetComponent<UIItem>().item);
+    craftingInventory.playerItems.Add(GetComponent<UIItem>().item);
   }
 
   public void ClearSlots() {
