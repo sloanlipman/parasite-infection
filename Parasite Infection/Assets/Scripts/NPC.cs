@@ -17,10 +17,13 @@ public class NPC : Character {
   [SerializeField] private DialogData dialogData;
   [SerializeField] private DialogData questCompletedDialogData;
 
-  [SerializeField] private DialogPanel dialog;
-  // Start is called before the first frame update
-  void Start() {
+  private DialogPanel dialog;
+  
+  private void Start() {
     questController = FindObjectOfType<QuestSystem.QuestController>();
+    DialogPanel[] dialogPanelArray = Resources.FindObjectsOfTypeAll<DialogPanel>() as DialogPanel[];
+    dialog = dialogPanelArray[0];
+
     spawnPosition = transform.position;
     if (wander) {
       Wander();    
