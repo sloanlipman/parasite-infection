@@ -88,7 +88,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
   public void OnPointerDown(PointerEventData eventData) {
     if (this.item != null) {
-      Debug.Log("Item's index is: " + item.index);
+      Debug.Log(item);
       UICraftResult craftResult = GetComponent<UICraftResult>();
       if (craftResult != null && selectedItem.item == null) { // Successful craft
         craftResult.PickItem();

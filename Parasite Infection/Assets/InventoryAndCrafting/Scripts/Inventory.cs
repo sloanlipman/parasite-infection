@@ -27,8 +27,8 @@ public class Inventory : MonoBehaviour {
     inventoryController.AddToListOfCurrentItems(itemToAdd);
     inventoryUI.AddItemToUI(itemToAdd);
     playerItems.Add(new Item(itemToAdd));
-    Debug.Log("Just added item " + itemToAdd.itemName);
-    Debug.Log("Its index is " + itemToAdd.index);
+    // Debug.Log("Just added item " + itemToAdd.itemName);
+    // Debug.Log("Its index is " + itemToAdd.index);
     UpdateIndices();
   }
 
