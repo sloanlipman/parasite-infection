@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ItemDatabase : MonoBehaviour {
-  public List<Item> items = new List<Item>();
+  public List<Item> itemDatabaseList = new List<Item>();
+  private HashSet<Item> currentItems = new HashSet<Item>();
 
   void Awake() {
     if (FindObjectsOfType<ItemDatabase>().Length > 1) {
@@ -15,18 +17,18 @@ public class ItemDatabase : MonoBehaviour {
   }
 
   public Item GetItem(int id) {
-    return items.Find(item => item.id == id);
+    return itemDatabaseList.Find(item => item.id == id);
   }
 
   public Item GetItem(string itemName) {
-    return items.Find(item => item.itemName == itemName);
+    return itemDatabaseList.Find(item => item.itemName == itemName);
   }
 
   public int GetItemId(Item item) {
     int index = -1;
-    for (int i = 0; i < items.Count; i++) {
-      if (item.itemName == items[i].itemName) {
-        index = items[i].id;
+    for (int i = 0; i < itemDatabaseList.Count; i++) {
+      if (item.itemName == itemDatabaseList[i].itemName) {
+        index = itemDatabaseList[i].id;
         break;
       }
     }
@@ -34,8 +36,28 @@ public class ItemDatabase : MonoBehaviour {
     return index;
   }
 
+  public int GetNextIndex() {
+    int highestIndex = -1;
+    foreach(Item item in currentItems) {
+        if (item.index > highestIndex) {
+        highestIndex = item.index;
+      }
+    }
+
+    // highestIndex = currentItems.Max(x => x.index);
+    return highestIndex + 1;
+  }
+
+  public void ClearCurrentItemList() {
+    currentItems.Clear();
+  }
+
+  public HashSet<Item> GetCurrentItemList() {
+    return currentItems;
+  }
+
   void BuildItemDatabase() {
-    items = new List<Item>() {
+    itemDatabaseList = new List<Item>() {
       new Item(1, "Heavy Module", "An upgrade to your regular suit. Unlocks Barrage",
       new Dictionary<string, int> {
         {"Ability", 1 },

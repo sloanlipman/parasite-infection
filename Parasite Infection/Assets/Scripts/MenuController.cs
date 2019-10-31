@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private GameObject playerEquipment;
   [SerializeField] private UIPlayerInfoPanel playerInfo;
   [SerializeField] private Tooltip tooltip;
+  private InventoryController inventoryController;
 
   public static bool IsBattleCurrentScene() {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
@@ -51,6 +52,7 @@ public class MenuController : MonoBehaviour {
       Destroy(this.gameObject);
     }
     DontDestroyOnLoad(this.gameObject);
+    inventoryController = FindObjectOfType<InventoryController>();
   }
 
   private void Start() {
@@ -76,8 +78,10 @@ public class MenuController : MonoBehaviour {
   }
 
   private void DeselectItem() {
-    partyPanel.ParseUIForCurrentEquipment();
-    FindObjectOfType<InventoryController>().DeselectItem();
+    if (inventoryController.IsAnItemSelected()) {
+      partyPanel.ParseUIForCurrentEquipment();
+      FindObjectOfType<InventoryController>().DeselectItem();
+    }
   }
 
   public void ToggleCraftingInventory() {

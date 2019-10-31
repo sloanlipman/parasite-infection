@@ -23,8 +23,9 @@ public class ConsumableInventory : Inventory {
       GiveItem(id);
     };
   }
+
   void Start() {
-   for (int i = 1; i <= itemDatabase.items.Count; i++) {
+   for (int i = 1; i <= itemDatabase.itemDatabaseList.Count; i++) {
      if (!inventoryController.IsCraftingItem(i)) {
       GiveItem(i);
      }
