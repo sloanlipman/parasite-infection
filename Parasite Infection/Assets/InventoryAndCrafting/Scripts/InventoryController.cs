@@ -8,6 +8,7 @@ public class InventoryController : MonoBehaviour {
   private Inventory[] inventories;
   private ItemDatabase itemDatabase;
   private UIPartyPanel partyPanel;
+  [SerializeField] private UIItem selectedItem;
 
   private void Awake() {
     if (FindObjectsOfType<InventoryController>().Length > 1) {
@@ -18,11 +19,29 @@ public class InventoryController : MonoBehaviour {
     itemDatabase = FindObjectOfType<ItemDatabase>();
     partyPanel = FindObjectOfType<UIPartyPanel>();
   }
+
   // Start is called before the first frame update
   void Start() {
     foreach(Inventory inventory in inventories) {
       DeselectItem();
     }
+  }
+
+  public void PrepareForSave() {
+    partyPanel.ParseUIForCurrentEquipment();
+    PutItemBackBeforeSave();
+  }
+
+  // public int GetIndex() {
+  //   return itemDatabase.GetNextIndex();
+  // }
+
+  // public void AddItem(Item item) {
+  //   itemDatabase.GetCurrentItemList().Add(item);
+  // }
+
+  public bool IsAnItemSelected() {
+    return selectedItem.item != null;
   }
 
   public bool IsCraftingItem(Item item) {
@@ -65,6 +84,10 @@ public class InventoryController : MonoBehaviour {
     return PerformSelectCorrectInventoryUI(item);
   }
 
+  public Inventory SelectCorrectInventory(Item item) {
+    return PerformSelectCorrectInventory(item);
+  }
+
   public UIInventory SelectCorrectInventoryUI(string itemName) {
     Item item = itemDatabase.GetItem(itemName);
     UIInventory uIInventory = FindObjectOfType<ConsumableInventory>().GetUIInventory();
@@ -82,32 +105,73 @@ public class InventoryController : MonoBehaviour {
     return uIInventory;
   }
 
+  public Inventory SelectCorrectInventory(string itemName) {
+    Item item = itemDatabase.GetItem(itemName);
+    Inventory inventory = FindObjectOfType<ConsumableInventory>();
+    if (IsCraftingItem(item)) {
+      inventory = FindObjectOfType<CraftingInventory>();
+    }
+    return inventory;
+  }
+
+  public Inventory PerformSelectCorrectInventory(Item item) {
+    Inventory inventory = FindObjectOfType<ConsumableInventory>();
+    if (IsCraftingItem(item)) {
+      inventory = FindObjectOfType<CraftingInventory>();
+      Debug.Log("It was a crafting item!");
+    }
+    return inventory;
+  }
+
+  public void PutItemBackBeforeSave() {
+    PartyMember member = partyPanel.LookUpSelectedPartyMember();
+
+    if (selectedItem.item != null) {
+      Inventory inventoryToUse = PerformSelectCorrectInventory(selectedItem.item);
+      inventoryToUse.GiveItem(selectedItem.item.id);
+
+      if (member != null) {
+        int i = 0;
+        foreach(Item item in member.GetEquipment()) {
+          if (item != null && item == selectedItem.item) {
+            Debug.Log("Removed item " + item.itemName);
+            Debug.Log("Selected item was: " + selectedItem.item.itemName);
+            Debug.Log("Index was " + i + " , and item index was " + item.index);
+            member.equipment[i] = null;
+            break;
+          }
+          i++;
+        }
+      }
+    }
+    selectedItem.DirectlyNullifyItem();
+  }
+
   public void DeselectItem(bool returnToInventory = true) {
     PartyMember member = partyPanel.LookUpSelectedPartyMember();
     if (member != null) {
       List<Item> items = new List<Item>();
+
       foreach(Item item in member.GetEquipment()) {
         items.Add(item);
       }
-      GameObject uiItem = GameObject.Find("SelectedItem");
       
-      if (uiItem != null) {
-        UIItem selectedUIItem = uiItem.GetComponent<UIItem>();
         // Debug.Log("Player has selected ui item equipped? " + items.Contains(selectedUIItem.item));
         // Debug.Log("first item is: " + items[0].itemName + " " + items[0].index);
       
         List<Item> playerItems = FindObjectOfType<CraftingInventory>().playerItems;
         int count = playerItems.Count - 1;
         // Debug.Log("Last item in inventory is: " + playerItems[count].itemName + " " + playerItems[count].index);
-        if (selectedUIItem != null && selectedUIItem.item != null) {
-          UIInventory inventoryUIToUse = PerformSelectCorrectInventoryUI(selectedUIItem.item);
+        if (selectedItem != null && selectedItem.item != null) {
+          // UIInventory inventoryUIToUse = PerformSelectCorrectInventoryUI(selectedUIItem.item);
+          Inventory inventoryToUse = PerformSelectCorrectInventory(selectedItem.item);
 
-          if (returnToInventory && !items.Contains(selectedUIItem.item)) {
-            inventoryUIToUse.AddItemToUI(selectedUIItem.item);
+          if (returnToInventory && !items.Contains(selectedItem.item)) {
+            // inventoryUIToUse.AddItemToUI(selectedUIItem.item);
+            inventoryToUse.GiveItem(selectedItem.item.id);
           }
-          selectedUIItem.DirectlyNullifyItem();
+          selectedItem.DirectlyNullifyItem();
         }
       }
-    }
   }
 }

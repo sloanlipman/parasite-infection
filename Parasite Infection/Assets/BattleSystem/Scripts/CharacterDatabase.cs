@@ -21,9 +21,9 @@ namespace BattleSystem {
     }
 
     public void Load() {
-      ES3.LoadInto("PartyMembers", "Party.ES3", partyMembers);
-      ES3.LoadInto("Enemies", "Enemies.ES3", enemyList);
-      activePartyMembers = ES3.Load<List<string>>("ActiveParty", "ActiveParty.ES3");
+      ES3.LoadInto("PartyMembers", "Party.json", partyMembers);
+      ES3.LoadInto("Enemies", "Enemies.json", enemyList);
+      activePartyMembers = ES3.Load<List<string>>("ActiveParty", "ActiveParty.json");
 
       partyMembers.ForEach(member => {
         foreach(Item item in member.equipment) {

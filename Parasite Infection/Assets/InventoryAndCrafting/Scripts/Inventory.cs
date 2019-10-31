@@ -44,6 +44,7 @@ public class Inventory : MonoBehaviour {
       }
     }
     for (int j = 0; j < playerItems.Count; j++) {
+      Debug.Log("Item " + playerItems[j].itemName + " gets index of " + j);
       playerItems[j].index = j;
     }
   }

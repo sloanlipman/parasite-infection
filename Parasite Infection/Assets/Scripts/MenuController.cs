@@ -39,6 +39,7 @@ public class MenuController : MonoBehaviour {
     consumableInventory.gameObject.SetActive(false);
     questPanel.gameObject.SetActive(false);
     partyPanel.gameObject.SetActive(false);
+    partyPanel.ClearPartyMember();
     playerEquipment.gameObject.SetActive(false);
     playerInfo.gameObject.SetActive(false);
     DeselectItem();
@@ -110,6 +111,7 @@ public class MenuController : MonoBehaviour {
     } else {
       playerEquipment.gameObject.SetActive(false);
       playerInfo.gameObject.SetActive(false);
+      partyPanel.ClearPartyMember();
     }
   }
 

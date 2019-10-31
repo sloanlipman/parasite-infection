@@ -18,6 +18,7 @@ public class SaveService : MonoBehaviour {
 
   // Start is called before the first frame update
   public void Save() {
+    inventoryController.PrepareForSave();
     craftingInventory.Save();
     consumableInventory.Save();
     questController.Save();
@@ -28,7 +29,7 @@ public class SaveService : MonoBehaviour {
   }
 
   public void Load() {
-    if (ES3.FileExists() && ES3.FileExists("PlayerInfo.es3")) {
+    if (ES3.FileExists() && ES3.FileExists("PlayerInfo.json")) {
       ClearAll();
       inventoryController.DeselectItem(false);
       menuController.CloseAllMenus();
@@ -71,15 +72,15 @@ public class SaveService : MonoBehaviour {
 
   private void LoadPlayer() {
     if (GetPlayer() != null) {
-      ES3.Load<GameObject>("Player", "PlayerInfo.es3");
+      ES3.Load<GameObject>("Player", "PlayerInfo.json");
     }
   }
 
   private void SaveNPCs() {
     NPC[] currentNPCs = GetNPCs();
     for (int i = 0; i < currentNPCs.Length; i++) {
-      // ES3.Save<NPC>("NPCGameObject" + i, currentNPCs[i], "NPCs.es3");
-      ES3.Save<NPC>("NPC" + i, currentNPCs[i], "NPCs.es3");
+      // ES3.Save<NPC>("NPCGameObject" + i, currentNPCs[i], "NPCs.json");
+      ES3.Save<NPC>("NPC" + i, currentNPCs[i], "NPCs.json");
     }
   }
 
@@ -87,8 +88,8 @@ public class SaveService : MonoBehaviour {
     NPC[] currentNPCs = GetNPCs();
     for (int i = 0; i < currentNPCs.Length; i++) {
       try {
-        ES3.LoadInto<NPC>("NPC" + i, "NPCs.es3", currentNPCs[i]);
-        // ES3.LoadInto<GameObject>("NPCGameObject" + i, "NPCs.es3", currentNPCs[i].gameObject);
+        ES3.LoadInto<NPC>("NPC" + i, "NPCs.json", currentNPCs[i]);
+        // ES3.LoadInto<GameObject>("NPCGameObject" + i, "NPCs.json", currentNPCs[i].gameObject);
       } catch {
         Debug.LogWarning("At index " + i + " something went wrong loading an NPC");
       }

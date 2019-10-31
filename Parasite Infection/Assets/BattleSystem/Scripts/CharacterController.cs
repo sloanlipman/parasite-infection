@@ -7,9 +7,9 @@ namespace BattleSystem {
     private CharacterDatabase characterDatabase;
 
     public void Save() {
-      ES3.Save<List<PartyMember>>("PartyMembers", GetPartyMembers(), "Party.ES3");
-      ES3.Save<List<string>>("ActiveParty", GetActivePartyList(), "ActiveParty.ES3");
-      ES3.Save<List<Enemy>>("Enemies", GetEnemies(), "Enemies.ES3");
+      ES3.Save<List<PartyMember>>("PartyMembers", GetPartyMembers(), "Party.json");
+      ES3.Save<List<string>>("ActiveParty", GetActivePartyList(), "ActiveParty.json");
+      ES3.Save<List<Enemy>>("Enemies", GetEnemies(), "Enemies.json");
     }
 
     public void Load() {

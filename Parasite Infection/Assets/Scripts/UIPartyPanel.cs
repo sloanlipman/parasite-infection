@@ -42,11 +42,11 @@ public class UIPartyPanel : MonoBehaviour {
   }
 
   public PartyMember LookUpSelectedPartyMember() {
-    // if (selectedPartyMember != null) {
-      return characterController.FindPartyMemberByName(selectedPartyMember);
-    // } else {
-    //   return null;
-    // }
+    return characterController.FindPartyMemberByName(selectedPartyMember);
+  }
+
+  public void ClearPartyMember() {
+    selectedPartyMember = null;
   }
 
   void ClearSlots() {
@@ -121,8 +121,6 @@ public class UIPartyPanel : MonoBehaviour {
         UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
           if (uiItem.item != null) { // The item has been swapped out
             member.equipment[i] = uiItem.item; // Set as item
-          } else {
-            member.equipment[i] = null;
           }
         }
       }

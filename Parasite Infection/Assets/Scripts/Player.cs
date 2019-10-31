@@ -5,11 +5,11 @@ using UnityEngine;
 public class Player : Character  {
   public Player() {}
   public void Save() {
-    ES3.Save<GameObject>("Player", this.gameObject, "PlayerInfo.es3");
+    ES3.Save<GameObject>("Player", this.gameObject, "PlayerInfo.json");
   }
 
   public void Load() {
-      ES3.Load<GameObject>("Player", "PlayerInfo.es3");
+      ES3.Load<GameObject>("Player", "PlayerInfo.json");
   }
   // Update is called once per frame
   void Update() {

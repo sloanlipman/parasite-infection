@@ -14,11 +14,11 @@ public class ConsumableInventory : Inventory {
       itemIds[i] = (itemDatabase.GetItemId(item));
       i++;
     }); 
-    ES3.Save<int[]>("ConsumableInventory", itemIds, "Inventory.es3");
+    ES3.Save<int[]>("ConsumableInventory", itemIds, "Inventory.json");
   }
 
   public void Load() {
-    int[] itemsToLoad = ES3.Load<int[]>("ConsumableInventory", "Inventory.es3");
+    int[] itemsToLoad = ES3.Load<int[]>("ConsumableInventory", "Inventory.json");
     foreach(int id in itemsToLoad) {
       GiveItem(id);
     };
