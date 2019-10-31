@@ -30,7 +30,8 @@ public class CraftingInventory : Inventory {
     foreach(UIItem item in craftingInventorySlots) {
       item.isCraftingInventorySlot = true;
     }
-   for (int i = 1; i <= itemDatabase.items.Count; i++) {
+
+   for (int i = 1; i <= itemDatabase.itemDatabaseList.Count; i++) {
      if (inventoryController.IsCraftingItem(i)) {
       GiveItem(i);
      }
@@ -42,6 +43,7 @@ public class CraftingInventory : Inventory {
     // GiveItem(2);
     GiveItem(9);
     GiveItem(9);
+    GiveItem(10);
     GiveItem(10);
     inventoryUI.gameObject.SetActive(false);
   }

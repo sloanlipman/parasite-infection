@@ -32,13 +32,23 @@ public class InventoryController : MonoBehaviour {
     PutItemBackBeforeSave();
   }
 
-  // public int GetIndex() {
-  //   return itemDatabase.GetNextIndex();
-  // }
+  public void PrepareForLoad() {
+    DeselectItem(false);
+    ClearIndices();
+  }
 
-  // public void AddItem(Item item) {
-  //   itemDatabase.GetCurrentItemList().Add(item);
-  // }
+  public int GetIndex() {
+    return itemDatabase.GetNextIndex();
+  }
+
+  public void ClearIndices() {
+    itemDatabase.ClearCurrentItemList();
+  }
+
+  public void AddToListOfCurrentItems(Item item) {
+    item.index = GetIndex();
+    itemDatabase.GetCurrentItemList().Add(new Item(item));
+  }
 
   public bool IsAnItemSelected() {
     return selectedItem.item != null;
@@ -159,7 +169,7 @@ public class InventoryController : MonoBehaviour {
         // Debug.Log("Player has selected ui item equipped? " + items.Contains(selectedUIItem.item));
         // Debug.Log("first item is: " + items[0].itemName + " " + items[0].index);
       
-        List<Item> playerItems = FindObjectOfType<CraftingInventory>().playerItems;
+        HashSet<Item> playerItems = FindObjectOfType<CraftingInventory>().playerItems;
         int count = playerItems.Count - 1;
         // Debug.Log("Last item in inventory is: " + playerItems[count].itemName + " " + playerItems[count].index);
         if (selectedItem != null && selectedItem.item != null) {

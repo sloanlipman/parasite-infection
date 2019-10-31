@@ -10,7 +10,7 @@ namespace BattleSystem {
     public List<PartyMember> partyMembers = new List<PartyMember>();
     public List<string> activePartyMembers = new List<string>();
     public Dictionary<string, Ability> abilityList = new Dictionary<string, Ability>();
-
+    private InventoryController inventoryController;
 
     private void AddPlayerToParty(string name) {
       activePartyMembers.Add(name);
@@ -29,6 +29,7 @@ namespace BattleSystem {
         foreach(Item item in member.equipment) {
           if (item != null && item.icon == null) {
             item.LoadSprite();
+            inventoryController.AddToListOfCurrentItems(item);
           }
         }
       });
@@ -45,6 +46,7 @@ namespace BattleSystem {
       BuildPartyDatabase();
       BuildEnemyDatabase();
       EventController.OnKillBlobsQuestCompleted += AddPlayerToParty;
+      inventoryController = FindObjectOfType<InventoryController>();
     }
 
     public List<PartyMember> GetActiveParty() {

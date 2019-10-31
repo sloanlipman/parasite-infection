@@ -25,6 +25,7 @@ public class Item {
 
   public Item(Item item) {
     this.id = item.id;
+    this.index = item.index;
     this.itemName = item.itemName;
     this.description = item.description;
     this.icon = item.icon;

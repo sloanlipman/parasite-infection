@@ -43,6 +43,12 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     this.item = item;
     SetSprite(item);
 
+    if (item != null && item.index < 0) {
+      Debug.Log("Item did not have index. Getting index now.");
+      inventoryController.AddToListOfCurrentItems(item);
+      Debug.Log("Index is " + item.index);
+    }
+
     if (isCraftingSlot) {
       craftingSlots.UpdateRecipe();
     }
@@ -82,6 +88,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
   public void OnPointerDown(PointerEventData eventData) {
     if (this.item != null) {
+      Debug.Log("Item's index is: " + item.index);
       UICraftResult craftResult = GetComponent<UICraftResult>();
       if (craftResult != null && selectedItem.item == null) { // Successful craft
         craftResult.PickItem();

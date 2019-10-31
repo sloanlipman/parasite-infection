@@ -31,7 +31,6 @@ public class SaveService : MonoBehaviour {
   public void Load() {
     if (ES3.FileExists() && ES3.FileExists("PlayerInfo.json")) {
       ClearAll();
-      inventoryController.DeselectItem(false);
       menuController.CloseAllMenus();
       craftingInventory.Load();
       consumableInventory.Load();
@@ -49,6 +48,7 @@ public class SaveService : MonoBehaviour {
   }
 
   private void ClearAll() {
+    inventoryController.PrepareForLoad();
     slotPanels = Resources.FindObjectsOfTypeAll(typeof(SlotPanel)) as SlotPanel[];
     foreach(SlotPanel panel in slotPanels) {
       panel.EmptyAllSlots();
