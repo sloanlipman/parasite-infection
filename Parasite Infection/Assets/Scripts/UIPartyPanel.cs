@@ -75,7 +75,6 @@ public class UIPartyPanel : MonoBehaviour {
             ParseUIForCurrentEquipment(); // If another party member's equipment is open, save the currenytly opened one
           }
           AddPlayerEquipmentSlots(member);
-          RestoreUIForCurrentEquipment();
         }
       });
     });
@@ -119,6 +118,7 @@ public class UIPartyPanel : MonoBehaviour {
       PartyMember member = LookUpSelectedPartyMember();
       for (int i = 0; i < slots.Length; i++) {
         UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
+        member.equipment[i] = null; // Clear the slot
           if (uiItem.item != null) { // The item has been swapped out
             member.equipment[i] = uiItem.item; // Set as item
           }

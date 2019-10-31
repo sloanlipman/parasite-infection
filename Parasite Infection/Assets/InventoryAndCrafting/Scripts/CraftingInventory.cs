@@ -46,6 +46,10 @@ public class CraftingInventory : Inventory {
     GiveItem(10);
     GiveItem(10);
     inventoryUI.gameObject.SetActive(false);
+
+    foreach (Item item in playerItems) {
+      Debug.Log(item.itemName + " " + item.index);
+    }
   }
 
   // Update is called once per frame
