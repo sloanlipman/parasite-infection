@@ -5,7 +5,6 @@ using UnityEngine;
 public class CraftingInventory : Inventory {
 
   public void Save() {
-    UpdateIndices();
     List<Item> itemsToSave = new List<Item>();
     itemsToSave = inventoryUI.GetMainInventoryItems();
     int[] itemIds = new int[itemsToSave.Count];
@@ -46,10 +45,6 @@ public class CraftingInventory : Inventory {
     GiveItem(10);
     GiveItem(10);
     inventoryUI.gameObject.SetActive(false);
-
-    foreach (Item item in playerItems) {
-      Debug.Log(item.itemName + " " + item.index);
-    }
   }
 
   // Update is called once per frame

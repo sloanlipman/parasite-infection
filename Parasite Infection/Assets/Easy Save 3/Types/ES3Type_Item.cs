@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("id", "index", "itemName", "description", "icon", "stats")]
+	[ES3PropertiesAttribute("id", "itemName", "description", "icon", "stats")]
 	public class ES3Type_Item : ES3ObjectType
 	{
 		public static ES3Type Instance = null;
@@ -16,7 +16,6 @@ namespace ES3Types
 			var instance = (Item)obj;
 			
 			writer.WriteProperty("id", instance.id, ES3Type_int.Instance);
-			writer.WriteProperty("index", instance.index, ES3Type_int.Instance);
 			writer.WriteProperty("itemName", instance.itemName, ES3Type_string.Instance);
 			writer.WriteProperty("description", instance.description, ES3Type_string.Instance);
 			writer.WritePropertyByRef("icon", instance.icon);
@@ -33,9 +32,6 @@ namespace ES3Types
 					
 					case "id":
 						instance.id = reader.Read<System.Int32>(ES3Type_int.Instance);
-						break;
-					case "index":
-						instance.index = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					case "itemName":
 						instance.itemName = reader.Read<System.String>(ES3Type_string.Instance);

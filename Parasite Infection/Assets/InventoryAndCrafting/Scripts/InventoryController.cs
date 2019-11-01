@@ -37,17 +37,32 @@ public class InventoryController : MonoBehaviour {
     ClearIndices();
   }
 
-  public int GetIndex() {
-    return itemDatabase.GetNextIndex();
-  }
-
   public void ClearIndices() {
     itemDatabase.ClearCurrentItemList();
   }
 
+  public bool IsItemOnCurrentItemList(Item item) {
+    return itemDatabase.GetCurrentItemList().Contains(item);
+  }
+
   public void AddToListOfCurrentItems(Item item) {
-    item.index = GetIndex();
     itemDatabase.GetCurrentItemList().Add(new Item(item));
+  }
+
+  public int GetIndexOfItemOnCurrentList(Item item) {
+    // itemDatabase.GetCurrentItemList().IndexOf(item)
+    Item[] itemArray = new Item[itemDatabase.GetCurrentItemList().Count];
+    itemDatabase.GetCurrentItemList().CopyTo(itemArray);
+    int index = -1;
+    int j = 0;
+    foreach(Item i in itemArray) {
+      if (item == i) {
+        index = j;
+        break;
+      }
+      j++;
+    }
+    return index;
   }
 
   public bool IsAnItemSelected() {
@@ -146,7 +161,6 @@ public class InventoryController : MonoBehaviour {
           if (item != null && item == selectedItem.item) {
             Debug.Log("Removed item " + item.itemName);
             Debug.Log("Selected item was: " + selectedItem.item.itemName);
-            Debug.Log("Index was " + i + " , and item index was " + item.index);
             member.equipment[i] = null;
             break;
           }

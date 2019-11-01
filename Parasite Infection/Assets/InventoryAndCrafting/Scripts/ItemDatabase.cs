@@ -25,27 +25,15 @@ public class ItemDatabase : MonoBehaviour {
   }
 
   public int GetItemId(Item item) {
-    int index = -1;
+    int id = -1;
     for (int i = 0; i < itemDatabaseList.Count; i++) {
       if (item.itemName == itemDatabaseList[i].itemName) {
-        index = itemDatabaseList[i].id;
+        id = itemDatabaseList[i].id;
         break;
       }
     }
 
-    return index;
-  }
-
-  public int GetNextIndex() {
-    int highestIndex = -1;
-    foreach(Item item in currentItems) {
-        if (item.index > highestIndex) {
-        highestIndex = item.index;
-      }
-    }
-
-    // highestIndex = currentItems.Max(x => x.index);
-    return highestIndex + 1;
+    return id;
   }
 
   public void ClearCurrentItemList() {

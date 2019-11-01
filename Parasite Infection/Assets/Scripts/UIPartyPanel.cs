@@ -42,7 +42,7 @@ public class UIPartyPanel : MonoBehaviour {
   }
 
   public PartyMember LookUpSelectedPartyMember() {
-    return characterController.FindPartyMemberByName(selectedPartyMember);
+    return selectedPartyMember != "" ?  characterController.FindPartyMemberByName(selectedPartyMember) : null;
   }
 
   public void ClearPartyMember() {
@@ -115,12 +115,15 @@ public class UIPartyPanel : MonoBehaviour {
 // Save the current items
   public void ParseUIForCurrentEquipment() {
     if (selectedPartyMember != null) {
+    Debug.Log("Selected: " + selectedPartyMember);
       PartyMember member = LookUpSelectedPartyMember();
-      for (int i = 0; i < slots.Length; i++) {
-        UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
-        member.equipment[i] = null; // Clear the slot
-          if (uiItem.item != null) { // The item has been swapped out
-            member.equipment[i] = uiItem.item; // Set as item
+      if (member != null) {
+        for (int i = 0; i < slots.Length; i++) {
+          UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
+          member.equipment[i] = null; // Clear the slot
+            if (uiItem.item != null) { // The item has been swapped out
+              member.equipment[i] = uiItem.item; // Set as item
+            }
           }
         }
       }
