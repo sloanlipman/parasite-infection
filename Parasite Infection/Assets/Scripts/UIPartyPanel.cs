@@ -114,8 +114,6 @@ public class UIPartyPanel : MonoBehaviour {
 
 // Save the current items
   public void ParseUIForCurrentEquipment() {
-    if (selectedPartyMember != null) {
-    Debug.Log("Selected: " + selectedPartyMember);
       PartyMember member = LookUpSelectedPartyMember();
       if (member != null) {
         for (int i = 0; i < slots.Length; i++) {
@@ -126,13 +124,12 @@ public class UIPartyPanel : MonoBehaviour {
             }
           }
         }
-      }
     }
 
 // Load the previous items
   public void RestoreUIForCurrentEquipment() {
-    if (selectedPartyMember != null) {
       PartyMember member = LookUpSelectedPartyMember();
+      if (member != null) {
       for (int i = 0; i < slots.Length; i++) {
         UIItem uiItem = slots[i].GetComponentInChildren<UIItem>(true);
         if (member.equipment[i] != null) { // The item has been swapped out
