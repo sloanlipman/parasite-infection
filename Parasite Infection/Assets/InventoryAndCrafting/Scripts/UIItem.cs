@@ -91,7 +91,6 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
   public void OnPointerDown(PointerEventData eventData) {
     if (this.item != null) {
-      // Debug.Log(item.itemName + inventoryController.GetIndexOfItemOnCurrentList(item));
       UICraftResult craftResult = GetComponent<UICraftResult>();
       if (craftResult != null && selectedItem.item == null) { // Successful craft
         craftResult.PickItem();
