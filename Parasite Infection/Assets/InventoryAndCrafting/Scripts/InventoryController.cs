@@ -49,22 +49,6 @@ public class InventoryController : MonoBehaviour {
     itemDatabase.GetCurrentItemList().Add(new Item(item));
   }
 
-  public int GetIndexOfItemOnCurrentList(Item item) {
-    // itemDatabase.GetCurrentItemList().IndexOf(item)
-    Item[] itemArray = new Item[itemDatabase.GetCurrentItemList().Count];
-    itemDatabase.GetCurrentItemList().CopyTo(itemArray);
-    int index = -1;
-    int j = 0;
-    foreach(Item i in itemArray) {
-      if (item == i) {
-        index = j;
-        break;
-      }
-      j++;
-    }
-    return index;
-  }
-
   public bool IsAnItemSelected() {
     return selectedItem.item != null;
   }
@@ -143,7 +127,6 @@ public class InventoryController : MonoBehaviour {
     Inventory inventory = FindObjectOfType<ConsumableInventory>();
     if (IsCraftingItem(item)) {
       inventory = FindObjectOfType<CraftingInventory>();
-      Debug.Log("It was a crafting item!");
     }
     return inventory;
   }
@@ -151,7 +134,7 @@ public class InventoryController : MonoBehaviour {
   public void PutItemBackBeforeSave() {
     PartyMember member = partyPanel.LookUpSelectedPartyMember();
 
-    if (selectedItem.item != null) {
+    if (IsAnItemSelected()) {
       Inventory inventoryToUse = PerformSelectCorrectInventory(selectedItem.item);
       inventoryToUse.GiveItem(selectedItem.item.id);
 
@@ -180,7 +163,7 @@ public class InventoryController : MonoBehaviour {
       playerItems = FindObjectOfType<CraftingInventory>().playerItems;
     }
 
-    if (selectedItem != null && selectedItem.item != null) {
+    if (selectedItem != null && IsAnItemSelected()) {
       Inventory inventoryToUse = PerformSelectCorrectInventory(selectedItem.item);
       if (returnToInventory && !items.Contains(selectedItem.item)) {
         inventoryToUse.GiveItem(selectedItem.item.id);

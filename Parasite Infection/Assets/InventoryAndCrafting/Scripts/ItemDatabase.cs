@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 public class ItemDatabase : MonoBehaviour {
-  public List<Item> itemDatabaseList = new List<Item>();
+  private List<Item> itemDatabaseList = new List<Item>();
   private HashSet<Item> currentItems = new HashSet<Item>();
 
   void Awake() {
@@ -14,6 +14,10 @@ public class ItemDatabase : MonoBehaviour {
 
     DontDestroyOnLoad(this.gameObject);
     BuildItemDatabase();
+  }
+
+  public List<Item> GetItemDatabaseList() {
+    return itemDatabaseList;
   }
 
   public Item GetItem(int id) {

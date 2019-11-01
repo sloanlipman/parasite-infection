@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler {
+public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler {
   public Item item;
   private Image spriteImage;
   private UIItem selectedItem;
@@ -32,6 +32,10 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     UpdateItem(null);
   }
 
+  public bool IsAnItemSelected() {
+    return selectedItem.item != null;
+  }
+
   public void DirectlyNullifyItem() {
     this.item = null;
     SetSprite(null);
@@ -40,17 +44,6 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
   public void UpdateItem(Item item) {
     this.item = item;
     SetSprite(item);
-
-    // if (item != null && item.index < 0) {
-    //   Debug.Log("Item did not have index. Getting index now.");
-    //   inventoryController.AddToListOfCurrentItems(item);
-    //   Debug.Log("Index is " + item.index);
-    // }
-
-    // if (!inventoryController.IsItemOnCurrentItemList(item)) {
-    //   inventoryController.AddToListOfCurrentItems(item);
-    //   Debug.Log("Item was not on the list of items. Adding it now at index: " + item.itemName + inventoryController.GetIndexOfItemOnCurrentList(item));
-    // }
 
     if (isCraftingSlot) {
       craftingSlots.UpdateRecipe();
@@ -97,7 +90,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
         selectedItem.UpdateItem(this.item);
         craftResult.ClearSlots();
       } else if (!isCraftingResultSlot) {
-          if (selectedItem.item != null) {
+          if (IsAnItemSelected()) {
             if (isPlayerEquipmentSlot) {
               if (IsEquippable(selectedItem)) {
                 SwapItems();
@@ -112,9 +105,8 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
             UpdateItem(null);
         }
       }
-    } else if (selectedItem.item != null && !isCraftingResultSlot) {
+    } else if (IsAnItemSelected() && !isCraftingResultSlot) {
         if (isPlayerEquipmentSlot && !IsEquippable(selectedItem)) {
-          Debug.Log("is equip slot && selected item is not equippable");
           inventoryController.DeselectItem();
         } else {
           UpdateItem(selectedItem.item);
@@ -128,20 +120,6 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     Item clone = new Item(selectedItem.item);
     selectedItem.UpdateItem(this.item);
     UpdateItem(clone);
-  }
-
-// Remove item from player's equipment slots
-  public void OnPointerUp(PointerEventData eventData) {
-  //   if (isPlayerEquipmentSlot && selectedItem.item != null) {
-  //     GameObject[] slots = equipmentSlots.GetSlots();
-  //     for (int i = 0; i < slots.Length; i++) {
-  //       UIItem item = slots[i].GetComponentInChildren<UIItem>();
-  //       if (this == item) {
-  //         partyPanel.RemoveItem(i);
-  //         break;
-  //       }
-  //     }
-  //   }
   }
 
   public void OnPointerEnter(PointerEventData eventData) {

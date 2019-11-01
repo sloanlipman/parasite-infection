@@ -22,10 +22,8 @@ namespace QuestSystem {
           QuestCompleted(this.quest);
         }
       } else {
-        Debug.LogWarning("There was no quest to load when enabling the panel");
         Transform parent = GameObject.FindGameObjectWithTag("UI/Quest Item Parent").transform;
         foreach (QuestUIItem quest in parent.GetComponentsInChildren<QuestUIItem>()) {
-          Debug.Log("Attempting to destroy: " + quest);
           Destroy(quest.gameObject);
         }
       }
