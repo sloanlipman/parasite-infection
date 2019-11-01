@@ -10,7 +10,7 @@ public class UIInventory : MonoBehaviour {
     foreach(SlotPanel slotPanel in slotPanels) {
       UIItem[] uiItems = slotPanel.GetComponentsInChildren<UIItem>(true);
       foreach(var uiItem in uiItems) {
-        if (uiItem.item != null) {
+        if (uiItem.item != null && !uiItem.isCraftingResultSlot) {
           items.Add(uiItem.item);
         }
       }
