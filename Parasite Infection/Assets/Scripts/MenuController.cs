@@ -28,7 +28,7 @@ public class MenuController : MonoBehaviour {
 
   public void UnpauseGame() {
     CloseAllMenus();
-    if (tooltip.gameObject.activeSelf) {
+    if (IsTooltipActive()) {
       tooltip.gameObject.SetActive(false);
     }
     Time.timeScale = 1;
@@ -76,6 +76,26 @@ public class MenuController : MonoBehaviour {
     return menuPanel.gameObject.activeSelf;
   }
 
+  private bool IsPartyPanelOpen() {
+    return partyPanel.gameObject.activeSelf;
+  }
+
+  private bool IsCraftingInventoryOpen() {
+    return craftingInventory.gameObject.activeSelf;
+  }
+
+  private bool IsConsumableInventoryOpen() {
+    return consumableInventory.gameObject.activeSelf;
+  }
+
+  private bool IsQuestPanelOpen() {
+    return questPanel.gameObject.activeSelf;
+  }
+
+  private bool IsTooltipActive() {
+    return tooltip.gameObject.activeSelf;
+  }
+
   private void DeselectItem() {
     if (inventoryController.IsAnItemSelected()) {
       partyPanel.ParseUIForCurrentEquipment();
@@ -85,30 +105,30 @@ public class MenuController : MonoBehaviour {
 
   public void ToggleCraftingInventory() {
     DeselectItem();
-    craftingInventory.gameObject.SetActive(!craftingInventory.gameObject.activeSelf);
+    craftingInventory.gameObject.SetActive(!IsCraftingInventoryOpen());
     consumableInventory.gameObject.SetActive(false);
 
   }
 
   public void ToggleConsumableInventory() {
     DeselectItem();
-    consumableInventory.gameObject.SetActive(!consumableInventory.gameObject.activeSelf);
+    consumableInventory.gameObject.SetActive(!IsConsumableInventoryOpen());
     craftingInventory.gameObject.SetActive(false);
   }
 
   public void ToggleQuestPanel() {
-    if (partyPanel.gameObject.activeSelf) {
+    if (IsPartyPanelOpen()) {
       partyPanel.gameObject.SetActive(false);
     }
-    questPanel.gameObject.SetActive(!questPanel.gameObject.activeSelf);
+    questPanel.gameObject.SetActive(!IsQuestPanelOpen());
   }
 
   public void TogglePartyPanel() {
-    if (questPanel.gameObject.activeSelf) {
+    if (IsQuestPanelOpen()) {
         questPanel.gameObject.SetActive(false);
       }
-    partyPanel.gameObject.SetActive(!partyPanel.gameObject.activeSelf);
-    if (partyPanel.gameObject.activeSelf) {
+    partyPanel.gameObject.SetActive(!IsPartyPanelOpen());
+    if (IsPartyPanelOpen()) {
       partyPanel.ResetSelectedPartyMember();
       partyPanel.Populate();
     } else {

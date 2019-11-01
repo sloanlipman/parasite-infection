@@ -56,6 +56,14 @@ public class UIPartyPanel : MonoBehaviour {
     }
   }
 
+  bool AreEquipmentSlotsOpen() {
+    return equipmentSlots.gameObject.activeSelf;
+  }
+
+  bool IsPlayerInfoOpen() {
+    return playerInfo.gameObject.activeSelf;
+  }
+
   public void Populate() {
     buttonList.ForEach(button => {
       Destroy(button.gameObject);
@@ -71,7 +79,7 @@ public class UIPartyPanel : MonoBehaviour {
         craftingInventory.GetUIInventory().gameObject.SetActive(true);
         
         if (selectedPartyMember != member.characterName) {
-          if (equipmentSlots.gameObject.activeSelf) {
+          if (AreEquipmentSlotsOpen()) {
             ParseUIForCurrentEquipment(); // If another party member's equipment is open, save the currenytly opened one
           }
           AddPlayerEquipmentSlots(member);
@@ -81,10 +89,10 @@ public class UIPartyPanel : MonoBehaviour {
   }
 
   private void AddPlayerEquipmentSlots(PartyMember member) {
-    if (!equipmentSlots.gameObject.activeSelf) {
+    if (!AreEquipmentSlotsOpen()) {
       equipmentSlots.gameObject.SetActive(true);
     }
-    if (!playerInfo.gameObject.activeSelf) {
+    if (!IsPlayerInfoOpen()) {
       playerInfo.gameObject.SetActive(true);
     }
 
