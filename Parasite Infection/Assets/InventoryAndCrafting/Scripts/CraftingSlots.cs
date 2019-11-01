@@ -19,12 +19,10 @@ public class CraftingSlots : MonoBehaviour {
   public void ClearCraftingSlots() {
     int i = 0;
     uIItems.ForEach(item => {
-      Debug.Log("Item index is: " + item.item.index);
       craftingInventory.RemoveItem(item.item);
       item = null;
       i++;
     });
-    craftingInventory.UpdateIndices();
   }
 
   public void UpdateRecipe() {

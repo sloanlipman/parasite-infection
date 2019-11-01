@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -43,11 +41,16 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     this.item = item;
     SetSprite(item);
 
-    if (item != null && item.index < 0) {
-      Debug.Log("Item did not have index. Getting index now.");
-      inventoryController.AddToListOfCurrentItems(item);
-      Debug.Log("Index is " + item.index);
-    }
+    // if (item != null && item.index < 0) {
+    //   Debug.Log("Item did not have index. Getting index now.");
+    //   inventoryController.AddToListOfCurrentItems(item);
+    //   Debug.Log("Index is " + item.index);
+    // }
+
+    // if (!inventoryController.IsItemOnCurrentItemList(item)) {
+    //   inventoryController.AddToListOfCurrentItems(item);
+    //   Debug.Log("Item was not on the list of items. Adding it now at index: " + item.itemName + inventoryController.GetIndexOfItemOnCurrentList(item));
+    // }
 
     if (isCraftingSlot) {
       craftingSlots.UpdateRecipe();
@@ -88,7 +91,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
   public void OnPointerDown(PointerEventData eventData) {
     if (this.item != null) {
-      Debug.Log(item);
+      // Debug.Log(item.itemName + inventoryController.GetIndexOfItemOnCurrentList(item));
       UICraftResult craftResult = GetComponent<UICraftResult>();
       if (craftResult != null && selectedItem.item == null) { // Successful craft
         craftResult.PickItem();

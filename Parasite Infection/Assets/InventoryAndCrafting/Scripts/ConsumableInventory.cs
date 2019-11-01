@@ -5,7 +5,6 @@ using UnityEngine;
 public class ConsumableInventory : Inventory {
 
   public void Save() {
-    UpdateIndices();
     List<Item> itemsToSave = new List<Item>();
     itemsToSave = inventoryUI.GetMainInventoryItems();
     int[] itemIds = new int[itemsToSave.Count];

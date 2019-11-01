@@ -22,7 +22,7 @@ public class Tooltip : MonoBehaviour {
         }
       }
     }
-    string tooltip = string.Format("<b>{0}</b>\n{1}\n{2}\nIndex:{3}", item.itemName, item.description, statText, item.index);
+    string tooltip = string.Format("<b>{0}</b>\n{1}\n{2}", item.itemName, item.description, statText);
     tooltipText.text = tooltip;
     gameObject.SetActive(true);
   }
