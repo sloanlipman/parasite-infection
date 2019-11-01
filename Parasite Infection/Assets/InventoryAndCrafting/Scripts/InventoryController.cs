@@ -159,8 +159,6 @@ public class InventoryController : MonoBehaviour {
         int i = 0;
         foreach(Item item in member.GetEquipment()) {
           if (item != null && item == selectedItem.item) {
-            Debug.Log("Removed item " + item.itemName);
-            Debug.Log("Selected item was: " + selectedItem.item.itemName);
             member.equipment[i] = null;
             break;
           }
@@ -173,29 +171,21 @@ public class InventoryController : MonoBehaviour {
 
   public void DeselectItem(bool returnToInventory = true) {
     PartyMember member = partyPanel.LookUpSelectedPartyMember();
+    HashSet<Item> playerItems = new HashSet<Item>();
+    List<Item> items = new List<Item>();
     if (member != null) {
-      List<Item> items = new List<Item>();
-
       foreach(Item item in member.GetEquipment()) {
         items.Add(item);
       }
-      
-        // Debug.Log("Player has selected ui item equipped? " + items.Contains(selectedUIItem.item));
-        // Debug.Log("first item is: " + items[0].itemName + " " + items[0].index);
-      
-        HashSet<Item> playerItems = FindObjectOfType<CraftingInventory>().playerItems;
-        int count = playerItems.Count - 1;
-        // Debug.Log("Last item in inventory is: " + playerItems[count].itemName + " " + playerItems[count].index);
-        if (selectedItem != null && selectedItem.item != null) {
-          // UIInventory inventoryUIToUse = PerformSelectCorrectInventoryUI(selectedUIItem.item);
-          Inventory inventoryToUse = PerformSelectCorrectInventory(selectedItem.item);
+      playerItems = FindObjectOfType<CraftingInventory>().playerItems;
+    }
 
-          if (returnToInventory && !items.Contains(selectedItem.item)) {
-            // inventoryUIToUse.AddItemToUI(selectedUIItem.item);
-            inventoryToUse.GiveItem(selectedItem.item.id);
-          }
-          selectedItem.DirectlyNullifyItem();
-        }
+    if (selectedItem != null && selectedItem.item != null) {
+      Inventory inventoryToUse = PerformSelectCorrectInventory(selectedItem.item);
+      if (returnToInventory && !items.Contains(selectedItem.item)) {
+        inventoryToUse.GiveItem(selectedItem.item.id);
       }
+      selectedItem.DirectlyNullifyItem();
+    }
   }
 }
