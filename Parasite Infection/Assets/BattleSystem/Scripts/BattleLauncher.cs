@@ -23,12 +23,11 @@ namespace BattleSystem {
 
     private void Update() {
       if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle")) {
-        if (player.GetRigidbody().velocity != Vector2.zero) {
+        if (Time.timeScale != 0 && player.GetRigidbody().velocity != Vector2.zero) {
           random = Random.Range(0, 100);
           numberOfSteps++;
           if (numberOfSteps > 100) {
             numberOfSteps = 0;
-            // if (random >= 50) {
               if (random > 0) {
               PrepareBattle(player.transform.position);
             }

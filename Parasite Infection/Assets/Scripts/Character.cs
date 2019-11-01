@@ -18,7 +18,7 @@ public class Character : MonoBehaviour {
   }
 
   public void Move (Vector2 inputVector) {
-    if (Time.timeScale == 1 && inputVector != Vector2.zero) {
+    if (Time.timeScale != 0 && inputVector != Vector2.zero) {
       sprite.flipX = inputVector.normalized.x < 0;
     }
 
