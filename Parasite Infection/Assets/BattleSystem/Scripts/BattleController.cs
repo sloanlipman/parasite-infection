@@ -6,16 +6,19 @@ namespace BattleSystem {
   public class BattleController : MonoBehaviour {
 
     public static BattleController Instance { get; set; }
+    public ConsumableInventory items;
+
     private CharacterController characterController;
     [SerializeField] private BattleUIController uiController;
     [SerializeField] private BattleSpawnPoint[] spawnPoints;
     private BattleSummaryPanel battleSummaryPanel;
-    private UIInventory inventoryPanel;
+    private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
 
     public Dictionary<int, List<BattleCharacter>> characters = new Dictionary<int, List<BattleCharacter>>();
     public int characterTurnIndex;
     public Ability abilityToBeUsed;
+    public Item itemToBeUsed;
     public bool playerIsAttacking;
     private bool didEnemyUseAbility;
 
@@ -23,6 +26,15 @@ namespace BattleSystem {
                         // Turn refers to are Enemies going or are players going?
 
     private int xpToReward;
+
+    
+    public bool IsValidHealTarget(BattleCharacter target) {
+      return IsCharacterAPlayer(target) && target.IsCharacterDamaged();
+    }
+
+    public bool IsValidEnergyHealTarget(BattleCharacter target) {
+      return IsCharacterAPlayer(target) && target.IsCharacterMissingEnergy();
+    }
 
     public bool IsCurrentTurnPlayerTurn() {
       return actTurn == 0;
@@ -32,7 +44,7 @@ namespace BattleSystem {
       uiController.ResetCharacterInfo();
     }
 
-    private bool IsCharacterAPlayer(BattleCharacter character) {
+    public bool IsCharacterAPlayer(BattleCharacter character) {
       return GetListOfAlivePlayers().Contains(character);
     }
 
@@ -75,14 +87,16 @@ namespace BattleSystem {
 
     private void HideMenus() {
       questPanel = FindObjectOfType<QuestSystem.QuestPanel>();
-      inventoryPanel = FindObjectOfType<UIInventory>();
+      inventoryPanels = FindObjectsOfType<UIInventory>();
       battleSummaryPanel = FindObjectOfType<BattleSummaryPanel>();
       if (questPanel != null) {
         questPanel.gameObject.SetActive(false);
       }
 
-      if (inventoryPanel != null) {
-        inventoryPanel.gameObject.SetActive(false);
+      if (inventoryPanels != null) {
+        foreach(UIInventory panel in inventoryPanels) {
+          panel.gameObject.SetActive(false);
+        }
       }
 
       if (battleSummaryPanel != null) {
@@ -92,6 +106,7 @@ namespace BattleSystem {
 
     private void Awake() {
       characterController = FindObjectOfType<CharacterController>();
+      items = FindObjectOfType<ConsumableInventory>();
       EventController.OnEnemyDied += AddEnemyExperience;
       HideMenus();
     }
@@ -113,17 +128,6 @@ namespace BattleSystem {
 
 
     public void StartBattle(List<PartyMember> players, List<Enemy> enemies) {
-
-/**
-
-      for (int i = 0; i < players.Count; i++) {
-        GetListOfAlivePlayers().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
-        for (int j = 0; j < players[i].equipment.Count; j++) {
-          players[i].AddAbilityFromEquipment(players[i].equipment[j]);
-          players[i].abilities.Add(characterController.GetAbility(players[i].abilitiesList[j]));
-        }
-      } */
-
       for (int i = 0; i < players.Count; i++) {
         GetListOfAlivePlayers().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
         for (int j = 0; j < players[i].equipment.Length; j++) {
@@ -189,6 +193,7 @@ namespace BattleSystem {
       }
       uiController.UpdateCharacterUI();
       uiController.ToggleAbilityPanel(false);
+      uiController.ToggleItemPanel(false);
 
       if (AreAnyPlayersAlive() && AreAnyEnemiesAlive()) {
           abilityToBeUsed = null;
@@ -207,6 +212,7 @@ namespace BattleSystem {
           case 0: {
             uiController.ToggleActionState(true);
             uiController.BuildAbilityList(GetCurrentCharacter().abilities);
+            uiController.BuildItemList();
             break;
           }
 
@@ -245,6 +251,7 @@ namespace BattleSystem {
     }
 
     public void SelectTarget(BattleCharacter target) {
+      Debug.Log("Target is " + target.characterName);
       if (playerIsAttacking) {
         if (IsCharacterAPlayer(target)) {
           Debug.LogWarning("Don't target your own team!");
@@ -254,7 +261,7 @@ namespace BattleSystem {
       }
       else if (abilityToBeUsed != null) {
         if (abilityToBeUsed.abilityType == Ability.AbilityType.Heal) { // TODO Could add support spells here too
-          if (!IsCharacterAPlayer(target) || !(target.IsCharacterDamaged())) {
+          if (!IsValidHealTarget(target)) {
             Debug.LogWarning("You can't heal your enemies, or your health is already maxed out!!");
             return;
           }
@@ -271,8 +278,15 @@ namespace BattleSystem {
         else {
           Debug.LogWarning("Not enough Energy to cast that Ability!");
         }
+      } else if (itemToBeUsed != null) {
+        Debug.Log("Item to be used is " + itemToBeUsed.itemName);
+        if (items.UseItem(target, itemToBeUsed)) {
+          uiController.UpdateCharacterUI();
+          NextAct();
+        };
       }
     }
+
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
       Debug.Log(attacker.characterName + " is attacking " + target.characterName);

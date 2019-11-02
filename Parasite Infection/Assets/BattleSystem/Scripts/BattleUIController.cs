@@ -7,6 +7,7 @@ namespace BattleSystem {
   public class BattleUIController : MonoBehaviour {
 
     [SerializeField] private GameObject abilityPanel;
+    [SerializeField] private GameObject itemPanel;
     [SerializeField] private Button[] actionButtons;
     [SerializeField] private Button button;
     [SerializeField] private List<Text> characterInfo;
@@ -16,6 +17,7 @@ namespace BattleSystem {
 
     void Start() {
       abilityPanel.SetActive(false);
+      itemPanel.SetActive(false);
       GenerateCharacterUI();
       SetColor(0, Color.red);
       UpdateCharacterUI();
@@ -52,6 +54,13 @@ namespace BattleSystem {
       }
     }
 
+    public void ToggleItemPanel(bool state) {
+      itemPanel.SetActive(state);
+      if (state) {
+        BuildItemList();
+      }
+    }
+
     public void GenerateCharacterUI() {
       List<BattleCharacter> players = BattleController.Instance.GetListOfAlivePlayers();
       for (int i = 0; i < players.Count; i++) {
@@ -69,12 +78,36 @@ namespace BattleSystem {
       }
     }
 
-    public void BuildAbilityList(List<Ability> abilities) {
+    private void ClearAbilityPanel() {
       if (abilityPanel.transform.childCount > 0) {
         foreach(Button button in abilityPanel.transform.GetComponentsInChildren<Button>()) {
           Destroy(button.gameObject);
         }
       }
+    }
+
+    private void ClearItemPanel() {
+      if (abilityPanel.transform.childCount > 0) {
+        foreach(Button button in itemPanel.transform.GetComponentsInChildren<Button>()) {
+          Destroy(button.gameObject);
+        }
+      }
+    }
+
+    public void BuildItemList() {
+      ClearItemPanel();
+      ConsumableInventory items = BattleController.Instance.items;
+      if (items.playerItems.Count > 0) {
+        foreach (Item item in items.playerItems) {
+          Button itemButton = Instantiate<Button>(button, itemPanel.transform);
+          itemButton.GetComponentInChildren<Text>().text = item.itemName;
+          itemButton.onClick.AddListener(() => SelectItem(item));
+        }
+      }
+    }
+
+    public void BuildAbilityList(List<Ability> abilities) {
+      ClearAbilityPanel();
 
     if (abilities != null) {
       foreach (Ability ability in abilities) {
@@ -85,13 +118,22 @@ namespace BattleSystem {
       }
     }
 
+    void SelectItem(Item item) {
+      Debug.Log("Selected " + item.itemName);
+      BattleController.Instance.itemToBeUsed = item;
+      BattleController.Instance.abilityToBeUsed = null;
+      BattleController.Instance.playerIsAttacking = false;
+    }
+
     void SelectAbility(Ability ability) {
       BattleController.Instance.abilityToBeUsed = ability;
+      BattleController.Instance.itemToBeUsed = null;
       BattleController.Instance.playerIsAttacking = false;
     }
 
     public void SelectAttack() {
       BattleController.Instance.abilityToBeUsed = null;
+      BattleController.Instance.itemToBeUsed = null;
       BattleController.Instance.playerIsAttacking = true;
     }
 

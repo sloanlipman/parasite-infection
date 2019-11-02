@@ -69,6 +69,10 @@ namespace BattleSystem {
       return health < maxHealth;
     }
 
+    public bool IsCharacterMissingEnergy() {
+      return energyPoints < maxEnergyPoints;
+    }
+
     public virtual void Die() {
       Destroy(this.gameObject);
       Debug.LogFormat("{0} has died!", characterName);

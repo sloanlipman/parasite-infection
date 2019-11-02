@@ -113,6 +113,7 @@ public class ItemDatabase : MonoBehaviour {
       new Item(11, "Medkit", "Restores 5 HP", 
       new Dictionary<string, int> {
       {"Value", 5 },
+      {"Health", 5},
       {"Equippable", 0},
       {"Crafting", 0}
       })

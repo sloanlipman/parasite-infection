@@ -33,6 +33,24 @@ public class Inventory : MonoBehaviour {
     playerItems.Remove(item);
   }
 
+  public void RemoveItemFromUI(Item item) {
+    List<Item> itemsList = inventoryUI.GetMainInventoryItems();
+    List<UIItem> uiItemsList = inventoryUI.GetUIItems();
+    // UIItem itemToUpdate = null;
+    int index = -1;
+    foreach (Item i in playerItems) {
+      if (itemsList.Contains(i)) {
+        break;
+      }
+      index++;
+    }
+    Debug.Log("Removing @ index " + index);
+    if (index > -1) {
+      uiItemsList[index].UpdateItem(null);
+      RemoveItem(item);
+    }
+  }
+
   public void ClearInventory() {
     playerItems.Clear();
   }
