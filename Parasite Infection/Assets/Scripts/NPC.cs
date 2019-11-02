@@ -13,17 +13,18 @@ public class NPC : Character {
   private QuestSystem.Quest quest;
   private QuestSystem.QuestController questController;
 
-
   [SerializeField] private DialogData dialogData;
   [SerializeField] private DialogData questCompletedDialogData;
 
   private DialogPanel dialog;
+  private DialogCanvas dialogCanvas;
+
+  private void Awake() {
+    FindDialogPanel();
+  }
   
   private void Start() {
     questController = FindObjectOfType<QuestSystem.QuestController>();
-    DialogPanel[] dialogPanelArray = Resources.FindObjectsOfTypeAll<DialogPanel>() as DialogPanel[];
-    dialog = dialogPanelArray[0];
-
     spawnPosition = transform.position;
     if (wander) {
       Wander();    
@@ -43,8 +44,16 @@ public class NPC : Character {
       }
     }
     if (dialogData != null) {
+      if (dialog == null) {
+        FindDialogPanel();
+      }
       dialog.StartDialog(dialogData.dialog);
     }
+  }
+
+  private void FindDialogPanel() {
+    dialogCanvas = FindObjectOfType<DialogCanvas>();
+    dialog = dialogCanvas.GetComponentInChildren<DialogPanel>(true);
   }
 
   public void Wander() {
