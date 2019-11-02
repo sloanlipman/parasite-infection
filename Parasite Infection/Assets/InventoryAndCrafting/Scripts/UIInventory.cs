@@ -39,4 +39,14 @@ public class UIInventory : MonoBehaviour {
       }
     }
   }
+
+  public SlotPanel[] GetSlotPanels() {
+    return slotPanels;
+  }
+
+  public void ClearSlots() {
+    foreach(SlotPanel panel in slotPanels) {
+      panel.EmptyAllSlots();
+    }
+  }
 }

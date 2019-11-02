@@ -29,6 +29,8 @@ namespace BattleSystem {
         RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction);
         if (hitInfo.collider != null && hitInfo.collider.CompareTag("Character")) {
           BattleController.Instance.SelectTarget(hitInfo.collider.GetComponent<BattleCharacter>());
+        } else {
+          BattleController.Instance.ResetBattlePanel();
         }
       }
     }
@@ -97,11 +99,15 @@ namespace BattleSystem {
     public void BuildItemList() {
       ClearItemPanel();
       ConsumableInventory items = BattleController.Instance.items;
+      List<string> listOfItemNames = new List<string>();
       if (items.playerItems.Count > 0) {
         foreach (Item item in items.playerItems) {
-          Button itemButton = Instantiate<Button>(button, itemPanel.transform);
-          itemButton.GetComponentInChildren<Text>().text = item.itemName;
-          itemButton.onClick.AddListener(() => SelectItem(item));
+          if (!listOfItemNames.Contains(item.itemName)) {
+            Button itemButton = Instantiate<Button>(button, itemPanel.transform);
+            itemButton.GetComponentInChildren<Text>().text = item.itemName;
+            itemButton.onClick.AddListener(() => SelectItem(item));
+            listOfItemNames.Add(item.itemName);
+          }
         }
       }
     }

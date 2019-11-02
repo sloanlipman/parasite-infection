@@ -186,11 +186,6 @@ namespace BattleSystem {
       if (IsCurrentTurnPlayerTurn()) {
         uiController.SetColor(characterTurnIndex, Color.white);
         }
-      BattleCharacter currentCharacter = GetCurrentCharacter();
-      if (IsCharacterAPlayer(currentCharacter) && abilityToBeUsed == null) {
-        int energyToRecover = (int)Mathf.Round(0.1f * currentCharacter.maxEnergyPoints);
-        currentCharacter.RecoverEnergy(energyToRecover);
-      }
       uiController.UpdateCharacterUI();
       uiController.ToggleAbilityPanel(false);
       uiController.ToggleItemPanel(false);
@@ -251,7 +246,6 @@ namespace BattleSystem {
     }
 
     public void SelectTarget(BattleCharacter target) {
-      Debug.Log("Target is " + target.characterName);
       if (playerIsAttacking) {
         if (IsCharacterAPlayer(target)) {
           Debug.LogWarning("Don't target your own team!");
@@ -287,6 +281,11 @@ namespace BattleSystem {
       }
     }
 
+    public void ResetBattlePanel() {
+      playerIsAttacking = false;
+      abilityToBeUsed = null;
+      itemToBeUsed = null;
+    }
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
       Debug.Log(attacker.characterName + " is attacking " + target.characterName);

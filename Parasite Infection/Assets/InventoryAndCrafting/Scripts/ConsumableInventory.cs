@@ -29,7 +29,10 @@ public class ConsumableInventory : Inventory {
      if (!inventoryController.IsCraftingItem(i)) {
       GiveItem(i);
      }
+
     }
+    GiveItem(11);
+    GiveItem(12);
     inventoryUI.gameObject.SetActive(false);
     UIItem[] consumableInventorySlots = inventoryUI.GetComponentsInChildren<UIItem>();
     foreach(UIItem item in consumableInventorySlots) {
@@ -48,29 +51,23 @@ public class ConsumableInventory : Inventory {
 
   public bool UseItem(BattleCharacter target, Item item) {
     bool success = false;
-    Debug.Log("PlayerItems contains item? " + playerItems.Contains(item));
-    // if (playerItems.Contains(item)) {
-      if (item.stats.ContainsKey("Health") && BattleController.Instance.IsValidHealTarget(target)) {
-        target.Heal(item.stats["Health"]);
-        success = true;
-      } else {
-        Debug.LogWarning("Not a heal item or was not valid heal target");
-      }
+    if (item.stats.ContainsKey("Health") && BattleController.Instance.IsValidHealTarget(target)) {
+      target.Heal(item.stats["Health"]);
+      success = true;
+    } else {
+      Debug.LogWarning("Not a heal item or was not valid heal target");
+    }
 
-      if (item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
-        target.RecoverEnergy(item.stats["Energy"]);
-        success = true;
-      } else {
-        Debug.LogWarning("Not an EP recovery item or was not valid heal target");
-      }
-      if (success) {
-        RemoveItemFromUI(item);
-      }
+    if (item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
+      target.RecoverEnergy(item.stats["Energy"]);
+      success = true;
+    } else {
+      Debug.LogWarning("Not an EP recovery item or was not valid heal target");
+    }
+    if (success) {
+      RemoveItemFromUI(item);
+    }
 
-      return success;
-      // TODO need to remove from UI the next time it's opened
-    // } else {
-    //   Debug.LogWarning("Item not found in inventory!");
-    // }
+    return success;
   }
 }

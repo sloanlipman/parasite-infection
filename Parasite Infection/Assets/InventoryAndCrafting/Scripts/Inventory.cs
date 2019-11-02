@@ -36,7 +36,6 @@ public class Inventory : MonoBehaviour {
   public void RemoveItemFromUI(Item item) {
     List<Item> itemsList = inventoryUI.GetMainInventoryItems();
     List<UIItem> uiItemsList = inventoryUI.GetUIItems();
-    // UIItem itemToUpdate = null;
     int index = -1;
     foreach (Item i in playerItems) {
       if (itemsList.Contains(i)) {
@@ -44,7 +43,6 @@ public class Inventory : MonoBehaviour {
       }
       index++;
     }
-    Debug.Log("Removing @ index " + index);
     if (index > -1) {
       uiItemsList[index].UpdateItem(null);
       RemoveItem(item);
@@ -53,5 +51,12 @@ public class Inventory : MonoBehaviour {
 
   public void ClearInventory() {
     playerItems.Clear();
+  }
+
+  public void UpdateUIInventory() {
+    inventoryUI.ClearSlots();
+    foreach(Item item in playerItems) {
+      inventoryUI.AddItemToUI(item);
+    }
   }
 }

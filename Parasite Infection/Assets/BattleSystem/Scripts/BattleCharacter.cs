@@ -44,7 +44,10 @@ namespace BattleSystem {
 
     public void Defend() {
       defensePower += (int) Mathf.Round(defensePower * 0.25f);
+      int energyToRecover = (int)Mathf.Round(0.1f * maxEnergyPoints);
+      RecoverEnergy(energyToRecover);
       Debug.Log("Defense increased to: " + defensePower);
+      Debug.Log("Recovered energy points: " + energyToRecover);
     }
 
     public void RecoverEnergy(int amount) {
