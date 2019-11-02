@@ -159,15 +159,12 @@ public class InventoryController : MonoBehaviour {
     selectedItem.DirectlyNullifyItem();
   }
 
-  public bool ConsumeItemFromUI() {
+  public void ConsumeItemFromUI() {
     PartyMember member = partyPanel.LookUpSelectedPartyMember();
-    bool shouldOpenCraftingInventory = false;
       if (!IsCraftingItem(itemToConsume.item) && member != null) {
          ConsumableInventory consumableInventory = FindObjectOfType<ConsumableInventory>();
          bool success = consumableInventory.UseItemOutsideOfBattle(member, itemToConsume.item);
          if (success) {   
-           shouldOpenCraftingInventory = true;
-           itemToConsume.UpdateItem(null);
            consumableInventory.RemoveItem(selectedItem.item);
            UIPlayerInfoPanel infoPanel = FindObjectOfType<UIPlayerInfoPanel>();
            if (!infoPanel.gameObject.activeSelf) {
@@ -175,10 +172,13 @@ public class InventoryController : MonoBehaviour {
            }
             infoPanel.Populate(member.characterName);
       } else {
-        DeselectItem();
+        // DeselectItem();
+        Inventory inventory = PerformSelectCorrectInventory(itemToConsume.item);
+        inventory.GiveItem(itemToConsume.item.id);
       }
     }
-    return shouldOpenCraftingInventory;
+      itemToConsume.UpdateItem(null);
+
   }
 
   public void DeselectItem(bool returnToInventory = true) {
