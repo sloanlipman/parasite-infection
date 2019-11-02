@@ -9,6 +9,7 @@ public class InventoryController : MonoBehaviour {
   private ItemDatabase itemDatabase;
   private UIPartyPanel partyPanel;
   [SerializeField] private UIItem selectedItem;
+  [SerializeField] private UIItem itemToConsume;
 
   private void Awake() {
     if (FindObjectsOfType<InventoryController>().Length > 1) {
@@ -24,6 +25,12 @@ public class InventoryController : MonoBehaviour {
   void Start() {
     foreach(Inventory inventory in inventories) {
       DeselectItem();
+    }
+  }
+
+  void Update() {
+    if (itemToConsume.item != null && !IsCraftingItem(itemToConsume.item)) {
+      ConsumeItemFromUI();
     }
   }
 
@@ -150,6 +157,28 @@ public class InventoryController : MonoBehaviour {
       }
     }
     selectedItem.DirectlyNullifyItem();
+  }
+
+  public bool ConsumeItemFromUI() {
+    PartyMember member = partyPanel.LookUpSelectedPartyMember();
+    bool shouldOpenCraftingInventory = false;
+      if (!IsCraftingItem(itemToConsume.item) && member != null) {
+         ConsumableInventory consumableInventory = FindObjectOfType<ConsumableInventory>();
+         bool success = consumableInventory.UseItemOutsideOfBattle(member, itemToConsume.item);
+         if (success) {   
+           shouldOpenCraftingInventory = true;
+           itemToConsume.UpdateItem(null);
+           consumableInventory.RemoveItem(selectedItem.item);
+           UIPlayerInfoPanel infoPanel = FindObjectOfType<UIPlayerInfoPanel>();
+           if (!infoPanel.gameObject.activeSelf) {
+             infoPanel.gameObject.SetActive(true);
+           }
+            infoPanel.Populate(member.characterName);
+      } else {
+        DeselectItem();
+      }
+    }
+    return shouldOpenCraftingInventory;
   }
 
   public void DeselectItem(bool returnToInventory = true) {

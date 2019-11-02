@@ -18,6 +18,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
   public bool isPlayerEquipmentSlot = false;
   public bool isConsumableInventorySlot = false;
   public bool isCraftingInventorySlot;
+  public bool isConsumableItemSlot = false;
 
   private void Awake() {
     craftingSlots = FindObjectOfType<CraftingSlots>();

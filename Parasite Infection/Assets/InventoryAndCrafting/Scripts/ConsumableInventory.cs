@@ -70,4 +70,23 @@ public class ConsumableInventory : Inventory {
 
     return success;
   }
+
+  public bool UseItemOutsideOfBattle(BattleCharacter target, Item item) {
+    bool success = false;
+    if (item.stats.ContainsKey("Health") && target.IsCharacterDamaged()) {
+      target.Heal(item.stats["Health"]);
+      success = true;
+    } else {
+      Debug.LogWarning("Not a heal item or was not valid heal target");
+    }
+
+    if (item.stats.ContainsKey("Energy") && target.IsCharacterMissingEnergy()) {
+      target.RecoverEnergy(item.stats["Energy"]);
+      success = true;
+    } else {
+      Debug.LogWarning("Not an EP recovery item or was not valid heal target");
+    }
+
+    return success;
+  }
 }

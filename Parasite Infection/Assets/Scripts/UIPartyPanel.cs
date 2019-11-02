@@ -75,8 +75,6 @@ public class UIPartyPanel : MonoBehaviour {
       buttonList.Add(button);
       button.GetComponentInChildren<Text>().text = member.characterName;
       button.GetComponent<Button>().onClick.AddListener(() => {
-        consumableInventory.GetUIInventory().gameObject.SetActive(false);
-        craftingInventory.GetUIInventory().gameObject.SetActive(true);
         
         if (selectedPartyMember != member.characterName) {
           if (AreEquipmentSlotsOpen()) {

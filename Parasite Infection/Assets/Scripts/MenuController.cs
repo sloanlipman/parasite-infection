@@ -36,6 +36,7 @@ public class MenuController : MonoBehaviour {
 
   public void CloseAllMenus() {
     ToggleDialogButtons(true);
+    partyPanel.ParseUIForCurrentEquipment();
     craftingInventory.gameObject.SetActive(false);
     consumableInventory.gameObject.SetActive(false);
     questPanel.gameObject.SetActive(false);
