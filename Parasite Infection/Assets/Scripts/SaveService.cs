@@ -8,6 +8,7 @@ public class SaveService : MonoBehaviour {
 
   public static SaveService Instance {get; set;}
   private BattleSystem.CharacterController characterController;
+  private BattleSystem.BattleLauncher battleLauncher;
   private InventoryController inventoryController;
   private CraftingInventory craftingInventory;
   private ConsumableInventory consumableInventory;
@@ -56,6 +57,7 @@ public class SaveService : MonoBehaviour {
     craftingInventory.ClearInventory();
     consumableInventory.ClearInventory();
     questController.ClearQuests();
+    battleLauncher.ResetSteps();
   }
 
   private Player GetPlayer() {
@@ -110,6 +112,7 @@ public class SaveService : MonoBehaviour {
     menuController = FindObjectOfType<MenuController>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     inventoryController = FindObjectOfType<InventoryController>();
+    battleLauncher = FindObjectOfType<BattleLauncher>();
   }
 
   void Start() {

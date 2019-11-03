@@ -21,13 +21,17 @@ namespace BattleSystem {
     private QuestSystem.QuestController questController;
     private CharacterController characterController;
 
+    public void ResetSteps() {
+      numberOfSteps = 0;
+    }
+
     private void Update() {
       if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle")) {
         if (Time.timeScale != 0 && player.GetRigidbody().velocity != Vector2.zero) {
           random = Random.Range(0, 100);
           numberOfSteps++;
           if (numberOfSteps > 100) {
-            numberOfSteps = 0;
+            ResetSteps();
               if (random > 0) {
               PrepareBattle(player.transform.position);
             }
