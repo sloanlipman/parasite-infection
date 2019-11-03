@@ -25,7 +25,7 @@ namespace BattleSystem {
       }
     }
 
-    public void Cast(BattleCharacter target) {
+    public void Cast(BattleCharacter target, int power) {
       targetPosition = target.transform.position;
       Debug.Log(abilityName + " was cast on " + target.name + "!");
       if (abilityType == AbilityType.Attack) {

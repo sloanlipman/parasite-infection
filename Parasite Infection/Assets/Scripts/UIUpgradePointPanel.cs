@@ -30,14 +30,14 @@ public class UIUpgradePointPanel : MonoBehaviour {
     });
     buttonList.Clear();
 
-  foreach(var multiplier in partyMember.multipliers) {
+  foreach(var multiplier in partyMember.upgradePointsDictionary) {
     Button button = Instantiate<Button>(upgradePointButton, this.transform);
     buttonList.Add(button);
     UpdateButtonLabel(button, multiplier.Key.ToString(), multiplier.Value.ToString());
     button.GetComponent<Button>().onClick.AddListener(() => {
       string key = multiplier.Key.ToString();
-      partyMember.multipliers[key]++;
-      UpdateButtonLabel(button, key, partyMember.multipliers[key].ToString());
+      partyMember.upgradePointsDictionary[key]++;
+      UpdateButtonLabel(button, key, partyMember.upgradePointsDictionary[key].ToString());
       partyMember.SpendUpgradePoint();
     });
     }

@@ -82,6 +82,14 @@ public class MenuController : MonoBehaviour {
     return partyPanel.gameObject.activeSelf;
   }
 
+  private bool IsPlayerInfoOpen() {
+    return playerInfo.gameObject.activeSelf;
+  }
+
+  private bool IsPlayerEquipmentOpen() {
+    return playerEquipment.gameObject.activeSelf;
+  }
+
   private bool IsCraftingInventoryOpen() {
     return craftingInventory.gameObject.activeSelf;
   }
@@ -125,6 +133,14 @@ public class MenuController : MonoBehaviour {
   public void ToggleQuestPanel() {
     if (IsPartyPanelOpen()) {
       partyPanel.gameObject.SetActive(false);
+    }
+
+    if (IsPlayerInfoOpen()) {
+      playerInfo.gameObject.SetActive(false);
+    }
+
+    if (IsPlayerEquipmentOpen()) {
+      playerEquipment.gameObject.SetActive(false);
     }
     questPanel.gameObject.SetActive(!IsQuestPanelOpen());
   }

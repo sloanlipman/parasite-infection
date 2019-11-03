@@ -21,7 +21,6 @@ namespace BattleSystem {
       SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-
     public void ShowVictoryPanel(int xp) {
       gameObject.SetActive(true);
       titleText.text = "Victory!";
@@ -45,7 +44,6 @@ namespace BattleSystem {
     public void EndBattle() {
       GatewayManager.Instance.SetSpawnPosition(battleLauncher.GetWorldPosition());
       SceneManager.LoadScene(battleLauncher.GetWorldSceneIndex());
-
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {

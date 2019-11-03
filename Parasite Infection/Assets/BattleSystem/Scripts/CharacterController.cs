@@ -74,8 +74,19 @@ namespace BattleSystem {
         p.health = member.health;
         p.energyPoints = member.energyPoints;
         p.experience += xp;
-        // Level up
+        LevelUp(p);
       });
     }
-   }
+
+    public void LevelUp(PartyMember member) {
+      int xpToNextLevel = NextLevel(member.level);
+      if (member.experience >= xpToNextLevel) {
+        member.level++;
+      }
+    }
+
+    public int NextLevel(int currentLevel) {
+      return Mathf.RoundToInt(0.04f * (currentLevel^3) + 0.8f * (currentLevel^2) + 2 * currentLevel);
+    }
+  }
 }

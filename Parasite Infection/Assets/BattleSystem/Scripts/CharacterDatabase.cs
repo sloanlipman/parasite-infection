@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
-
- using System.Collections.Generic;
+using System.Collections.Generic;
 namespace BattleSystem {
   public class CharacterDatabase : MonoBehaviour {
     public static CharacterDatabase Instance {get; set;}
@@ -94,17 +93,10 @@ namespace BattleSystem {
     void BuildPartyDatabase() {
       PartyMember[] members = Resources.LoadAll<PartyMember>("Players");
       foreach(PartyMember member in members) {
-        member.SetUpgradePoints(5);
-        member.multipliers = new Dictionary<string, int> {
-        {"Attack", 2},
-        {"Defense", 1},
-        {"Barrage", 1},
-        {"Fireball", 1},
-        {"Hydroblast", 2},
-        {"Heal", 1},
-      };
         if (!partyMembers.Contains(member)) {
           partyMembers.Add(member);
+          member.SetUpgradePoints(1);
+          member.SetDefaultValues();
         }
       }
       LoadPlayerAbilities();
@@ -150,17 +142,10 @@ namespace BattleSystem {
         Resources.Load<Enemy>("Enemies/7_The Eye")
       };
 
-      enemyList.ForEach(enemy => {
- enemy.multipliers = new Dictionary<string, int> {
-        {"Attack", 2},
-        {"Defense", 1},
-        {"Barrage", 1},
-        {"Fireball", 1},
-        {"Hydroblast", 1},
-        {"Heal", 1}
-      };
+        enemyList.ForEach(enemy => {
+          enemy.SetDefaultValues();
+          LoadEnemyAbilities();
       });
-      LoadEnemyAbilities();
     }
   }
 }

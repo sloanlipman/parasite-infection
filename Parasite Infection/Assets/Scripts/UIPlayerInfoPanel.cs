@@ -25,7 +25,7 @@ public class UIPlayerInfoPanel : MonoBehaviour {
     hp.text = string.Format("HP: {0}/{1}", partyMember.health, partyMember.maxHealth);
     ep.text = string.Format("Energy: {0}/{1}", partyMember.energyPoints, partyMember.maxEnergyPoints);
     level.text = "Level: " + partyMember.level;
-    levelUpIn.text = "TODO";
+    levelUpIn.text = "Level Up In: " + characterController.NextLevel(partyMember.level);
   }
 
   void Update() {

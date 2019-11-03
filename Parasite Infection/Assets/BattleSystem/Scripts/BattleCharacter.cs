@@ -18,19 +18,26 @@ namespace BattleSystem {
     public int experience;
     public Item[] equipment = new Item[4];
 
-    public Dictionary<string, int> multipliers = new Dictionary<string, int>();
+    public Dictionary<string, int> upgradePointsDictionary = new Dictionary<string, int>();
 
-    public void ApplyMultipliers() {
-      attackPower = attackPower * multipliers["Attack"];
-      defensePower = defensePower * multipliers["Defense"];
-      MultiplyAbilities();
+    public void SetDefaultValues() {
+        level = 1;
+        experience = 0;
+        health = maxHealth;
+        energyPoints = maxEnergyPoints;
+        upgradePointsDictionary = new Dictionary<string, int> {
+        {"Attack", 0},
+        {"Defense", 0},
+        {"Barrage", 0},
+        {"Fireball", 0},
+        {"Hydroblast", 0},
+        {"Heal", 0},
+      };
     }
 
-    public void MultiplyAbilities() {
-      abilities.ForEach(ability => {
-        ability.power = ability.power * multipliers[ability.abilityName];
-        Debug.Log(ability.abilityName + " now has a power of " + ability.power);
-      });
+    public void ApplyUpgradePoints() {
+      attackPower = attackPower + upgradePointsDictionary["Attack"];
+      defensePower = defensePower + upgradePointsDictionary["Defense"];
     }
 
     public Item[] GetEquipment() {
@@ -78,7 +85,8 @@ namespace BattleSystem {
       if (successful) {
         Ability abilityToCast = Instantiate<Ability>(ability, transform.position, Quaternion.identity);
         energyPoints -= ability.energyCost;
-        abilityToCast.Cast(targetCharacter);
+        int power = ability.power + upgradePointsDictionary[abilityToCast.abilityName];
+        abilityToCast.Cast(targetCharacter, power);
       }
       return successful;
     }
