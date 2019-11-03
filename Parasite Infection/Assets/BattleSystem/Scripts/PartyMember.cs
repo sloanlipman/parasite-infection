@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class PartyMember : BattleCharacter {
-    [SerializeField] private bool inParty = false;
     int upgradePoints = 0;
-    public int modSlots = 2;
+    public int modSlots = 1;
     public PartyMember() {}
 
     public int GetModSlots() {

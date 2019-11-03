@@ -18,6 +18,21 @@ namespace BattleSystem {
     public int experience;
     public Item[] equipment = new Item[4];
 
+    public Dictionary<string, int> multipliers = new Dictionary<string, int>();
+
+    public void ApplyMultipliers() {
+      attackPower = attackPower * multipliers["Attack"];
+      defensePower = defensePower * multipliers["Defense"];
+      MultiplyAbilities();
+    }
+
+    public void MultiplyAbilities() {
+      abilities.ForEach(ability => {
+        ability.power = ability.power * multipliers[ability.abilityName];
+        Debug.Log(ability.abilityName + " now has a power of " + ability.power);
+      });
+    }
+
     public Item[] GetEquipment() {
       return equipment;
     }
@@ -81,38 +96,41 @@ namespace BattleSystem {
       Debug.LogFormat("{0} has died!", characterName);
     }
 
-  public string AddAbilityFromEquipment(Item item) {
-    string abilityToAdd = "";
-      if (item.stats.ContainsKey("Ability")) {
-        switch (item.stats["Ability"]) {
-          case 1: {
-            abilityToAdd = "Barrage";
-            break;
+    public string AddAbilityFromEquipment(Item item) {
+      string abilityToAdd = "";
+        if (item.stats.ContainsKey("Ability")) {
+          switch (item.stats["Ability"]) {
+            case 1: {
+              abilityToAdd = "Barrage";
+              break;
+            }
+
+            case 2: {
+              abilityToAdd = "Fireball";
+              break;
+            }
+
+            case 3: {
+              abilityToAdd = "Hydroblast";
+              break;
+            }
+
+            case 4: {
+              abilityToAdd = "Heal";
+              break;
+            }
+
+            default: {
+              abilityToAdd = "";
+              break;
+            }
           }
-          
-          case 2: {
-            abilityToAdd = "Fireball";
-            break;
-          }
-          case 3: {
-            abilityToAdd = "Hydroblast";
-            break;
-          }
-          case 4: {
-            abilityToAdd = "Heal";
-            break;
-          }
-          default: {
-            abilityToAdd = "";
-            break;
-          }
-        }
 
         if (abilityToAdd != null && !abilitiesList.Contains(abilityToAdd)) {
           abilitiesList.Add(abilityToAdd);
         }
       }
-       return abilityToAdd;
-      }
+      return abilityToAdd;
+    }
   }
 }

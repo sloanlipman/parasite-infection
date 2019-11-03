@@ -94,6 +94,14 @@ namespace BattleSystem {
     void BuildPartyDatabase() {
       PartyMember[] members = Resources.LoadAll<PartyMember>("Players");
       foreach(PartyMember member in members) {
+        member.multipliers = new Dictionary<string, int> {
+        {"Attack", 2},
+        {"Defense", 1},
+        {"Barrage", 1},
+        {"Fireball", 1},
+        {"Hydroblast", 2},
+        {"Heal", 1}
+      };
         if (!partyMembers.Contains(member)) {
           partyMembers.Add(member);
         }
@@ -140,6 +148,17 @@ namespace BattleSystem {
         Resources.Load<Enemy>("Enemies/6_Tentacle Monster"),
         Resources.Load<Enemy>("Enemies/7_The Eye")
       };
+
+      enemyList.ForEach(enemy => {
+ enemy.multipliers = new Dictionary<string, int> {
+        {"Attack", 2},
+        {"Defense", 1},
+        {"Barrage", 1},
+        {"Fireball", 1},
+        {"Hydroblast", 1},
+        {"Heal", 1}
+      };
+      });
       LoadEnemyAbilities();
     }
   }

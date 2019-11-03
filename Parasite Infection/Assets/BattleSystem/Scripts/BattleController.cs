@@ -130,6 +130,7 @@ namespace BattleSystem {
     public void StartBattle(List<PartyMember> players, List<Enemy> enemies) {
       for (int i = 0; i < players.Count; i++) {
         GetListOfAlivePlayers().Add(spawnPoints[i+3].Spawn(players[i])); // Add Players to spawn points 3-5
+        GetListOfAlivePlayers()[i].multipliers = players[i].multipliers;
         for (int j = 0; j < players[i].equipment.Length; j++) {
           if (players[i].equipment[j] != null) {
             string abilityToAdd = GetListOfAlivePlayers()[i].AddAbilityFromEquipment(players[i].equipment[j]);
@@ -139,6 +140,10 @@ namespace BattleSystem {
             }
           }
         }
+
+        GetListOfAlivePlayers().ForEach(player => {
+          player.ApplyMultipliers();
+        });
       }
 
       for (int i = 0; i < enemies.Count; i++) {
@@ -254,6 +259,8 @@ namespace BattleSystem {
         }
       }
       else if (abilityToBeUsed != null) {
+        // int multiplier = GetCurrentCharacter().multipliers[abilityToBeUsed.abilityName];
+        // abilityToBeUsed.Multiply(multiplier);
         if (abilityToBeUsed.abilityType == Ability.AbilityType.Heal) { // TODO Could add support spells here too
           if (!IsValidHealTarget(target)) {
             Debug.LogWarning("You can't heal your enemies, or your health is already maxed out!!");

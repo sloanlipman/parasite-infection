@@ -56,9 +56,9 @@ MonoBehaviour:
   abilities: []
   abilitiesList: []
   level: 0
-  experience: 90
+  experience: 0
   inParty: 0
-  modSlots: 4
+  modSlots: 1
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0
