@@ -17,6 +17,12 @@ public class UIUpgradePointPanel : MonoBehaviour {
     partyPanel = FindObjectOfType<UIPartyPanel>();
   }
 
+  private void Update() {
+    bool hasUpgradePointsToSpend =  partyMember.HasUpgradePointsToSpend();
+    buttonList.ForEach(button => button.interactable = hasUpgradePointsToSpend);
+
+  }
+
   public void Populate() {
     partyMember = partyPanel.LookUpSelectedPartyMember();
     buttonList.ForEach(button => {
@@ -33,13 +39,11 @@ public class UIUpgradePointPanel : MonoBehaviour {
       partyMember.multipliers[key]++;
       UpdateButtonLabel(button, key, partyMember.multipliers[key].ToString());
       partyMember.SpendUpgradePoint();
-      gameObject.SetActive(partyMember.HasUpgradePointsToSpend());
     });
     }
   }
 
   private void UpdateButtonLabel(Button button, string property, string value) {
     button.GetComponentInChildren<Text>().text = string.Format("{0} ({1})", property, value);
-
   }
 }

@@ -18,7 +18,6 @@ public class UIPlayerInfoPanel : MonoBehaviour {
   private BattleSystem.CharacterController characterController;
 
   public void Populate(string partyMemberName) {
-    spendUpgradePointsPanel.gameObject.SetActive(false);
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     partyMemberName = partyPanel.GetSelectedPartyMember();
     partyMember = characterController.FindPartyMemberByName(partyMemberName);
@@ -29,8 +28,8 @@ public class UIPlayerInfoPanel : MonoBehaviour {
     levelUpIn.text = "TODO";
   }
 
-  // Update is called once per frame
   void Update() {
-    spendUpgradePointsPanel.gameObject.SetActive((partyMember.HasUpgradePointsToSpend()));
+    bool hasUpgradePoints = partyMember.HasUpgradePointsToSpend();
+    spendUpgradePointsPanel.GetComponentInChildren<Text>().text = hasUpgradePoints? "Spend Upgrade Points (" + partyMember.GetUpgradePoints() + ")" : "View Upgrade Points";
   }
 }
