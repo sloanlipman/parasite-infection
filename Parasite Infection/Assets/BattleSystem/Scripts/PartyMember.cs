@@ -39,8 +39,17 @@ namespace BattleSystem {
       return modSlots;
     }
 
-    public void SetModSlots(int num) {
-      modSlots = num;
+    public void SetModSlots() {
+      // TODO check the balance of this scheme
+      if (level < 10) {
+        modSlots = 1;
+      } else if (level < 20) {
+        modSlots = 2;
+      } else if (level < 30) {
+        modSlots = 3;
+      } else {
+        modSlots = 4;
+      }
     }
 
     public override void Die() {

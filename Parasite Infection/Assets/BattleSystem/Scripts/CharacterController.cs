@@ -93,6 +93,7 @@ namespace BattleSystem {
         member.level++;
         member.AddUpgradePoint();
       }
+      member.SetModSlots();
     }
 
     public int NextLevel(int currentLevel) {
