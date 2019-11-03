@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Barry
-  health: 11
+  health: 15
   maxHealth: 15
   attackPower: 5
   defensePower: 3
-  energyPoints: 85
+  energyPoints: 15
   maxEnergyPoints: 15
   speed: 0
   abilities: []

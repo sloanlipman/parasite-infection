@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Android
-  health: 15
-  maxHealth: 15
+  health: 25
+  maxHealth: 25
   attackPower: 5
   defensePower: 5
-  energyPoints: 2
+  energyPoints: 15
   maxEnergyPoints: 15
   speed: 0
   abilities: []

@@ -89,7 +89,7 @@ namespace BattleSystem {
     }
 
     private void ClearItemPanel() {
-      if (abilityPanel.transform.childCount > 0) {
+      if (itemPanel.transform.childCount > 0) {
         foreach(Button button in itemPanel.transform.GetComponentsInChildren<Button>()) {
           Destroy(button.gameObject);
         }
@@ -125,7 +125,6 @@ namespace BattleSystem {
     }
 
     void SelectItem(Item item) {
-      Debug.Log("Selected " + item.itemName);
       BattleController.Instance.itemToBeUsed = item;
       BattleController.Instance.abilityToBeUsed = null;
       BattleController.Instance.playerIsAttacking = false;

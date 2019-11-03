@@ -273,7 +273,6 @@ namespace BattleSystem {
           Debug.LogWarning("Not enough Energy to cast that Ability!");
         }
       } else if (itemToBeUsed != null) {
-        Debug.Log("Item to be used is " + itemToBeUsed.itemName);
         if (items.UseItem(target, itemToBeUsed)) {
           uiController.UpdateCharacterUI();
           NextAct();

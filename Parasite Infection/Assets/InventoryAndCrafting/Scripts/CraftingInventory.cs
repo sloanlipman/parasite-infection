@@ -49,10 +49,6 @@ public class CraftingInventory : Inventory {
 
   // Update is called once per frame
   void Awake() {
-    if (FindObjectsOfType<CraftingInventory>().Length > 1) {
-      Destroy(this.gameObject);
-    }
-    DontDestroyOnLoad(this.gameObject);
     inventoryController = FindObjectOfType<InventoryController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
   }

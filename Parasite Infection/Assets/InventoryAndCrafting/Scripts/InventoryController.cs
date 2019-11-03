@@ -162,17 +162,16 @@ public class InventoryController : MonoBehaviour {
   public void ConsumeItemFromUI() {
     PartyMember member = partyPanel.LookUpSelectedPartyMember();
       if (!IsCraftingItem(itemToConsume.item) && member != null) {
-         ConsumableInventory consumableInventory = FindObjectOfType<ConsumableInventory>();
-         bool success = consumableInventory.UseItemOutsideOfBattle(member, itemToConsume.item);
-         if (success) {   
-           consumableInventory.RemoveItem(selectedItem.item);
-           UIPlayerInfoPanel infoPanel = FindObjectOfType<UIPlayerInfoPanel>();
-           if (!infoPanel.gameObject.activeSelf) {
-             infoPanel.gameObject.SetActive(true);
-           }
-            infoPanel.Populate(member.characterName);
+        ConsumableInventory consumableInventory = FindObjectOfType<ConsumableInventory>();
+        bool success = consumableInventory.UseItemOutsideOfBattle(member, itemToConsume.item);
+        if (success) {
+          consumableInventory.ClearAndParseUInventory();
+          UIPlayerInfoPanel infoPanel = FindObjectOfType<UIPlayerInfoPanel>();
+          if (!infoPanel.gameObject.activeSelf) {
+            infoPanel.gameObject.SetActive(true);
+          }
+          infoPanel.Populate(member.characterName);
       } else {
-        // DeselectItem();
         Inventory inventory = PerformSelectCorrectInventory(itemToConsume.item);
         inventory.GiveItem(itemToConsume.item.id);
       }

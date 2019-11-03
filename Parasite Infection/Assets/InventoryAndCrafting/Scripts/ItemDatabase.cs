@@ -8,11 +8,6 @@ public class ItemDatabase : MonoBehaviour {
   private HashSet<Item> currentItems = new HashSet<Item>();
 
   void Awake() {
-    if (FindObjectsOfType<ItemDatabase>().Length > 1) {
-      Destroy(this.gameObject);
-    }
-
-    DontDestroyOnLoad(this.gameObject);
     BuildItemDatabase();
   }
 

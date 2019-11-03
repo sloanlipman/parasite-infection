@@ -41,10 +41,6 @@ public class ConsumableInventory : Inventory {
   }
 
   void Awake() {
-    if (FindObjectsOfType<ConsumableInventory>().Length > 1) {
-      Destroy(this.gameObject);
-    }
-    DontDestroyOnLoad(this.gameObject);
     inventoryController = FindObjectOfType<InventoryController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
   }
@@ -54,15 +50,11 @@ public class ConsumableInventory : Inventory {
     if (item.stats.ContainsKey("Health") && BattleController.Instance.IsValidHealTarget(target)) {
       target.Heal(item.stats["Health"]);
       success = true;
-    } else {
-      Debug.LogWarning("Not a heal item or was not valid heal target");
     }
 
     if (item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
       target.RecoverEnergy(item.stats["Energy"]);
       success = true;
-    } else {
-      Debug.LogWarning("Not an EP recovery item or was not valid heal target");
     }
     if (success) {
       RemoveItemFromUI(item);
