@@ -17,6 +17,7 @@ namespace BattleSystem {
 
     public Dictionary<int, List<BattleCharacter>> characters = new Dictionary<int, List<BattleCharacter>>();
     private List<PartyMember> deadPlayers = new List<PartyMember>();
+    private List<Enemy> deadEnemies = new List<Enemy>();
     public int characterTurnIndex;
     public Ability abilityToBeUsed;
     public Item itemToBeUsed;
@@ -35,6 +36,10 @@ namespace BattleSystem {
 
     public List<PartyMember> GetDeadPlayersList() {
       return deadPlayers;
+    }
+
+    public List<Enemy> GetDeadEnemiesList() {
+      return deadEnemies;
     }
 
     public bool IsValidHealTarget(BattleCharacter target) {
@@ -305,6 +310,7 @@ namespace BattleSystem {
 
     private void AddEnemyExperience(int enemyId) {
       Enemy killedEnemy = characterController.FindEnemyById(enemyId);
+      deadEnemies.Add(killedEnemy);
       xpToReward += killedEnemy.experience;
    }
 

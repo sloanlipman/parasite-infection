@@ -83,29 +83,29 @@ namespace BattleSystem {
         p.energyPoints = member.energyPoints;
         p.experience += xp;
         Debug.Log(p.characterName + " Got XP: " + xp + ". Current XP is: " + p.experience);
-        LevelUp(p);
+        if (LevelUp(p)) {
+          BattleController.Instance.GetDeadEnemiesList().ForEach(enemy => {
+            int random = Random.Range(0, 10);
+            if (random >= 8) {
+              enemy.LevelUp();
+            }
+          });
+        }
       });
     }
 
-    public void LevelUp(PartyMember member) {
+    public bool LevelUp(PartyMember member) {
+      bool success = false;
       int xpToNextLevel = NextLevel(member.level);
       if (member.experience >= xpToNextLevel) {
-        member.level++;
-
-        member.maxHealth++;
-
-        member.maxEnergyPoints++;
-
-        member.attackPower++;
-        member.defensePower++;
-
-        member.health = member.maxHealth;
-        member.energyPoints = member.maxEnergyPoints;
+        member.LevelUp();
         if (member.level % 3 == 0) {
           member.AddUpgradePoint();
+          success = true;
         }
       }
       member.SetModSlots();
+      return success;
     }
 
     public int NextLevel(int currentLevel) {
