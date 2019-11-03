@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private QuestSystem.QuestPanel questPanel;
   [SerializeField] private UIPartyPanel partyPanel;
   [SerializeField] private GameObject playerEquipment;
+  [SerializeField] private UIUpgradePointPanel upgradePointPanel;
   [SerializeField] private UIPlayerInfoPanel playerInfo;
   [SerializeField] private Tooltip tooltip;
   [SerializeField] private InventoryController inventoryController;
@@ -97,6 +98,10 @@ public class MenuController : MonoBehaviour {
     return tooltip.gameObject.activeSelf;
   }
 
+  private bool IsUpgradePanelOpen() {
+    return upgradePointPanel.gameObject.activeSelf;
+  }
+
   private void DeselectItem() {
     if (inventoryController.IsAnItemSelected()) {
       partyPanel.ParseUIForCurrentEquipment();
@@ -137,6 +142,11 @@ public class MenuController : MonoBehaviour {
       playerInfo.gameObject.SetActive(false);
       partyPanel.ClearPartyMember();
     }
+  }
+
+  public void ToggleUpgradePointPanel() {
+    upgradePointPanel.gameObject.SetActive(!IsUpgradePanelOpen());
+    upgradePointPanel.Populate();
   }
 
   public void ToggleMenu(bool state) {

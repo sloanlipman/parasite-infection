@@ -94,13 +94,14 @@ namespace BattleSystem {
     void BuildPartyDatabase() {
       PartyMember[] members = Resources.LoadAll<PartyMember>("Players");
       foreach(PartyMember member in members) {
+        member.SetUpgradePoints(5);
         member.multipliers = new Dictionary<string, int> {
         {"Attack", 2},
         {"Defense", 1},
         {"Barrage", 1},
         {"Fireball", 1},
         {"Hydroblast", 2},
-        {"Heal", 1}
+        {"Heal", 1},
       };
         if (!partyMembers.Contains(member)) {
           partyMembers.Add(member);

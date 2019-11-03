@@ -10,12 +10,15 @@ public class UIPlayerInfoPanel : MonoBehaviour {
   [SerializeField] private Text level;
   [SerializeField] private Text levelUpIn;
   [SerializeField] private UIPartyPanel partyPanel;
+  [SerializeField] private SpendUpgradePointsPanel spendUpgradePointsPanel;
+
 
   private BattleSystem.PartyMember partyMember;
   // private string partyMemberName;
   private BattleSystem.CharacterController characterController;
 
   public void Populate(string partyMemberName) {
+    spendUpgradePointsPanel.gameObject.SetActive(false);
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     partyMemberName = partyPanel.GetSelectedPartyMember();
     partyMember = characterController.FindPartyMemberByName(partyMemberName);
@@ -28,6 +31,6 @@ public class UIPlayerInfoPanel : MonoBehaviour {
 
   // Update is called once per frame
   void Update() {
-
+    spendUpgradePointsPanel.gameObject.SetActive((partyMember.HasUpgradePointsToSpend()));
   }
 }
