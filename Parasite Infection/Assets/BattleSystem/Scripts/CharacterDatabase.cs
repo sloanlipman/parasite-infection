@@ -15,12 +15,10 @@ namespace BattleSystem {
     public void ResetAllCharacters() {
       enemyList.ForEach(enemy => {
         enemy.level = 0;
-        // enemy.SetDefaultValues();
       });
 
       partyMembers.ForEach(member => {
         member.level = 0;
-        // member.SetDefaultValues();
       });
     }
 

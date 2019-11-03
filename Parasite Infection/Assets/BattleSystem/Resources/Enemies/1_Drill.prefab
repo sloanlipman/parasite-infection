@@ -109,6 +109,8 @@ MonoBehaviour:
   - Barrage
   level: 0
   experience: 2
+  originalMaxHealth: 25
+  originalMaxEP: 15
   enemyId: 1
 --- !u!61 &9192391036177522714
 BoxCollider2D:

@@ -46,20 +46,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: The Eye
-  health: 10
-  maxHealth: 10
-  attackPower: 5
-  defensePower: 1
-  energyPoints: 15
-  maxEnergyPoints: 15
+  health: 30
+  maxHealth: 30
+  attackPower: 10
+  defensePower: 7
+  energyPoints: 30
+  maxEnergyPoints: 30
   speed: 0
   abilities:
   - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
   abilitiesList:
   - Heal
   - Fireball
-  level: 0
-  experience: 0
+  level: 1
+  experience: 8
+  originalMaxHealth: 30
+  originalMaxEP: 30
   enemyId: 7
 --- !u!212 &7264005851067476655
 SpriteRenderer:

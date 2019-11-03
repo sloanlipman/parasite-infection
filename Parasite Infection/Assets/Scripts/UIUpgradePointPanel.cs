@@ -10,11 +10,13 @@ public class UIUpgradePointPanel : MonoBehaviour {
 
   [SerializeField] Button upgradePointButton;
   private List<Button> buttonList = new List<Button>();
+  private UIPlayerInfoPanel playerInfoPanel;
 
 
   private void Awake() {
     gameObject.SetActive(false);
     partyPanel = FindObjectOfType<UIPartyPanel>();
+    playerInfoPanel = FindObjectOfType<UIPlayerInfoPanel>();
   }
 
   private void Update() {
@@ -30,16 +32,23 @@ public class UIUpgradePointPanel : MonoBehaviour {
     });
     buttonList.Clear();
 
-  foreach(var multiplier in partyMember.upgradePointsDictionary) {
-    Button button = Instantiate<Button>(upgradePointButton, this.transform);
-    buttonList.Add(button);
-    UpdateButtonLabel(button, multiplier.Key.ToString(), multiplier.Value.ToString());
-    button.GetComponent<Button>().onClick.AddListener(() => {
-      string key = multiplier.Key.ToString();
-      partyMember.upgradePointsDictionary[key]++;
-      UpdateButtonLabel(button, key, partyMember.upgradePointsDictionary[key].ToString());
-      partyMember.SpendUpgradePoint();
-    });
+    foreach(var multiplier in partyMember.upgradePointsDictionary) {
+      Button button = Instantiate<Button>(upgradePointButton, this.transform);
+      buttonList.Add(button);
+      UpdateButtonLabel(button, multiplier.Key.ToString(), multiplier.Value.ToString());
+      button.GetComponent<Button>().onClick.AddListener(() => {
+        string key = multiplier.Key.ToString();
+        partyMember.upgradePointsDictionary[key]++;
+        UpdateButtonLabel(button, key, partyMember.upgradePointsDictionary[key].ToString());
+        partyMember.SpendUpgradePoint();
+        if (key == "HP") {
+          partyMember.maxHealth++;
+        } else if (key == "EP") {
+          partyMember.maxEnergyPoints++;
+        }
+        playerInfoPanel.Populate(partyMember.characterName);
+      });
+
     }
   }
 

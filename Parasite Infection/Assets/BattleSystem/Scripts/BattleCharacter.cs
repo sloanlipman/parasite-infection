@@ -18,6 +18,9 @@ namespace BattleSystem {
     public int experience;
     public Item[] equipment = new Item[4];
 
+    public int originalMaxHealth;
+    public int originalMaxEP;
+
     public Dictionary<string, int> upgradePointsDictionary = new Dictionary<string, int>();
 
     public virtual void SetDefaultValues() {
@@ -25,9 +28,13 @@ namespace BattleSystem {
       if (level == 0 || upgradePointsDictionary.Count == 0) {
         level = 1;
         experience = 0;
+        maxHealth = originalMaxHealth;
+        maxEnergyPoints = originalMaxEP;
         health = maxHealth;
         energyPoints = maxEnergyPoints;
         upgradePointsDictionary = new Dictionary<string, int> {
+            {"HP", 0},
+            {"EP", 0},
             {"Attack", 0},
             {"Defense", 0},
             {"Barrage", 0},

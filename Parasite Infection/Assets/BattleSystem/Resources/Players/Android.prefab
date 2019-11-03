@@ -57,6 +57,9 @@ MonoBehaviour:
   abilitiesList: []
   level: 1
   experience: 0
+  originalMaxHealth: 25
+  originalMaxEP: 15
+  upgradePoints: 1
   modSlots: 1
 --- !u!212 &7264005851067476655
 SpriteRenderer:

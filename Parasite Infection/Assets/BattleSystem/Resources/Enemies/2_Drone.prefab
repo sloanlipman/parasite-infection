@@ -108,8 +108,10 @@ MonoBehaviour:
   abilitiesList:
   - Barrage
   - Fireball
-  level: 0
+  level: 1
   experience: 3
+  originalMaxHealth: 25
+  originalMaxEP: 15
   enemyId: 2
 --- !u!61 &9192391036177522714
 BoxCollider2D:

@@ -4,13 +4,14 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class PartyMember : BattleCharacter {
-    public int upgradePoints = 0;
+    public int upgradePoints = 1;
     public int modSlots = 1;
     public PartyMember() {}
 
     public override void SetDefaultValues() {
       if (level == 0 || upgradePointsDictionary.Count == 0) {
         upgradePoints = 1;
+        modSlots = 1;
       }
       base.SetDefaultValues();
     }

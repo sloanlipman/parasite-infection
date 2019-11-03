@@ -69,12 +69,38 @@ namespace BattleSystem {
     }
 
     public void Launch() {
-      List<Enemy> e = new List<Enemy>(){enemies[0]};
+      List<Enemy> enemiesToUse = GenerateEnemyParty();
       players.ForEach(player => {
         player.abilities.Clear();
         player.abilitiesList.Clear();
       });
-      BattleController.Instance.StartBattle(players, e);
+      BattleController.Instance.StartBattle(players, enemiesToUse);
+    }
+
+    private List<Enemy> GenerateEnemyParty() {
+      List<Enemy> possibleEnemies = new List<Enemy>();
+      List<Enemy> enemyParty = new List<Enemy>();
+      int playerLevel = 0;
+      players.ForEach(p => {
+        if (p.level > playerLevel) {
+          playerLevel = p.level;
+        }
+      });
+
+      enemies.ForEach(enemy => {
+        if (enemy.enemyId <= playerLevel / 3) {
+          possibleEnemies.Add(enemy);
+        }
+      });
+
+      int numberOfEnemies = Random.Range(1,3);
+
+      for (int i = 0; i < numberOfEnemies; i++) {
+        int randomIndex = Random.Range(0, possibleEnemies.Count - 1);
+        enemyParty.Add(possibleEnemies[randomIndex]);
+      }
+
+      return enemyParty;
     }
 
     public int GetWorldSceneIndex() {

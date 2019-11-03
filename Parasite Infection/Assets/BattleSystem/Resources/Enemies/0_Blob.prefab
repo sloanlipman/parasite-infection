@@ -58,8 +58,10 @@ MonoBehaviour:
   abilitiesList:
   - Fireball
   - Hydroblast
-  level: 0
+  level: 1
   experience: 1
+  originalMaxHealth: 10
+  originalMaxEP: 15
   enemyId: 0
 --- !u!212 &7264005851067476655
 SpriteRenderer:
