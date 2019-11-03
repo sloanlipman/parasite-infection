@@ -7,6 +7,8 @@ public class UIPlayerInfoPanel : MonoBehaviour {
   [SerializeField] private Text characterName;
   [SerializeField] private Text hp;
   [SerializeField] private Text ep;
+  [SerializeField] private Text attack;
+  [SerializeField] private Text defense;
   [SerializeField] private Text level;
   [SerializeField] private Text levelUpIn;
   [SerializeField] private UIPartyPanel partyPanel;
@@ -24,6 +26,10 @@ public class UIPlayerInfoPanel : MonoBehaviour {
     characterName.text = "Name: " + partyMember.characterName;
     hp.text = string.Format("HP: {0}/{1}", partyMember.health, partyMember.maxHealth);
     ep.text = string.Format("Energy: {0}/{1}", partyMember.energyPoints, partyMember.maxEnergyPoints);
+
+    attack.text = string.Format("Attack Power {0}", partyMember.attackPower);
+    defense.text = string.Format("Defense: {0}", partyMember.defensePower);
+
     level.text = "Level: " + partyMember.level;
 
     int levelUpInAmount = (characterController.NextLevel(partyMember.level) - partyMember.experience);

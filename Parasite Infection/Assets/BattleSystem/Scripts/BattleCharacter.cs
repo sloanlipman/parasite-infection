@@ -49,11 +49,6 @@ namespace BattleSystem {
       }
     }
 
-    public void ApplyUpgradePoints() {
-      attackPower = attackPower + upgradePointsDictionary["Attack"];
-      defensePower = defensePower + upgradePointsDictionary["Defense"];
-    }
-
     public Item[] GetEquipment() {
       return equipment;
     }

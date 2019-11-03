@@ -149,10 +149,6 @@ namespace BattleSystem {
             }
           }
         }
-
-        GetListOfAlivePlayers().ForEach(player => {
-          player.ApplyUpgradePoints();
-        });
       }
 
       for (int i = 0; i < enemies.Count; i++) {

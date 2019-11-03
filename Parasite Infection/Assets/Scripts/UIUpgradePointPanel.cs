@@ -41,10 +41,29 @@ public class UIUpgradePointPanel : MonoBehaviour {
         partyMember.upgradePointsDictionary[key]++;
         UpdateButtonLabel(button, key, partyMember.upgradePointsDictionary[key].ToString());
         partyMember.SpendUpgradePoint();
-        if (key == "HP") {
-          partyMember.maxHealth++;
-        } else if (key == "EP") {
-          partyMember.maxEnergyPoints++;
+
+        switch(key) {
+          case "HP": {
+            partyMember.maxHealth++;
+            partyMember.health++;
+            break;
+          }
+
+          case "EP": {
+            partyMember.maxEnergyPoints++;
+            partyMember.energyPoints++;
+            break;
+          }
+
+          case "Attack": {
+            partyMember.attackPower++;
+            break;
+          }
+
+          case "Defense": {
+            partyMember.defensePower++;
+            break;
+          }
         }
         playerInfoPanel.Populate(partyMember.characterName);
       });
