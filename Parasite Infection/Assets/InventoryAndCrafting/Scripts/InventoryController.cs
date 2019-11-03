@@ -29,8 +29,14 @@ public class InventoryController : MonoBehaviour {
   }
 
   void Update() {
-    if (itemToConsume.item != null && !IsCraftingItem(itemToConsume.item)) {
-      ConsumeItemFromUI();
+    if (itemToConsume.item != null) {
+      if (IsCraftingItem(itemToConsume.item)) {
+        Inventory craftingInventory = PerformSelectCorrectInventory(itemToConsume.item);
+        craftingInventory.GiveItem(itemToConsume.item.id);
+        itemToConsume.UpdateItem(null);
+      } else {
+        ConsumeItemFromUI();
+      }
     }
   }
 

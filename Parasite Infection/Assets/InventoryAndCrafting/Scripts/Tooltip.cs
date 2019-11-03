@@ -14,7 +14,11 @@ public class Tooltip : MonoBehaviour {
   public void GenerateTooltip(Item item) {
     string statText = "";
     foreach(var stat in item.stats) {
-      if (stat.Key.ToString() != "CoreID") {
+      if (
+        stat.Key.ToString() != "CoreID" ||
+        stat.Key.ToString() != "Energy" ||
+        stat.Key.ToString() != "Health"
+      ) {
         if (stat.Key.ToString() == "Crafting" || stat.Key.ToString() == "Equippable") {
           statText += "\n" + TranslateValue(stat.Key, stat.Value);
         } else {
