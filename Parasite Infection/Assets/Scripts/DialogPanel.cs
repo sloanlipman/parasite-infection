@@ -8,13 +8,6 @@ public class DialogPanel : MonoBehaviour {
   private string[] dialog;
   private int dialogIndex;
 
-  void Start() {
-    if (FindObjectsOfType<DialogPanel>().Length > 1) {
-      Destroy(this.gameObject);
-    }
-    DontDestroyOnLoad(this.gameObject);
-  }
-
   public void StartDialog(string[] dialog) {
     dialogIndex = 0;
     this.dialog = dialog;

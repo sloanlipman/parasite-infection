@@ -4,9 +4,16 @@ using UnityEngine;
 
 namespace BattleSystem {
   public class PartyMember : BattleCharacter {
-    private int upgradePoints = 0;
+    public int upgradePoints = 0;
     public int modSlots = 1;
     public PartyMember() {}
+
+    public override void SetDefaultValues() {
+      if (level == 0 || upgradePointsDictionary.Count == 0) {
+        upgradePoints = 1;
+      }
+      base.SetDefaultValues();
+    }
 
     public int GetUpgradePoints() {
       return upgradePoints;
@@ -38,7 +45,7 @@ namespace BattleSystem {
 
     public override void Die() {
       base.Die();
-      BattleController.Instance.GetListOfAlivePlayers().Remove(this);
+      BattleController.Instance.RemoveDeadPlayer(this);
       BattleController.Instance.ResetUIPlayerInfo();
     }
   }

@@ -105,12 +105,11 @@ MonoBehaviour:
   speed: 0
   abilities:
   - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
-  - {fileID: 2214528129449449433, guid: c910bf225296a50418cb14f898de85d6, type: 3}
   abilitiesList:
   - Heal
   - Hydroblast
   level: 0
-  experience: 30
+  experience: 7
   enemyId: 6
 --- !u!61 &9192391036177522714
 BoxCollider2D:

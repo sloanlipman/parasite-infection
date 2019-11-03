@@ -6,6 +6,13 @@ namespace BattleSystem {
   public class CharacterController : MonoBehaviour {
     private CharacterDatabase characterDatabase;
 
+    private void Update() {
+      if (Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.L)) {
+        characterDatabase.ResetAllCharacters();
+        Debug.Log("Resetting game");
+      }
+    }
+
     public void Save() {
       ES3.Save<List<PartyMember>>("PartyMembers", GetPartyMembers(), "Party.json");
       ES3.Save<List<string>>("ActiveParty", GetActivePartyList(), "ActiveParty.json");
@@ -64,9 +71,10 @@ namespace BattleSystem {
     public void UpdatePlayers(List<BattleCharacter> partyMembers, int xp) {
 
   // Set all to a default value
-      GetActiveParty().ForEach(member => {
-        member.health = 1;
-        member.energyPoints = member.maxEnergyPoints / 2; // Recover a bit if they died. Should capture the last value from before they died though.
+      BattleController.Instance.GetDeadPlayersList().ForEach(member => {
+        PartyMember p = characterDatabase.FindPartyMemberByName(member.characterName);
+          p.health = 1;
+          p.energyPoints = member.energyPoints;
       });
   // Survivors only
       partyMembers.ForEach(member => {
@@ -74,6 +82,7 @@ namespace BattleSystem {
         p.health = member.health;
         p.energyPoints = member.energyPoints;
         p.experience += xp;
+        Debug.Log(p.characterName + " Got XP: " + xp + ". Current XP is: " + p.experience);
         LevelUp(p);
       });
     }
@@ -82,6 +91,7 @@ namespace BattleSystem {
       int xpToNextLevel = NextLevel(member.level);
       if (member.experience >= xpToNextLevel) {
         member.level++;
+        member.AddUpgradePoint();
       }
     }
 

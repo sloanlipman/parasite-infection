@@ -20,19 +20,22 @@ namespace BattleSystem {
 
     public Dictionary<string, int> upgradePointsDictionary = new Dictionary<string, int>();
 
-    public void SetDefaultValues() {
+    public virtual void SetDefaultValues() {
+
+      if (level == 0 || upgradePointsDictionary.Count == 0) {
         level = 1;
         experience = 0;
         health = maxHealth;
         energyPoints = maxEnergyPoints;
         upgradePointsDictionary = new Dictionary<string, int> {
-        {"Attack", 0},
-        {"Defense", 0},
-        {"Barrage", 0},
-        {"Fireball", 0},
-        {"Hydroblast", 0},
-        {"Heal", 0},
-      };
+            {"Attack", 0},
+            {"Defense", 0},
+            {"Barrage", 0},
+            {"Fireball", 0},
+            {"Hydroblast", 0},
+            {"Heal", 0},
+        };
+      }
     }
 
     public void ApplyUpgradePoints() {
@@ -85,7 +88,14 @@ namespace BattleSystem {
       if (successful) {
         Ability abilityToCast = Instantiate<Ability>(ability, transform.position, Quaternion.identity);
         energyPoints -= ability.energyCost;
-        int power = ability.power + upgradePointsDictionary[abilityToCast.abilityName];
+        int powerToAdd = 0;
+        foreach(var up in upgradePointsDictionary) {
+          Debug.Log(up.Key.ToString() + up.Value.ToString());
+        }
+        if (upgradePointsDictionary.ContainsKey(abilityToCast.abilityName)) {
+          powerToAdd =  upgradePointsDictionary[abilityToCast.abilityName];
+        }
+        int power = ability.power + powerToAdd;
         abilityToCast.Cast(targetCharacter, power);
       }
       return successful;

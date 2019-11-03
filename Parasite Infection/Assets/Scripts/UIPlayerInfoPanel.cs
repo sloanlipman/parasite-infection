@@ -25,11 +25,16 @@ public class UIPlayerInfoPanel : MonoBehaviour {
     hp.text = string.Format("HP: {0}/{1}", partyMember.health, partyMember.maxHealth);
     ep.text = string.Format("Energy: {0}/{1}", partyMember.energyPoints, partyMember.maxEnergyPoints);
     level.text = "Level: " + partyMember.level;
-    levelUpIn.text = "Level Up In: " + characterController.NextLevel(partyMember.level);
+
+    int levelUpInAmount = (characterController.NextLevel(partyMember.level) - partyMember.experience);
+    if (levelUpInAmount == 0) {
+      levelUpInAmount = (characterController.NextLevel(partyMember.level + 1) - partyMember.experience);
+    }
+    levelUpIn.text = "Level Up In: " + levelUpInAmount;
   }
 
   void Update() {
     bool hasUpgradePoints = partyMember.HasUpgradePointsToSpend();
-    spendUpgradePointsPanel.GetComponentInChildren<Text>().text = hasUpgradePoints? "Spend Upgrade Points (" + partyMember.GetUpgradePoints() + ")" : "View Upgrade Points";
+    spendUpgradePointsPanel.GetComponentInChildren<Text>(true).text = hasUpgradePoints? "Spend Upgrade Points (" + partyMember.GetUpgradePoints() + ")" : "View Upgrade Points";
   }
 }

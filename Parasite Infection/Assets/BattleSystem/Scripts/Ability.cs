@@ -34,9 +34,5 @@ namespace BattleSystem {
         target.Heal(power);
       }
     }
-
-    public void Multiply(int multiplier) {
-      power = power * multiplier;
-    }
   }
 }

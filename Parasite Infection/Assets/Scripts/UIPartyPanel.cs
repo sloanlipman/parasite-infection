@@ -8,9 +8,11 @@ public class UIPartyPanel : MonoBehaviour {
   [SerializeField] private UIPlayerInfoPanel playerInfo;
   [SerializeField] private GameObject[] slots = new GameObject[]{};
   [SerializeField] private GameObject equipmentSlots;
+  [SerializeField] UIUpgradePointPanel upgradePointPanel;
   private CraftingInventory craftingInventory;
   private ConsumableInventory consumableInventory;
   private InventoryController inventoryController;
+
   private string selectedPartyMember;
 
   private List<Button> buttonList = new List<Button>();
@@ -75,9 +77,9 @@ public class UIPartyPanel : MonoBehaviour {
       buttonList.Add(button);
       button.GetComponentInChildren<Text>().text = member.characterName;
       button.GetComponent<Button>().onClick.AddListener(() => {
-        
         if (selectedPartyMember != member.characterName) {
           if (AreEquipmentSlotsOpen()) {
+            upgradePointPanel.gameObject.SetActive(false);
             ParseUIForCurrentEquipment(); // If another party member's equipment is open, save the currenytly opened one
           }
           AddPlayerEquipmentSlots(member);

@@ -11,6 +11,19 @@ namespace BattleSystem {
     public Dictionary<string, Ability> abilityList = new Dictionary<string, Ability>();
     private InventoryController inventoryController;
 
+// Method for developer to manually reset all of the characters back to their default state
+    public void ResetAllCharacters() {
+      enemyList.ForEach(enemy => {
+        enemy.level = 0;
+        // enemy.SetDefaultValues();
+      });
+
+      partyMembers.ForEach(member => {
+        member.level = 0;
+        // member.SetDefaultValues();
+      });
+    }
+
     private void AddPlayerToParty(string name) {
       activePartyMembers.Add(name);
     }
@@ -95,7 +108,6 @@ namespace BattleSystem {
       foreach(PartyMember member in members) {
         if (!partyMembers.Contains(member)) {
           partyMembers.Add(member);
-          member.SetUpgradePoints(1);
           member.SetDefaultValues();
         }
       }

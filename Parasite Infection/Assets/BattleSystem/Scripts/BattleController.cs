@@ -16,6 +16,7 @@ namespace BattleSystem {
     private QuestSystem.QuestPanel questPanel;
 
     public Dictionary<int, List<BattleCharacter>> characters = new Dictionary<int, List<BattleCharacter>>();
+    private List<PartyMember> deadPlayers = new List<PartyMember>();
     public int characterTurnIndex;
     public Ability abilityToBeUsed;
     public Item itemToBeUsed;
@@ -27,7 +28,15 @@ namespace BattleSystem {
 
     private int xpToReward;
 
-    
+    public void RemoveDeadPlayer(PartyMember member) {
+      GetListOfAlivePlayers().Remove(member);
+      deadPlayers.Add(member);
+    }
+
+    public List<PartyMember> GetDeadPlayersList() {
+      return deadPlayers;
+    }
+
     public bool IsValidHealTarget(BattleCharacter target) {
       return IsCharacterAPlayer(target) && target.IsCharacterDamaged();
     }
@@ -297,9 +306,11 @@ namespace BattleSystem {
       target.Hurt(attacker.attackPower);
       NextAct();
     }
+
     private void AddEnemyExperience(int enemyId) {
       Enemy killedEnemy = characterController.FindEnemyById(enemyId);
       xpToReward += killedEnemy.experience;
    }
+
   }
 }

@@ -7,6 +7,11 @@ namespace BattleSystem {
     public int enemyId;
     public Enemy() {}
 
+    public override void SetDefaultValues() {
+      base.SetDefaultValues();
+      experience = enemyId + 1;
+    }
+
     public bool Act() {
       bool didEnemyUseAbility = false;
       int dieRoll = Random.Range(0,2);

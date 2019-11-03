@@ -108,7 +108,7 @@ MonoBehaviour:
   abilitiesList:
   - Heal
   level: 0
-  experience: 5
+  experience: 4
   enemyId: 3
 --- !u!61 &5126930062819720034
 BoxCollider2D:

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("inParty", "characterName", "health", "maxHealth", "attackPower", "defensePower", "energyPoints", "maxEnergyPoints", "speed", "abilities", "abilitiesList", "level", "experience", "equipment")]
+	[ES3PropertiesAttribute("upgradePoints", "modSlots", "characterName", "health", "maxHealth", "attackPower", "defensePower", "energyPoints", "maxEnergyPoints", "speed", "abilities", "abilitiesList", "level", "experience", "equipment", "upgradePointsDictionary")]
 	public class ES3Type_PartyMember : ES3ComponentType
 	{
 		public static ES3Type Instance = null;
@@ -18,7 +18,8 @@ namespace ES3Types
 		{
 			var instance = (BattleSystem.PartyMember)obj;
 			
-			writer.WritePrivateField("inParty", instance);
+			writer.WritePrivateField("upgradePoints", instance);
+			writer.WriteProperty("modSlots", instance.modSlots, ES3Type_int.Instance);
 			writer.WriteProperty("characterName", instance.characterName, ES3Type_string.Instance);
 			writer.WriteProperty("health", instance.health, ES3Type_int.Instance);
 			writer.WriteProperty("maxHealth", instance.maxHealth, ES3Type_int.Instance);
@@ -31,7 +32,8 @@ namespace ES3Types
 			writer.WriteProperty("abilitiesList", instance.abilitiesList);
 			writer.WriteProperty("level", instance.level, ES3Type_int.Instance);
 			writer.WriteProperty("experience", instance.experience, ES3Type_int.Instance);
-			writer.WriteProperty("equipment", instance.equipment);
+			writer.WriteProperty("equipment", instance.equipment, ES3Type_ItemArray.Instance);
+			writer.WriteProperty("upgradePointsDictionary", instance.upgradePointsDictionary);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
@@ -42,9 +44,12 @@ namespace ES3Types
 				switch(propertyName)
 				{
 					
-					case "inParty":
-					reader.SetPrivateField("inParty", reader.Read<System.Boolean>(), instance);
+					case "upgradePoints":
+					reader.SetPrivateField("upgradePoints", reader.Read<System.Int32>(), instance);
 					break;
+					case "modSlots":
+						instance.modSlots = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
 					case "characterName":
 						instance.characterName = reader.Read<System.String>(ES3Type_string.Instance);
 						break;
@@ -82,7 +87,10 @@ namespace ES3Types
 						instance.experience = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					case "equipment":
-						instance.equipment = reader.Read<Item[]>();
+						instance.equipment = reader.Read<Item[]>(ES3Type_ItemArray.Instance);
+						break;
+					case "upgradePointsDictionary":
+						instance.upgradePointsDictionary = reader.Read<System.Collections.Generic.Dictionary<System.String, System.Int32>>();
 						break;
 					default:
 						reader.Skip();
