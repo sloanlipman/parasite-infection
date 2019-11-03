@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("characterName", "health", "maxHealth", "attackPower", "defensePower", "energyPoints", "maxEnergyPoints", "speed", "abilities", "abilitiesList", "level", "experience", "equipment")]
+	[ES3PropertiesAttribute("characterName", "health", "maxHealth", "attackPower", "defensePower", "energyPoints", "maxEnergyPoints", "speed", "abilities", "abilitiesList", "level", "experience", "equipment", "multipliers")]
 	public class ES3Type_BattleCharacter : ES3ComponentType
 	{
 		public static ES3Type Instance = null;
@@ -30,7 +30,8 @@ namespace ES3Types
 			writer.WriteProperty("abilitiesList", instance.abilitiesList);
 			writer.WriteProperty("level", instance.level, ES3Type_int.Instance);
 			writer.WriteProperty("experience", instance.experience, ES3Type_int.Instance);
-			writer.WriteProperty("equipment", instance.equipment);
+			writer.WriteProperty("equipment", instance.equipment, ES3Type_ItemArray.Instance);
+			writer.WriteProperty("multipliers", instance.multipliers);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
@@ -78,7 +79,10 @@ namespace ES3Types
 						instance.experience = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					case "equipment":
-						instance.equipment = reader.Read<Item[]>();
+						instance.equipment = reader.Read<Item[]>(ES3Type_ItemArray.Instance);
+						break;
+					case "multipliers":
+						instance.multipliers = reader.Read<System.Collections.Generic.Dictionary<System.String, System.Int32>>();
 						break;
 					default:
 						reader.Skip();
