@@ -111,6 +111,8 @@ MonoBehaviour:
   experience: 4
   originalMaxHealth: 10
   originalMaxEP: 10
+  originalAttackPower: 5
+  originalDefensePower: 20
   enemyId: 3
 --- !u!61 &5126930062819720034
 BoxCollider2D:

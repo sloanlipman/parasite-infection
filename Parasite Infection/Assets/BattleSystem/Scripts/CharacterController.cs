@@ -91,9 +91,15 @@ namespace BattleSystem {
       int xpToNextLevel = NextLevel(member.level);
       if (member.experience >= xpToNextLevel) {
         member.level++;
+        member.maxHealth++;
+        member.maxEnergyPoints++;
+        member.attackPower++;
+        member.defensePower++;
         member.health = member.maxHealth;
         member.energyPoints = member.maxEnergyPoints;
-        member.AddUpgradePoint();
+        if (member.level % 3 == 0) {
+          member.AddUpgradePoint();
+        }
       }
       member.SetModSlots();
     }

@@ -20,6 +20,8 @@ namespace BattleSystem {
 
     public int originalMaxHealth;
     public int originalMaxEP;
+    public int originalAttackPower;
+    public int originalDefensePower;
 
     public Dictionary<string, int> upgradePointsDictionary = new Dictionary<string, int>();
 
@@ -32,6 +34,8 @@ namespace BattleSystem {
         maxEnergyPoints = originalMaxEP;
         health = maxHealth;
         energyPoints = maxEnergyPoints;
+        attackPower = originalAttackPower;
+        defensePower = originalDefensePower;
         upgradePointsDictionary = new Dictionary<string, int> {
             {"HP", 0},
             {"EP", 0},

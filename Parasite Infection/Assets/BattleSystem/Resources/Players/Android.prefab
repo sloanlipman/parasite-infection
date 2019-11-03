@@ -59,6 +59,8 @@ MonoBehaviour:
   experience: 0
   originalMaxHealth: 25
   originalMaxEP: 15
+  originalAttackPower: 5
+  originalDefensePower: 5
   upgradePoints: 1
   modSlots: 1
 --- !u!212 &7264005851067476655

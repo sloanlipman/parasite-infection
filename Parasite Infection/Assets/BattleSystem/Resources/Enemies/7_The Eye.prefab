@@ -49,7 +49,7 @@ MonoBehaviour:
   health: 30
   maxHealth: 30
   attackPower: 10
-  defensePower: 7
+  defensePower: 10
   energyPoints: 30
   maxEnergyPoints: 30
   speed: 0
@@ -62,6 +62,8 @@ MonoBehaviour:
   experience: 8
   originalMaxHealth: 30
   originalMaxEP: 30
+  originalAttackPower: 10
+  originalDefensePower: 10
   enemyId: 7
 --- !u!212 &7264005851067476655
 SpriteRenderer:
