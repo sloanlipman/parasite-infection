@@ -43,8 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0331d2a8696672c49aab62539bb628c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextButton: {fileID: 0}
-  previousButton: {fileID: 0}
-  menuCanvas: {fileID: 0}
-  inventory: {fileID: 0}
+  dialogButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  menuPanel: {fileID: 0}
+  craftingInventory: {fileID: 0}
+  consumableInventory: {fileID: 0}
   questPanel: {fileID: 0}
+  partyPanel: {fileID: 0}
+  playerEquipment: {fileID: 0}
+  upgradePointPanel: {fileID: 0}
+  playerInfo: {fileID: 0}
+  tooltip: {fileID: 0}
+  inventoryController: {fileID: 0}

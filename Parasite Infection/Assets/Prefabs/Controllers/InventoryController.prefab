@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItem: {fileID: 0}
+  itemToConsume: {fileID: 0}
 --- !u!1001 &1644124454804814904
 PrefabInstance:
   m_ObjectHideFlags: 0
