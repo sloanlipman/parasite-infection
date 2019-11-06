@@ -76,6 +76,7 @@ namespace BattleSystem {
           p.health = 1;
           p.energyPoints = member.energyPoints;
       });
+
   // Survivors only
       partyMembers.ForEach(member => {
         PartyMember p = characterDatabase.FindPartyMemberByName(member.characterName);
@@ -86,7 +87,7 @@ namespace BattleSystem {
         if (LevelUp(p)) {
           BattleController.Instance.GetDeadEnemiesList().ForEach(enemy => {
             int random = Random.Range(0, 10);
-            if (random >= 8) {
+            if (random >= 5) {
               enemy.LevelUp();
             }
           });
@@ -98,10 +99,10 @@ namespace BattleSystem {
       bool success = false;
       int xpToNextLevel = NextLevel(member.level);
       if (member.experience >= xpToNextLevel) {
+        success = true;
         member.LevelUp();
         if (member.level % 3 == 0) {
           member.AddUpgradePoint();
-          success = true;
         }
       }
       member.SetModSlots();
