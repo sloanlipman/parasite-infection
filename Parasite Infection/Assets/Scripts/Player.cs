@@ -11,8 +11,8 @@ public class Player : Character  {
   public void Load() {
       ES3.Load<GameObject>("Player", "PlayerInfo.json");
   }
-  // Update is called once per frame
-  void Update() {
+
+  private void Update() {
     this.Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))); 
   }
 
