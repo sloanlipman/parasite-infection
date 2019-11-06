@@ -17,6 +17,11 @@ TagManager:
   - UI/Player Info
   - UI/Selected Crafting Item
   - UI/Selected Consumable
+  - UI/Dialog Previous
+  - UI/Dialog Next
+  - UI/Dialog Close
+  - UI/Crafting Inventory
+  - UI/Consumable Inventory
   layers:
   - Default
   - TransparentFX

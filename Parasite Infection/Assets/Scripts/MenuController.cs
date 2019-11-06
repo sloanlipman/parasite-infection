@@ -21,6 +21,10 @@ public class MenuController : MonoBehaviour {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
   }
 
+  public static bool IsMainMenuCurrentScene() {
+    return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main Menu");
+  }
+
   private void PauseGame() {
     ToggleDialogButtons(false);
     ToggleMenu(true);
@@ -72,7 +76,7 @@ public class MenuController : MonoBehaviour {
   }
 
   private bool CanPause() {
-    return !IsBattleCurrentScene() && Input.GetKeyDown(KeyCode.Escape);
+    return !IsBattleCurrentScene() && !IsMainMenuCurrentScene() && Input.GetKeyDown(KeyCode.Escape);
   }
 
   private bool IsPaused() {

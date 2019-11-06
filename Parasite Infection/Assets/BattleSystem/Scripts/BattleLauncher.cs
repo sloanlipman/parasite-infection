@@ -26,7 +26,7 @@ namespace BattleSystem {
     }
 
     private void Update() {
-      if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle")) {
+      if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle") && player != null && player.GetRigidbody() != null) {
         if (Time.timeScale != 0 && player.GetRigidbody().velocity != Vector2.zero) {
           random = Random.Range(0, 100);
           numberOfSteps++;
@@ -51,8 +51,8 @@ namespace BattleSystem {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-    if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle")) {
-      player = FindObjectOfType<Player>();
+      if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle")) {
+        player = FindObjectOfType<Player>();
       }
     }
 

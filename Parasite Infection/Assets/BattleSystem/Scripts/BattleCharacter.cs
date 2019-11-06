@@ -95,9 +95,6 @@ namespace BattleSystem {
         Ability abilityToCast = Instantiate<Ability>(ability, transform.position, Quaternion.identity);
         energyPoints -= ability.energyCost;
         int powerToAdd = 0;
-        foreach(var up in upgradePointsDictionary) {
-          Debug.Log(up.Key.ToString() + up.Value.ToString());
-        }
         if (upgradePointsDictionary.ContainsKey(abilityToCast.abilityName)) {
           powerToAdd =  upgradePointsDictionary[abilityToCast.abilityName];
         }

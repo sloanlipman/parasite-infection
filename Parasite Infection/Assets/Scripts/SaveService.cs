@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using QuestSystem;
 using BattleSystem;
+using UnityEngine.SceneManagement;
 
 public class SaveService : MonoBehaviour {
 
@@ -17,6 +18,9 @@ public class SaveService : MonoBehaviour {
   private DialogPanel dialogPanel;
   private SlotPanel[] slotPanels = new SlotPanel[] {};
 
+  private bool needToLoadPlayer = false;
+  private bool needToLoadNPCs = false;
+
   // Start is called before the first frame update
   public void Save() {
     inventoryController.PrepareForSave();
@@ -27,6 +31,7 @@ public class SaveService : MonoBehaviour {
 
     SavePlayer();
     SaveNPCs();
+    SaveScene();
   }
 
   public void Load() {
@@ -40,6 +45,7 @@ public class SaveService : MonoBehaviour {
       LoadPlayer();
       LoadNPCs();
       ResetDialog();
+      LoadSavedScene();
       menuController.UnpauseGame();
 
     } else {
@@ -68,6 +74,17 @@ public class SaveService : MonoBehaviour {
     return FindObjectsOfType(typeof(NPC)) as NPC[];
   }
 
+  private void SaveScene() {
+    ES3.Save<int>("sceneIndex", SceneManager.GetActiveScene().buildIndex);
+  }
+
+  private void LoadSavedScene() {
+    int sceneIndex = ES3.Load<int>("sceneIndex");
+    if (SceneManager.GetActiveScene().buildIndex != sceneIndex) {
+      SceneManager.LoadScene(sceneIndex);
+    }
+  }
+
   private void SavePlayer() {
     GetPlayer().Save();
   }
@@ -75,26 +92,30 @@ public class SaveService : MonoBehaviour {
   private void LoadPlayer() {
     if (GetPlayer() != null) {
       ES3.Load<GameObject>("Player", "PlayerInfo.json");
+    } else {
+      needToLoadPlayer = true;
     }
   }
 
   private void SaveNPCs() {
     NPC[] currentNPCs = GetNPCs();
     for (int i = 0; i < currentNPCs.Length; i++) {
-      // ES3.Save<NPC>("NPCGameObject" + i, currentNPCs[i], "NPCs.json");
       ES3.Save<NPC>("NPC" + i, currentNPCs[i], "NPCs.json");
     }
   }
 
   private void LoadNPCs() {
     NPC[] currentNPCs = GetNPCs();
-    for (int i = 0; i < currentNPCs.Length; i++) {
-      try {
-        ES3.LoadInto<NPC>("NPC" + i, "NPCs.json", currentNPCs[i]);
-        // ES3.LoadInto<GameObject>("NPCGameObject" + i, "NPCs.json", currentNPCs[i].gameObject);
-      } catch {
-        Debug.LogWarning("At index " + i + " something went wrong loading an NPC");
+    if (GetNPCs().Length > 0) {
+      for (int i = 0; i < currentNPCs.Length; i++) {
+        try {
+          ES3.LoadInto<NPC>("NPC" + i, "NPCs.json", currentNPCs[i]);
+        } catch {
+          Debug.LogWarning("At index " + i + " something went wrong loading an NPC");
+        }
       }
+    } else {
+      needToLoadNPCs = true;
     }
   }
 
@@ -105,7 +126,7 @@ public class SaveService : MonoBehaviour {
     }
   }
 
-  void Awake() {
+  private void Awake() {
     craftingInventory = FindObjectOfType<CraftingInventory>();
     consumableInventory = FindObjectOfType<ConsumableInventory>();
     questController = FindObjectOfType<QuestController>();
@@ -113,15 +134,29 @@ public class SaveService : MonoBehaviour {
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     inventoryController = FindObjectOfType<InventoryController>();
     battleLauncher = FindObjectOfType<BattleLauncher>();
+
+    SceneManager.sceneLoaded += OnSceneLoaded;
   }
 
-  void Start() {
+  private void Start() {
     if (Instance != null && Instance != this) {
       Destroy(this.gameObject);
     } else {
       Instance = this;
     }
-
     DontDestroyOnLoad(this.gameObject);
+  }
+
+  private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+    if (needToLoadNPCs) {
+      LoadNPCs();
+    }
+
+    if (needToLoadPlayer) {
+      LoadPlayer();
+    }
+
+    needToLoadPlayer = false;
+    needToLoadNPCs = false;
   }
 }
