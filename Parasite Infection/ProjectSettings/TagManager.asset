@@ -22,6 +22,7 @@ TagManager:
   - UI/Dialog Close
   - UI/Crafting Inventory
   - UI/Consumable Inventory
+  - UI/Intro Panel
   layers:
   - Default
   - TransparentFX

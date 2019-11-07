@@ -3,12 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
   public void NewGame() {
-    SceneManager.LoadScene("Command Center");
+    SceneManager.LoadScene("Intro");
 
   }
 
   public void LoadGame() {
-    // SceneManager.LoadScene("Command Center");
     SaveService.Instance.Load();
 
   }

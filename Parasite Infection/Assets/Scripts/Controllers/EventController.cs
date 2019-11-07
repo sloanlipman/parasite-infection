@@ -10,6 +10,7 @@ public class EventController : MonoBehaviour {
   public static event System.Action OnBattleLost = delegate {};
   public static event System.Action OnGameReloaded = delegate {};
   public static event System.Action<string> OnKillBlobsQuestCompleted = delegate {};
+  public static event System.Action OnDialogPanelClosed = delegate {};
 
   public static void EnemyDied(int enemyId) {
     OnEnemyDied(enemyId);
@@ -45,5 +46,9 @@ public class EventController : MonoBehaviour {
 
   public static void CompleteKillBlobsQuest(string characterName) {
     OnKillBlobsQuestCompleted(characterName);
+  }
+
+  public static void DialogPanelClosed() {
+    OnDialogPanelClosed();
   }
 }

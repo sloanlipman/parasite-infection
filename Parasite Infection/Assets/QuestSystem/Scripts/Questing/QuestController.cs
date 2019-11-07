@@ -30,7 +30,7 @@ namespace QuestSystem {
     }
 
     public void Save() {
-      ES3.Save<Dictionary<string, int[]>>("QuestDatabase", questDatabase.quests);
+      ES3.Save<Dictionary<string, int[]>>("QuestDatabase", questDatabase.quests, "QuestDatabase.json");
     }
 
     public void ClearQuests() {
@@ -58,7 +58,7 @@ namespace QuestSystem {
     public void Load() {
       EventController.GameReloaded();
     // Load the DB
-      questDatabase.quests = ES3.Load<Dictionary<string, int[]>>("QuestDatabase");
+      questDatabase.quests = ES3.Load<Dictionary<string, int[]>>("QuestDatabase", "QuestDatabase.json");
       List<string> questNamesToAdd = new List<string>();
     // Get a list of quest slugs that were loaded
       foreach(var quest in questDatabase.quests) {
