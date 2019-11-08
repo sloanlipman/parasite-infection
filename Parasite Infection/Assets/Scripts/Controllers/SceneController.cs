@@ -7,6 +7,8 @@ public class SceneController : MonoBehaviour {
 
   [SerializeField] private DialogPanel dialogPanel;
   [SerializeField] private DialogData gameIntroDialog;
+  private int currentAct = 1;
+  private bool hasPlayerDoneTutorial;
 
   private void Awake() {
     if (FindObjectsOfType<SceneController>().Length > 1) {
@@ -28,12 +30,15 @@ public class SceneController : MonoBehaviour {
   }
 
   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-    Debug.Log("Just loaded scene: " + scene.name);
     switch(scene.name) {
       case "Intro": {
         DialogPanel introPanel = GameObject.FindGameObjectWithTag("UI/Intro Panel").GetComponent<DialogPanel>();
         introPanel.StartDialog(gameIntroDialog.dialog);
         EventController.OnDialogPanelClosed += LoadCommandCenter;
+        break;
+      }
+
+      case "Command Center": {
         break;
       }
     }

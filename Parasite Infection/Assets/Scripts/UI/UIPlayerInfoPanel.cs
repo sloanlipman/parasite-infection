@@ -16,7 +16,6 @@ public class UIPlayerInfoPanel : MonoBehaviour {
 
 
   private BattleSystem.PartyMember partyMember;
-  // private string partyMemberName;
   private BattleSystem.CharacterController characterController;
 
   public void Populate(string partyMemberName) {
@@ -40,7 +39,9 @@ public class UIPlayerInfoPanel : MonoBehaviour {
   }
 
   void Update() {
-    bool hasUpgradePoints = partyMember.HasUpgradePointsToSpend();
-    spendUpgradePointsPanel.GetComponentInChildren<Text>(true).text = hasUpgradePoints? "Spend Upgrade Points (" + partyMember.GetUpgradePoints() + ")" : "View Upgrade Points";
+    if (partyMember != null) {
+      bool hasUpgradePoints = partyMember.HasUpgradePointsToSpend();
+      spendUpgradePointsPanel.GetComponentInChildren<Text>(true).text = hasUpgradePoints? "Spend Upgrade Points (" + partyMember.GetUpgradePoints() + ")" : "View Upgrade Points";
+    }
   }
 }

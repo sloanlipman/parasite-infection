@@ -186,4 +186,12 @@ public class MenuController : MonoBehaviour {
       }
     }
   }
+
+  public void Quit() {
+    SceneManager.LoadScene("Main Menu");
+  }
+
+  public void ShowTutorial() {
+    
+  }
 }
