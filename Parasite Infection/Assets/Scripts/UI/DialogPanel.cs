@@ -11,8 +11,10 @@ public class DialogPanel : MonoBehaviour {
   public void StartDialog(string[] dialog) {
     dialogIndex = 0;
     this.dialog = dialog;
-    dialogPanel.SetActive(true);
-    dialogText.text = dialog[0];
+    if (dialogPanel != null) {
+      dialogPanel.SetActive(true);
+      dialogText.text = dialog[0];
+    }
   }
 
   public void NextLine() {

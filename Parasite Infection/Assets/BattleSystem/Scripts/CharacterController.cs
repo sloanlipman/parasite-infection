@@ -8,9 +8,13 @@ namespace BattleSystem {
 
     private void Update() {
       if (Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.L)) {
-        characterDatabase.ResetAllCharacters();
+        ResetAllCharacters();
         Debug.Log("Resetting game");
       }
+    }
+
+    public void ResetAllCharacters() {
+      characterDatabase.ResetAllCharacters();
     }
 
     public void Save() {

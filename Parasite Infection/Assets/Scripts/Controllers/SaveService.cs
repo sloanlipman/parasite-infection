@@ -51,7 +51,12 @@ public class SaveService : MonoBehaviour {
     } else {
       Debug.LogWarning("No file to load from!");
     }
+  }
 
+  public void StartNewGame() {
+    ClearAll();
+    consumableInventory.InitializeConsumableInventory();
+    craftingInventory.InitializeCraftingInventory();
   }
 
   private void ClearAll() {

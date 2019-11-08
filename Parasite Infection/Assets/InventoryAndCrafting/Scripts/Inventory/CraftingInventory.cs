@@ -23,27 +23,25 @@ public class CraftingInventory : Inventory {
     };
   }
 
+  public void InitializeCraftingInventory() {
+  for (int i = 1; i <= itemDatabase.GetItemDatabaseList().Count; i++) {
+     if (inventoryController.IsCraftingItem(i)) {
+      GiveItem(i);
+     }
+    }
+
+    GiveItem(9);
+    GiveItem(9);
+    GiveItem(10);
+    GiveItem(10);
+  }
+
   // Start is called before the first frame update
   void Start() {
     UIItem[] craftingInventorySlots = inventoryUI.GetComponentsInChildren<UIItem>();
     foreach(UIItem item in craftingInventorySlots) {
       item.isCraftingInventorySlot = true;
     }
-
-   for (int i = 1; i <= itemDatabase.GetItemDatabaseList().Count; i++) {
-     if (inventoryController.IsCraftingItem(i)) {
-      GiveItem(i);
-     }
-    }
-    // GiveItem(6);
-    // GiveItem(9);
-    // GiveItem(10);
-    // GiveItem(2);
-    // GiveItem(2);
-    GiveItem(9);
-    GiveItem(9);
-    GiveItem(10);
-    GiveItem(10);
     inventoryUI.gameObject.SetActive(false);
   }
 

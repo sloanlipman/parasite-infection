@@ -33,6 +33,10 @@ namespace QuestSystem {
       ES3.Save<Dictionary<string, int[]>>("QuestDatabase", questDatabase.quests, "QuestDatabase.json");
     }
 
+    public bool HasQuestBeenStarted(string questName) {
+      return questDatabase.quests.ContainsKey(questName);
+    }
+
     public void ClearQuests() {
       ClearActiveQuests();
       ClearQuestUI();

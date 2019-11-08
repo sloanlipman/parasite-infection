@@ -24,8 +24,8 @@ public class ConsumableInventory : Inventory {
     };
   }
 
-  void Start() {
-   for (int i = 1; i <= itemDatabase.GetItemDatabaseList().Count; i++) {
+  public void InitializeConsumableInventory() {
+  for (int i = 1; i <= itemDatabase.GetItemDatabaseList().Count; i++) {
      if (!inventoryController.IsCraftingItem(i)) {
       GiveItem(i);
      }
@@ -33,6 +33,9 @@ public class ConsumableInventory : Inventory {
     }
     GiveItem(11);
     GiveItem(12);
+  }
+
+  void Start() {
     inventoryUI.gameObject.SetActive(false);
     UIItem[] consumableInventorySlots = inventoryUI.GetComponentsInChildren<UIItem>();
     foreach(UIItem item in consumableInventorySlots) {

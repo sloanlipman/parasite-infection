@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
   [SerializeField] private Button[] dialogButtons;
+  [SerializeField] private DialogPanel dialogPanel;
   [SerializeField] private GameObject menuPanel;
   [SerializeField] private UIInventory craftingInventory;
   [SerializeField] private UIInventory consumableInventory;
@@ -237,7 +238,11 @@ public class MenuController : MonoBehaviour {
   }
 
   public void Quit() {
+
     SceneManager.LoadScene("Main Menu");
+    UnpauseGame();
+    dialogPanel.gameObject.SetActive(false);
+    tutorialPanel.gameObject.SetActive(false);
   }
 
   public void ShowTutorial() {

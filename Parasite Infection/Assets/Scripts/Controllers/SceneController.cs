@@ -7,6 +7,8 @@ public class SceneController : MonoBehaviour {
 
   [SerializeField] private DialogPanel dialogPanel;
   [SerializeField] private DialogData gameIntroDialog;
+  [SerializeField] private QuestSystem.QuestController questController;
+  [SerializeField] private BattleSystem.CharacterController characterController;
   private int currentAct = 1;
   private bool hasPlayerDoneTutorial;
 
@@ -19,19 +21,12 @@ public class SceneController : MonoBehaviour {
     SceneManager.sceneLoaded += OnSceneLoaded;
 
   }
-  // Start is called before the first frame update
-  void Start() {
-
-  }
-
-  // Update is called once per frame
-  void Update() {
-
-  }
 
   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
     switch(scene.name) {
       case "Intro": {
+        SaveService.Instance.StartNewGame();
+        characterController.ResetAllCharacters();
         DialogPanel introPanel = GameObject.FindGameObjectWithTag("UI/Intro Panel").GetComponent<DialogPanel>();
         introPanel.StartDialog(gameIntroDialog.dialog);
         EventController.OnDialogPanelClosed += LoadCommandCenter;
@@ -39,6 +34,10 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Command Center": {
+        if (!questController.HasQuestBeenStarted("KillBlobsQuest")) {
+          string[] dialog = new string[] {"Check in with the Android to get your assignment. Walk up to him and click."};
+          dialogPanel.StartDialog(dialog);
+        }
         break;
       }
     }

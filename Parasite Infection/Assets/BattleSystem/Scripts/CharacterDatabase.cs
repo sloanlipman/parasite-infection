@@ -19,7 +19,14 @@ namespace BattleSystem {
 
       partyMembers.ForEach(member => {
         member.level = 0;
+
+        for (int i = 0; i < member.equipment.Length; i++) {
+          member.equipment[i] = null;
+        }
       });
+
+      activePartyMembers.Clear();
+      activePartyMembers.Add("Barry");
     }
 
     private void AddPlayerToParty(string name) {
