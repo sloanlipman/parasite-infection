@@ -12,6 +12,7 @@ public class UIPartyPanel : MonoBehaviour {
   private CraftingInventory craftingInventory;
   private ConsumableInventory consumableInventory;
   private InventoryController inventoryController;
+  private MenuController menuController;
 
   private string selectedPartyMember;
 
@@ -28,6 +29,7 @@ public class UIPartyPanel : MonoBehaviour {
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     inventoryController = FindObjectOfType<InventoryController>();
     itemDatabase = FindObjectOfType<ItemDatabase>();
+    menuController = FindObjectOfType<MenuController>();
     ClearSlots();
   }
 
@@ -82,13 +84,13 @@ public class UIPartyPanel : MonoBehaviour {
             upgradePointPanel.gameObject.SetActive(false);
             ParseUIForCurrentEquipment(); // If another party member's equipment is open, save the currenytly opened one
           }
-          AddPlayerEquipmentSlots(member);
+          menuController.OpenPlayerInfo(member);
         }
       });
     });
   }
 
-  private void AddPlayerEquipmentSlots(PartyMember member) {
+  public void AddPlayerEquipmentSlots(PartyMember member) {
     if (!AreEquipmentSlotsOpen()) {
       equipmentSlots.gameObject.SetActive(true);
     }

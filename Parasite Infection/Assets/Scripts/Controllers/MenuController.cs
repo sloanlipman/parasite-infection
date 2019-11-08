@@ -16,6 +16,16 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private UIPlayerInfoPanel playerInfo;
   [SerializeField] private Tooltip tooltip;
   [SerializeField] private InventoryController inventoryController;
+  
+  [SerializeField] private DialogData partyTutorial;
+  [SerializeField] private DialogData consumableTutorial;
+  [SerializeField] private DialogData craftingTutorial;
+  [SerializeField] private DialogData equipmentTutorial;
+  [SerializeField] private DialogData questTutorial;
+  [SerializeField] private DialogData upgradeTutorial;
+
+  [SerializeField] private DialogData tutorialDialog;
+  [SerializeField] private DialogPanel tutorialPanel;
 
   public static bool IsBattleCurrentScene() {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
@@ -27,6 +37,10 @@ public class MenuController : MonoBehaviour {
 
   public static bool IsIntroCurrentScene() {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Intro");
+  }
+
+  public bool IsTutorialPanelOpen() {
+    return tutorialPanel.gameObject.activeSelf;
   }
 
   private void PauseGame() {
@@ -54,6 +68,7 @@ public class MenuController : MonoBehaviour {
     partyPanel.ClearPartyMember();
     playerEquipment.gameObject.SetActive(false);
     playerInfo.gameObject.SetActive(false);
+    tutorialPanel.gameObject.SetActive(false);
     DeselectItem();
     ToggleMenu(false);
   }
@@ -119,6 +134,10 @@ public class MenuController : MonoBehaviour {
     return upgradePointPanel.gameObject.activeSelf;
   }
 
+  private bool IsTutorialOpen() {
+    return tutorialPanel.gameObject.activeSelf;
+  }
+
   private void DeselectItem() {
     if (inventoryController.IsAnItemSelected()) {
       partyPanel.ParseUIForCurrentEquipment();
@@ -131,12 +150,18 @@ public class MenuController : MonoBehaviour {
     craftingInventory.gameObject.SetActive(!IsCraftingInventoryOpen());
     consumableInventory.gameObject.SetActive(false);
 
+    if (IsCraftingInventoryOpen() && IsTutorialOpen()) {
+      tutorialPanel.StartDialog(craftingTutorial.dialog);
+    }
   }
 
   public void ToggleConsumableInventory() {
     DeselectItem();
     consumableInventory.gameObject.SetActive(!IsConsumableInventoryOpen());
     craftingInventory.gameObject.SetActive(false);
+    if (IsConsumableInventoryOpen() && IsTutorialOpen()) {
+      tutorialPanel.StartDialog(consumableTutorial.dialog);
+    }
   }
 
   public void ToggleQuestPanel() {
@@ -151,7 +176,16 @@ public class MenuController : MonoBehaviour {
     if (IsPlayerEquipmentOpen()) {
       playerEquipment.gameObject.SetActive(false);
     }
+
+    if (IsUpgradePanelOpen()) {
+      upgradePointPanel.gameObject.SetActive(false);
+    }
+
     questPanel.gameObject.SetActive(!IsQuestPanelOpen());
+
+    if (IsQuestPanelOpen() && IsTutorialOpen()) {
+      tutorialPanel.StartDialog(questTutorial.dialog);
+    }
   }
 
   public void TogglePartyPanel() {
@@ -168,11 +202,26 @@ public class MenuController : MonoBehaviour {
       upgradePointPanel.gameObject.SetActive(false);
       partyPanel.ClearPartyMember();
     }
+
+    if (IsPartyPanelOpen() && IsTutorialOpen()) {
+      tutorialPanel.StartDialog(partyTutorial.dialog);
+    }
   }
 
   public void ToggleUpgradePointPanel() {
     upgradePointPanel.gameObject.SetActive(!IsUpgradePanelOpen());
     upgradePointPanel.Populate();
+    if (IsUpgradePanelOpen() && IsTutorialOpen()) {
+      tutorialPanel.StartDialog(upgradeTutorial.dialog);
+    }
+  }
+
+  public void OpenPlayerInfo(BattleSystem.PartyMember member) {
+    partyPanel.AddPlayerEquipmentSlots(member);
+    if (IsTutorialOpen()) {
+      tutorialPanel.StartDialog(equipmentTutorial.dialog);
+    }
+
   }
 
   public void ToggleMenu(bool state) {
@@ -192,6 +241,48 @@ public class MenuController : MonoBehaviour {
   }
 
   public void ShowTutorial() {
-    
+    List<string> tutorialList = new List<string>();
+
+    if (IsQuestPanelOpen()) {
+      foreach(string t in questTutorial.dialog) {
+        tutorialList.Add(t);
+      }
+    }
+
+    if (IsConsumableInventoryOpen()) {
+      foreach(string t in consumableTutorial.dialog) {
+        tutorialList.Add(t);
+      }
+    }
+
+    if (IsCraftingInventoryOpen()) {
+      foreach(string t in craftingTutorial.dialog) {
+        tutorialList.Add(t);
+      }
+    }
+
+    if (IsPartyPanelOpen()) {
+      foreach(string t in partyTutorial.dialog) {
+        tutorialList.Add(t);
+      }
+    }
+
+    if (IsPlayerEquipmentOpen()) {
+      foreach(string t in equipmentTutorial.dialog) {
+        tutorialList.Add(t);
+      }
+    }
+
+    if (IsUpgradePanelOpen()) {
+      foreach(string t in upgradeTutorial.dialog) {
+        tutorialList.Add(t);
+      }
+    }
+
+    if (tutorialList.Count == 0) {
+      tutorialPanel.StartDialog(tutorialDialog.dialog);
+    } else {
+      tutorialPanel.StartDialog(tutorialList.ToArray());
+    }
   }
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abee28d1a5be3624e892973ece163df5, type: 3}
+  m_Name: TutorialDialog
+  m_EditorClassIdentifier: 
+  dialog:
+  - Barry! You found the Tutorial! Here's what you need to know.
+  - 'Parasite: Infection uses a turn-based battle system. As you walk around the USS
+    Hecate, you''ll encounter all kinds of aliens and other enemies!'
+  - You'll want to make sure you equip different Modules on your battle suit so you
+    can always be fighting in tip-top shape!
+  - Open different menu options to learn more!
