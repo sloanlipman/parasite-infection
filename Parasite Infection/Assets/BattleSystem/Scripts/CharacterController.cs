@@ -101,7 +101,7 @@ namespace BattleSystem {
       if (member.experience >= xpToNextLevel) {
         success = true;
         member.LevelUp();
-        if (member.level % 3 == 0) {
+        if (member.level % 2 == 0) {
           member.AddUpgradePoint();
         }
       }
