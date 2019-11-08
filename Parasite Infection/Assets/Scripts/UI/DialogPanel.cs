@@ -16,7 +16,6 @@ public class DialogPanel : MonoBehaviour {
   }
 
   public void NextLine() {
-    Debug.Log("NextLine activated");
     dialogIndex = Mathf.Min(dialogIndex + 1, dialog.Length);
     if (dialogIndex >= this.dialog.Length) {
       ResetDialog();
@@ -26,7 +25,6 @@ public class DialogPanel : MonoBehaviour {
   }
 
   public void PreviousLine() {
-     Debug.Log("Previous activated");
     if (dialogIndex == 0) {
       return;
     }

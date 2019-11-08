@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: IntroDialog
   m_EditorClassIdentifier: 
   dialog:
-  - Welcome to the Hecate
-  - Kill some aliens.
-  - Kill some aliens.
-  - Kill some aliens.
-  - Kill some aliens.
+  - Your name is Barry, and you are the first mate of the USS Hecate, an Earth-based
+    peacekeeping vessel.
+  - Recently, there have been rumors of the return of an alien race, long extinct
+    and the subject of many frightening tales.
+  - The Parasites.
+  - Once one of these fearsome creatures has taken control of a host body, it can
+    infect more victims by generating infectious spores.
+  - The Hecate is under attack! Have the Parasites returned to wreak havoc on the
+    galaxy? It's time to fight back, Barry. Contain and destroy this threat before
+    it can infect your entire crew.

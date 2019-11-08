@@ -590,6 +590,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: UI/Intro Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 224842967763211266, guid: 3cd95c3a91a931742a807ab19caa0f64,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0000076294
+      objectReference: {fileID: 0}
+    - target: {fileID: 224842967763211266, guid: 3cd95c3a91a931742a807ab19caa0f64,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224842967763211266, guid: 3cd95c3a91a931742a807ab19caa0f64,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 397.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224842967763211266, guid: 3cd95c3a91a931742a807ab19caa0f64,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 86.2
+      objectReference: {fileID: 0}
     - target: {fileID: 224745331370156360, guid: 3cd95c3a91a931742a807ab19caa0f64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -653,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 224745331370156360, guid: 3cd95c3a91a931742a807ab19caa0f64,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 116.100006
+      value: 72.1
       objectReference: {fileID: 0}
     - target: {fileID: 224745331370156360, guid: 3cd95c3a91a931742a807ab19caa0f64,
         type: 3}
@@ -663,7 +683,7 @@ PrefabInstance:
     - target: {fileID: 224745331370156360, guid: 3cd95c3a91a931742a807ab19caa0f64,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 211.7
+      value: 123.6
       objectReference: {fileID: 0}
     - target: {fileID: 224745331370156360, guid: 3cd95c3a91a931742a807ab19caa0f64,
         type: 3}
