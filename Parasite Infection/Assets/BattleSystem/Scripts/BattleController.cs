@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BattleSystem {
   public class BattleController : MonoBehaviour {
@@ -11,6 +12,7 @@ namespace BattleSystem {
     private CharacterController characterController;
     [SerializeField] private BattleUIController uiController;
     [SerializeField] private BattleSpawnPoint[] spawnPoints;
+    [SerializeField] private BattleActionLabel labelText;
     private BattleSummaryPanel battleSummaryPanel;
     private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
@@ -304,7 +306,8 @@ namespace BattleSystem {
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
       Debug.Log(attacker.characterName + " is attacking " + target.characterName);
-      target.Hurt(attacker.attackPower);
+      int damage = target.Hurt(attacker.attackPower);
+      labelText.ShowAttackDamage(damage.ToString(), target);
       NextAct();
     }
 

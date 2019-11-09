@@ -53,7 +53,7 @@ namespace BattleSystem {
       return equipment;
     }
 
-    public void Hurt (int amount) {
+    public int Hurt (int amount) {
       int damageAmount;
       if (amount < defensePower) {
         damageAmount = Random.Range(0, amount);
@@ -66,6 +66,7 @@ namespace BattleSystem {
       if (health == 0) {
         Die();
       }
+      return damageAmount;
     }
 
     public void Heal (int amount) {
