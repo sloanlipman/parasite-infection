@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace BattleSystem {
   public class BattleController : MonoBehaviour {
@@ -254,7 +253,7 @@ namespace BattleSystem {
     public void NextAct() {
       if (IsCurrentTurnPlayerTurn()) {
         uiController.SetColor(characterTurnIndex, Color.white);
-        }
+      }
       uiController.UpdateCharacterUI();
       uiController.ToggleAbilityPanel(false);
       uiController.ToggleItemPanel(false);
@@ -262,16 +261,18 @@ namespace BattleSystem {
       if (AreAnyPlayersAlive() && AreAnyEnemiesAlive()) {
           abilityToBeUsed = null;
           playerIsAttacking = false;
+          currentTarget = null;
         if (HasACharacterNotGone()) {
           characterTurnIndex++;
           if (IsCurrentTurnPlayerTurn()) {
             uiController.SetColor(characterTurnIndex, Color.red);
           }
-        }
-        else {
-          NextTurn();
+        } else { // Every character has gone
+          NextTurn(); // Flips actTurn to the other side
           characterTurnIndex = 0;
         }
+
+// Check if player turn or enemy turn
         switch(actTurn) {
           case 0: {
             uiController.ToggleActionState(true);
@@ -321,6 +322,7 @@ namespace BattleSystem {
           Debug.LogWarning("Don't target your own team!");
         } else {
         DoAttack(GetCurrentCharacter(), target);
+        NextAct();
         }
       }
       else if (abilityToBeUsed != null) {
@@ -360,7 +362,6 @@ namespace BattleSystem {
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
       Debug.Log(attacker.characterName + " is attacking " + target.characterName);
       target.Hurt(attacker.attackPower);
-      NextAct();
     }
 
     private void AddEnemyExperience(int enemyId) {

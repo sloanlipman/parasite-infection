@@ -27,13 +27,13 @@ namespace BattleSystem {
 
     private void Update() {
       if (CanLaunchBattle()) {
-          numberOfSteps = numberOfSteps + Mathf.Abs(Mathf.RoundToInt(player.GetRigidbody().velocity.x));
-          if (numberOfSteps > 1000) {
-            ResetSteps();
-              random = Random.Range(0, 10);
-              if (random < 1) {
+        numberOfSteps = numberOfSteps + Mathf.Abs(Mathf.RoundToInt(player.GetRigidbody().velocity.x));
+        if (numberOfSteps > 1000) {
+          ResetSteps();
+            random = Random.Range(0, 10);
+            if (random < 1) {
               PrepareBattle(player.transform.position);
-            }
+          }
         }
       }
     }
