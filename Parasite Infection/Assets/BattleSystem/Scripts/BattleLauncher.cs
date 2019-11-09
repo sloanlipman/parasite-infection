@@ -26,18 +26,36 @@ namespace BattleSystem {
     }
 
     private void Update() {
-      if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle") && player != null && player.GetRigidbody() != null) {
-        if (Time.timeScale != 0 && player.GetRigidbody().velocity != Vector2.zero) {
+      if (CanLaunchBattle()) {
           numberOfSteps = numberOfSteps + Mathf.Abs(Mathf.RoundToInt(player.GetRigidbody().velocity.x));
           if (numberOfSteps > 1000) {
             ResetSteps();
               random = Random.Range(0, 9);
-              if (random < 2) {
+              if (random < 1) {
               PrepareBattle(player.transform.position);
             }
-          }
         }
       }
+    }
+
+    private bool CanLaunchBattle() {
+      return
+        questController.HasQuestBeenStarted("KillBlobsQuest") &&
+        SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle") &&
+        IsPlayerNotNullAndMoving() &&
+        !IsGamePaused();
+    }
+
+    private bool IsGamePaused() {
+      return Time.timeScale == 0;
+    }
+
+    private bool IsPlayerMoving() {
+       return player.GetRigidbody().velocity != Vector2.zero;
+    }
+
+    private bool IsPlayerNotNullAndMoving() {
+      return player != null && player.GetRigidbody() != null && IsPlayerMoving();
     }
 
     private void Awake() {
@@ -93,9 +111,9 @@ namespace BattleSystem {
         }
       });
 
-      int numberOfEnemies = Random.Range(1,3);
+      int numberOfEnemies = Random.Range(0, 3);
 
-      for (int i = 0; i < numberOfEnemies; i++) {
+      for (int i = 0; i < numberOfEnemies + 1; i++) {
         int randomIndex = Random.Range(0, possibleEnemies.Count - 1);
         enemyParty.Add(possibleEnemies[randomIndex]);
       }
