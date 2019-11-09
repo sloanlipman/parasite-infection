@@ -9,6 +9,7 @@ namespace BattleSystem {
     public PartyMember() {}
 
     public override void SetDefaultValues() {
+      Debug.Log("Setting default values");
       if (level == 0 || upgradePointsDictionary.Count == 0) {
         upgradePoints = 1;
         modSlots = 1;

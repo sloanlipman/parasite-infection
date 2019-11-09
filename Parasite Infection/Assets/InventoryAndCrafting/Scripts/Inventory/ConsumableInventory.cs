@@ -52,13 +52,18 @@ public class ConsumableInventory : Inventory {
     bool success = false;
     if (item.stats.ContainsKey("Health") && BattleController.Instance.IsValidHealTarget(target)) {
       target.Heal(item.stats["Health"]);
+      BattleController.Instance.SetHealAmount(item.stats["Health"]);
+      BattleController.Instance.ShowLabel("heal");
       success = true;
     }
 
     if (item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
       target.RecoverEnergy(item.stats["Energy"]);
       success = true;
+      BattleController.Instance.SetEnergyRecoveryAmount(item.stats["Energy"]);
+      BattleController.Instance.ShowLabel("EP");
     }
+
     if (success) {
       RemoveItemFromUI(item);
     }

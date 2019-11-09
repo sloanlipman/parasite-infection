@@ -6,13 +6,6 @@ namespace BattleSystem {
   public class CharacterController : MonoBehaviour {
     private CharacterDatabase characterDatabase;
 
-    private void Update() {
-      if (Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.L)) {
-        ResetAllCharacters();
-        Debug.Log("Resetting game");
-      }
-    }
-
     public void ResetAllCharacters() {
       characterDatabase.ResetAllCharacters();
     }

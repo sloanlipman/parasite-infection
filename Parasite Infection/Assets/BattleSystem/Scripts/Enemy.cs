@@ -12,10 +12,10 @@ namespace BattleSystem {
       experience = enemyId + 1;
     }
 
-    public bool Act() {
-      bool didEnemyUseAbility = false;
+    public void Act() {
       int dieRoll = Random.Range(0,2);
       BattleCharacter target = BattleController.Instance.GetRandomPlayer();
+      BattleController.Instance.SetCurrentTarget(target);
       switch(dieRoll) {
         case 0: {
           Defend();
@@ -29,12 +29,9 @@ namespace BattleSystem {
             }
             if (!UseAbility(abilityToCast, target)) {
               BattleController.Instance.DoAttack(this, target);
-            } else {
-              didEnemyUseAbility = true;
             }
           } else {
             BattleController.Instance.DoAttack(this, target);
-
           }
           break;
         }
@@ -43,7 +40,6 @@ namespace BattleSystem {
           break;
         }
       }
-      return didEnemyUseAbility;
     }
 
     Ability GetRandomAbility() {

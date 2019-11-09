@@ -17,6 +17,8 @@ namespace BattleSystem {
     private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
 
+    private BattleCharacter currentTarget;
+
     public Dictionary<int, List<BattleCharacter>> characters = new Dictionary<int, List<BattleCharacter>>();
     private List<PartyMember> deadPlayers = new List<PartyMember>();
     private List<Enemy> deadEnemies = new List<Enemy>();
@@ -26,10 +28,59 @@ namespace BattleSystem {
     public bool playerIsAttacking;
     private bool didEnemyUseAbility;
 
+    private string labelDamage;
+    private string labelDefense;
+    private string labelHeal;
+    private string labelEPRecovery;
+
     private int actTurn; // act refers to Action (i.e. who is up on the current side?)
                         // Turn refers to are Enemies going or are players going?
 
     private int xpToReward;
+
+    public void SetCurrentTarget(BattleCharacter target) {
+      currentTarget = target;
+    }
+
+    public void SetDamageLabel(int amount) {
+      labelDamage = amount.ToString();
+    }
+
+    public void SetDefenseIncrease (int amount) {
+      labelDefense = amount.ToString();
+    }
+
+    public void SetEnergyRecoveryAmount (int amount) {
+      labelEPRecovery = amount.ToString();
+    }
+
+    public void SetHealAmount (int amount) {
+      labelHeal = amount.ToString();
+    }
+
+    public void ShowLabel(string label) {
+      switch (label) {
+        case "defense": {
+          labelText.ShowDefend(labelDefense, labelEPRecovery, currentTarget);
+          break;
+        }
+
+        case "heal": {
+          labelText.ShowHeal(labelHeal, currentTarget);
+          break;
+        }
+
+        case "hurt": {
+          labelText.ShowDamage(labelDamage, currentTarget);
+          break;
+        }
+
+        case "EP": {
+          labelText.ShowEnergyRecovered(labelEPRecovery, currentTarget);
+          break;
+        }
+      }
+    }
 
     public void RemoveDeadPlayer(PartyMember member) {
       GetListOfAlivePlayers().Remove(member);
@@ -239,31 +290,33 @@ namespace BattleSystem {
       else {
         Debug.LogWarning("Battle is over!");
         Debug.Log("Experience gained: " + xpToReward);
+        StartCoroutine(EndBattle());
+      }
+    }
+
+    IEnumerator EndBattle() {
+      yield return new WaitForSeconds(1f);
         if (AreAnyPlayersAlive()) {
-          battleSummaryPanel.ShowVictoryPanel(xpToReward);
-          characterController.UpdatePlayers(GetListOfAlivePlayers(), xpToReward);
-        } else {
-          battleSummaryPanel.ShowDefeatPanel();
-        }
+        battleSummaryPanel.ShowVictoryPanel(xpToReward);
+        characterController.UpdatePlayers(GetListOfAlivePlayers(), xpToReward);
+      } else {
+        battleSummaryPanel.ShowDefeatPanel();
       }
     }
 
     IEnumerator PerformAct() {
-      yield return new WaitForSeconds(0.75f);
-      if (GetCurrentCharacter().health > 0) { // actTurn should always be 1 for enemies here!
-      Enemy enemy = GetCurrentCharacter() as Enemy;
-      bool didEnemyUseAbility = enemy.Act();
-      if (!didEnemyUseAbility) {
-        int energyToRecover = (int)Mathf.Round(0.1f * GetCurrentCharacter().maxEnergyPoints);
-        GetCurrentCharacter().RecoverEnergy(energyToRecover);
-        }
-      }
-      uiController.UpdateCharacterUI();
       yield return new WaitForSeconds(1f);
-      NextAct();
+      if (GetCurrentCharacter().health > 0) { // actTurn should always be 1 for enemies here!
+        Enemy enemy = GetCurrentCharacter() as Enemy;
+        enemy.Act();
+        uiController.UpdateCharacterUI();
+        yield return new WaitForSeconds(1f);
+        NextAct();
+      }
     }
 
     public void SelectTarget(BattleCharacter target) {
+      SetCurrentTarget(target);
       if (playerIsAttacking) {
         if (IsCharacterAPlayer(target)) {
           Debug.LogWarning("Don't target your own team!");
@@ -292,6 +345,7 @@ namespace BattleSystem {
         }
       } else if (itemToBeUsed != null) {
         if (items.UseItem(target, itemToBeUsed)) {
+
           uiController.UpdateCharacterUI();
           NextAct();
         };
@@ -306,8 +360,7 @@ namespace BattleSystem {
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
       Debug.Log(attacker.characterName + " is attacking " + target.characterName);
-      int damage = target.Hurt(attacker.attackPower);
-      labelText.ShowAttackDamage(damage.ToString(), target);
+      target.Hurt(attacker.attackPower);
       NextAct();
     }
 

@@ -11,14 +11,15 @@ namespace BattleSystem {
     public Dictionary<string, Ability> abilityList = new Dictionary<string, Ability>();
     private InventoryController inventoryController;
 
-// Method for developer to manually reset all of the characters back to their default state
     public void ResetAllCharacters() {
       enemyList.ForEach(enemy => {
         enemy.level = 0;
+        enemy.SetDefaultValues();
       });
 
       partyMembers.ForEach(member => {
         member.level = 0;
+        member.SetDefaultValues();
 
         for (int i = 0; i < member.equipment.Length; i++) {
           member.equipment[i] = null;

@@ -24,18 +24,11 @@ namespace BattleSystem {
 
     }
 
-    public void ShowDefend(string amount, BattleCharacter target) {
+    public void ShowDefend(string defense, string EP, BattleCharacter target) {
       label.gameObject.SetActive(true);
       label.color = Color.green;
-      string defenseString = "Defense + " + amount;
+      string defenseString = string.Format("Defense + {0}\nEP + {1}", defense, EP);
       StartCoroutine(ShowLabel(defenseString, target));
-    }
-
-    public void ShowAbilityDamage(string amount, BattleCharacter target) {
-      label.gameObject.SetActive(true);
-      label.color = Color.yellow;
-      string abilityString = "HP - " + amount;
-      StartCoroutine(ShowLabel(abilityString, target));
     }
 
     public void ShowHeal(string amount, BattleCharacter target) {
@@ -52,7 +45,7 @@ namespace BattleSystem {
       StartCoroutine(ShowLabel(energyString, target));
     }
     
-    public void ShowAttackDamage(string amount, BattleCharacter target) {
+    public void ShowDamage(string amount, BattleCharacter target) {
       label.gameObject.SetActive(true);
       label.color = Color.red;
       string damageString = "HP - " + amount;

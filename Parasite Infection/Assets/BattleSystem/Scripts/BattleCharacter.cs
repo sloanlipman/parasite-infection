@@ -26,7 +26,6 @@ namespace BattleSystem {
     public Dictionary<string, int> upgradePointsDictionary = new Dictionary<string, int>();
 
     public virtual void SetDefaultValues() {
-
       if (level == 0 || upgradePointsDictionary.Count == 0) {
         level = 1;
         experience = 0;
@@ -53,7 +52,7 @@ namespace BattleSystem {
       return equipment;
     }
 
-    public int Hurt (int amount) {
+    public void Hurt (int amount) {
       int damageAmount;
       if (amount < defensePower) {
         damageAmount = Random.Range(0, amount);
@@ -66,27 +65,34 @@ namespace BattleSystem {
       if (health == 0) {
         Die();
       }
-      return damageAmount;
+      BattleController.Instance.SetDamageLabel(damageAmount);
+      BattleController.Instance.ShowLabel("hurt");
     }
 
     public void Heal (int amount) {
       int healAmount = amount;
       health = Mathf.Min(health + healAmount, maxHealth);
+      BattleController.Instance.SetHealAmount(healAmount);
+      BattleController.Instance.ShowLabel("heal");
     }
 
     public void Defend() {
-      defensePower += (int) Mathf.Round(defensePower * 0.25f);
+      BattleController.Instance.SetCurrentTarget(BattleController.Instance.GetCurrentCharacter());
+      int defenseToIncrease = Mathf.Max((int) Mathf.Round(defensePower * 0.25f), 1);
+      defensePower += defenseToIncrease;
+      BattleController.Instance.SetDefenseIncrease(defenseToIncrease);
       int energyToRecover = (int)Mathf.Round(0.1f * maxEnergyPoints);
-      RecoverEnergy(energyToRecover);
-      Debug.Log("Defense increased to: " + defensePower);
-      Debug.Log("Recovered energy points: " + energyToRecover);
+      RecoverEnergy(energyToRecover, false);
+      BattleController.Instance.ShowLabel("defense");
     }
 
-    public void RecoverEnergy(int amount) {
+    public void RecoverEnergy(int amount, bool showLabel = true) {
       energyPoints += amount;
       if (energyPoints > maxEnergyPoints) {
         energyPoints = maxEnergyPoints;
       }
+      BattleController.Instance.SetEnergyRecoveryAmount(amount);
+      BattleController.Instance.ShowLabel("EP");
     }
 
     public bool UseAbility(Ability ability, BattleCharacter targetCharacter) {
