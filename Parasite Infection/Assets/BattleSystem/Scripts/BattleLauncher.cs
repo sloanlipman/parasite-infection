@@ -29,13 +29,13 @@ namespace BattleSystem {
       if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle") && player != null && player.GetRigidbody() != null) {
         if (Time.timeScale != 0 && player.GetRigidbody().velocity != Vector2.zero) {
           numberOfSteps = numberOfSteps + Mathf.Abs(Mathf.RoundToInt(player.GetRigidbody().velocity.x));
-          // if (numberOfSteps > 1000) {
-            // ResetSteps();
-              // random = Random.Range(0, 9);
-              // if (random < 2) {
+          if (numberOfSteps > 1000) {
+            ResetSteps();
+              random = Random.Range(0, 9);
+              if (random < 2) {
               PrepareBattle(player.transform.position);
-            // }
-          // }
+            }
+          }
         }
       }
     }
