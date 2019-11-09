@@ -13,7 +13,7 @@ namespace BattleSystem {
     }
 
     public void Act() {
-      int dieRoll = Random.Range(0,2);
+      int dieRoll = Random.Range(0,3);
       BattleCharacter target = BattleController.Instance.GetRandomPlayer();
       BattleController.Instance.SetCurrentTarget(target);
       switch(dieRoll) {
@@ -44,7 +44,7 @@ namespace BattleSystem {
 
     Ability GetRandomAbility() {
       if (abilities != null) {
-        return abilities[Random.Range(0, abilities.Count - 1)];
+        return abilities[Random.Range(0, abilities.Count)];
       } else {
        return null;
       }

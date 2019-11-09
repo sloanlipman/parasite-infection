@@ -55,7 +55,7 @@ namespace BattleSystem {
     public void Hurt (int amount) {
       int damageAmount;
       if (amount < defensePower) {
-        damageAmount = Random.Range(0, amount);
+        damageAmount = Random.Range(0, amount + 1);
       }
       else {
         damageAmount = amount - defensePower;

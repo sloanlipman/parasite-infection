@@ -30,7 +30,7 @@ namespace BattleSystem {
           numberOfSteps = numberOfSteps + Mathf.Abs(Mathf.RoundToInt(player.GetRigidbody().velocity.x));
           if (numberOfSteps > 1000) {
             ResetSteps();
-              random = Random.Range(0, 9);
+              random = Random.Range(0, 10);
               if (random < 1) {
               PrepareBattle(player.transform.position);
             }
@@ -114,7 +114,7 @@ namespace BattleSystem {
       int numberOfEnemies = Random.Range(0, 3);
 
       for (int i = 0; i < numberOfEnemies + 1; i++) {
-        int randomIndex = Random.Range(0, possibleEnemies.Count - 1);
+        int randomIndex = Random.Range(0, possibleEnemies.Count);
         enemyParty.Add(possibleEnemies[randomIndex]);
       }
 

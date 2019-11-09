@@ -83,7 +83,7 @@ namespace BattleSystem {
         Debug.Log(p.characterName + " Got XP: " + xp + ". Current XP is: " + p.experience);
         if (LevelUp(p)) {
           BattleController.Instance.GetDeadEnemiesList().ForEach(enemy => {
-            int random = Random.Range(0, 9);
+            int random = Random.Range(0, 10);
             if (random >= 5) {
               enemy.LevelUp();
             }
