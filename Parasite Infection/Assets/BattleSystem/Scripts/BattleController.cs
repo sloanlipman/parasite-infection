@@ -225,7 +225,7 @@ namespace BattleSystem {
 
     public BattleCharacter GetRandomPlayer() {
       List<BattleCharacter> playerList = GetListOfAlivePlayers();
-      return playerList[Random.Range(0, playerList.Count - 1)];
+      return playerList[Random.Range(0, playerList.Count)];
     }
 
     public BattleCharacter GetWeakestEnemy() {
