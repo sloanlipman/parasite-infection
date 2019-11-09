@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2822308888312228272}
   - component: {fileID: 9192391036177522714}
   m_Layer: 0
-  m_Name: 1_Drill
+  m_Name: 3_Drill
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,16 +104,16 @@ MonoBehaviour:
   maxEnergyPoints: 15
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
+  - {fileID: 0}
   abilitiesList:
-  - Barrage
+  - Heal
   level: 1
-  experience: 2
+  experience: 4
   originalMaxHealth: 25
   originalMaxEP: 15
   originalAttackPower: 7
   originalDefensePower: 3
-  enemyId: 1
+  enemyId: 3
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class SaveService : MonoBehaviour {
   private BattleSystem.CharacterController characterController;
   private BattleSystem.BattleLauncher battleLauncher;
   private InventoryController inventoryController;
+  private SceneController sceneController;
   private CraftingInventory craftingInventory;
   private ConsumableInventory consumableInventory;
   private QuestController questController;
@@ -28,6 +29,7 @@ public class SaveService : MonoBehaviour {
     consumableInventory.Save();
     questController.Save();
     characterController.Save();
+    sceneController.Save();
 
     SavePlayer();
     SaveNPCs();
@@ -42,6 +44,8 @@ public class SaveService : MonoBehaviour {
       craftingInventory.Load();
       consumableInventory.Load();
       characterController.Load();
+      sceneController.Load();
+
       LoadPlayer();
       LoadNPCs();
       ResetDialog();
@@ -138,6 +142,7 @@ public class SaveService : MonoBehaviour {
     menuController = FindObjectOfType<MenuController>();
     characterController = FindObjectOfType<BattleSystem.CharacterController>();
     inventoryController = FindObjectOfType<InventoryController>();
+    sceneController = FindObjectOfType<SceneController>();
     battleLauncher = FindObjectOfType<BattleLauncher>();
 
     SceneManager.sceneLoaded += OnSceneLoaded;

@@ -13,6 +13,7 @@ namespace BattleSystem {
     private int numberOfSteps;
 
     [SerializeField] private DialogPanel dialog;
+    private SceneController sceneController;
 
     private Vector2 worldPosition;
     private int worldSceneIndex;
@@ -30,9 +31,10 @@ namespace BattleSystem {
         numberOfSteps = numberOfSteps + Mathf.Abs(Mathf.RoundToInt(player.GetRigidbody().velocity.x));
         if (numberOfSteps > 1000) {
           ResetSteps();
-            random = Random.Range(0, 10);
-            if (random < 1) {
-              PrepareBattle(player.transform.position);
+          random = Random.Range(0, 10);
+          if (random < 1) {
+        // if (IsPlayerNotNullAndMoving()) // Uncomment this line (and comment other condition checks) for debugging battle-related tasks. Otherwise leave this line commented.
+            PrepareBattle(player.transform.position);
           }
         }
       }
@@ -66,6 +68,7 @@ namespace BattleSystem {
       DontDestroyOnLoad(this.gameObject);
       questController = FindObjectOfType<QuestSystem.QuestController>();
       characterController = FindObjectOfType<CharacterController>();
+      sceneController = FindObjectOfType<SceneController>();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -105,8 +108,19 @@ namespace BattleSystem {
         }
       });
 
+      int currentAct = sceneController.GetCurrentAct();
+      int maxEnemyId = 0;
+      if (currentAct > 0) {
+        switch (currentAct) {
+          case 1: {
+            maxEnemyId = 1;
+            break;
+          }
+        }
+      }
+
       enemies.ForEach(enemy => {
-        if (enemy.enemyId <= playerLevel / 3) {
+        if (enemy.enemyId <= maxEnemyId) {
           possibleEnemies.Add(enemy);
         }
       });

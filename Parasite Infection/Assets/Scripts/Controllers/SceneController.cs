@@ -9,8 +9,16 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private DialogData gameIntroDialog;
   [SerializeField] private QuestSystem.QuestController questController;
   [SerializeField] private BattleSystem.CharacterController characterController;
-  private int currentAct = 1;
+  private int currentAct = 0;
   private bool hasPlayerDoneTutorial;
+
+  public void Save() {
+    ES3.Save<int>("CurrentAct", currentAct);
+  }
+
+  public void Load() {
+    currentAct = ES3.Load<int>("CurrentAct");
+  }
 
   private void Awake() {
     if (FindObjectsOfType<SceneController>().Length > 1) {
@@ -19,6 +27,10 @@ public class SceneController : MonoBehaviour {
 
     DontDestroyOnLoad(this.gameObject);
     SceneManager.sceneLoaded += OnSceneLoaded;
+  }
+
+  public int GetCurrentAct() {
+    return currentAct;
   }
 
   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -45,9 +57,28 @@ public class SceneController : MonoBehaviour {
     }
   }
 
-  void LoadCommandCenter() {
+  public void LoadSceneFromGateway(string sceneName) {
+    switch (sceneName) {
+      case "Command Center": {
+        LoadCommandCenter();
+        break;
+      }
+
+      case "Armory": {
+        LoadArmory();
+        break;
+      }
+    }
+  }
+
+  private void LoadCommandCenter() {
     SceneManager.LoadScene("Command Center");
     EventController.OnDialogPanelClosed -= LoadCommandCenter;
+  }
+
+  private void LoadArmory() {
+    SceneManager.LoadScene("Armory");
+    currentAct = 1;
   }
 
   private void ActivateGatewayToLeaveCommandCenter() {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3924562713174096799}
   - component: {fileID: 5126930062819720034}
   m_Layer: 0
-  m_Name: 3_Hatchling
+  m_Name: 1_Hatchling
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,16 +104,16 @@ MonoBehaviour:
   maxEnergyPoints: 10
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
+  - {fileID: 0}
   abilitiesList:
-  - Heal
+  - Barrage
   level: 1
-  experience: 4
+  experience: 2
   originalMaxHealth: 10
   originalMaxEP: 10
   originalAttackPower: 5
   originalDefensePower: 20
-  enemyId: 3
+  enemyId: 1
 --- !u!61 &5126930062819720034
 BoxCollider2D:
   m_ObjectHideFlags: 0

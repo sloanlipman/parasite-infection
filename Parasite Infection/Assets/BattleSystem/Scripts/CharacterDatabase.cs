@@ -151,9 +151,9 @@ namespace BattleSystem {
     void BuildEnemyDatabase() {
       enemyList = new List<Enemy>() {
         Resources.Load<Enemy>("Enemies/0_Blob"),
-        Resources.Load<Enemy>("Enemies/1_Drill"),
+        Resources.Load<Enemy>("Enemies/1_Hatchling"),
         Resources.Load<Enemy>("Enemies/2_Drone"),
-        Resources.Load<Enemy>("Enemies/3_Hatchling"),
+        Resources.Load<Enemy>("Enemies/3_Drill"),
         Resources.Load<Enemy>("Enemies/4_Infected Android"),
         Resources.Load<Enemy>("Enemies/5_Octopus Monster"),
         Resources.Load<Enemy>("Enemies/6_Tentacle Monster"),
