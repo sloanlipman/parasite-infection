@@ -288,8 +288,7 @@ namespace BattleSystem {
         }
       }
       else {
-        Debug.LogWarning("Battle is over!");
-        Debug.Log("Experience gained: " + xpToReward);
+        uiController.ToggleActionState(false);
         StartCoroutine(EndBattle());
       }
     }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Android (intro)
   m_EditorClassIdentifier: 
   dialog:
-  - Gear up.
-  - Kill some aliens.
+  - 'Android: Cmon, Barry. Equip your Heavy Module.'
+  - Kill some blobs and then let's get outta here.

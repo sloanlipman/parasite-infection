@@ -23,6 +23,7 @@ TagManager:
   - UI/Crafting Inventory
   - UI/Consumable Inventory
   - UI/Intro Panel
+  - Gateways/Command Center
   layers:
   - Default
   - TransparentFX

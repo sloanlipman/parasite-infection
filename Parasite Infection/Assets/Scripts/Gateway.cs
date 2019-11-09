@@ -11,8 +11,10 @@ public class Gateway : MonoBehaviour {
   [SerializeField]
   private Vector2 spawnLocation;
 
+  public bool isActive = false;
+
  private void OnCollisionEnter2D(Collision2D collision) {
-   if (collision.gameObject.CompareTag("Player")) {
+   if (collision.gameObject.CompareTag("Player") && isActive) {
      GatewayManager.Instance.SetSpawnPosition(spawnLocation);
      SceneManager.LoadScene(sceneName);
    }

@@ -37,10 +37,10 @@ public class SaveService : MonoBehaviour {
   public void Load() {
     if (ES3.FileExists() && ES3.FileExists("PlayerInfo.json")) {
       ClearAll();
+      questController.Load();
       menuController.CloseAllMenus();
       craftingInventory.Load();
       consumableInventory.Load();
-      questController.Load();
       characterController.Load();
       LoadPlayer();
       LoadNPCs();

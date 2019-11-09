@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
-
+  public static SceneController Instance {get; set;}
   [SerializeField] private DialogPanel dialogPanel;
   [SerializeField] private DialogData gameIntroDialog;
   [SerializeField] private QuestSystem.QuestController questController;
@@ -19,7 +19,6 @@ public class SceneController : MonoBehaviour {
 
     DontDestroyOnLoad(this.gameObject);
     SceneManager.sceneLoaded += OnSceneLoaded;
-
   }
 
   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -37,7 +36,10 @@ public class SceneController : MonoBehaviour {
         if (!questController.HasQuestBeenStarted("KillBlobsQuest")) {
           string[] dialog = new string[] {"Check in with the Android to get your assignment. Walk up to him and click."};
           dialogPanel.StartDialog(dialog);
-        }
+        } else if (questController.IsQuestCompleted("KillBlobsQuest")) {
+            StartKillBlobsQuestCompletedDialog();
+            ActivateGatewayToLeaveCommandCenter();
+          }
         break;
       }
     }
@@ -46,5 +48,17 @@ public class SceneController : MonoBehaviour {
   void LoadCommandCenter() {
     SceneManager.LoadScene("Command Center");
     EventController.OnDialogPanelClosed -= LoadCommandCenter;
+  }
+
+  private void ActivateGatewayToLeaveCommandCenter() {
+    GameObject.FindGameObjectWithTag("Gateways/Command Center").GetComponent<Gateway>().isActive = true;
+  }
+
+  public void StartKillBlobsQuestCompletedDialog() {
+    string[] dialog = new string[] {
+      "Android: Let's go help the others.",
+      "Android: Head up to the transporter, and we'll help Alan."
+    };
+    dialogPanel.StartDialog(dialog);
   }
 }

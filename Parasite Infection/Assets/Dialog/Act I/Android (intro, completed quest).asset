@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Android (intro, completed quest)
   m_EditorClassIdentifier: 
   dialog:
-  - You're ready.
+  - 'Android: Let''s go help the others.'
+  - 'Android: Head up to the transporter.'
+  - 'Android: We''ll look for Alan.'
