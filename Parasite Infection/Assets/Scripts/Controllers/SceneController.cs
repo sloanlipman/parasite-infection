@@ -88,6 +88,7 @@ public class SceneController : MonoBehaviour {
         break;
       }
     }
+    GatewayManager.Instance.MoveInNewScene();
   }
 
   private void LoadCommandCenter() {

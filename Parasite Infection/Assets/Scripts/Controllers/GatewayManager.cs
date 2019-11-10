@@ -22,6 +22,10 @@ public class GatewayManager : MonoBehaviour {
   }
 
   private void SceneLoaded(Scene scene, LoadSceneMode mode) {
+    MoveInNewScene();
+  }
+
+  public void MoveInNewScene() {
     if (spawnPrepared) {
       MovePosition();
     }
