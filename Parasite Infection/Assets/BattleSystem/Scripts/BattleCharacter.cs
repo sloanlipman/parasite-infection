@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BattleSystem {
   public class BattleCharacter : MonoBehaviour {
@@ -72,8 +73,10 @@ namespace BattleSystem {
     public void Heal (int amount) {
       int healAmount = amount;
       health = Mathf.Min(health + healAmount, maxHealth);
-      BattleController.Instance.SetHealAmount(healAmount);
-      BattleController.Instance.ShowLabel("heal");
+      if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle")) {
+        BattleController.Instance.SetHealAmount(healAmount);
+        BattleController.Instance.ShowLabel("heal");
+      }
     }
 
     public void Defend() {
@@ -91,8 +94,10 @@ namespace BattleSystem {
       if (energyPoints > maxEnergyPoints) {
         energyPoints = maxEnergyPoints;
       }
-      BattleController.Instance.SetEnergyRecoveryAmount(amount);
-      BattleController.Instance.ShowLabel("EP");
+      if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle")) {
+        BattleController.Instance.SetEnergyRecoveryAmount(amount);
+        BattleController.Instance.ShowLabel("EP");
+      }
     }
 
     public bool UseAbility(Ability ability, BattleCharacter targetCharacter) {
