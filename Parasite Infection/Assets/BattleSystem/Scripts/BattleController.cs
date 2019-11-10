@@ -338,6 +338,7 @@ namespace BattleSystem {
             }
         }
         if (GetCurrentCharacter().UseAbility(abilityToBeUsed, target)) {
+          SetCurrentTarget(target);
           uiController.UpdateCharacterUI();
           NextAct();
         }

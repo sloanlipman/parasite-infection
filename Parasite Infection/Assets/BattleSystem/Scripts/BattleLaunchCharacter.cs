@@ -6,7 +6,6 @@ namespace BattleSystem {
   public class BattleLaunchCharacter : MonoBehaviour {
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private BattleLauncher launcher;
-    // private List<PartyMemberEntry> players;
     private List<PartyMember> players;
     private CharacterController characterController;
 
@@ -17,7 +16,7 @@ namespace BattleSystem {
     }
 
     public void PrepareBattle(Character character) {
-      launcher.PrepareBattle(character.transform.position);
+      launcher.PrepareBattle(character.transform.position, enemies);
     }
   }
 }

@@ -8,6 +8,8 @@ namespace BattleSystem {
     public List<PartyMember> players { get; set; }
     public List<Enemy> enemies { get; set; }
 
+    public List<Enemy> presetEnemyParty = new List<Enemy>();
+
     private Player player;
     private int random;
     private int numberOfSteps;
@@ -77,11 +79,13 @@ namespace BattleSystem {
       }
     }
 
-    public void PrepareBattle(Vector2 position) {
+    public void PrepareBattle(Vector2 position, List<Enemy> enemiesToUse = null) {
       worldPosition = position;
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
       this.players = characterController.GetActiveParty();
       this.enemies = characterController.GetEnemies();
+
+      this.presetEnemyParty = enemiesToUse;
 
       SceneManager.LoadScene("Battle");
       if (dialog != null) {
@@ -90,7 +94,13 @@ namespace BattleSystem {
     }
 
     public void Launch() {
-      List<Enemy> enemiesToUse = GenerateEnemyParty();
+      List<Enemy> enemiesToUse = new List<Enemy>();
+      if (this.presetEnemyParty != null) {
+        enemiesToUse = GenerateEnemyPartyFromPresets();
+      } else {
+        enemiesToUse = GenerateEnemyParty();
+      }
+
       players.ForEach(player => {
         player.abilities.Clear();
         player.abilitiesList.Clear();
@@ -135,6 +145,15 @@ namespace BattleSystem {
         enemyParty.Add(possibleEnemies[randomIndex]);
       }
 
+      return enemyParty;
+    }
+
+    private List<Enemy> GenerateEnemyPartyFromPresets() {
+      List<Enemy> enemyParty = new List<Enemy>();
+
+      this.presetEnemyParty.ForEach(enemy => {
+        enemyParty.Add(characterController.FindEnemyById(enemy.enemyId)); // Get most up to date version of the enemy
+      });
       return enemyParty;
     }
 

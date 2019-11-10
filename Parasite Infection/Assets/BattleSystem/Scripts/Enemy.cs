@@ -14,8 +14,12 @@ namespace BattleSystem {
 
     public void Act() {
       int dieRoll = Random.Range(0,3);
-      BattleCharacter target = BattleController.Instance.GetRandomPlayer();
-      BattleController.Instance.SetCurrentTarget(target);
+      BattleCharacter damageTarget = BattleController.Instance.GetRandomPlayer();
+      BattleCharacter healTarget = BattleController.Instance.GetWeakestEnemy(); // Ally in this case though because this is the Enemies script
+      BattleCharacter actualTarget = damageTarget;
+
+      BattleController.Instance.SetCurrentTarget(actualTarget);
+
       switch(dieRoll) {
         case 0: {
           Defend();
@@ -24,19 +28,27 @@ namespace BattleSystem {
         case 1: {
           Ability abilityToCast = GetRandomAbility();
           if (abilityToCast != null) {
+
             if (abilityToCast.abilityType == Ability.AbilityType.Heal) {
-              target = BattleController.Instance.GetWeakestEnemy(); // Ally in this case though because this is the Enemies script
+              actualTarget = healTarget;
+              BattleController.Instance.SetCurrentTarget(actualTarget);
             }
-            if (!UseAbility(abilityToCast, target)) {
-              BattleController.Instance.DoAttack(this, target);
+
+            if (!UseAbility(abilityToCast, actualTarget)) {
+              actualTarget = damageTarget;
+              BattleController.Instance.SetCurrentTarget(actualTarget);
+              BattleController.Instance.DoAttack(this, actualTarget);
             }
+
           } else {
-            BattleController.Instance.DoAttack(this, target);
+            BattleController.Instance.SetCurrentTarget(damageTarget);
+            BattleController.Instance.DoAttack(this, damageTarget);
           }
           break;
         }
         case 2: {
-            BattleController.Instance.DoAttack(this, target);
+          BattleController.Instance.SetCurrentTarget(damageTarget);
+          BattleController.Instance.DoAttack(this, damageTarget);
           break;
         }
       }

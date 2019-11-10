@@ -19,6 +19,8 @@ public class NPC : Character {
   private DialogPanel dialog;
   private DialogCanvas dialogCanvas;
 
+  private Character player;
+
   private void Awake() {
     FindDialogPanel();
   }
@@ -32,8 +34,9 @@ public class NPC : Character {
   }
 
   public void Interact(Character player = null) {
+    this.player = player;
     if (GetComponent<BattleLaunchCharacter>() != null) {
-      GetComponent<BattleLaunchCharacter>().PrepareBattle(player);
+      EventController.OnDialogPanelClosed += StartBattle;
     }
     if (questName != "") { // If NPC gives a quest
       if (quest == null && !IsQuestAssigned() && !IsQuestCompleted()) {
@@ -48,6 +51,12 @@ public class NPC : Character {
         FindDialogPanel();
       }
       dialog.StartDialog(dialogData.dialog);
+    }
+  }
+
+  private void StartBattle() {
+    if (this.player != null) {
+     GetComponent<BattleLaunchCharacter>().PrepareBattle(this.player);
     }
   }
 

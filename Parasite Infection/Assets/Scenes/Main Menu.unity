@@ -9408,6 +9408,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneController
       objectReference: {fileID: 0}
+    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
+        type: 3}
+      propertyPath: dialogPanel
+      value: 
+      objectReference: {fileID: 715141590}
+    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
+        type: 3}
+      propertyPath: gameIntroDialog
+      value: 
+      objectReference: {fileID: 11400000, guid: a8042d9ed992fb749aed5e3fa217eff8,
+        type: 2}
+    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
+        type: 3}
+      propertyPath: questController
+      value: 
+      objectReference: {fileID: 2075935933}
+    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
+        type: 3}
+      propertyPath: characterController
+      value: 
+      objectReference: {fileID: 2136777305}
     - target: {fileID: 55304751417087580, guid: 08d436e2e7c436544be2ce7217c50c68,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9463,26 +9484,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
-        type: 3}
-      propertyPath: dialogPanel
-      value: 
-      objectReference: {fileID: 715141590}
-    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
-        type: 3}
-      propertyPath: gameIntroDialog
-      value: 
-      objectReference: {fileID: 11400000, guid: a8042d9ed992fb749aed5e3fa217eff8,
-        type: 2}
-    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
-        type: 3}
-      propertyPath: questController
-      value: 
-      objectReference: {fileID: 2075935933}
-    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
-        type: 3}
-      propertyPath: characterController
-      value: 
-      objectReference: {fileID: 2136777305}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08d436e2e7c436544be2ce7217c50c68, type: 3}
