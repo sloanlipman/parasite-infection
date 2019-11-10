@@ -22,6 +22,7 @@ public class GatewayManager : MonoBehaviour {
   }
 
   private void SceneLoaded(Scene scene, LoadSceneMode mode) {
+    Debug.Log("Loaded scene from GW manager: " + scene.name.ToString());
     MoveInNewScene();
   }
 

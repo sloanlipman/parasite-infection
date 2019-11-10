@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2822308888312228272}
   - component: {fileID: 9192391036177522714}
   m_Layer: 0
-  m_Name: 4_Infected Android
+  m_Name: 6_Octopus Monster
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 1993003049
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7498502264579711652, guid: c0d39b49095deec428f3e56678a9d1b1,
+  m_Sprite: {fileID: 3202417744784085653, guid: 6a8868e9b3ad4254eab864607579ad41,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -95,25 +95,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Infected Android
-  health: 25
-  maxHealth: 25
-  attackPower: 7
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
+  characterName: Octopus Monster
+  health: 28
+  maxHealth: 28
+  attackPower: 10
+  defensePower: 6
+  energyPoints: 18
+  maxEnergyPoints: 18
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
+  - {fileID: 0}
   abilitiesList:
-  - Barrage
-  level: 1
-  experience: 5
+  - Heal
+  - Hydroblast
+  level: 4
+  experience: 7
   originalMaxHealth: 25
   originalMaxEP: 15
   originalAttackPower: 7
   originalDefensePower: 3
-  enemyId: 4
+  enemyId: 6
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.65625, y: 0.9375}
+    oldSize: {x: 2.53125, y: 1.1875}
     newSize: {x: 0.21, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

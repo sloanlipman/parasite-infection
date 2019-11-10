@@ -71,11 +71,13 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
   }
 
   public void SetSprite(Item item) {
-    if (this.item != null) {
-      spriteImage.color = Color.white;
-      spriteImage.sprite = item.icon;
-    } else {
-      spriteImage.color = Color.clear;
+    if (spriteImage != null) {
+      if (this.item != null) {
+        spriteImage.color = Color.white;
+        spriteImage.sprite = item.icon;
+      } else {
+        spriteImage.color = Color.clear;
+      }
     }
   }
 

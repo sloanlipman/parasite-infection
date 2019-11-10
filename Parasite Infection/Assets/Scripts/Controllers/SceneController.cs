@@ -35,13 +35,15 @@ public class SceneController : MonoBehaviour {
   }
 
   public void OnSceneUnloaded(Scene scene) {
+    Debug.Log("Unloaded scene:" + scene.name.ToString() );
     if (scene.name.ToString() == "Intro") {
-      Debug.Log("Unloaded intro");
       SaveService.Instance.Save();
     }
   }
 
   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+    Debug.Log("Scene Controller OnSceneLoaded: " + scene.name);
+
     switch(scene.name) {
       case "Intro": {
         SaveService.Instance.StartNewGame();
@@ -63,12 +65,16 @@ public class SceneController : MonoBehaviour {
         break;
       }
 
-      case "Armory": {
+      case "Central Core": {
         if (!questController.HasQuestBeenStarted("CraftWaterQuest")) {
           string[] dialog = new string[] {"???: Barry? I'm over here! Follow the green trail!"};
           dialogPanel.StartDialog(dialog);
         } else if (questController.IsQuestCompleted("CraftWaterQuest")) {
           // Allow access to the next area
+        }
+
+        if (questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
+          // Activate a gateway
         }
         break;
       }
@@ -99,6 +105,7 @@ public class SceneController : MonoBehaviour {
   private void LoadCentralCore() {
     SceneManager.LoadScene("Central Core");
     currentAct = 1;
+    Debug.Log("Loaded central core from LoadCentralCore() method");
   }
 
   private void ActivateGatewayToLeaveCommandCenter() {
@@ -120,5 +127,21 @@ public class SceneController : MonoBehaviour {
       "Alan: I'm right behind you."
     };
     dialogPanel.StartDialog(dialog);
+  }
+
+  public void StartDefeatTentacleMonsterQuestCompletedDialog() {
+    string[] dialog = new string[] {
+      "Parasite: I...impossible!",
+      "How could a human defeat my spawn?",
+      "I won't forget this... Barry..."
+    };
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += RemoveTentacleMonster;
+  }
+
+  private void RemoveTentacleMonster() {
+    BattleSystem.BattleLaunchCharacter tentacleMonster = FindObjectOfType<BattleSystem.BattleLaunchCharacter>();
+    Destroy(tentacleMonster.gameObject);
+    EventController.OnDialogPanelClosed -= RemoveTentacleMonster;
   }
 }
