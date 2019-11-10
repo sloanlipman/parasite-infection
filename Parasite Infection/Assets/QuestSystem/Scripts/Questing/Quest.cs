@@ -38,8 +38,7 @@ namespace QuestSystem {
       });
       
       foreach(string item in itemRewards) {
-        UIInventory inventory = inventoryController.SelectCorrectInventoryUI(item);
-        craftingInventory.GiveItem(item);
+        inventoryController.GiveItem(item);
       }
     }
   }
