@@ -83,8 +83,8 @@ public class SceneController : MonoBehaviour {
         break;
       }
 
-      case "Armory": {
-        LoadArmory();
+      case "Central Core": {
+        LoadCentralCore();
         break;
       }
     }
@@ -96,8 +96,8 @@ public class SceneController : MonoBehaviour {
     EventController.OnDialogPanelClosed -= LoadCommandCenter;
   }
 
-  private void LoadArmory() {
-    SceneManager.LoadScene("Armory");
+  private void LoadCentralCore() {
+    SceneManager.LoadScene("Central Core");
     currentAct = 1;
   }
 

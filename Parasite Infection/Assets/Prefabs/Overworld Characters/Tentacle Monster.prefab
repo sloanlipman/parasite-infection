@@ -137,9 +137,8 @@ MonoBehaviour:
   movementSpeed: 0
   wander: 1
   questName: 
-  dialogData: {fileID: 0}
+  dialogData: {fileID: 11400000, guid: ef54eeae2a4518f4ab1c39f164adf8cb, type: 2}
   questCompletedDialogData: {fileID: 0}
-  dialog: {fileID: 0}
 --- !u!114 &8178023542986698376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 4451484942459561568, guid: 46f7fc5feea1e2d469732e4f18f0b14e, type: 3}
-  - {fileID: 2822308888312228272, guid: ce594e20547b0494db929623f015ba31, type: 3}
-  - {fileID: 3924562713174096799, guid: 29632a25e4ca88040bc19ecb7549d764, type: 3}
+  - {fileID: 3924562713174096799, guid: 5b6806208955998489845c30d966cac3, type: 3}
+  - {fileID: 2822308888312228272, guid: cc158d874ef08174c8f9a58dafb9e6de, type: 3}
+  - {fileID: 3924562713174096799, guid: 5b6806208955998489845c30d966cac3, type: 3}
   launcher: {fileID: 0}
