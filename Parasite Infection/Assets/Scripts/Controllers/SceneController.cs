@@ -27,10 +27,18 @@ public class SceneController : MonoBehaviour {
 
     DontDestroyOnLoad(this.gameObject);
     SceneManager.sceneLoaded += OnSceneLoaded;
+    SceneManager.sceneUnloaded += OnSceneUnloaded;
   }
 
   public int GetCurrentAct() {
     return currentAct;
+  }
+
+  public void OnSceneUnloaded(Scene scene) {
+    if (scene.name.ToString() == "Intro") {
+      Debug.Log("Unloaded intro");
+      SaveService.Instance.Save();
+    }
   }
 
   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -68,6 +76,7 @@ public class SceneController : MonoBehaviour {
   }
 
   public void LoadSceneFromGateway(string sceneName) {
+    SaveService.Instance.Save();
     switch (sceneName) {
       case "Command Center": {
         LoadCommandCenter();
@@ -110,6 +119,5 @@ public class SceneController : MonoBehaviour {
       "Alan: I'm right behind you."
     };
     dialogPanel.StartDialog(dialog);
-    // Allow access to the next area from here
   }
 }

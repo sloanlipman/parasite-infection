@@ -37,7 +37,7 @@ public class SaveService : MonoBehaviour {
   }
 
   public void Load() {
-    if (ES3.FileExists() && ES3.FileExists("PlayerInfo.json")) {
+    if (ES3.FileExists()) {
       ClearAll();
       questController.Load();
       menuController.CloseAllMenus();
@@ -61,6 +61,7 @@ public class SaveService : MonoBehaviour {
     ClearAll();
     consumableInventory.InitializeConsumableInventory();
     craftingInventory.InitializeCraftingInventory();
+    SaveService.Instance.Save();
   }
 
   private void ClearAll() {
@@ -95,11 +96,14 @@ public class SaveService : MonoBehaviour {
   }
 
   private void SavePlayer() {
-    GetPlayer().Save();
+    Player player = GetPlayer();
+    if (player != null) {
+      player.Save();
+    }
   }
 
   private void LoadPlayer() {
-    if (GetPlayer() != null) {
+    if (GetPlayer() != null && ES3.FileExists("PlayerInfo.json")) {
       ES3.Load<GameObject>("Player", "PlayerInfo.json");
     } else {
       needToLoadPlayer = true;
