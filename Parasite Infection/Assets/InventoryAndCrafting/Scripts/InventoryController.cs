@@ -40,6 +40,23 @@ public class InventoryController : MonoBehaviour {
     }
   }
 
+  public void GiveItem(string itemName) {
+    Item item = itemDatabase.GetItem(itemName);
+    Inventory inventoryToUse = PerformSelectCorrectInventory(item);
+    inventoryToUse.GiveItem(item.id);
+  }
+
+  public void GiveItem(int id) {
+    Item item = itemDatabase.GetItem(id);
+    Inventory inventoryToUse = PerformSelectCorrectInventory(item);
+    inventoryToUse.GiveItem(item.id);
+  }
+
+  public void GiveItem(Item item) {
+    Inventory inventoryToUse = PerformSelectCorrectInventory(item);
+    inventoryToUse.GiveItem(item.id);
+  }
+
   public void PrepareForSave() {
     partyPanel.ParseUIForCurrentEquipment();
     PutItemBackBeforeSave();
@@ -148,8 +165,7 @@ public class InventoryController : MonoBehaviour {
     PartyMember member = partyPanel.LookUpSelectedPartyMember();
 
     if (IsAnItemSelected()) {
-      Inventory inventoryToUse = PerformSelectCorrectInventory(selectedItem.item);
-      inventoryToUse.GiveItem(selectedItem.item.id);
+      GiveItem(selectedItem.item);
 
       if (member != null) {
         int i = 0;
@@ -178,8 +194,7 @@ public class InventoryController : MonoBehaviour {
           }
           infoPanel.Populate(member.characterName);
       } else {
-        Inventory inventory = PerformSelectCorrectInventory(itemToConsume.item);
-        inventory.GiveItem(itemToConsume.item.id);
+        GiveItem(itemToConsume.item);
       }
     }
       itemToConsume.UpdateItem(null);

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Android (intro, completed quest)
   m_EditorClassIdentifier: 
   dialog:
+  - 'Android: Here''s a Fire Module. Don''t forget to equip it.'
   - 'Android: Let''s go help the others.'
   - 'Android: Head up to the transporter.'
   - 'Android: We''ll look for Alan.'

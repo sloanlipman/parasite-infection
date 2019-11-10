@@ -49,9 +49,19 @@ public class SceneController : MonoBehaviour {
           string[] dialog = new string[] {"Check in with the Android to get your assignment. Walk up to him and click."};
           dialogPanel.StartDialog(dialog);
         } else if (questController.IsQuestCompleted("KillBlobsQuest")) {
-            StartKillBlobsQuestCompletedDialog();
+            // StartKillBlobsQuestCompletedDialog();
             ActivateGatewayToLeaveCommandCenter();
           }
+        break;
+      }
+
+      case "Armory": {
+        if (!questController.HasQuestBeenStarted("CraftWaterQuest")) {
+          string[] dialog = new string[] {"???: Barry? I'm over here! Follow the green trail!"};
+          dialogPanel.StartDialog(dialog);
+        } else if (questController.IsQuestCompleted("CraftWaterQuest")) {
+          // Allow access to the next area
+        }
         break;
       }
     }
@@ -91,5 +101,15 @@ public class SceneController : MonoBehaviour {
       "Android: Head up to the transporter, and we'll help Alan."
     };
     dialogPanel.StartDialog(dialog);
+  }
+
+  public void StartCraftWaterQuestCompletedDialog() {
+    string[] dialog = new string[] {
+      "Alan: Good stuff. All right, let's get outta here.",
+      "Alan: The captain is up ahead.",
+      "Alan: I'm right behind you."
+    };
+    dialogPanel.StartDialog(dialog);
+    // Allow access to the next area from here
   }
 }

@@ -30,11 +30,11 @@ namespace BattleSystem {
       activePartyMembers.Add("Barry");
     }
 
-    private void AddPlayerToParty(string name) {
+    public void AddPlayerToParty(string name) {
       activePartyMembers.Add(name);
     }
 
-    private void RemovePlayerFromParty(string name) {
+    public void RemovePlayerFromParty(string name) {
       activePartyMembers.Remove(name);
     }
 
@@ -63,7 +63,6 @@ namespace BattleSystem {
       BuildAbilityList();
       BuildPartyDatabase();
       BuildEnemyDatabase();
-      EventController.OnKillBlobsQuestCompleted += AddPlayerToParty;
       inventoryController = FindObjectOfType<InventoryController>();
     }
 

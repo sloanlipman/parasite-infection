@@ -20,6 +20,15 @@ namespace BattleSystem {
       characterDatabase.Load();
     }
 
+    public void AddPlayerToParty(string name) {
+      characterDatabase.AddPlayerToParty(name);
+    }
+
+    public void RemovePlayerFromParty(string name) {
+      characterDatabase.RemovePlayerFromParty(name);
+    }
+
+
     private List<PartyMember> GetPartyMembers() {
       return characterDatabase.GetPartyMembers();
     }

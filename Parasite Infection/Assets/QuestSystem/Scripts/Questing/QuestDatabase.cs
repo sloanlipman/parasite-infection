@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 namespace QuestSystem {
   public class QuestDatabase : MonoBehaviour {
     public Dictionary<string, int[]> quests = new Dictionary<string, int[]>();
@@ -64,6 +66,10 @@ namespace QuestSystem {
       if (quests.ContainsKey(quest.slug)) {
         quests[quest.slug][0] = 1;
         pendingQuests.Add(quest);
+      }
+
+      if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle")) {
+        CompletePendingQuests();
       }
     }
 

@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour {
     inventoryController.AddToListOfCurrentItems(itemToAdd);
     inventoryUI.AddItemToUI(itemToAdd);
     playerItems.Add(new Item(itemToAdd));
+    itemToAdd.Collect();
   }
 
   public void RemoveItem(Item item) {

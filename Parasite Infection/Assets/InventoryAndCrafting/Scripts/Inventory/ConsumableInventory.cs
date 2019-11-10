@@ -31,8 +31,6 @@ public class ConsumableInventory : Inventory {
      }
 
     }
-    GiveItem(11);
-    GiveItem(12);
   }
 
   void Start() {

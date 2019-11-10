@@ -24,16 +24,7 @@ public class CraftingInventory : Inventory {
   }
 
   public void InitializeCraftingInventory() {
-  for (int i = 1; i <= itemDatabase.GetItemDatabaseList().Count; i++) {
-     if (inventoryController.IsCraftingItem(i)) {
-      GiveItem(i);
-     }
-    }
-
-    GiveItem(9);
-    GiveItem(9);
-    GiveItem(10);
-    GiveItem(10);
+    GiveItem(1);
   }
 
   // Start is called before the first frame update

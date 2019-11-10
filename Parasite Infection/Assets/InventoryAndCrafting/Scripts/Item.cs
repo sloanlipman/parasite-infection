@@ -29,4 +29,8 @@ public class Item {
     this.icon = item.icon;
     this.stats = item.stats;
   }
+
+  public void Collect() {
+    EventController.ItemCollected(id);
+  }
 }

@@ -8,14 +8,19 @@ namespace QuestSystem {
     public Goal goal;
     public bool completed;
     public List<string> itemRewards;
-    private InventoryController inventoryController;
-    private CraftingInventory craftingInventory;
-    private ConsumableInventory consumableInventory;
+    public int expReward;
+    protected InventoryController inventoryController;
+    protected CraftingInventory craftingInventory;
+    protected ConsumableInventory consumableInventory;
+    protected BattleSystem.CharacterController characterController;
+    protected SceneController sceneController;
 
     private void Start() {
       inventoryController = FindObjectOfType<InventoryController>();
       craftingInventory = FindObjectOfType<CraftingInventory>();
       consumableInventory = FindObjectOfType<ConsumableInventory>();
+      characterController = FindObjectOfType<BattleSystem.CharacterController>();
+      sceneController = FindObjectOfType<SceneController>();
     }
 
     public virtual void Complete() {
@@ -26,12 +31,14 @@ namespace QuestSystem {
       }
     }
 
-    public void GrantReward() {
+    public virtual void GrantReward() {
+      characterController.GetActiveParty().ForEach(member => {
+        member.experience += expReward;
+        characterController.LevelUp(member);
+      });
       
-      Debug.Log("Turning in quest... granting reward");
       foreach(string item in itemRewards) {
         UIInventory inventory = inventoryController.SelectCorrectInventoryUI(item);
-        Debug.Log("Rewarded with: " + item);
         craftingInventory.GiveItem(item);
       }
     }

@@ -11,10 +11,10 @@ public class UICraftResult : MonoBehaviour {
   public void PickItem() {
     craftingSlots.ClearCraftingSlots();
     craftingInventory.playerItems.Add(GetComponent<UIItem>().item);
+    GetComponent<UIItem>().item.Collect();
   }
 
   public void ClearSlots() {
     slotPanel.EmptyAllSlots();
   }
-
 }
