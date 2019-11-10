@@ -116,7 +116,7 @@ namespace BattleSystem {
     }
 
     public int NextLevel(int currentLevel) {
-      return Mathf.RoundToInt(0.04f * (currentLevel^3) + 0.8f * (currentLevel^2) + 2 * currentLevel);
+      return Mathf.RoundToInt(0.04f * Mathf.Pow(currentLevel, 3) + 0.8f * Mathf.Pow(currentLevel, 2) + 2 * currentLevel);
     }
   }
 }

@@ -31,11 +31,11 @@ public class UIPlayerInfoPanel : MonoBehaviour {
 
     level.text = "Level: " + partyMember.level;
 
-    int levelUpInAmount = (characterController.NextLevel(partyMember.level) - partyMember.experience);
+    int levelUpInAmount = characterController.NextLevel(partyMember.level) - partyMember.experience;
     if (levelUpInAmount == 0) {
       levelUpInAmount = (characterController.NextLevel(partyMember.level + 1) - partyMember.experience);
     }
-    levelUpIn.text = "Level Up In: " + levelUpInAmount;
+    levelUpIn.text = "Level Up In: " + Mathf.Abs(levelUpInAmount);
   }
 
   void Update() {
