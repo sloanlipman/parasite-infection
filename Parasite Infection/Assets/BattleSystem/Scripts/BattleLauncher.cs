@@ -126,6 +126,9 @@ namespace BattleSystem {
       });
 
       int numberOfEnemies = Random.Range(0, 3);
+      if (currentAct == 0) {
+        numberOfEnemies = 0;
+      }
 
       for (int i = 0; i < numberOfEnemies + 1; i++) {
         int randomIndex = Random.Range(0, possibleEnemies.Count);
