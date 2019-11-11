@@ -7,6 +7,11 @@ public class DialogPanel : MonoBehaviour {
   [SerializeField] private GameObject dialogPanel;
   private string[] dialog;
   private int dialogIndex;
+  private SceneController sceneController;
+
+  private void Awake() {
+    sceneController = FindObjectOfType<SceneController>();
+  }
 
   public void StartDialog(string[] dialog) {
     dialogIndex = 0;
@@ -14,6 +19,7 @@ public class DialogPanel : MonoBehaviour {
     if (dialogPanel != null) {
       dialogPanel.SetActive(true);
       dialogText.text = dialog[0];
+      sceneController.FreezeTime();
     }
   }
 
@@ -41,5 +47,6 @@ public class DialogPanel : MonoBehaviour {
     dialogPanel.SetActive(false);
     dialogIndex = 0;
     EventController.DialogPanelClosed();
+    sceneController.UnfreezeTime();
   }
 }

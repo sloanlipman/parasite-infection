@@ -51,7 +51,12 @@ public class NPC : Character {
         FindDialogPanel();
       }
       dialog.StartDialog(dialogData.dialog);
+      EventController.OnDialogPanelClosed += UnfreezeTime;
     }
+  }
+
+  private void UnfreezeTime() {
+    EventController.OnDialogPanelClosed -= UnfreezeTime;
   }
 
   private void StartBattle() {

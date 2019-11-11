@@ -28,6 +28,8 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private DialogData tutorialDialog;
   [SerializeField] private DialogPanel tutorialPanel;
 
+  private bool isPaused;
+
   public static bool IsBattleCurrentScene() {
     return SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle");
   }
@@ -44,9 +46,14 @@ public class MenuController : MonoBehaviour {
     return tutorialPanel.gameObject.activeSelf;
   }
 
+  public bool IsGamePaused() {
+    return isPaused;
+  }
+
   private void PauseGame() {
     ToggleDialogButtons(false);
     ToggleMenu(true);
+    isPaused = true;
     Time.timeScale = 0;
   }
 
@@ -55,7 +62,12 @@ public class MenuController : MonoBehaviour {
     if (IsTooltipActive()) {
       tooltip.gameObject.SetActive(false);
     }
-    Time.timeScale = 1;
+
+    isPaused = false;
+
+    if (!dialogPanel.gameObject.activeSelf) {
+      Time.timeScale = 1;
+    }
   }
 
   public void CloseAllMenus() {
