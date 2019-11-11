@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog:
   - 'Android: Cmon, Barry. Equip your Heavy Module.'
-  - 'Android: Kill some blobs and then let''s get outta here.'
+  - Kill some blobs and then let's get outta here.
+  - Not sure how to equip?
+  - Press ESC and go through the Tutorial!

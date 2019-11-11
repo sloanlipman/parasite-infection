@@ -60,6 +60,7 @@ public class SceneController : MonoBehaviour {
 
     switch(scene.name) {
       case "Intro": {
+        currentAct = 0;
         SaveService.Instance.StartNewGame();
         characterController.ResetAllCharacters();
         DialogPanel introPanel = GameObject.FindGameObjectWithTag("UI/Intro Panel").GetComponent<DialogPanel>();
@@ -70,26 +71,30 @@ public class SceneController : MonoBehaviour {
 
       case "Command Center": {
         if (!questController.HasQuestBeenStarted("KillBlobsQuest")) {
-          string[] dialog = new string[] {"Check in with the Android to get your assignment. Walk up to him and click."};
+          string[] dialog = new string[] {
+            "Check in with the Android to get your assignment.",
+            "Walk up to him and click.",
+            "It may take a few tries until the kinks are sorted out.",
+            "If you need help, press ESC to access the tutorial.",
+            };
           dialogPanel.StartDialog(dialog);
         } else if (questController.IsQuestCompleted("KillBlobsQuest")) {
-            // StartKillBlobsQuestCompletedDialog();
             ActivateGatewayToLeaveCommandCenter();
           }
         break;
       }
 
       case "Central Core": {
+        Debug.Log("Case was central core");
         if (!questController.HasQuestBeenStarted("CraftWaterQuest")) {
           string[] dialog = new string[] {"???: Barry? I'm over here! Follow the green trail!"};
           dialogPanel.StartDialog(dialog);
         } else if (questController.IsQuestCompleted("CraftWaterQuest")) {
           OpenGateToTentacleMonster();
-          // Allow access to the next area
         }
 
         if (questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
-          ActivateGatewayAfterTentacleMonster();
+          RemoveTentacleMonster(); // Internally calls to open the gateway
         }
         break;
       }
@@ -105,6 +110,7 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Central Core": {
+        Debug.Log("About to LoadCentralCore");
         LoadCentralCore();
         break;
       }
@@ -118,10 +124,13 @@ public class SceneController : MonoBehaviour {
   }
 
   private void LoadCentralCore() {
-    if (!questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
+     if (!questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
+      SceneManager.LoadScene("Central Core");
       currentAct = 1;
       Debug.Log("Loaded central core from LoadCentralCore() method");
     } else {
+      Time.timeScale = 0;
+      Debug.Log("Else statement of LoadCentralCore");
 
     // TODO design terrain somewhere else in this scene and teleport there to fight some crew members
       // GatewayManager.Instance.SetSpawnPosition(new Vector2());
@@ -147,8 +156,10 @@ public class SceneController : MonoBehaviour {
 
   public void StartKillBlobsQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Android: Let's go help the others.",
-      "Head up to the transporter, and we'll help Alan."
+      "Android: Here's a Fire Module. Don't forget to equip it.",
+      "Let's go help the others.",
+      "Head down to the transporter.",
+      "We should look for Alan."
     };
     dialogPanel.StartDialog(dialog);
   }
@@ -186,7 +197,9 @@ public class SceneController : MonoBehaviour {
 
   private void RemoveTentacleMonster() {
     BattleSystem.BattleLaunchCharacter tentacleMonster = FindObjectOfType<BattleSystem.BattleLaunchCharacter>();
-    Destroy(tentacleMonster.gameObject);
+    if (tentacleMonster != null) {
+      Destroy(tentacleMonster.gameObject);
+    }
     EventController.OnDialogPanelClosed -= RemoveTentacleMonster;
     ActivateGatewayAfterTentacleMonster();
   }
