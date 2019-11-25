@@ -11,6 +11,8 @@ public class Character : MonoBehaviour {
   private float movementSpeed;
   private SpriteRenderer sprite;
   protected bool colliding;
+  protected Animator animator;
+  public bool IsMoving;
   void Awake() {
 
     body = GetComponent<Rigidbody2D>();
@@ -20,7 +22,10 @@ public class Character : MonoBehaviour {
 
   public void Move (Vector2 inputVector) {
     if (Time.timeScale != 0 && inputVector != Vector2.zero) {
+      IsMoving = true;
       sprite.flipX = inputVector.normalized.x < 0;
+    } else {
+      IsMoving = false;
     }
 
     inputVector = inputVector.normalized * movementSpeed;

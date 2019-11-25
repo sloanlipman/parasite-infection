@@ -1,0 +1,5143 @@
+fileFormatVersion: 2
+guid: 2b002d0d35281c140ac3c4862000e044
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5016660742130926099
+    second: Megan sprite sheet_0
+  - first:
+      213: 7876908208577629691
+    second: Megan sprite sheet_1
+  - first:
+      213: -3880386338445784095
+    second: Megan sprite sheet_2
+  - first:
+      213: 2076878910337458978
+    second: Megan sprite sheet_3
+  - first:
+      213: -7131518789634987874
+    second: Megan sprite sheet_4
+  - first:
+      213: 365712274588151827
+    second: Megan sprite sheet_5
+  - first:
+      213: -7614684782065211049
+    second: Megan sprite sheet_6
+  - first:
+      213: 5817387867566648036
+    second: Megan sprite sheet_7
+  - first:
+      213: -7973617674450497141
+    second: Megan sprite sheet_8
+  - first:
+      213: -4247732161585339379
+    second: Megan sprite sheet_9
+  - first:
+      213: 8807423231538181355
+    second: Megan sprite sheet_10
+  - first:
+      213: -1129432888551960431
+    second: Megan sprite sheet_11
+  - first:
+      213: 8203512040150815261
+    second: Megan sprite sheet_12
+  - first:
+      213: -6418475170262488728
+    second: Megan sprite sheet_13
+  - first:
+      213: 2412152396204747081
+    second: Megan sprite sheet_14
+  - first:
+      213: 3357810647651556768
+    second: Megan sprite sheet_15
+  - first:
+      213: 7615329629985314398
+    second: Megan sprite sheet_16
+  - first:
+      213: -5149307873636910058
+    second: Megan sprite sheet_17
+  - first:
+      213: 7450123725044483811
+    second: Megan sprite sheet_18
+  - first:
+      213: 8643801698814332981
+    second: Megan sprite sheet_19
+  - first:
+      213: -6639138685840689204
+    second: Megan sprite sheet_20
+  - first:
+      213: 2444408110575223596
+    second: Megan sprite sheet_21
+  - first:
+      213: -7040449406478166292
+    second: Megan sprite sheet_22
+  - first:
+      213: 8966856055387584594
+    second: Megan sprite sheet_23
+  - first:
+      213: -3274853090276873410
+    second: Megan sprite sheet_24
+  - first:
+      213: -6248809427742525716
+    second: Megan sprite sheet_25
+  - first:
+      213: -4542425263813959053
+    second: Megan sprite sheet_26
+  - first:
+      213: 8828184185924394412
+    second: Megan sprite sheet_27
+  - first:
+      213: 2864667996875362096
+    second: Megan sprite sheet_28
+  - first:
+      213: -5799082086360714740
+    second: Megan sprite sheet_29
+  - first:
+      213: 8956748064308311420
+    second: Megan sprite sheet_30
+  - first:
+      213: 8660867948588028156
+    second: Megan sprite sheet_31
+  - first:
+      213: 6532173018945601322
+    second: Megan sprite sheet_32
+  - first:
+      213: -5448686655015086175
+    second: Megan sprite sheet_33
+  - first:
+      213: 8971967219664683743
+    second: Megan sprite sheet_34
+  - first:
+      213: 6329046871012904984
+    second: Megan sprite sheet_35
+  - first:
+      213: -1512110449224189334
+    second: Megan sprite sheet_36
+  - first:
+      213: 3458737731415998017
+    second: Megan sprite sheet_37
+  - first:
+      213: 2927271337636882914
+    second: Megan sprite sheet_38
+  - first:
+      213: 2172067612199837560
+    second: Megan sprite sheet_39
+  - first:
+      213: 2756422932974241048
+    second: Megan sprite sheet_40
+  - first:
+      213: -6321721148644583959
+    second: Megan sprite sheet_41
+  - first:
+      213: -4159463717411554034
+    second: Megan sprite sheet_42
+  - first:
+      213: 2945004785083372075
+    second: Megan sprite sheet_43
+  - first:
+      213: 1834869477380264281
+    second: Megan sprite sheet_44
+  - first:
+      213: 3654995503434749696
+    second: Megan sprite sheet_45
+  - first:
+      213: 3844250648153307144
+    second: Megan sprite sheet_46
+  - first:
+      213: 2097223572770183216
+    second: Megan sprite sheet_47
+  - first:
+      213: 378042843280899034
+    second: Megan sprite sheet_48
+  - first:
+      213: 961796006374372795
+    second: Megan sprite sheet_49
+  - first:
+      213: -6087754155852654836
+    second: Megan sprite sheet_50
+  - first:
+      213: -7910822331688071087
+    second: Megan sprite sheet_51
+  - first:
+      213: -5667526493922041619
+    second: Megan sprite sheet_52
+  - first:
+      213: 8428905569050368264
+    second: Megan sprite sheet_53
+  - first:
+      213: 101522548398522798
+    second: Megan sprite sheet_54
+  - first:
+      213: -1171762301213168454
+    second: Megan sprite sheet_55
+  - first:
+      213: 3607339666779786699
+    second: Megan sprite sheet_56
+  - first:
+      213: 7061268849888954556
+    second: Megan sprite sheet_57
+  - first:
+      213: -7616691985299940772
+    second: Megan sprite sheet_58
+  - first:
+      213: 4176660748840653252
+    second: Megan sprite sheet_59
+  - first:
+      213: 6853641008497939471
+    second: Megan sprite sheet_60
+  - first:
+      213: -6713985410376413995
+    second: Megan sprite sheet_61
+  - first:
+      213: -7362224537622109538
+    second: Megan sprite sheet_62
+  - first:
+      213: 1422761762386993053
+    second: Megan sprite sheet_63
+  - first:
+      213: 5790017065239455257
+    second: Megan sprite sheet_64
+  - first:
+      213: -167628125734685465
+    second: Megan sprite sheet_65
+  - first:
+      213: -447575828211062962
+    second: Megan sprite sheet_66
+  - first:
+      213: 6699584025714499634
+    second: Megan sprite sheet_67
+  - first:
+      213: -6411564964448330567
+    second: Megan sprite sheet_68
+  - first:
+      213: 8833062586860728115
+    second: Megan sprite sheet_69
+  - first:
+      213: -3920886231539747813
+    second: Megan sprite sheet_70
+  - first:
+      213: 23974303820835055
+    second: Megan sprite sheet_71
+  - first:
+      213: -1768297769570206651
+    second: Megan sprite sheet_72
+  - first:
+      213: 6813236302259323326
+    second: Megan sprite sheet_73
+  - first:
+      213: -6512954522168146266
+    second: Megan sprite sheet_74
+  - first:
+      213: 7409405585317807136
+    second: Megan sprite sheet_75
+  - first:
+      213: 3593187030422268821
+    second: Megan sprite sheet_76
+  - first:
+      213: -1137121949545958395
+    second: Megan sprite sheet_77
+  - first:
+      213: -1185899757805092225
+    second: Megan sprite sheet_78
+  - first:
+      213: 8505715448173095855
+    second: Megan sprite sheet_79
+  - first:
+      213: -2307510881382214970
+    second: Megan sprite sheet_80
+  - first:
+      213: 4925575619928708231
+    second: Megan sprite sheet_81
+  - first:
+      213: -3540529785676001031
+    second: Megan sprite sheet_82
+  - first:
+      213: 9096767270682929939
+    second: Megan sprite sheet_83
+  - first:
+      213: -4720406597221399801
+    second: Megan sprite sheet_84
+  - first:
+      213: -1214455131794367642
+    second: Megan sprite sheet_85
+  - first:
+      213: 318369444393644607
+    second: Megan sprite sheet_86
+  - first:
+      213: -6399066068918735333
+    second: Megan sprite sheet_87
+  - first:
+      213: 2717028344344735956
+    second: Megan sprite sheet_88
+  - first:
+      213: -7682731852415308222
+    second: Megan sprite sheet_89
+  - first:
+      213: -1604298208745062571
+    second: Megan sprite sheet_90
+  - first:
+      213: -1431808219851004361
+    second: Megan sprite sheet_91
+  - first:
+      213: -2821196594067665280
+    second: Megan sprite sheet_92
+  - first:
+      213: 5821271607419921037
+    second: Megan sprite sheet_93
+  - first:
+      213: -163361849540041913
+    second: Megan sprite sheet_94
+  - first:
+      213: 6721350278756305710
+    second: Megan sprite sheet_95
+  - first:
+      213: -1738365211949658221
+    second: Megan sprite sheet_96
+  - first:
+      213: 4236157765362262843
+    second: Megan sprite sheet_97
+  - first:
+      213: 4566401326176354329
+    second: Megan sprite sheet_98
+  - first:
+      213: -7117475978418174032
+    second: Megan sprite sheet_99
+  - first:
+      213: -5826436696966707152
+    second: Megan sprite sheet_100
+  - first:
+      213: 3246051176505891578
+    second: Megan sprite sheet_101
+  - first:
+      213: -5565882720707389320
+    second: Megan sprite sheet_102
+  - first:
+      213: -7972115171949832799
+    second: Megan sprite sheet_103
+  - first:
+      213: 3386710366669681401
+    second: Megan sprite sheet_104
+  - first:
+      213: -3867874702631692388
+    second: Megan sprite sheet_105
+  - first:
+      213: -5787957735681182355
+    second: Megan sprite sheet_106
+  - first:
+      213: -4381854443910665551
+    second: Megan sprite sheet_107
+  - first:
+      213: -5711311115235481242
+    second: Megan sprite sheet_108
+  - first:
+      213: 9190211247351071730
+    second: Megan sprite sheet_109
+  - first:
+      213: -1087003673078095065
+    second: Megan sprite sheet_110
+  - first:
+      213: 7895032810380858544
+    second: Megan sprite sheet_111
+  - first:
+      213: 4517979100965549345
+    second: Megan sprite sheet_112
+  - first:
+      213: 721460205694002100
+    second: Megan sprite sheet_113
+  - first:
+      213: 3662678968797944602
+    second: Megan sprite sheet_114
+  - first:
+      213: -6742117901038117160
+    second: Megan sprite sheet_115
+  - first:
+      213: -7729059266462249473
+    second: Megan sprite sheet_116
+  - first:
+      213: 7315506923366213258
+    second: Megan sprite sheet_117
+  - first:
+      213: -2903065126156088869
+    second: Megan sprite sheet_118
+  - first:
+      213: 232472583618097433
+    second: Megan sprite sheet_119
+  - first:
+      213: 5499553027835093087
+    second: Megan sprite sheet_120
+  - first:
+      213: -4491722088937830480
+    second: Megan sprite sheet_121
+  - first:
+      213: 4817530990017999011
+    second: Megan sprite sheet_122
+  - first:
+      213: 432441855744185813
+    second: Megan sprite sheet_123
+  - first:
+      213: -3590057381745331794
+    second: Megan sprite sheet_124
+  - first:
+      213: -7476679104758347423
+    second: Megan sprite sheet_125
+  - first:
+      213: -1278428377405918969
+    second: Megan sprite sheet_126
+  - first:
+      213: 4936898107502895591
+    second: Megan sprite sheet_127
+  - first:
+      213: -5158899942378322512
+    second: Megan sprite sheet_128
+  - first:
+      213: -2900553488887358368
+    second: Megan sprite sheet_129
+  - first:
+      213: -551073547333690631
+    second: Megan sprite sheet_130
+  - first:
+      213: -7617638681215525007
+    second: Megan sprite sheet_131
+  - first:
+      213: 3584735661552108892
+    second: Megan sprite sheet_132
+  - first:
+      213: 8333522039429298722
+    second: Megan sprite sheet_133
+  - first:
+      213: -1701906922878713572
+    second: Megan sprite sheet_134
+  - first:
+      213: -1340574055508130759
+    second: Megan sprite sheet_135
+  - first:
+      213: -943080744498513290
+    second: Megan sprite sheet_136
+  - first:
+      213: -5825524592803134095
+    second: Megan sprite sheet_137
+  - first:
+      213: -9005039716546073342
+    second: Megan sprite sheet_138
+  - first:
+      213: 4818818767044192229
+    second: Megan sprite sheet_139
+  - first:
+      213: 9182171343548217695
+    second: Megan sprite sheet_140
+  - first:
+      213: -998836805905204223
+    second: Megan sprite sheet_141
+  - first:
+      213: 5049377036001406972
+    second: Megan sprite sheet_142
+  - first:
+      213: 7361708353876487827
+    second: Megan sprite sheet_143
+  - first:
+      213: -1708635151856700091
+    second: Megan sprite sheet_144
+  - first:
+      213: -3033751588983114526
+    second: Megan sprite sheet_145
+  - first:
+      213: -7506773657591653768
+    second: Megan sprite sheet_146
+  - first:
+      213: 8194106388199252552
+    second: Megan sprite sheet_147
+  - first:
+      213: -8812807147139882197
+    second: Megan sprite sheet_148
+  - first:
+      213: 8823221494758919015
+    second: Megan sprite sheet_149
+  - first:
+      213: -644729311057669426
+    second: Megan sprite sheet_150
+  - first:
+      213: -3493673798719646750
+    second: Megan sprite sheet_151
+  - first:
+      213: 3564600056237480161
+    second: Megan sprite sheet_152
+  - first:
+      213: 7742844705327235895
+    second: Megan sprite sheet_153
+  - first:
+      213: 2238739059923480136
+    second: Megan sprite sheet_154
+  - first:
+      213: -8069733116295922535
+    second: Megan sprite sheet_155
+  - first:
+      213: -5058615516010363319
+    second: Megan sprite sheet_156
+  - first:
+      213: -6596889153685957404
+    second: Megan sprite sheet_157
+  - first:
+      213: -7317429811489300858
+    second: Megan sprite sheet_158
+  - first:
+      213: -1829226108151771045
+    second: Megan sprite sheet_159
+  - first:
+      213: 2634306655154193813
+    second: Megan sprite sheet_160
+  - first:
+      213: -2910243746037908295
+    second: Megan sprite sheet_161
+  - first:
+      213: 8531085089807596184
+    second: Megan sprite sheet_162
+  - first:
+      213: -4264704119105082551
+    second: Megan sprite sheet_163
+  - first:
+      213: 3947064131210460431
+    second: Megan sprite sheet_164
+  - first:
+      213: 7542435492615647758
+    second: Megan sprite sheet_165
+  - first:
+      213: 8353045311005335070
+    second: Megan sprite sheet_166
+  - first:
+      213: -6273041865530096632
+    second: Megan sprite sheet_167
+  - first:
+      213: -6738771800155626787
+    second: Megan sprite sheet_168
+  - first:
+      213: -7326974420996217956
+    second: Megan sprite sheet_169
+  - first:
+      213: -3400584150970847547
+    second: Megan sprite sheet_170
+  - first:
+      213: -3956084327034137589
+    second: Megan sprite sheet_171
+  - first:
+      213: -8191873785162899997
+    second: Megan sprite sheet_172
+  - first:
+      213: 5695066490547459321
+    second: Megan sprite sheet_173
+  - first:
+      213: -3685161802481082081
+    second: Megan sprite sheet_174
+  - first:
+      213: -2313202468683689865
+    second: Megan sprite sheet_175
+  - first:
+      213: 3387198954843314248
+    second: Megan sprite sheet_176
+  - first:
+      213: -6221144047212180647
+    second: Megan sprite sheet_177
+  - first:
+      213: -5143485167642145567
+    second: Megan sprite sheet_178
+  - first:
+      213: 896551023976130216
+    second: Megan sprite sheet_179
+  - first:
+      213: 5012460842187830046
+    second: Megan sprite sheet_180
+  - first:
+      213: 8477285140539440594
+    second: Megan sprite sheet_181
+  - first:
+      213: -8086348059670033401
+    second: Megan sprite sheet_182
+  - first:
+      213: -4830782467925746314
+    second: Megan sprite sheet_183
+  - first:
+      213: -7276291267131082802
+    second: Megan sprite sheet_184
+  - first:
+      213: -4719887958734205390
+    second: Megan sprite sheet_185
+  - first:
+      213: -5950671504798692394
+    second: Megan sprite sheet_186
+  - first:
+      213: 8997089873672090726
+    second: Megan sprite sheet_187
+  - first:
+      213: 4300591948510509311
+    second: Megan sprite sheet_188
+  - first:
+      213: -8438008557150421096
+    second: Megan sprite sheet_189
+  - first:
+      213: 2869570182870002353
+    second: Megan sprite sheet_190
+  - first:
+      213: 1183182077454655274
+    second: Megan sprite sheet_191
+  - first:
+      213: -786275119375999177
+    second: Megan sprite sheet_192
+  - first:
+      213: 8070256169562556897
+    second: Megan sprite sheet_193
+  - first:
+      213: -9201417212502960459
+    second: Megan sprite sheet_194
+  - first:
+      213: 7457119155140932727
+    second: Megan sprite sheet_195
+  - first:
+      213: -2612450990668000706
+    second: Megan sprite sheet_196
+  - first:
+      213: 1385208142200936551
+    second: Megan sprite sheet_197
+  - first:
+      213: 5994447874375850561
+    second: Megan sprite sheet_198
+  - first:
+      213: 4703651022052119149
+    second: Megan sprite sheet_199
+  - first:
+      213: -8663543043360978705
+    second: Megan sprite sheet_200
+  - first:
+      213: 3451406051425690241
+    second: Megan sprite sheet_201
+  - first:
+      213: 11600165544629467
+    second: Megan sprite sheet_202
+  - first:
+      213: 761165335991213535
+    second: Megan sprite sheet_203
+  - first:
+      213: 665297392566638911
+    second: Megan sprite sheet_204
+  - first:
+      213: 815379171365323235
+    second: Megan sprite sheet_205
+  - first:
+      213: -4314798676218066115
+    second: Megan sprite sheet_206
+  - first:
+      213: 2644232080409110297
+    second: Megan sprite sheet_207
+  - first:
+      213: -8177388596260531370
+    second: Megan sprite sheet_208
+  - first:
+      213: -1583197355964494384
+    second: Megan sprite sheet_209
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Megan sprite sheet_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 2049
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9da0e336dde524ab4ff3107fa43f66
+      internalID: 5016660742130926099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 2049
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1edbb7b24aa0214390c3182aa9e197c
+      internalID: 7876908208577629691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 2049
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7825d20f768deb14a9b2af35e67a7ead
+      internalID: -3880386338445784095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 2049
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98035cfe71a8b564b9d34adfe7ef9b19
+      internalID: 2076878910337458978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_4
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 2049
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82dd3441c9b00084490d9c0d07845800
+      internalID: -7131518789634987874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_5
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 2049
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b1792273e10ce0498e78bcff743a1ec
+      internalID: 365712274588151827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 2049
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fed06b9b08888c34c943d210a9d5e1c4
+      internalID: -7614684782065211049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1984
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c68f43b8d24a24d45adf376938873065
+      internalID: 5817387867566648036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1984
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f18d1007c846f5498a5f844d3bbe829
+      internalID: -7973617674450497141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1984
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc51af6880adc045be0fd5c78e0f0e2
+      internalID: -4247732161585339379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_10
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1984
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a332cd1126d460c468afc1d5092298be
+      internalID: 8807423231538181355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_11
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1984
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd0a858c0b6ac445ab6b68ecccb02a8
+      internalID: -1129432888551960431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_12
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1984
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edfe281da4106fa47b7bddda6f522d9a
+      internalID: 8203512040150815261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_13
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1984
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15877d765991b574c91109501f26e509
+      internalID: -6418475170262488728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_14
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1919
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c4e1bb0bf6ccc449e1a2715f5793b4
+      internalID: 2412152396204747081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1919
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c96a84bc8355946a175a5aed910abe
+      internalID: 3357810647651556768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_16
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1919
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef15a60e96a07994982a72ffbbd7fb33
+      internalID: 7615329629985314398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_17
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1919
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fe67b71c090a864da39e87faea01833
+      internalID: -5149307873636910058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_18
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1919
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d35161044bb38c94190b679d440a18fb
+      internalID: 7450123725044483811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_19
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1919
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0ae0dcfb682724cac898abb4cbc08c
+      internalID: 8643801698814332981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_20
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1919
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c91e27bafb488b468e1879eff3b3024
+      internalID: -6639138685840689204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_21
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1856
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78bceac7e13dda42af6a561ec7f75ea
+      internalID: 2444408110575223596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_22
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1856
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bfdaa6992d5ba048839190d1bd00707
+      internalID: -7040449406478166292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_23
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1856
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c1b71c4601a6c449dd45d9d723bfa1
+      internalID: 8966856055387584594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_24
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1856
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40e9588f558eabd41aa71c93f789c4de
+      internalID: -3274853090276873410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_25
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1856
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1349ddc8e80a0514981fab3c63d21228
+      internalID: -6248809427742525716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_26
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1856
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5305a89505f3e4799e1e3aeae21463
+      internalID: -4542425263813959053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_27
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1856
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771b3c0b289b83348862f26e036e486a
+      internalID: 8828184185924394412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_28
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1792
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbf45af2420e6d4faaeee5cf6026dc1
+      internalID: 2864667996875362096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_29
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1791
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6365a5ab9c004b6448fab3f1301740f1
+      internalID: -5799082086360714740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_30
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1791
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a915ce62486324943a58fba383b23dd9
+      internalID: 8956748064308311420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_31
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1791
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58c1d9a50a77434d87e8592143a1512
+      internalID: 8660867948588028156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_32
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1791
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86974b372964d548ab0f01aadbc83b1
+      internalID: 6532173018945601322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_33
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1791
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f9138506cc1ad40a4182130604325f
+      internalID: -5448686655015086175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_34
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1791
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa80b0d3b35aaa0409496a3736bda219
+      internalID: 8971967219664683743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_35
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1791
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f4395a62f8a0f4787b835a0385619d
+      internalID: 6329046871012904984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_36
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1728
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35c863a623e847c4fb8eb9f7a32a6c69
+      internalID: -1512110449224189334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_37
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1728
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1268ac500e6bc14f9de9023d574d2ba
+      internalID: 3458737731415998017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_38
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1727
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d867e1de78a89884c84b8c5ba40df099
+      internalID: 2927271337636882914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_39
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1727
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 103c0e929154eed4592547119286885c
+      internalID: 2172067612199837560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_40
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1727
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9589b6ad81e5d64aa65186cbc760b86
+      internalID: 2756422932974241048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_41
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1727
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c29388a71588de469016f305a4d1ea3
+      internalID: -6321721148644583959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_42
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1727
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e900aa496cc7c46aaa25e7e9de53bf
+      internalID: -4159463717411554034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_43
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1727
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eed2baa34885404ba9babbadc4f4920
+      internalID: 2945004785083372075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_44
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1663
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8708aafe46a062498bc4f1958e88e6b
+      internalID: 1834869477380264281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_45
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1663
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9af5e0fb603dc4aa56467d6e153d07
+      internalID: 3654995503434749696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_46
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1664
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054cf6380bb762742b4ee7632426f06e
+      internalID: 3844250648153307144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_47
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1664
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14efda6285e4c947b90fa9a2f18795b
+      internalID: 2097223572770183216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_48
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1664
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5681711690349b4baae3d0cee44990d
+      internalID: 378042843280899034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_49
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1664
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91604ec411c0d5a4d9f764e5b99bb7e6
+      internalID: 961796006374372795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_50
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1664
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c438b00de9ba0438f641daceef5e20
+      internalID: -6087754155852654836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_51
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1664
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 573fbb7d6df2cb64f8fa7528b270f3c0
+      internalID: -7910822331688071087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_52
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1600
+        width: 25
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b502c3f407dd8604eaa9159296a6187e
+      internalID: -5667526493922041619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_53
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1600
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5efb80ee32430f44a8591dd647ae4cce
+      internalID: 8428905569050368264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_54
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1600
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308ca54941b883842b27205b63836435
+      internalID: 101522548398522798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_55
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1599
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b1c4d350e9e2f4faae48c684427932
+      internalID: -1171762301213168454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_56
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1599
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f0b3ff9779c2d45987e8f3bc7d709e
+      internalID: 3607339666779786699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_57
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1599
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a9870f374ffae429ba04315a335d6a
+      internalID: 7061268849888954556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_58
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 1599
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a14957788105d48ac6167525460cb3
+      internalID: -7616691985299940772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_59
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1599
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e1dac0d8d6b774499f2da1e1bab0186
+      internalID: 4176660748840653252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_60
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1537
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0935894835c1f23408a710672f5222fb
+      internalID: 6853641008497939471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_61
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1537
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa73938f7b3f4c43ae1fc4f5ba46a4c
+      internalID: -6713985410376413995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_62
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1536
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 195aed40c31dbdc4ea1423dbbef313c2
+      internalID: -7362224537622109538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_63
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1535
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a596c5c7425daf448a5804f7131f562d
+      internalID: 1422761762386993053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_64
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1536
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fedf7ec72437c14ebc9322b046d1d71
+      internalID: 5790017065239455257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_65
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1537
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8232b8de74ea5604aa93e0f834c137b7
+      internalID: -167628125734685465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_66
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1536
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78019b24cbd785d4087fa764a3fa1cc9
+      internalID: -447575828211062962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_67
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1535
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03e3273cf9c7f648858a3e1c6e1c3de
+      internalID: 6699584025714499634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_68
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1536
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3e33b8227335e43a68cc4d4013ef3f
+      internalID: -6411564964448330567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_69
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1472
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bdb77cf9900b06408ff0880104484a9
+      internalID: 8833062586860728115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_70
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1473
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd1b7a886c6cf804aade90402e7a09e0
+      internalID: -3920886231539747813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_71
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1474
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4486f515bfe0d14e8b99dd4e47cd438
+      internalID: 23974303820835055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_72
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1474
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49c2825d28e309e4ab6ca51c0b27a4c8
+      internalID: -1768297769570206651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_73
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1473
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbedc0c7d18089140893a22e9b810a10
+      internalID: 6813236302259323326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_74
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1473
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 449a96092354dbb4eaf86c3c3ba7c637
+      internalID: -6512954522168146266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_75
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1473
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4f4689150d4d448bca45a57f5a3674
+      internalID: 7409405585317807136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_76
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1473
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 049985ad177fd2148b0ce41db7e5119b
+      internalID: 3593187030422268821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_77
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1473
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be4a4b773ff4d84998c8934de2ac0dd
+      internalID: -1137121949545958395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_78
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1407
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c3451cc2522e24c917fc339e03e7df
+      internalID: -1185899757805092225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_79
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1407
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5fe541a3de46724c836bb0d38f516d9
+      internalID: 8505715448173095855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_80
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1407
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a1298fe15eba440a5234272f98119d
+      internalID: -2307510881382214970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_81
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1408
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c362bf10fa79244afae151b6006662
+      internalID: 4925575619928708231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_82
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1407
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b83b208fd876cd7429463db7dca7c4a4
+      internalID: -3540529785676001031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_83
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1407
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4158cc7585c53894a8faef18dc3e1a76
+      internalID: 9096767270682929939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_84
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1407
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e5ab7725f5db14181db1f591bf2081
+      internalID: -4720406597221399801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_85
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1408
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5da56990b3ffb5848a8a01287f4cb996
+      internalID: -1214455131794367642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_86
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1407
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 514a7d439abf91d43acce26cd5186d79
+      internalID: 318369444393644607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_87
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1344
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b38a3543f7bf3438523611571fc8a9
+      internalID: -6399066068918735333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_88
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1345
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe28dd648c0ffce489aa573f69a767cc
+      internalID: 2717028344344735956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_89
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1346
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4b2091f6054044d89e6766bd0242f0
+      internalID: -7682731852415308222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_90
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1346
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1437be318e9c0d448aa464623772220a
+      internalID: -1604298208745062571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_91
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1345
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bce7c083f4fe941baaf26c95a19c3b
+      internalID: -1431808219851004361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_92
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1345
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e30d75c4419385499c19b2bd1bec089
+      internalID: -2821196594067665280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_93
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1345
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9b9667af9405249a6c97029229ca62
+      internalID: 5821271607419921037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_94
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1345
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3808351bc2a07534895573dc066bf15e
+      internalID: -163361849540041913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_95
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1345
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b1b35bd82e34e445ac5c00b42d0b17b
+      internalID: 6721350278756305710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_96
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1281
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e4d76e112116d49b9262d45357090c
+      internalID: -1738365211949658221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_97
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1281
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f2ab829c252ec4d98eb84512a15daf
+      internalID: 4236157765362262843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_98
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1281
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0009e74b66b224c901f63151703055
+      internalID: 4566401326176354329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_99
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1281
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c6f2df97f6c7f74e91e9f162681aead
+      internalID: -7117475978418174032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_100
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1281
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748e6e2f1bfbff349af91f9dec88ff3f
+      internalID: -5826436696966707152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_101
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1281
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f94a5951d9ebbf458ecda626a658456
+      internalID: 3246051176505891578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_102
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1216
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf45beaf1472964fb572d89acc1febf
+      internalID: -5565882720707389320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_103
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1215
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d1838c95c04744fa4cb0ae5fbe8e7d
+      internalID: -7972115171949832799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_104
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1215
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca7f02cb2323334db28d805fb82a97b
+      internalID: 3386710366669681401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_105
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1216
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9cd250391b803149842644e9208a0cc
+      internalID: -3867874702631692388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_106
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1216
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32fcb5b49af9024fb0cf186679e6533
+      internalID: -5787957735681182355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_107
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1216
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b79b987d1044f449eb0b37d7059b27
+      internalID: -4381854443910665551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_108
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1151
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dba3b16ab1fb28f48b50f5770b3e2b58
+      internalID: -5711311115235481242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_109
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1151
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e228580f43dd3044a96847b85c3726a8
+      internalID: 9190211247351071730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_110
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1151
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a7fce8bd61eeb4b9974d6d3fb91e12
+      internalID: -1087003673078095065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_111
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1152
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da0dfa20a3e78b94284ae1fec2c97d05
+      internalID: 7895032810380858544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_112
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1152
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280e06b7b6bab74489ddaf0883f59b0b
+      internalID: 4517979100965549345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_113
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1152
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bddf9d9db4f4cd49bf6c5366b5ea738
+      internalID: 721460205694002100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_114
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1087
+        width: 25
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f12e34fcadb91946bc3516453fd651b
+      internalID: 3662678968797944602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_115
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1085
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94d494283a74c247adbefd6c3c633f3
+      internalID: -6742117901038117160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_116
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1086
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfc2a8f7186efa4680fa617968dd6c8
+      internalID: -7729059266462249473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_117
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1087
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f9713643b14224582d212c646df098
+      internalID: 7315506923366213258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_118
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1087
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8285711d49898a64f9ea3257ad643c6c
+      internalID: -2903065126156088869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_119
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1087
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2a6f5e3709630468a3729ea1782819
+      internalID: 232472583618097433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_120
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1025
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f4f38376a4edf4f941237ce27474ba
+      internalID: 5499553027835093087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_121
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1024
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd05447809241c43bc92fb2918dfb66
+      internalID: -4491722088937830480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_122
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1023
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450eed3a0f887ed49963ee86ba482aae
+      internalID: 4817530990017999011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_123
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1023
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e4df1cbdf50d54292b25776ae92791
+      internalID: 432441855744185813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_124
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1023
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88aa9fb3e5da9fb4fb12106e32f11e4e
+      internalID: -3590057381745331794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_125
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1023
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858462c263960414698cbdc32109847a
+      internalID: -7476679104758347423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_126
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1023
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c0c628b49dc43245ad2150459f19d24
+      internalID: -1278428377405918969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_127
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1023
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d5d90b9b67d85d4cb3649c68d06700c
+      internalID: 4936898107502895591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_128
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1023
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ffc65094514296489f5c8bd45e323dd
+      internalID: -5158899942378322512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_129
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1023
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c3a8659290bb34892460113eae8092
+      internalID: -2900553488887358368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_130
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1023
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23b318eb75df0dc40b255ca7ddcf43f6
+      internalID: -551073547333690631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_131
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 1023
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70977b5dbb616d64a8eb644a1ca83e0f
+      internalID: -7617638681215525007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_132
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1023
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a24c9b3772f06340b7bfb82dc984b24
+      internalID: 3584735661552108892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_133
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 960
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd755469c8aa08741b90f21ee239b754
+      internalID: 8333522039429298722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_134
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 960
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc76aead80055a4e86dfd25bf2c63c7
+      internalID: -1701906922878713572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_135
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 960
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9078da8f573be0c4793bdbdbcff445c6
+      internalID: -1340574055508130759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_136
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 959
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c5edb1365e2ac4f894bbc636d352a7
+      internalID: -943080744498513290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_137
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 959
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a03c2b35e194f44aa669c6a9b5b1ad
+      internalID: -5825524592803134095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_138
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 959
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bbfa66dce345a74d96c60e789c2d5f8
+      internalID: -9005039716546073342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_139
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 959
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ffc119493be284e81fb262d5ca949d
+      internalID: 4818818767044192229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_140
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d56d0e19d048740962e4683ca31504
+      internalID: 9182171343548217695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_141
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 959
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24711dd70b9eb1d489bbd5c0ebcc0d70
+      internalID: -998836805905204223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_142
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 959
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e92645db97d9d4cb32b6459ca96248
+      internalID: 5049377036001406972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_143
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c87b973a58d2d64da77c98593e82029
+      internalID: 7361708353876487827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_144
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 959
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d102fcdf3564ed448bf3b2f3f85cf7b
+      internalID: -1708635151856700091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_145
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 959
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69d6b078c3d2a74686a05b27c1d16b0
+      internalID: -3033751588983114526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_146
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 896
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c540110382ba8a941aa4543bcdcb4113
+      internalID: -7506773657591653768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_147
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5803d3cad57b2b84a83a369cc845fc7a
+      internalID: 8194106388199252552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_148
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 897
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bfefeaddc8dba4393feed938ae2d7e
+      internalID: -8812807147139882197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_149
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0101166c20d55448db22464e098c76
+      internalID: 8823221494758919015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_150
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e738aa7c9560a147b3e9c4bb4d1ced9
+      internalID: -644729311057669426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_151
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb586033d954e5408b081a846d9811d
+      internalID: -3493673798719646750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_152
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411f309ce1a551343b4627a82cfd4f71
+      internalID: 3564600056237480161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_153
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 895
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0daa37e5429717146a4c5cf967f6a969
+      internalID: 7742844705327235895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_154
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc85f171037c6124e889c29e68952e0a
+      internalID: 2238739059923480136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_155
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63f79bcb5de5df4082dbf5d9ff2730e
+      internalID: -8069733116295922535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_156
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8727240bdd95b3438c5c8b01e14f58a
+      internalID: -5058615516010363319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_157
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49859ad01e32b644fb1d76ad6382efad
+      internalID: -6596889153685957404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_158
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 895
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cef311eeac6c8942b9988550d3895fc
+      internalID: -7317429811489300858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_159
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 832
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc7f561451f55643a54d8b99079c7f3
+      internalID: -1829226108151771045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_160
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 832
+        width: 27
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a34c6a5d35a7764aaf17c3f5d6a5b9f
+      internalID: 2634306655154193813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_161
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 832
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df0d2fe0132aca14db7208a5814fb0cf
+      internalID: -2910243746037908295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_162
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 831
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a6f71b3fef336a4fb7a97694fb8cf9e
+      internalID: 8531085089807596184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_163
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 831
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dcdc7d80bb3d18459d9907084aa4929
+      internalID: -4264704119105082551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_164
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 831
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b416f68bc7c7db94cbf7164942b5ac74
+      internalID: 3947064131210460431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_165
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 831
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01ec3b7028080f348b4ba224641f5db3
+      internalID: 7542435492615647758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_166
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 831
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec9009f22bdce5441aad143afee94d06
+      internalID: 8353045311005335070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_167
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 831
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b926c884b666145ae1ccc728164fa5
+      internalID: -6273041865530096632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_168
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 831
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 104d9998f9f442949972a2ba9449ad44
+      internalID: -6738771800155626787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_169
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 831
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13846194e569882418d3c27733947a3e
+      internalID: -7326974420996217956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_170
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 831
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea94574c0af4874d802d56ec91d1957
+      internalID: -3400584150970847547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_171
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 831
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478fc33e72667d04280c4ac4b9d95419
+      internalID: -3956084327034137589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_172
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 767
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e47861c8e56b62c43aa3eece6c63c304
+      internalID: -8191873785162899997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_173
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 768
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be3ce88d5ffb9e4dacc0f6d729958a3
+      internalID: 5695066490547459321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_174
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 767
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d37cd7ed0f3e7a5439c48267967d88cf
+      internalID: -3685161802481082081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_175
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 769
+        width: 31
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fd5990da01143544bfeae2c3678d176
+      internalID: -2313202468683689865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_176
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 770
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45cc43977c4d7334d9e45fe2028ac591
+      internalID: 3387198954843314248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_177
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 767
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ca1e3c10809e6c448b2a2e28f909614
+      internalID: -6221144047212180647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_178
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 640
+        width: 95
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b777d1de45d66a741b40289549380e4e
+      internalID: -5143485167642145567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_179
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 639
+        width: 89
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1571130a095d7534a972f5ffb53390dd
+      internalID: 896551023976130216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_180
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 639
+        width: 67
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86eb60a1caa464741a50fd1d1283cd11
+      internalID: 5012460842187830046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_181
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 637
+        width: 30
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a935632a037d363499cd54ea09a537df
+      internalID: 8477285140539440594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_182
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 639
+        width: 29
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b95916147b5758849bfdcafb44235ef2
+      internalID: -8086348059670033401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_183
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 639
+        width: 29
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b908e6151cece3245a2845471b902898
+      internalID: -4830782467925746314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_184
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 639
+        width: 29
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1017fcca1c06d364c9a7089d6c3b6007
+      internalID: -7276291267131082802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_185
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 637
+        width: 29
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c872fa48b96d94ab06be666eef41ee
+      internalID: -4719887958734205390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_186
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 448
+        width: 90
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6fc0b9f8e7842747ad8cc714a59d074
+      internalID: -5950671504798692394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_187
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 448
+        width: 93
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198e9e73fe9152046aa34b04d488572c
+      internalID: 8997089873672090726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_188
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 447
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63553ab6445163b42beec70514bb6024
+      internalID: 4300591948510509311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_189
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 447
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9fff6b51e6ebd94eb0a79f05f22a2ed
+      internalID: -8438008557150421096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_190
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 447
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bece340d1ca5c40999e036504163ca
+      internalID: 2869570182870002353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_191
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 447
+        width: 96
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952f0bd047a31df41886f69c2e828059
+      internalID: 1183182077454655274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_192
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 447
+        width: 96
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d729394b283006140bb87ec86d53469b
+      internalID: -786275119375999177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_193
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 447
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70ede1303a1b4c489f84802c1107491
+      internalID: 8070256169562556897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_194
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 255
+        width: 95
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbecba8f241e28a4cb70034effe82bcf
+      internalID: -9201417212502960459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_195
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 251
+        width: 89
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc16891f965f69e4a84e5b926f3c6b92
+      internalID: 7457119155140932727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_196
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 226
+        width: 68
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83bbfd50e83a394d9a1bcbff394bc27
+      internalID: -2612450990668000706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_197
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 226
+        width: 29
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690ebfae78bd47240968f78d00869e35
+      internalID: 1385208142200936551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_198
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 218
+        width: 29
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7986c817cedfc41bdd96c26d343a4c
+      internalID: 5994447874375850561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_199
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 210
+        width: 29
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b978a3fb9047045979da45b108dc2a
+      internalID: 4703651022052119149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_200
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 218
+        width: 29
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8b96a1e4c30014798da0e9e023e896
+      internalID: -8663543043360978705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_201
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 226
+        width: 29
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a8a44b1687425942bf8836324f43e41
+      internalID: 3451406051425690241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_202
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 63
+        width: 90
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2485fc4f9f505e640a468234a82abda4
+      internalID: 11600165544629467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_203
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 63
+        width: 93
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2839a24b00491344852416ac29d885c
+      internalID: 761165335991213535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_204
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 63
+        width: 95
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82797295a8362a0419e844c9bda57a8d
+      internalID: 665297392566638911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_205
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 62
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ddc3409360fdd84faa18d6eee6828f7
+      internalID: 815379171365323235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_206
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 62
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3772c7ef7e0fe78419554a5ed7799c93
+      internalID: -4314798676218066115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_207
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 62
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d653c94fdae7e49837f1cb6389c630
+      internalID: 2644232080409110297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_208
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 62
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b630ad45717de4ab509640c4cb14a0
+      internalID: -8177388596260531370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Megan sprite sheet_209
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 62
+        width: 95
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d363eea40ef32694a9e0f4290a131489
+      internalID: -1583197355964494384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4612eb3f3a3aa4f4b8284c0427ae01d8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
