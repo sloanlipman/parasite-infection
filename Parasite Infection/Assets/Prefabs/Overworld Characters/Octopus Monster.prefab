@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6343607387956142734}
   m_Layer: 0
   m_Name: Octopus Monster
-  m_TagString: Character
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,6 @@ MonoBehaviour:
   questName: 
   dialogData: {fileID: 0}
   questCompletedDialogData: {fileID: 0}
-  dialog: {fileID: 0}
 --- !u!114 &4934342522184614349
 MonoBehaviour:
   m_ObjectHideFlags: 0

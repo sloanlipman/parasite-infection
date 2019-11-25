@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2050064917586780999}
   m_Layer: 0
   m_Name: Blob
-  m_TagString: Character
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,6 @@ MonoBehaviour:
   questName: 
   dialogData: {fileID: 0}
   questCompletedDialogData: {fileID: 0}
-  dialog: {fileID: 0}
 --- !u!114 &2050064917586780999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61407d131926624491de80af3418d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4451484942459561568, guid: 46f7fc5feea1e2d469732e4f18f0b14e, type: 3}
-  - {fileID: 3924562713174096799, guid: 29632a25e4ca88040bc19ecb7549d764, type: 3}
-  - {fileID: 4451484942459561568, guid: 79c397dc105b09d47a3fd5a125ac0d1c, type: 3}
+  enemies: []
   launcher: {fileID: 0}

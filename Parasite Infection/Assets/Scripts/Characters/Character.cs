@@ -10,6 +10,7 @@ public class Character : MonoBehaviour {
   [SerializeField]
   private float movementSpeed;
   private SpriteRenderer sprite;
+  protected bool colliding;
   void Awake() {
 
     body = GetComponent<Rigidbody2D>();

@@ -13,7 +13,7 @@ public class Gateway : MonoBehaviour {
 
   public bool isActive = false;
 
- private void OnCollisionEnter2D(Collision2D collision) {
+ private void OnCollisionStay2D(Collision2D collision) {
    if (collision.gameObject.CompareTag("Player") && isActive) {
      GatewayManager.Instance.SetSpawnPosition(spawnLocation);
      sceneController.LoadSceneFromGateway(sceneName);

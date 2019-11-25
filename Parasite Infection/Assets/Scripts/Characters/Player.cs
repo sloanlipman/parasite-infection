@@ -16,9 +16,10 @@ public class Player : Character  {
     this.Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))); 
   }
 
-  private void OnTriggerStay2D(Collider2D collision) {
-    if (Input.GetButtonDown("Fire1") && collision.GetComponent<NPC>() != null) {
-      collision.GetComponent<NPC>().Interact(this);
+  private void OnTriggerEnter2D(Collider2D collision) {
+    if (collision.GetComponent<NPC>() != null) {
+      Debug.Log("Collision is: " +  collision);
+        collision.GetComponent<NPC>().Interact(this);
     }
   }
 }
