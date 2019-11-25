@@ -129,20 +129,8 @@ public class SceneController : MonoBehaviour {
       currentAct = 1;
       Debug.Log("Loaded central core from LoadCentralCore() method");
     } else {
-      Time.timeScale = 0;
-      Debug.Log("Else statement of LoadCentralCore");
-
-    // TODO design terrain somewhere else in this scene and teleport there to fight some crew members
-      // GatewayManager.Instance.SetSpawnPosition(new Vector2());
-      // GatewayManager.Instance.MoveInNewScene();
-      string[] dialog = new string[] {
-        "Thanks for playing the Beta of Parasite: Infection!",
-        "For the next release, there will be more content.",
-        "There will also be more balance.",
-        "I hope you enjoyed it!"
-      };
-      dialogPanel.StartDialog(dialog);
-
+      GatewayManager.Instance.SetSpawnPosition(new Vector2(-5, -40));
+      GatewayManager.Instance.MoveInNewScene();
     }
   }
 
