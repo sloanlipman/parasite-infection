@@ -113,7 +113,7 @@ public class SaveService : MonoBehaviour {
   private void SaveNPCs() {
     NPC[] currentNPCs = GetNPCs();
     for (int i = 0; i < currentNPCs.Length; i++) {
-      ES3.Save<NPC>("NPC" + i, currentNPCs[i], "NPCs.json");
+      ES3.Save<NPC>("npc", currentNPCs[i], "NPCs/" + currentNPCs[i].npcName + ".json");
     }
   }
 
@@ -122,7 +122,7 @@ public class SaveService : MonoBehaviour {
     if (GetNPCs().Length > 0) {
       for (int i = 0; i < currentNPCs.Length; i++) {
         try {
-          ES3.LoadInto<NPC>("NPC" + i, "NPCs.json", currentNPCs[i]);
+          ES3.LoadInto<NPC>("npc", "NPCs/" + currentNPCs[i].npcName + ".json", currentNPCs[i]);
         } catch {
           Debug.LogWarning("At index " + i + " something went wrong loading an NPC");
         }

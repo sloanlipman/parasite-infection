@@ -166,14 +166,12 @@ namespace BattleSystem {
       return abilityToAdd;
     }
 
-    public void LevelUp() {
+    public virtual void LevelUp() {
       level++;
       maxHealth++;
       maxEnergyPoints++;
       attackPower++;
       defensePower++;
-      health = maxHealth;
-      energyPoints = maxEnergyPoints;
     }
   }
 }

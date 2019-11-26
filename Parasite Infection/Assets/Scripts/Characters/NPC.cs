@@ -21,6 +21,16 @@ public class NPC : Character {
 
   private Character player;
 
+  public string npcName;
+
+  public void SetDialogData(DialogData dialogData) {
+    this.dialogData = dialogData;
+  }
+
+  public void SetQuestCompletedDialogData(DialogData questCompletedDialogData) {
+    this.questCompletedDialogData = questCompletedDialogData;
+  }
+
   private void Awake() {
     FindDialogPanel();
   }

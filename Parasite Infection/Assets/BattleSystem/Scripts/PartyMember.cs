@@ -58,5 +58,12 @@ namespace BattleSystem {
       BattleController.Instance.RemoveDeadPlayer(this);
       BattleController.Instance.ResetUIPlayerInfo();
     }
+
+    public override void LevelUp() {
+      base.LevelUp();
+
+      health = maxHealth;
+      energyPoints = maxEnergyPoints;
+    }
   }
 }

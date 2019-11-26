@@ -134,8 +134,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0
+  IsMoving: 0
   wander: 0
   questName: KillBlobsQuest
   dialogData: {fileID: 11400000, guid: 84ebdffc2e7d633498333f2d1f45dca4, type: 2}
   questCompletedDialogData: {fileID: 11400000, guid: a7268bd285faba54fbb9721e086dd8f3,
     type: 2}
+  npcName: Android

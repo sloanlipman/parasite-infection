@@ -26,6 +26,7 @@ TagManager:
   - Gateways/Command Center
   - Barricade/Tentacle Monster
   - Gateways/Central Core
+  - Boss Trigger
   layers:
   - Default
   - TransparentFX

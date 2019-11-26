@@ -1,0 +1,22 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using QuestSystem;
+
+public class Act1FinalBossQuest : Quest {
+  void Awake() {
+    slug = "Act1FinalBossQuest";    
+    questName = "Defeat the Sketchy Crewmembers";
+    itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy pack" };
+    goal = new KillGoal(1, 32, this);
+  }
+
+  public override void Complete() {
+    base.Complete();
+  }
+
+  public override void GrantReward() {
+    sceneController.StartEndOfAct1Dialog();
+    base.GrantReward();
+  }
+}

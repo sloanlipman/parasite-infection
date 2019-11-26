@@ -59,12 +59,13 @@ MonoBehaviour:
   - Fireball
   - Hydroblast
   level: 1
-  experience: 1
+  experience: 5
   originalMaxHealth: 10
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 1
   enemyId: 0
+  originalExperience: 5
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0

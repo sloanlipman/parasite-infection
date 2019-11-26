@@ -104,16 +104,17 @@ MonoBehaviour:
   maxEnergyPoints: 10
   speed: 0
   abilities:
-  - {fileID: 0}
+  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
   abilitiesList:
   - Barrage
   level: 1
-  experience: 2
+  experience: 8
   originalMaxHealth: 10
   originalMaxEP: 10
   originalAttackPower: 5
   originalDefensePower: 20
   enemyId: 1
+  originalExperience: 8
 --- !u!61 &5126930062819720034
 BoxCollider2D:
   m_ObjectHideFlags: 0

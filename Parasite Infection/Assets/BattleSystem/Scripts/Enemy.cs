@@ -6,10 +6,11 @@ namespace BattleSystem {
   public class Enemy : BattleCharacter {
     public int enemyId;
     public Enemy() {}
+    public int originalExperience;
 
     public override void SetDefaultValues() {
+      experience = originalExperience;
       base.SetDefaultValues();
-      experience = enemyId + 1;
     }
 
     public void Act() {
@@ -66,6 +67,28 @@ namespace BattleSystem {
       base.Die();
       EventController.EnemyDied(enemyId);
       BattleController.Instance.characters[1].Remove(this);
+    }
+
+    public override void LevelUp() {
+      base.LevelUp();
+      List<string> stats = new List<string>();
+      foreach (var stat in upgradePointsDictionary) {
+        upgradePointsDictionary[stat.Key]++;
+        stats.Add(stat.Key.ToString());
+      }
+
+      int maxRoll = upgradePointsDictionary.Count + 1;
+      int dieRoll = Random.Range(0, maxRoll);
+      if (dieRoll == maxRoll) {
+        experience++;
+      } else {
+    // Give enemies an extra random boost
+        string statToIncrease = stats[dieRoll];
+        upgradePointsDictionary[statToIncrease]++;
+      }
+
+      health = maxHealth;
+      energyPoints = maxEnergyPoints;
     }
   }
 }

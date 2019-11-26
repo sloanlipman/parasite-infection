@@ -123,7 +123,11 @@ namespace BattleSystem {
       if (currentAct > 0) {
         switch (currentAct) {
           case 1: {
-            maxEnemyId = 1;
+            maxEnemyId = questController.IsQuestCompleted("DefeatTentacleMonsterQuest") ? 3 : 1;
+            break;
+          }
+          case 2: {
+            maxEnemyId = 5;
             break;
           }
         }

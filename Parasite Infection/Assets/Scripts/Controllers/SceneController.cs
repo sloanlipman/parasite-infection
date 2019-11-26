@@ -73,8 +73,6 @@ public class SceneController : MonoBehaviour {
         if (!questController.HasQuestBeenStarted("KillBlobsQuest")) {
           string[] dialog = new string[] {
             "Check in with the Android to get your assignment.",
-            "Walk up to him and click.",
-            "It may take a few tries until the kinks are sorted out.",
             "If you need help, press ESC to access the tutorial.",
             };
           dialogPanel.StartDialog(dialog);
@@ -142,6 +140,10 @@ public class SceneController : MonoBehaviour {
     GameObject.FindGameObjectWithTag("Gateways/Central Core").GetComponent<Gateway>().isActive = true;
   }
 
+  private void RemoveBossTrigger() {
+    Destroy(GameObject.FindGameObjectWithTag("Boss Trigger"));
+  }
+
   public void StartKillBlobsQuestCompletedDialog() {
     string[] dialog = new string[] {
       "Android: Here's a Fire Module. Don't forget to equip it.",
@@ -190,5 +192,19 @@ public class SceneController : MonoBehaviour {
     }
     EventController.OnDialogPanelClosed -= RemoveTentacleMonster;
     ActivateGatewayAfterTentacleMonster();
+  }
+
+  public void StartEndOfAct1Dialog() {
+    RemoveBossTrigger();
+    string[] dialog = new string[] {
+      "Android: Yo. Now I'm only reading one alien.",
+      "Alan: One of them must have been mind controlled.",
+      "Barry, what do we do?"
+    };
+    dialogPanel.StartDialog(dialog);
+    // TODO need a way to decide which party member to betray and which to bring along
+    // Assign that decision to a bool that will have an influence on the end
+    currentAct = 2;
+    // Load a transition scene that has more story or whatever
   }
 }

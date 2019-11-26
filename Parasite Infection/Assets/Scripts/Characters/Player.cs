@@ -18,8 +18,7 @@ public class Player : Character  {
 
   private void OnTriggerEnter2D(Collider2D collision) {
     if (collision.GetComponent<NPC>() != null) {
-      Debug.Log("Collision is: " +  collision);
-        collision.GetComponent<NPC>().Interact(this);
+      collision.GetComponent<NPC>().Interact(this);
     }
   }
 }

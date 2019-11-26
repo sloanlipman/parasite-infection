@@ -148,17 +148,15 @@ namespace BattleSystem {
     }
 
     void BuildEnemyDatabase() {
-      enemyList = new List<Enemy>() {
-        Resources.Load<Enemy>("Enemies/0_Blob"),
-        Resources.Load<Enemy>("Enemies/1_Hatchling"),
-        Resources.Load<Enemy>("Enemies/2_Tentacle Monster"),
-        Resources.Load<Enemy>("Enemies/3_Drill"),
-        Resources.Load<Enemy>("Enemies/4_Drone"),
-        Resources.Load<Enemy>("Enemies/5_Infected Android"),
-        Resources.Load<Enemy>("Enemies/6_Octopus Monster"),
-        Resources.Load<Enemy>("Enemies/7_The Eye")
-      };
+      Enemy[] enemies = Resources.LoadAll<Enemy>("Enemies");
 
+      foreach(Enemy enemy in enemies) {
+        if (!enemyList.Contains(enemy)) {
+          enemyList.Add(enemy);
+          enemy.SetDefaultValues();
+        }
+      }
+      Debug.Log("Enemy List has: " + enemyList.Count);
         enemyList.ForEach(enemy => {
           enemy.SetDefaultValues();
           LoadEnemyAbilities();

@@ -135,10 +135,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0
+  IsMoving: 0
   wander: 1
   questName: 
   dialogData: {fileID: 0}
   questCompletedDialogData: {fileID: 0}
+  npcName: Infected Android
 --- !u!114 &4259425398141726940
 MonoBehaviour:
   m_ObjectHideFlags: 0

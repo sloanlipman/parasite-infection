@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7295080093944526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -120,10 +120,10 @@ MonoBehaviour:
   movementSpeed: 0
   IsMoving: 0
   wander: 0
-  questName: CraftWaterQuest
-  dialogData: {fileID: 11400000, guid: c7501d1e7ace4804d9d3e3d73a516c4e, type: 2}
-  questCompletedDialogData: {fileID: 11400000, guid: d27fcd25db30fe340a2887d962aabe3f,
-    type: 2}
+  questName: 
+  dialogData: {fileID: 0}
+  questCompletedDialogData: {fileID: 0}
+  npcName: Megan
 --- !u!58 &194238152405235313
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,4 +139,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.5

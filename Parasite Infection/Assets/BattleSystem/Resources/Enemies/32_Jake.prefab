@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7264005851067476653}
   - component: {fileID: 7264005851067476655}
-  - component: {fileID: 2822308888312228272}
-  - component: {fileID: 9192391036177522714}
+  - component: {fileID: -3610265836862040037}
+  - component: {fileID: -1375302425271297674}
   m_Layer: 0
-  m_Name: 3_Drill
+  m_Name: 32_Jake
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,50 +71,19 @@ SpriteRenderer:
   m_SortingLayerID: 1993003049
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3132539068716257381, guid: c0d39b49095deec428f3e56678a9d1b1,
+  m_Sprite: {fileID: -5439872580050162969, guid: f4cdc7382d5ae9a469fb57210123d574,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.21, y: 0.3}
+  m_Size: {x: 0.25, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2822308888312228272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7264005851067476654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: Drill
-  health: 25
-  maxHealth: 25
-  attackPower: 7
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
-  speed: 0
-  abilities:
-  - {fileID: 0}
-  abilitiesList:
-  - Heal
-  level: 1
-  experience: 4
-  originalMaxHealth: 25
-  originalMaxEP: 15
-  originalAttackPower: 7
-  originalDefensePower: 3
-  enemyId: 3
---- !u!61 &9192391036177522714
+--- !u!61 &-3610265836862040037
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +100,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.65625}
-    newSize: {x: 0.21, y: 0.3}
+    oldSize: {x: 0.28, y: 0.5201587}
+    newSize: {x: 0.25, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -140,3 +109,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1375302425271297674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264005851067476654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Jake
+  health: 20
+  maxHealth: 20
+  attackPower: 10
+  defensePower: 10
+  energyPoints: 20
+  maxEnergyPoints: 20
+  speed: 0
+  abilities: []
+  abilitiesList:
+  - Heal
+  - Fireball
+  level: 1
+  experience: 33
+  originalMaxHealth: 20
+  originalMaxEP: 20
+  originalAttackPower: 10
+  originalDefensePower: 10
+  enemyId: 32
+  originalExperience: 30

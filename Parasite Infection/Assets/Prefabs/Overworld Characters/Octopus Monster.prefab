@@ -119,10 +119,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0
+  IsMoving: 0
   wander: 1
   questName: 
   dialogData: {fileID: 0}
   questCompletedDialogData: {fileID: 0}
+  npcName: Octopus Monster
 --- !u!114 &4934342522184614349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +140,6 @@ MonoBehaviour:
   enemies:
   - {fileID: 4451484942459561568, guid: 46f7fc5feea1e2d469732e4f18f0b14e, type: 3}
   - {fileID: 2822308888312228272, guid: ce594e20547b0494db929623f015ba31, type: 3}
-  - {fileID: 3924562713174096799, guid: 29632a25e4ca88040bc19ecb7549d764, type: 3}
   launcher: {fileID: 0}
 --- !u!61 &6343607387956142734
 BoxCollider2D:

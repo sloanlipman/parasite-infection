@@ -368,8 +368,7 @@ namespace BattleSystem {
     private void AddEnemyExperience(int enemyId) {
       Enemy killedEnemy = characterController.FindEnemyById(enemyId);
       deadEnemies.Add(killedEnemy);
-      xpToReward += 5 * killedEnemy.experience;
+      xpToReward += killedEnemy.experience;
    }
-
   }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2822308888312228272}
   - component: {fileID: 9192391036177522714}
   m_Layer: 0
-  m_Name: 4_Drone
+  m_Name: 4_Drill
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 1993003049
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7594697043243188203, guid: c0d39b49095deec428f3e56678a9d1b1,
+  m_Sprite: {fileID: -3132539068716257381, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -95,25 +95,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Drone
-  health: 25
-  maxHealth: 25
-  attackPower: 7
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
+  characterName: Drill
+  health: 40
+  maxHealth: 40
+  attackPower: 12
+  defensePower: 25
+  energyPoints: 40
+  maxEnergyPoints: 40
   speed: 0
   abilities:
-  - {fileID: 0}
+  - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
   abilitiesList:
-  - Barrage
+  - Heal
   level: 1
-  experience: 5
-  originalMaxHealth: 25
-  originalMaxEP: 15
-  originalAttackPower: 7
-  originalDefensePower: 3
+  experience: 20
+  originalMaxHealth: 40
+  originalMaxEP: 40
+  originalAttackPower: 12
+  originalDefensePower: 25
   enemyId: 4
+  originalExperience: 20
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.78125, y: 0.59375}
+    oldSize: {x: 0.75, y: 0.65625}
     newSize: {x: 0.21, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
