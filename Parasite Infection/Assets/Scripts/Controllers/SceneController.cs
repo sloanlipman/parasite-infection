@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private QuestSystem.QuestController questController;
   [SerializeField] private BattleSystem.CharacterController characterController;
   [SerializeField] private UIDecisionPanel decisionPanel;
+  [SerializeField] private InventoryController inventoryController;
   private MenuController menuController;
 
   private int currentAct = 0;
@@ -218,7 +219,7 @@ public class SceneController : MonoBehaviour {
 
   private void OpenDecisionPanelForAct1() {
     decisionPanel.gameObject.SetActive(true);
-    decisionPanel.SetTitle("Who is infected?");
+    decisionPanel.SetTitle("Whom should we save?");
     decisionPanel.AddChoice("Megan");
     decisionPanel.AddChoice("Jake");
     EventController.OnDecisionMade += MakeAct1Decision;
@@ -228,20 +229,31 @@ public class SceneController : MonoBehaviour {
   }
 
   private void FinishEndOfAct1Dialog(string choiceName) {
+    string target = choiceName == "Megan" ? "Jake" : "Megan";
     string[] dialog = new string[] {
+      string.Format("*You shoot {0}*", target),
       "Android: Alien life detected in the Biosphere.",
       "I'll go on ahead.",
       string.Format("{0}, stick with these guys", choiceName),
       "Take this extra Heavy Module."
     };
     dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += RemoveJakeOrMegan;
+  }
 
-    /** On Dialog close:
-      1) Remove Android
-      2) Add choiceName
-      3) Give player Heavy Module
-      4) Adjust choiceName's exp to match Android's
-      5) Give everyone exp as a reward
-    */
+  private void RemoveJakeOrMegan() {
+    NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
+    string nameToFind = playerRecruitedMegan ? "Jake" : "Megan";
+    foreach(NPC n in npcs) {
+      if (n.npcName == nameToFind) {
+        Destroy(n.gameObject);
+      }
+    }
+    string playerToAdd = playerRecruitedMegan ? "Megan" : "Jake";
+    characterController.AddPlayerToParty(playerToAdd);
+    characterController.RemovePlayerFromParty("Android");
+    int androidExperience = characterController.GetExperience("Android");
+    characterController.SetExperience(androidExperience, playerToAdd);
+    inventoryController.GiveItem("Heavy Module");
   }
 }

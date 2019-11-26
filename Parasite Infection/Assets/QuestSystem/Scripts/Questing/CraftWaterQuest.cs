@@ -16,7 +16,7 @@ public class CraftWaterQuest : Quest {
     inventoryController.GiveItem(10);
     inventoryController.GiveItem(7);
 
-    expReward = 8;
+    expReward = 10;
   }
 
   public override void Complete() {

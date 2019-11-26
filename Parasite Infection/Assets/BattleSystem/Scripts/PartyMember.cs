@@ -29,6 +29,10 @@ namespace BattleSystem {
       upgradePoints++;
     }
 
+    public void AddUpgradePoints(int i) {
+      upgradePoints += i;
+    }
+
     public void SpendUpgradePoint() {
       upgradePoints--;
     }

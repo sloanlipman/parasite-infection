@@ -20,6 +20,17 @@ namespace BattleSystem {
       characterDatabase.Load();
     }
 
+    public int GetExperience(string name) {
+      PartyMember p = FindPartyMemberByName(name);
+      return p.experience;
+    }
+
+    public void SetExperience(int xp, string name) {
+      PartyMember p = FindPartyMemberByName(name);
+      p.experience = xp;
+      LevelUp(p);
+    }
+
     public void AddPlayerToParty(string name) {
       characterDatabase.AddPlayerToParty(name);
     }
@@ -103,12 +114,19 @@ namespace BattleSystem {
 
     public bool LevelUp(PartyMember member) {
       bool success = false;
+      bool shouldKeepLevelingUp = true;
       int xpToNextLevel = NextLevel(member.level);
-      if (member.experience >= xpToNextLevel) {
-        success = true;
-        member.LevelUp();
-        if (member.level % 2 == 0) {
-          member.AddUpgradePoint();
+      while (shouldKeepLevelingUp) {
+        if (member.experience >= xpToNextLevel) {
+          success = true;
+          member.LevelUp();
+          if (member.level % 2 == 0) {
+            member.AddUpgradePoint();
+          }
+        }
+        xpToNextLevel = NextLevel(member.level);
+          if (member.experience < xpToNextLevel) {
+            shouldKeepLevelingUp = false;
         }
       }
       member.SetModSlots();

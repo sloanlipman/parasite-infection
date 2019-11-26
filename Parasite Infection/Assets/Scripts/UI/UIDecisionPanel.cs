@@ -8,11 +8,6 @@ public class UIDecisionPanel : MonoBehaviour {
   private GameObject title;
   
   private void Awake() {
-    if (FindObjectsOfType<UIDecisionPanel>().Length > 1) {
-      Destroy(this.gameObject);
-    }
-
-    DontDestroyOnLoad(this.gameObject);
     title = GameObject.FindGameObjectWithTag("UI/Decision Panel/Title");
     buttonParent = GetComponentInChildren<VerticalLayoutGroup>();
   }
