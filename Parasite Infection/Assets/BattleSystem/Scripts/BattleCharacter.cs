@@ -29,7 +29,6 @@ namespace BattleSystem {
     public virtual void SetDefaultValues() {
       if (level == 0 || upgradePointsDictionary.Count == 0) {
         level = 1;
-        experience = 0;
         maxHealth = originalMaxHealth;
         maxEnergyPoints = originalMaxEP;
         health = maxHealth;

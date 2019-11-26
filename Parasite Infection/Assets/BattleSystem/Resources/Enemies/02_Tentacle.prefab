@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3924562713174096799}
   - component: {fileID: 5126930062819720034}
   m_Layer: 0
-  m_Name: 2_Tentacle
+  m_Name: 02_Tentacle
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Tentacle Monster
+  characterName: Tentacle
   health: 35
   maxHealth: 35
   attackPower: 10

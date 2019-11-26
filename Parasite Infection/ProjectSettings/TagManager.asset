@@ -27,6 +27,8 @@ TagManager:
   - Barricade/Tentacle Monster
   - Gateways/Central Core
   - Boss Trigger
+  - UI/Decision Panel/Title
+  - Tentacle Monster
   layers:
   - Default
   - TransparentFX

@@ -156,7 +156,6 @@ namespace BattleSystem {
           enemy.SetDefaultValues();
         }
       }
-      Debug.Log("Enemy List has: " + enemyList.Count);
         enemyList.ForEach(enemy => {
           enemy.SetDefaultValues();
           LoadEnemyAbilities();

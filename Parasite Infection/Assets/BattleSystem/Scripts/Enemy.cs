@@ -9,8 +9,8 @@ namespace BattleSystem {
     public int originalExperience;
 
     public override void SetDefaultValues() {
-      experience = originalExperience;
       base.SetDefaultValues();
+      experience = originalExperience;
     }
 
     public void Act() {
@@ -73,11 +73,11 @@ namespace BattleSystem {
       base.LevelUp();
       List<string> stats = new List<string>();
       foreach (var stat in upgradePointsDictionary) {
-        upgradePointsDictionary[stat.Key]++;
         stats.Add(stat.Key.ToString());
       }
 
-      int maxRoll = upgradePointsDictionary.Count + 1;
+      stats.ForEach(stat => upgradePointsDictionary[stat]++);
+      int maxRoll = upgradePointsDictionary.Count;
       int dieRoll = Random.Range(0, maxRoll);
       if (dieRoll == maxRoll) {
         experience++;

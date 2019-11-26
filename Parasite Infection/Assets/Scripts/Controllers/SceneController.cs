@@ -9,9 +9,12 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private DialogData gameIntroDialog;
   [SerializeField] private QuestSystem.QuestController questController;
   [SerializeField] private BattleSystem.CharacterController characterController;
+  [SerializeField] private UIDecisionPanel decisionPanel;
   private MenuController menuController;
 
   private int currentAct = 0;
+  private bool playerRecruitedMegan;
+
   private bool hasPlayerDoneTutorial;
 
   public void Save() {
@@ -46,6 +49,11 @@ public class SceneController : MonoBehaviour {
     if (!menuController.IsGamePaused()) {
       Time.timeScale = 1;
     }
+  }
+
+  private void MakeAct1Decision(string choiceName) {
+    playerRecruitedMegan = choiceName == "Megan";
+    FinishEndOfAct1Dialog(choiceName);
   }
 
   public void OnSceneUnloaded(Scene scene) {
@@ -186,9 +194,12 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemoveTentacleMonster() {
-    BattleSystem.BattleLaunchCharacter tentacleMonster = FindObjectOfType<BattleSystem.BattleLaunchCharacter>();
-    if (tentacleMonster != null) {
-      Destroy(tentacleMonster.gameObject);
+    GameObject tentacleMonsterGameObject = GameObject.FindGameObjectWithTag("Tentacle Monster");
+    if (tentacleMonsterGameObject != null) {
+      BattleSystem.BattleLaunchCharacter tentacleMonster = tentacleMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+      if (tentacleMonster != null) {
+        Destroy(tentacleMonster.gameObject);
+      }
     }
     EventController.OnDialogPanelClosed -= RemoveTentacleMonster;
     ActivateGatewayAfterTentacleMonster();
@@ -202,9 +213,35 @@ public class SceneController : MonoBehaviour {
       "Barry, what do we do?"
     };
     dialogPanel.StartDialog(dialog);
-    // TODO need a way to decide which party member to betray and which to bring along
-    // Assign that decision to a bool that will have an influence on the end
+    EventController.OnDialogPanelClosed += OpenDecisionPanelForAct1;
+  }
+
+  private void OpenDecisionPanelForAct1() {
+    decisionPanel.gameObject.SetActive(true);
+    decisionPanel.SetTitle("Who is infected?");
+    decisionPanel.AddChoice("Megan");
+    decisionPanel.AddChoice("Jake");
+    EventController.OnDecisionMade += MakeAct1Decision;
     currentAct = 2;
+    EventController.OnDialogPanelClosed -= OpenDecisionPanelForAct1;
     // Load a transition scene that has more story or whatever
+  }
+
+  private void FinishEndOfAct1Dialog(string choiceName) {
+    string[] dialog = new string[] {
+      "Android: Alien life detected in the Biosphere.",
+      "I'll go on ahead.",
+      string.Format("{0}, stick with these guys", choiceName),
+      "Take this extra Heavy Module."
+    };
+    dialogPanel.StartDialog(dialog);
+
+    /** On Dialog close:
+      1) Remove Android
+      2) Add choiceName
+      3) Give player Heavy Module
+      4) Adjust choiceName's exp to match Android's
+      5) Give everyone exp as a reward
+    */
   }
 }

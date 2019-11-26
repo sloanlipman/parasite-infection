@@ -13,6 +13,7 @@ namespace BattleSystem {
         upgradePoints = 1;
         modSlots = 1;
       }
+      experience = 0;
       base.SetDefaultValues();
     }
 
