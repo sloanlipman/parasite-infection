@@ -95,7 +95,7 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Central Core": {
-        Debug.Log("Case was central core");
+        currentAct = 1;
         if (!questController.HasQuestBeenStarted("CraftWaterQuest")) {
           if (shouldShowAlanInitialDialog) {
             string[] dialog = new string[] {"Alan: Barry? I'm over here! Follow the green trail!"};
@@ -118,32 +118,27 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Biosphere": {
+        currentAct = 2;
         // TODO add more stuff here
         if(questController.IsQuestCompleted("KillPigAlienQuest")) {
           RemovePigAlien();
         }
         break;
       }
+
+      case "Shed": {
+        break;
+      }
+
+      default: {
+        break;
+      }
     }
   }
 
   public void LoadSceneFromGateway(string sceneName) {
-    SaveService.Instance.Save();
-    switch (sceneName) {
-      case "Command Center": {
-        LoadCommandCenter();
-        break;
-      }
-
-      case "Central Core": {
-        LoadCentralCore();
-        break;
-      }
-
-      case "Biosphere": {
-        LoadBiosphere();
-        break;
-      }
+    if (SceneManager.GetSceneByName(sceneName) != SceneManager.GetActiveScene()) {
+      SceneManager.LoadScene(sceneName);
     }
     GatewayManager.Instance.MoveInNewScene();
   }
@@ -151,23 +146,6 @@ public class SceneController : MonoBehaviour {
   private void LoadCommandCenter() {
     SceneManager.LoadScene("Command Center");
     EventController.OnDialogPanelClosed -= LoadCommandCenter;
-  }
-
-  private void LoadCentralCore() {
-     if (!questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
-      SceneManager.LoadScene("Central Core");
-      currentAct = 1;
-    } else {
-      GatewayManager.Instance.SetSpawnPosition(new Vector2(-5, -40));
-      GatewayManager.Instance.MoveInNewScene();
-    }
-  }
-
-  private void LoadBiosphere() {
-    SceneManager.LoadScene("Biosphere");
-    currentAct = 2;
-    GatewayManager.Instance.SetSpawnPosition(new Vector2(-5, -40));
-    GatewayManager.Instance.MoveInNewScene();
   }
 
   private void ActivateGatewayToLeaveCommandCenter() {
