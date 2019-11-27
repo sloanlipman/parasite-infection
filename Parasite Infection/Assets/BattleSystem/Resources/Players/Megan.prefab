@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,23 +46,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Megan
-  health: 15
-  maxHealth: 15
-  attackPower: 5
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
+  health: 27
+  maxHealth: 27
+  attackPower: 17
+  defensePower: 15
+  energyPoints: 27
+  maxEnergyPoints: 27
   speed: 0
   abilities: []
   abilitiesList: []
-  level: 1
-  experience: 0
+  level: 13
+  experience: 216
   originalMaxHealth: 15
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 3
-  upgradePoints: 1
-  modSlots: 1
+  upgradePoints: 7
+  modSlots: 2
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0

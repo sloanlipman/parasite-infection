@@ -29,6 +29,8 @@ TagManager:
   - Boss Trigger
   - UI/Decision Panel/Title
   - Tentacle Monster
+  - Gateways/Biosphere
+  - Gateways/Shed
   layers:
   - Default
   - TransparentFX

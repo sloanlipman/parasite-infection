@@ -14,7 +14,10 @@ public class SceneController : MonoBehaviour {
   private MenuController menuController;
 
   private int currentAct = 0;
+  private bool shouldShowAlanInitialDialog = true;
   private bool playerRecruitedMegan;
+  private bool hasJakeOrMeganBeenRemoved = false;
+  private bool hasPigAlienBeenRemoved = false;
 
   private bool hasPlayerDoneTutorial;
 
@@ -94,14 +97,30 @@ public class SceneController : MonoBehaviour {
       case "Central Core": {
         Debug.Log("Case was central core");
         if (!questController.HasQuestBeenStarted("CraftWaterQuest")) {
-          string[] dialog = new string[] {"???: Barry? I'm over here! Follow the green trail!"};
-          dialogPanel.StartDialog(dialog);
+          if (shouldShowAlanInitialDialog) {
+            string[] dialog = new string[] {"Alan: Barry? I'm over here! Follow the green trail!"};
+            dialogPanel.StartDialog(dialog);
+            shouldShowAlanInitialDialog = false;
+          }
         } else if (questController.IsQuestCompleted("CraftWaterQuest")) {
           OpenGateToTentacleMonster();
         }
 
         if (questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
           RemoveTentacleMonster(); // Internally calls to open the gateway
+        }
+
+        if (questController.IsQuestCompleted("Act1FinalBossQuest")) {
+          RemoveBossTrigger();
+          RemoveJakeOrMegan(); // Internally opens gateway to biosphere
+        }
+        break;
+      }
+
+      case "Biosphere": {
+        // TODO add more stuff here
+        if(questController.IsQuestCompleted("KillPigAlienQuest")) {
+          RemovePigAlien();
         }
         break;
       }
@@ -117,8 +136,12 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Central Core": {
-        Debug.Log("About to LoadCentralCore");
         LoadCentralCore();
+        break;
+      }
+
+      case "Biosphere": {
+        LoadBiosphere();
         break;
       }
     }
@@ -134,11 +157,17 @@ public class SceneController : MonoBehaviour {
      if (!questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
       SceneManager.LoadScene("Central Core");
       currentAct = 1;
-      Debug.Log("Loaded central core from LoadCentralCore() method");
     } else {
       GatewayManager.Instance.SetSpawnPosition(new Vector2(-5, -40));
       GatewayManager.Instance.MoveInNewScene();
     }
+  }
+
+  private void LoadBiosphere() {
+    SceneManager.LoadScene("Biosphere");
+    currentAct = 2;
+    GatewayManager.Instance.SetSpawnPosition(new Vector2(-5, -40));
+    GatewayManager.Instance.MoveInNewScene();
   }
 
   private void ActivateGatewayToLeaveCommandCenter() {
@@ -147,6 +176,14 @@ public class SceneController : MonoBehaviour {
 
   private void ActivateGatewayAfterTentacleMonster() {
     GameObject.FindGameObjectWithTag("Gateways/Central Core").GetComponent<Gateway>().isActive = true;
+  }
+
+  private void ActivateGatewayAtEndOfAct1() {
+    GameObject.FindGameObjectWithTag("Gateways/Biosphere").GetComponent<Gateway>().isActive = true;
+  }
+
+  private void UnlockShed() {
+    GameObject.FindGameObjectWithTag("Gateways/Shed").GetComponent<Gateway>().isActive = true;
   }
 
   private void RemoveBossTrigger() {
@@ -176,7 +213,7 @@ public class SceneController : MonoBehaviour {
 
   public void StartDefeatTentacleMonsterQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Parasite: I...impossible!",
+      "Pig Farmer: Thanks for the help!",
       "How could a human defeat my spawn?",
       "I won't forget this... Barry...",
       "Alan: Let's head back to the teleporter.",
@@ -185,6 +222,16 @@ public class SceneController : MonoBehaviour {
     };
     dialogPanel.StartDialog(dialog);
     EventController.OnDialogPanelClosed += RemoveTentacleMonster;
+  }
+
+  public void StartKillAlienPigQuestCompletedDialog() {
+    string[] dialog = new string[] {
+      "Pig Farmer: Thanks for the help!",
+      "I think I saw the Android go into the shed.",
+      "I'll unlock for door for ya."
+    };
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += RemovePigAlien;
   }
 
   private void OpenGateToTentacleMonster() {
@@ -242,18 +289,36 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemoveJakeOrMegan() {
-    NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
-    string nameToFind = playerRecruitedMegan ? "Jake" : "Megan";
-    foreach(NPC n in npcs) {
-      if (n.npcName == nameToFind) {
-        Destroy(n.gameObject);
+    if (!hasJakeOrMeganBeenRemoved) {
+      NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
+      string nameToFind = playerRecruitedMegan ? "Jake" : "Megan";
+      foreach(NPC n in npcs) {
+        if (n.npcName == nameToFind) {
+          Destroy(n.gameObject);
+        }
       }
+      string playerToAdd = playerRecruitedMegan ? "Megan" : "Jake";
+      characterController.AddPlayerToParty(playerToAdd);
+      characterController.RemovePlayerFromParty("Android");
+      int androidExperience = characterController.GetExperience("Android");
+      characterController.SetExperience(androidExperience, playerToAdd);
+      inventoryController.GiveItem("Heavy Module");
+      hasJakeOrMeganBeenRemoved = true;
     }
-    string playerToAdd = playerRecruitedMegan ? "Megan" : "Jake";
-    characterController.AddPlayerToParty(playerToAdd);
-    characterController.RemovePlayerFromParty("Android");
-    int androidExperience = characterController.GetExperience("Android");
-    characterController.SetExperience(androidExperience, playerToAdd);
-    inventoryController.GiveItem("Heavy Module");
+    ActivateGatewayAtEndOfAct1();
+  }
+
+  private void RemovePigAlien() {
+    if (!hasPigAlienBeenRemoved) {
+      NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
+      foreach(NPC n in npcs) {
+        if (n.npcName == "Pig Alien") {
+          Destroy(n.gameObject);
+        }
+      }
+      hasPigAlienBeenRemoved = true;
+    }
+
+    UnlockShed();
   }
 }

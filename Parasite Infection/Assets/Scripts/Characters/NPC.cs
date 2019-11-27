@@ -77,7 +77,9 @@ public class NPC : Character {
 
   private void FindDialogPanel() {
     dialogCanvas = FindObjectOfType<DialogCanvas>();
-    dialog = dialogCanvas.GetComponentInChildren<DialogPanel>(true);
+    if (dialogCanvas != null) {
+      dialog = dialogCanvas.GetComponentInChildren<DialogPanel>(true);
+    }
   }
 
   public void Wander() {

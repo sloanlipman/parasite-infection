@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: 9517c584562339146b15892ff89939ac
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5784731289588789516
+    second: cow_walk_0
+  - first:
+      213: -7015965145421862659
+    second: cow_walk_1
+  - first:
+      213: -1926287871043691681
+    second: cow_walk_2
+  - first:
+      213: -4224260300399177352
+    second: cow_walk_3
+  - first:
+      213: 4895517091083070582
+    second: cow_walk_4
+  - first:
+      213: 4023955380990177945
+    second: cow_walk_5
+  - first:
+      213: 3811931039231077709
+    second: cow_walk_6
+  - first:
+      213: -8838267682711103416
+    second: cow_walk_7
+  - first:
+      213: -8241131779887993082
+    second: cow_walk_8
+  - first:
+      213: -3304102905025211995
+    second: cow_walk_9
+  - first:
+      213: 3617512554900359631
+    second: cow_walk_10
+  - first:
+      213: 4598084916610013920
+    second: cow_walk_11
+  - first:
+      213: -3908021732970917522
+    second: cow_walk_12
+  - first:
+      213: -2995088521444092677
+    second: cow_walk_13
+  - first:
+      213: -8019556414389686602
+    second: cow_walk_14
+  - first:
+      213: 6737090547998318426
+    second: cow_walk_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cow_walk_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 400
+        width: 27
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121dbcb074bbf6b4cba8f4a3174c15e5
+      internalID: 5784731289588789516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_1
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 402
+        width: 27
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dce21152452c1842b548e11d0208633
+      internalID: -7015965145421862659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_2
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 400
+        width: 27
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30222351c13719b47b0be490a592c727
+      internalID: -1926287871043691681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_3
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 402
+        width: 27
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8c4870b3dbd6f4ea6bcf261e8d19ed
+      internalID: -4224260300399177352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_4
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 295
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf0b445cd9e92a4786bb7a152f2c55f
+      internalID: 4895517091083070582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_5
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 296
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af2dbe2e3681aae48b2561a100d3137e
+      internalID: 4023955380990177945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 295
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253e79618f22f6043b97386a6c706b62
+      internalID: 3811931039231077709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_7
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 297
+        width: 71
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa494b53b2639347a15318f58eab9f0
+      internalID: -8838267682711103416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_8
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 152
+        width: 27
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e3a62a96733d24fbd9e5be14186c0d
+      internalID: -8241131779887993082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_9
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 154
+        width: 27
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931857b04467d1144bbe12cfcf90b491
+      internalID: -3304102905025211995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_10
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 152
+        width: 27
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a07f90db97cc243874bf324ce5517d
+      internalID: 3617512554900359631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_11
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 154
+        width: 27
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f8c1c49211de1243a82ff0013c4d0fe
+      internalID: 4598084916610013920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_12
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 39
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba741053ee0a804c9d594a14e2603be
+      internalID: -3908021732970917522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_13
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 40
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b059bb10acfdeae4c89fb15f6dc4ddef
+      internalID: -2995088521444092677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_14
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 39
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e797d151e1bb54095de6b4f3faeb3a
+      internalID: -8019556414389686602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cow_walk_15
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 41
+        width: 71
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc801ed544435040a424b8674f6e259
+      internalID: 6737090547998318426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
