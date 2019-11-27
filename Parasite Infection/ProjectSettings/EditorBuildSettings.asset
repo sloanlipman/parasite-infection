@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Biosphere.unity
     guid: 47fa5bcbd61719743b0c983df4b08f71
+  - enabled: 1
+    path: Assets/Scenes/Shed.unity
+    guid: f421b288a52b9a847b95d9fe5765dd03
   m_configObjects: {}
