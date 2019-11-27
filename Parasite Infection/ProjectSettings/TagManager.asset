@@ -31,6 +31,7 @@ TagManager:
   - Tentacle Monster
   - Gateways/Biosphere
   - Gateways/Shed
+  - Act 2 Boss
   layers:
   - Default
   - TransparentFX

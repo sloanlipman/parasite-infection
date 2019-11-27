@@ -16,7 +16,7 @@ public class KillPigAlienQuest : Quest {
   }
 
   public override void GrantReward() {
-    sceneController.StartKillAlienPigQuestCompletedDialog();
+    sceneController.StartKillPigAlienQuestCompletedDialog();
     base.GrantReward();
   }
 }

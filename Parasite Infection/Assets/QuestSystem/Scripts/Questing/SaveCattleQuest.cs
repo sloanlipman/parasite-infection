@@ -24,7 +24,6 @@ public class SaveCattleQuest : Quest {
   }
 
   public override void GrantReward() {
-    sceneController.StartDefeatTentacleMonsterQuestCompletedDialog();
     base.GrantReward();
   }
 }

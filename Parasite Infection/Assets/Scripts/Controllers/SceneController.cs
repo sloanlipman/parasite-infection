@@ -11,6 +11,7 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private BattleSystem.CharacterController characterController;
   [SerializeField] private UIDecisionPanel decisionPanel;
   [SerializeField] private InventoryController inventoryController;
+  [SerializeField] private BattleSystem.BattleLauncher battleLauncher;
   private MenuController menuController;
 
   private int currentAct = 0;
@@ -18,6 +19,7 @@ public class SceneController : MonoBehaviour {
   private bool playerRecruitedMegan;
   private bool hasJakeOrMeganBeenRemoved = false;
   private bool hasPigAlienBeenRemoved = false;
+  private string playerRemovedFromParty;
 
   private bool hasPlayerDoneTutorial;
 
@@ -58,6 +60,12 @@ public class SceneController : MonoBehaviour {
   private void MakeAct1Decision(string choiceName) {
     playerRecruitedMegan = choiceName == "Megan";
     FinishEndOfAct1Dialog(choiceName);
+  }
+
+  private void MakeAct2Decision(string choiceName) {
+    playerRemovedFromParty = choiceName;
+    characterController.RemovePlayerFromParty(choiceName);
+    ActivateOctopusMonster();
   }
 
   public void OnSceneUnloaded(Scene scene) {
@@ -127,6 +135,13 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Shed": {
+        if (questController.IsQuestCompleted("DefeatMalfunctioningAndroidQuest")) {
+          ActivateOctopusMonster();
+        }
+
+        if (questController.IsQuestCompleted("SlayOctopusMonster")) {
+          RemoveOctopusMonster();
+        }
         break;
       }
 
@@ -202,7 +217,7 @@ public class SceneController : MonoBehaviour {
     EventController.OnDialogPanelClosed += RemoveTentacleMonster;
   }
 
-  public void StartKillAlienPigQuestCompletedDialog() {
+  public void StartKillPigAlienQuestCompletedDialog() {
     string[] dialog = new string[] {
       "Pig Farmer: Thanks for the help!",
       "I think I saw the Android go into the shed.",
@@ -242,6 +257,33 @@ public class SceneController : MonoBehaviour {
     EventController.OnDialogPanelClosed += OpenDecisionPanelForAct1;
   }
 
+  public void StartDefeatMalfunctioningAndroidQuestCompletedDialog() {
+    string[] dialog = new string[] {
+      "Alan: Bar, there's a nasty parasite incoming,",
+      "but one of us needs to dismantle the Android.",
+      "Who's it going to be?"
+    };
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += OpenDecisionPanelForAct2;
+  }
+
+  public void StartDefeatOctopusMonsterQuestCompletedDialog() {
+    // TODO FILL THIS IN
+    currentAct = 3;
+    UnlockShed(); // TODO make this load act 3
+  }
+
+  private void ActivateOctopusMonster() {
+    GameObject.FindGameObjectWithTag("Act 2 Boss").GetComponentInChildren<GameObject>(true).SetActive(true);
+  }
+
+  private void RemoveOctopusMonster() {
+    GameObject ocotpusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
+    if (ocotpusMonsterParent != null) {
+      Destroy(ocotpusMonsterParent);
+    }
+  }
+
   private void OpenDecisionPanelForAct1() {
     decisionPanel.gameObject.SetActive(true);
     decisionPanel.SetTitle("Whom should we save?");
@@ -251,6 +293,21 @@ public class SceneController : MonoBehaviour {
     currentAct = 2;
     EventController.OnDialogPanelClosed -= OpenDecisionPanelForAct1;
     // Load a transition scene that has more story or whatever
+  }
+
+  private void OpenDecisionPanelForAct2() {
+    decisionPanel.gameObject.SetActive(true);
+    decisionPanel.SetTitle("Who will stay back?");
+    decisionPanel.AddChoice("Alan");
+    decisionPanel.AddChoice(playerRecruitedMegan ? "Megan" : "Jake");
+    EventController.OnDecisionMade += MakeAct2Decision;
+    EventController.OnDialogPanelClosed -= OpenDecisionPanelForAct2;
+
+  }
+
+  public void SplitPartyForAndroidBattle(Vector3 position, List<BattleSystem.Enemy> enemies, bool splitParty) {
+
+    battleLauncher.PrepareBattle(position, enemies, splitParty);
   }
 
   private void FinishEndOfAct1Dialog(string choiceName) {

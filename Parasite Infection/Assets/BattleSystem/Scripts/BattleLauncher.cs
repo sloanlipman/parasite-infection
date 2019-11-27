@@ -79,7 +79,7 @@ namespace BattleSystem {
       }
     }
 
-    public void PrepareBattle(Vector2 position, List<Enemy> enemiesToUse = null) {
+    public void PrepareBattle(Vector2 position, List<Enemy> enemiesToUse = null, bool splitParty = false) {
       worldPosition = position;
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
       this.players = characterController.GetActiveParty();

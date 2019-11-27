@@ -4841,6 +4841,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1452578915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1452578917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8865155587477082158, guid: 2e47b620c917fe947abc33b7dbc8ec01,
+    type: 3}
+  m_PrefabInstance: {fileID: 1452578915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452578916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76d81aca7ec075428ad1b39bf516e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1452578918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8865155587477082159, guid: 2e47b620c917fe947abc33b7dbc8ec01,
@@ -10702,6 +10714,11 @@ PrefabInstance:
       propertyPath: inventoryController
       value: 
       objectReference: {fileID: 1235181265}
+    - target: {fileID: 55304751417087581, guid: 08d436e2e7c436544be2ce7217c50c68,
+        type: 3}
+      propertyPath: battleLauncher
+      value: 
+      objectReference: {fileID: 1452578917}
     - target: {fileID: 55304751417087580, guid: 08d436e2e7c436544be2ce7217c50c68,
         type: 3}
       propertyPath: m_LocalPosition.x

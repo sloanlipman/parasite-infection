@@ -12,10 +12,10 @@ namespace BattleSystem {
     void Start() {
       launcher = FindObjectOfType<BattleLauncher>();
       characterController = FindObjectOfType<CharacterController>();
-      players = characterController.GetActiveParty();
     }
 
     public void PrepareBattle(Character character) {
+      players = characterController.GetActiveParty();
       launcher.PrepareBattle(character.transform.position, enemies);
     }
   }
