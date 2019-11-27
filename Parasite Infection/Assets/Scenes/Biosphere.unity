@@ -730,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.9672966, y: -20.35, z: -10}
+  m_LocalPosition: {x: -8.098892, y: -20.35, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42732,7 +42732,7 @@ PrefabInstance:
     - target: {fileID: 8028895227113571132, guid: 6cf165179ff6f0241bb4ecb20a64d9f4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.9672966
+      value: -8.098892
       objectReference: {fileID: 0}
     - target: {fileID: 8028895227113571132, guid: 6cf165179ff6f0241bb4ecb20a64d9f4,
         type: 3}
@@ -43305,7 +43305,7 @@ PrefabInstance:
     - target: {fileID: 5257240131232628964, guid: d5172b54542f3944fa3b0898a0a992e7,
         type: 3}
       propertyPath: m_TagString
-      value: Gateways/Shed
+      value: Gateways/Shed Entrance
       objectReference: {fileID: 0}
     - target: {fileID: 3643032290213821307, guid: d5172b54542f3944fa3b0898a0a992e7,
         type: 3}
@@ -44268,7 +44268,7 @@ GameObject:
   - component: {fileID: 6208756434153807483}
   m_Layer: 0
   m_Name: Shed
-  m_TagString: Gateways/Shed
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

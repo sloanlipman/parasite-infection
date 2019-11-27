@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Infected Android
-  health: 50
-  maxHealth: 50
-  attackPower: 15
-  defensePower: 10
-  energyPoints: 50
-  maxEnergyPoints: 50
+  characterName: Malfunctioning Android
+  health: 71
+  maxHealth: 71
+  attackPower: 37
+  defensePower: 30
+  energyPoints: 71
+  maxEnergyPoints: 71
   speed: 0
   abilities:
   - {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   - Hydroblast
   - Barrage
   - Fireball
-  level: 1
+  level: 11
   experience: 50
   originalMaxHealth: 50
   originalMaxEP: 50

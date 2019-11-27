@@ -70,13 +70,16 @@ namespace BattleSystem {
     }
 
     public override void LevelUp() {
+      CharacterController characterController = FindObjectOfType<CharacterController>();
       base.LevelUp();
       List<string> stats = new List<string>();
       foreach (var stat in upgradePointsDictionary) {
         stats.Add(stat.Key.ToString());
       }
-
-      stats.ForEach(stat => upgradePointsDictionary[stat]++);
+      stats.ForEach(stat => {
+        upgradePointsDictionary[stat]++;
+        characterController.ApplyUpgradePoint(stat, this);
+      });
       int maxRoll = upgradePointsDictionary.Count;
       int dieRoll = Random.Range(0, maxRoll);
       if (dieRoll == maxRoll) {
@@ -85,6 +88,7 @@ namespace BattleSystem {
     // Give enemies an extra random boost
         string statToIncrease = stats[dieRoll];
         upgradePointsDictionary[statToIncrease]++;
+        characterController.ApplyUpgradePoint(statToIncrease, this);
       }
 
       health = maxHealth;

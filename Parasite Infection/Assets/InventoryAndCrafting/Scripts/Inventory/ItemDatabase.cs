@@ -112,7 +112,7 @@ public class ItemDatabase : MonoBehaviour {
       {"Equippable", 0},
       {"Crafting", 0}
       }),
-      new Item(12, "Energy pack", "Restores 10 EP", 
+      new Item(12, "Energy Pack", "Restores 10 EP",
       new Dictionary<string, int> {
       {"Value", 5 },
       {"Energy", 10},

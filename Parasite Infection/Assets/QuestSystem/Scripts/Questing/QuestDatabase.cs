@@ -43,10 +43,17 @@ namespace QuestSystem {
     public void CompletePendingQuests() {
       if (pendingQuests.Count > 0) {
         pendingQuests.ForEach(quest => {
+          Debug.Log("Pending quest: " + quest.questName);
           quest.GrantReward();
           EventController.QuestCompleted(quest);
         });
       }
+    }
+
+    public bool IsQuestPending(string slug) {
+      Quest pendingQuest;
+      pendingQuest = pendingQuests.Find(quest => quest.slug == slug);
+      return pendingQuest != null;
     }
 
     public void ClearPendingQuests() {

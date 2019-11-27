@@ -55,7 +55,7 @@ namespace BattleSystem {
     public void Hurt (int amount) {
       int damageAmount;
       if (amount < defensePower) {
-        damageAmount = Random.Range(0, amount + 1);
+        damageAmount = Random.Range(0, amount / 2);
       }
       else {
         damageAmount = amount - defensePower;
@@ -110,7 +110,7 @@ namespace BattleSystem {
           powerToAdd =  upgradePointsDictionary[abilityToCast.abilityName];
         }
         int power = ability.power + powerToAdd;
-        abilityToCast.Cast(targetCharacter, power);
+        abilityToCast.Cast(this, targetCharacter, power);
       }
       return successful;
     }

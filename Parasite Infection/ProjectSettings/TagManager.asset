@@ -32,6 +32,9 @@ TagManager:
   - Gateways/Biosphere
   - Gateways/Shed
   - Act 2 Boss
+  - Gateways/Shed Entrance
+  - Gateways/Shed Exit
+  - Malfunctioning Android
   layers:
   - Default
   - TransparentFX

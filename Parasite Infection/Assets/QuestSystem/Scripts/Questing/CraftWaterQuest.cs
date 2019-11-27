@@ -8,7 +8,7 @@ public class CraftWaterQuest : Quest {
     slug = "CraftWaterQuest";    
     questName = "Craft Water Module";
     description = "Alan needs a Water Module!";
-    itemRewards = new List<string>() { "Medkit", "Energy pack" };
+    itemRewards = new List<string>() { "Medkit", "Energy Pack" };
     goal = new CollectionGoal(1, 3, this);
     inventoryController = FindObjectOfType<InventoryController>();
 

@@ -10,7 +10,7 @@ namespace BattleSystem {
 
     public override void SetDefaultValues() {
       if (level == 0 || upgradePointsDictionary.Count == 0) {
-        upgradePoints = 1;
+        upgradePoints = 0;
         modSlots = 1;
       }
       experience = 0;

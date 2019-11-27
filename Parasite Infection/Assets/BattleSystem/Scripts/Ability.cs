@@ -25,11 +25,11 @@ namespace BattleSystem {
       }
     }
 
-    public void Cast(BattleCharacter target, int power) {
+    public void Cast(BattleCharacter caster, BattleCharacter target, int power) {
       targetPosition = target.transform.position;
-      Debug.Log(abilityName + " was cast on " + target.name + "!");
       if (abilityType == AbilityType.Attack) {
-        target.Hurt(power);
+        int damage = Random.Range(power, power + caster.level); // Experimental
+        target.Hurt(damage);
       } else if (abilityType == AbilityType.Heal) {
         target.Heal(power);
       }

@@ -5,7 +5,7 @@ public class DefeatTentacleMonsterQuest : Quest {
   void Awake() {
     slug = "DefeatTentacleMonsterQuest";    
     questName = "Defeat the Tentacle Monster";
-    itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy pack" };
+    itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy Pack" };
     goal = new KillGoal(1, 31, this);
   }
 

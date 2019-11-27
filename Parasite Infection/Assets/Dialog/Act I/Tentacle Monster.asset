@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tentacle Monster
   m_EditorClassIdentifier: 
   dialog:
-  - 'Parasite: Your Captain was a weak fool.'
+  - 'Tentacle Monster: Your Captain was a weak fool.'
   - His body served its purpose to generate my spawns.
-  - But it's too late for you.
+  - It's too late for you to stop us.
   - YOU ARE ALREADY DEAD!

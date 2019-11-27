@@ -15,20 +15,46 @@ public class SceneController : MonoBehaviour {
   private MenuController menuController;
 
   private int currentAct = 0;
-  private bool shouldShowAlanInitialDialog = true;
-  private bool playerRecruitedMegan;
-  private bool hasJakeOrMeganBeenRemoved = false;
-  private bool hasPigAlienBeenRemoved = false;
-  private string playerRemovedFromParty;
-
   private bool hasPlayerDoneTutorial;
 
+// Central Core flags and strings
+  private bool shouldShowAlanInitialDialog = true;
+  private string deadCrewMember;
+  private string crewMemberWhoJoinedParty;
+  private bool hasJakeOrMeganBeenRemoved = false;
+  private bool hasPlayerMadeAct1Decision = false;
+
+// Biosphere
+  private bool hasPigAlienBeenRemoved = false;
+  private bool isMalfunctioningAndroidDefeated = false;
+
+// Shed
+  private string playerRemovedFromPartyForOctopusFight;
+
   public void Save() {
-    ES3.Save<int>("CurrentAct", currentAct);
+    ES3.Save<int>("currentAct", currentAct, "SceneController.json");
+    ES3.Save<bool>("hasPlayerDoneTutorial", hasPlayerDoneTutorial, "SceneController.json");
+    ES3.Save<bool>("shouldShowAlanInitialDialog", shouldShowAlanInitialDialog, "SceneController.json");
+    ES3.Save<string>("deadCrewMember", deadCrewMember, "SceneController.json");
+    ES3.Save<string>("crewMemberWhoJoinedParty", crewMemberWhoJoinedParty, "SceneController.json");
+    ES3.Save<bool>("hasJakeOrMeganBeenRemoved", hasJakeOrMeganBeenRemoved, "SceneController.json");
+    ES3.Save<bool>("hasPlayerMadeAct1Decision", hasPlayerMadeAct1Decision, "SceneController.json");
+    ES3.Save<bool>("hasPigAlienBeenRemoved", hasPigAlienBeenRemoved, "SceneController.json");
+    ES3.Save<bool>("isMalfunctioningAndroidDefeated", isMalfunctioningAndroidDefeated, "SceneController.json");
+    ES3.Save<string>("playerRemovedFromPartyForOctopusFight", playerRemovedFromPartyForOctopusFight, "SceneController.json");
   }
 
   public void Load() {
-    currentAct = ES3.Load<int>("CurrentAct");
+    currentAct = ES3.Load<int>("currentAct", "SceneController.json");
+    hasPlayerDoneTutorial = ES3.Load<bool>("hasPlayerDoneTutorial", "SceneController.json");
+    shouldShowAlanInitialDialog = ES3.Load<bool>("shouldShowAlanInitialDialog", "SceneController.json");
+    deadCrewMember = ES3.Load<string>("deadCrewMember", "SceneController.json");
+    crewMemberWhoJoinedParty = ES3.Load<string>("crewMemberWhoJoinedParty", "SceneController.json");
+    hasJakeOrMeganBeenRemoved = ES3.Load<bool>("hasJakeOrMeganBeenRemoved", "SceneController.json");
+    hasPlayerMadeAct1Decision = ES3.Load<bool>("hasPlayerMadeAct1Decision", "SceneController.json");
+    hasPigAlienBeenRemoved = ES3.Load<bool>("hasPigAlienBeenRemoved", "SceneController.json");
+    isMalfunctioningAndroidDefeated = ES3.Load<bool>("isMalfunctioningAndroidDefeated", "SceneController.json");
+    playerRemovedFromPartyForOctopusFight = ES3.Load<string>("playerRemovedFromPartyForOctopusFight", "SceneController.json");
   }
 
   private void Awake() {
@@ -58,12 +84,14 @@ public class SceneController : MonoBehaviour {
   }
 
   private void MakeAct1Decision(string choiceName) {
-    playerRecruitedMegan = choiceName == "Megan";
-    FinishEndOfAct1Dialog(choiceName);
+    deadCrewMember = choiceName;
+    crewMemberWhoJoinedParty = choiceName == "Megan" ? "Jake" : "Megan";
+    hasPlayerMadeAct1Decision = true;
+    FinishEndOfAct1Dialog();
   }
 
   private void MakeAct2Decision(string choiceName) {
-    playerRemovedFromParty = choiceName;
+    playerRemovedFromPartyForOctopusFight = choiceName;
     characterController.RemovePlayerFromParty(choiceName);
     ActivateOctopusMonster();
   }
@@ -139,7 +167,7 @@ public class SceneController : MonoBehaviour {
           ActivateOctopusMonster();
         }
 
-        if (questController.IsQuestCompleted("SlayOctopusMonster")) {
+        if (questController.IsQuestCompleted("SlayOctopusMonsterQuest")) {
           RemoveOctopusMonster();
         }
         break;
@@ -175,12 +203,27 @@ public class SceneController : MonoBehaviour {
     GameObject.FindGameObjectWithTag("Gateways/Biosphere").GetComponent<Gateway>().isActive = true;
   }
 
-  private void UnlockShed() {
-    GameObject.FindGameObjectWithTag("Gateways/Shed").GetComponent<Gateway>().isActive = true;
+  private void UnlockShedEntrance() {
+    GameObject.FindGameObjectWithTag("Gateways/Shed Entrance").GetComponent<Gateway>().isActive = true;
+  }
+
+  private void UnlockShedExit() {
+    GameObject.FindGameObjectWithTag("Gateways/Shed Exit").GetComponent<Gateway>().isActive = true;
   }
 
   private void RemoveBossTrigger() {
-    Destroy(GameObject.FindGameObjectWithTag("Boss Trigger"));
+    GameObject bossTrigger = GameObject.FindGameObjectWithTag("Boss Trigger");
+    if (bossTrigger != null) {
+      Destroy(bossTrigger);
+    }
+  }
+
+  public void DefeatMalfunctioningAndroid() {
+    isMalfunctioningAndroidDefeated = true;
+  }
+
+  public bool IsMalfunctioningAndroidDefeated() {
+    return isMalfunctioningAndroidDefeated;
   }
 
   public void StartKillBlobsQuestCompletedDialog() {
@@ -206,7 +249,7 @@ public class SceneController : MonoBehaviour {
 
   public void StartDefeatTentacleMonsterQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Pig Farmer: Thanks for the help!",
+      "Tentacle Monster: IMPOSSIBLE!!!",
       "How could a human defeat my spawn?",
       "I won't forget this... Barry...",
       "Alan: Let's head back to the teleporter.",
@@ -247,7 +290,7 @@ public class SceneController : MonoBehaviour {
   }
 
   public void StartEndOfAct1Dialog() {
-    RemoveBossTrigger();
+    // RemoveBossTrigger();
     string[] dialog = new string[] {
       "Android: Yo. Now I'm only reading one alien.",
       "Alan: One of them must have been mind controlled.",
@@ -269,12 +312,20 @@ public class SceneController : MonoBehaviour {
 
   public void StartDefeatOctopusMonsterQuestCompletedDialog() {
     // TODO FILL THIS IN
+    RemoveOctopusMonster();
     currentAct = 3;
-    UnlockShed(); // TODO make this load act 3
+    characterController.AddPlayerToParty(playerRemovedFromPartyForOctopusFight);
+    UnlockShedExit(); // TODO make this load act 3
   }
 
   private void ActivateOctopusMonster() {
-    GameObject.FindGameObjectWithTag("Act 2 Boss").GetComponentInChildren<GameObject>(true).SetActive(true);
+    GameObject octopusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
+    if (octopusMonsterParent != null) {
+      NPC octopusMonster = octopusMonsterParent.GetComponentInChildren<NPC>(true);
+      if (octopusMonster != null) {
+        octopusMonster.gameObject.SetActive(true);
+      }
+    }
   }
 
   private void RemoveOctopusMonster() {
@@ -286,37 +337,29 @@ public class SceneController : MonoBehaviour {
 
   private void OpenDecisionPanelForAct1() {
     decisionPanel.gameObject.SetActive(true);
-    decisionPanel.SetTitle("Whom should we save?");
+    decisionPanel.SetTitle("Who is infected?");
     decisionPanel.AddChoice("Megan");
     decisionPanel.AddChoice("Jake");
     EventController.OnDecisionMade += MakeAct1Decision;
     currentAct = 2;
     EventController.OnDialogPanelClosed -= OpenDecisionPanelForAct1;
-    // Load a transition scene that has more story or whatever
   }
 
   private void OpenDecisionPanelForAct2() {
     decisionPanel.gameObject.SetActive(true);
     decisionPanel.SetTitle("Who will stay back?");
     decisionPanel.AddChoice("Alan");
-    decisionPanel.AddChoice(playerRecruitedMegan ? "Megan" : "Jake");
+    decisionPanel.AddChoice(crewMemberWhoJoinedParty);
     EventController.OnDecisionMade += MakeAct2Decision;
     EventController.OnDialogPanelClosed -= OpenDecisionPanelForAct2;
-
   }
 
-  public void SplitPartyForAndroidBattle(Vector3 position, List<BattleSystem.Enemy> enemies, bool splitParty) {
-
-    battleLauncher.PrepareBattle(position, enemies, splitParty);
-  }
-
-  private void FinishEndOfAct1Dialog(string choiceName) {
-    string target = choiceName == "Megan" ? "Jake" : "Megan";
+  private void FinishEndOfAct1Dialog() {
     string[] dialog = new string[] {
-      string.Format("*You shoot {0}*", target),
+      string.Format("*You shoot {0}*", deadCrewMember),
       "Android: Alien life detected in the Biosphere.",
       "I'll go on ahead.",
-      string.Format("{0}, stick with these guys", choiceName),
+      string.Format("{0}, stick with these guys", crewMemberWhoJoinedParty),
       "Take this extra Heavy Module."
     };
     dialogPanel.StartDialog(dialog);
@@ -324,22 +367,21 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemoveJakeOrMegan() {
-    if (!hasJakeOrMeganBeenRemoved) {
+    if (!hasJakeOrMeganBeenRemoved && hasPlayerMadeAct1Decision) {
       NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
-      string nameToFind = playerRecruitedMegan ? "Jake" : "Megan";
       foreach(NPC n in npcs) {
-        if (n.npcName == nameToFind) {
+        if (n.npcName == deadCrewMember) {
           Destroy(n.gameObject);
         }
       }
-      string playerToAdd = playerRecruitedMegan ? "Megan" : "Jake";
-      characterController.AddPlayerToParty(playerToAdd);
+      characterController.AddPlayerToParty(crewMemberWhoJoinedParty);
       characterController.RemovePlayerFromParty("Android");
       int androidExperience = characterController.GetExperience("Android");
-      characterController.SetExperience(androidExperience, playerToAdd);
+      characterController.SetExperience(androidExperience, crewMemberWhoJoinedParty);
       inventoryController.GiveItem("Heavy Module");
       hasJakeOrMeganBeenRemoved = true;
     }
+    EventController.OnDialogPanelClosed -= RemoveJakeOrMegan;
     ActivateGatewayAtEndOfAct1();
   }
 
@@ -353,7 +395,8 @@ public class SceneController : MonoBehaviour {
       }
       hasPigAlienBeenRemoved = true;
     }
+    EventController.OnDialogPanelClosed -= RemovePigAlien;
 
-    UnlockShed();
+    UnlockShedEntrance();
   }
 }

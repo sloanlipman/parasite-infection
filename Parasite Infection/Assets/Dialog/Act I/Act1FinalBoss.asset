@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog:
   - 'Alan: What are you guys doing down here?'
-  - This area is off limits
+  - This area is off-limits.
   - 'Android: Scanning for alien lifeforms.'
   - Barry... they're compromised.
   - 'Alan: We''ve gotta take them out'

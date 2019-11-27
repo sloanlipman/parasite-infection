@@ -7,7 +7,7 @@ public class Act1FinalBossQuest : Quest {
   void Awake() {
     slug = "Act1FinalBossQuest";    
     questName = "Defeat the Sketchy Crewmembers";
-    itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy pack" };
+    itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy Pack" };
     goal = new KillGoal(1, 32, this);
   }
 

@@ -101,6 +101,7 @@ namespace BattleSystem {
         p.energyPoints = member.energyPoints;
         p.experience += xp;
         Debug.Log(p.characterName + " Got XP: " + xp + ". Current XP is: " + p.experience);
+        LevelUp(p);
       });
     }
 
@@ -134,6 +135,37 @@ namespace BattleSystem {
 
     public int NextLevel(int currentLevel) {
       return Mathf.RoundToInt(0.04f * Mathf.Pow(currentLevel, 3) + 0.8f * Mathf.Pow(currentLevel, 2) + 2 * currentLevel);
+    }
+
+    public void ApplyUpgradePoint(string key, BattleCharacter character) {
+        switch(key) {
+          case "HP": {
+            character.maxHealth++;
+            character.health++;
+            break;
+          }
+
+          case "EP": {
+            character.maxEnergyPoints++;
+            character.energyPoints++;
+            break;
+          }
+
+          case "Attack": {
+            character.attackPower++;
+            break;
+          }
+
+          case "Defense": {
+            character.defensePower++;
+            break;
+          }
+
+          default: {
+            // Do nothing. All other cases are abilities and are handled at the time of battle
+            break;
+          }
+        }
     }
   }
 }

@@ -82,6 +82,10 @@ namespace QuestSystem {
       return questDatabase.Completed(questName);
     }
 
+    public bool IsQuestPending(string slug) {
+      return questDatabase.IsQuestPending(slug);
+    }
+
     public Quest AssignQuest(string questSlug, bool loadingFromSave = false) {
       bool isNewQuest = false;
       Quest questToAdd = null;

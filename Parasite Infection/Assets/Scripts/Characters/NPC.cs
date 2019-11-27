@@ -12,6 +12,7 @@ public class NPC : Character {
   [SerializeField] private string questName;
   private QuestSystem.Quest quest;
   private QuestSystem.QuestController questController;
+  private SceneController sceneController;
 
   [SerializeField] private DialogData dialogData;
   [SerializeField] private DialogData questCompletedDialogData;
@@ -33,6 +34,7 @@ public class NPC : Character {
 
   private void Awake() {
     FindDialogPanel();
+    sceneController = FindObjectOfType<SceneController>();
   }
   
   private void Start() {
@@ -45,14 +47,17 @@ public class NPC : Character {
 
   public void Interact(Character player = null) {
     this.player = player;
-    if (GetComponent<BattleLaunchCharacter>() != null) {
-      EventController.OnDialogPanelClosed += StartBattle;
+    if (
+      GetComponent<BattleLaunchCharacter>() != null &&
+      IsCharacterMalfunctiongAndroidOrIsTheAndroidDefeated()
+    ) {
+        EventController.OnDialogPanelClosed += StartBattle;
     }
     if (questName != "") { // If NPC gives a quest
       if (quest == null && !IsQuestAssigned() && !IsQuestCompleted()) {
         quest = questController.AssignQuest(questName);
       }
-      if (quest == null & questCompletedDialogData != null) {
+      if (quest == null && questCompletedDialogData != null) {
         dialogData = questCompletedDialogData;
       }
     }
@@ -60,7 +65,10 @@ public class NPC : Character {
       if (dialog == null) {
         FindDialogPanel();
       }
-      dialog.StartDialog(dialogData.dialog);
+      if (IsCharacterMalfunctiongAndroidOrIsTheAndroidDefeated()) {
+        dialog.StartDialog(dialogData.dialog);
+      }
+
       EventController.OnDialogPanelClosed += UnfreezeTime;
     }
   }
@@ -73,6 +81,7 @@ public class NPC : Character {
     if (this.player != null) {
      GetComponent<BattleLaunchCharacter>().PrepareBattle(this.player);
     }
+    EventController.OnDialogPanelClosed -= StartBattle;
   }
 
   private void FindDialogPanel() {
@@ -110,5 +119,18 @@ public class NPC : Character {
       isQuestCompleted = true;
     }
     return isQuestCompleted;
+  }
+
+  private bool IsCharacterMalfunctioningAndroid() {
+    return npcName == "Malfunctioning Android";
+  }
+
+  private bool IsCharacterMalfunctiongAndroidOrIsTheAndroidDefeated() {
+    return (
+      !IsCharacterMalfunctioningAndroid() || (
+        IsCharacterMalfunctioningAndroid() &&
+        !sceneController.IsMalfunctioningAndroidDefeated()
+      )
+    );
   }
 }

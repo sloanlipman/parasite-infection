@@ -7,7 +7,7 @@ public class KillBlobsQuest : Quest {
     slug = "KillBlobsQuest";    
     questName = "Kill Blobs";
     description = "Let's see you kill some blobs";
-    itemRewards = new List<string>() { "Fire Module", "Medkit", "Energy pack" };
+    itemRewards = new List<string>() { "Fire Module", "Medkit", "Energy Pack" };
     goal = new KillGoal(2, 0, this);
     expReward = 5;
   }

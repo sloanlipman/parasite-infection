@@ -11,18 +11,19 @@ public class UIUpgradePointPanel : MonoBehaviour {
   [SerializeField] Button upgradePointButton;
   private List<Button> buttonList = new List<Button>();
   private UIPlayerInfoPanel playerInfoPanel;
+  private BattleSystem.CharacterController characterController;
 
 
   private void Awake() {
     gameObject.SetActive(false);
     partyPanel = FindObjectOfType<UIPartyPanel>();
     playerInfoPanel = FindObjectOfType<UIPlayerInfoPanel>();
+    characterController = FindObjectOfType<BattleSystem.CharacterController>();
   }
 
   private void Update() {
     bool hasUpgradePointsToSpend =  partyMember.HasUpgradePointsToSpend();
     buttonList.ForEach(button => button.interactable = hasUpgradePointsToSpend);
-
   }
 
   public void Populate() {
@@ -42,29 +43,7 @@ public class UIUpgradePointPanel : MonoBehaviour {
         UpdateButtonLabel(button, key, partyMember.upgradePointsDictionary[key].ToString());
         partyMember.SpendUpgradePoint();
 
-        switch(key) {
-          case "HP": {
-            partyMember.maxHealth++;
-            partyMember.health++;
-            break;
-          }
-
-          case "EP": {
-            partyMember.maxEnergyPoints++;
-            partyMember.energyPoints++;
-            break;
-          }
-
-          case "Attack": {
-            partyMember.attackPower++;
-            break;
-          }
-
-          case "Defense": {
-            partyMember.defensePower++;
-            break;
-          }
-        }
+        characterController.ApplyUpgradePoint(key, (BattleCharacter) partyMember);
         playerInfoPanel.Populate(partyMember.characterName);
       });
 

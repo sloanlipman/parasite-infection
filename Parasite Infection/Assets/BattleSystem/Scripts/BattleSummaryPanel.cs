@@ -10,6 +10,7 @@ namespace BattleSystem {
     [SerializeField] private Text xpText;
     [SerializeField] private Button loadLastSave;
     [SerializeField] private Button backToWorld;
+    private SceneController sceneController;
     private BattleLauncher battleLauncher;
     private QuestSystem.QuestController questController;
 
@@ -18,6 +19,7 @@ namespace BattleSystem {
     private void Awake() {
       questController = FindObjectOfType<QuestSystem.QuestController>();
       battleLauncher = FindObjectOfType<BattleLauncher>();
+      sceneController = FindObjectOfType<SceneController>();
       SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -27,6 +29,9 @@ namespace BattleSystem {
       xpText.text = "Experience Gained: " + xp;
       battleWasLost = false;
       loadLastSave.gameObject.SetActive(false);
+      if (questController.IsQuestPending("DefeatMalfunctioningAndroidQuest")) {
+        sceneController.DefeatMalfunctioningAndroid();
+      }
     }
 
     public void ShowDefeatPanel() {
