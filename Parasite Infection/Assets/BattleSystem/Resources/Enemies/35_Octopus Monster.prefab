@@ -96,26 +96,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Octopus Monster
-  health: 25
-  maxHealth: 25
-  attackPower: 7
-  defensePower: 6
-  energyPoints: 15
-  maxEnergyPoints: 15
+  health: 37
+  maxHealth: 37
+  attackPower: 21
+  defensePower: 18
+  energyPoints: 29
+  maxEnergyPoints: 29
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
+  - {fileID: 0}
   abilitiesList:
   - Heal
   - Hydroblast
-  level: 1
-  experience: 40
+  level: 7
+  experience: 60
   originalMaxHealth: 25
   originalMaxEP: 15
   originalAttackPower: 7
   originalDefensePower: 6
   enemyId: 35
-  originalExperience: 40
+  originalExperience: 60
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

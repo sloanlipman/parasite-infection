@@ -111,8 +111,8 @@ MonoBehaviour:
   experience: 50
   originalMaxHealth: 30
   originalMaxEP: 20
-  originalAttackPower: 10
-  originalDefensePower: 10
+  originalAttackPower: 15
+  originalDefensePower: 15
   enemyId: 6
   originalExperience: 50
 --- !u!61 &9192391036177522714

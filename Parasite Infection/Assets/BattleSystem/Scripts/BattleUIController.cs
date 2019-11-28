@@ -52,7 +52,7 @@ namespace BattleSystem {
     public void ToggleAbilityPanel(bool state) {
       abilityPanel.SetActive(state);
       if (state) {
-        BuildAbilityList(BattleController.Instance.GetCurrentCharacter().abilities);
+        BuildAbilityList(BattleController.Instance.GetCurrentCharacter().GetAbilities());
       }
     }
 

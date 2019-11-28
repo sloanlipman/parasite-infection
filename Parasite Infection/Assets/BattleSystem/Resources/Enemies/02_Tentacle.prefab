@@ -110,8 +110,8 @@ MonoBehaviour:
   - Fireball
   level: 1
   experience: 13
-  originalMaxHealth: 35
-  originalMaxEP: 35
+  originalMaxHealth: 20
+  originalMaxEP: 20
   originalAttackPower: 10
   originalDefensePower: 10
   enemyId: 2

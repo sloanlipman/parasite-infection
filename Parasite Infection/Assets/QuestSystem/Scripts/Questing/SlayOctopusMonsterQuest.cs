@@ -7,7 +7,7 @@ public class SlayOctopusMonsterQuest : Quest {
     slug = "SlayOctopusMonsterQuest";    
     questName = "Slay the Octopus Monster";
     itemRewards = new List<string>() { "Medkit", "Energy Pack", "Medkit", "Energy Pack" };
-    goal = new KillGoal(2, 0, this);
+    goal = new KillGoal(1, 35, this);
     expReward = 5;
   }
 

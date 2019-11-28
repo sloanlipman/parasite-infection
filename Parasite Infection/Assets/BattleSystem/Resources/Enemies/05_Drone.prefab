@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2822308888312228272}
   - component: {fileID: 9192391036177522714}
   m_Layer: 0
-  m_Name: 5_Drone
+  m_Name: 05_Drone
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,25 +96,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Drone
-  health: 25
-  maxHealth: 25
-  attackPower: 7
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
+  health: 46
+  maxHealth: 46
+  attackPower: 28
+  defensePower: 23
+  energyPoints: 35
+  maxEnergyPoints: 35
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
+  - {fileID: 0}
   abilitiesList:
   - Barrage
   - Hydroblast
   - Fireball
-  level: 1
+  level: 11
   experience: 25
   originalMaxHealth: 25
   originalMaxEP: 15
-  originalAttackPower: 7
-  originalDefensePower: 3
+  originalAttackPower: 15
+  originalDefensePower: 10
   enemyId: 5
   originalExperience: 25
 --- !u!61 &9192391036177522714

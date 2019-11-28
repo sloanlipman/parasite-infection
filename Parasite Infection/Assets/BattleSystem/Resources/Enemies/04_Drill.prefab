@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2822308888312228272}
   - component: {fileID: 9192391036177522714}
   m_Layer: 0
-  m_Name: 4_Drill
+  m_Name: 04_Drill
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,23 +96,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Drill
-  health: 40
-  maxHealth: 40
-  attackPower: 12
-  defensePower: 25
-  energyPoints: 40
-  maxEnergyPoints: 40
+  health: 64
+  maxHealth: 64
+  attackPower: 35
+  defensePower: 47
+  energyPoints: 63
+  maxEnergyPoints: 63
   speed: 0
   abilities:
-  - {fileID: 2214528129449449433, guid: be70bc33db1b5b540987289c70d7886e, type: 3}
+  - {fileID: 0}
   abilitiesList:
   - Heal
-  level: 1
+  level: 12
   experience: 20
-  originalMaxHealth: 40
+  originalMaxHealth: 25
   originalMaxEP: 40
   originalAttackPower: 12
-  originalDefensePower: 25
+  originalDefensePower: 10
   enemyId: 4
   originalExperience: 20
 --- !u!61 &9192391036177522714

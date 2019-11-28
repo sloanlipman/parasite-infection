@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("item", "isCraftingSlot", "isCraftingResultSlot", "isPlayerEquipmentSlot")]
+	[ES3PropertiesAttribute("item", "isCraftingSlot", "isCraftingResultSlot", "isPlayerEquipmentSlot", "isConsumableInventorySlot", "isCraftingInventorySlot", "isConsumableItemSlot")]
 	public class ES3Type_UIItem : ES3ComponentType
 	{
 		public static ES3Type Instance = null;
@@ -22,6 +22,9 @@ namespace ES3Types
 			writer.WriteProperty("isCraftingSlot", instance.isCraftingSlot, ES3Type_bool.Instance);
 			writer.WriteProperty("isCraftingResultSlot", instance.isCraftingResultSlot, ES3Type_bool.Instance);
 			writer.WriteProperty("isPlayerEquipmentSlot", instance.isPlayerEquipmentSlot, ES3Type_bool.Instance);
+			writer.WriteProperty("isConsumableInventorySlot", instance.isConsumableInventorySlot, ES3Type_bool.Instance);
+			writer.WriteProperty("isCraftingInventorySlot", instance.isCraftingInventorySlot, ES3Type_bool.Instance);
+			writer.WriteProperty("isConsumableItemSlot", instance.isConsumableItemSlot, ES3Type_bool.Instance);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
@@ -43,6 +46,15 @@ namespace ES3Types
 						break;
 					case "isPlayerEquipmentSlot":
 						instance.isPlayerEquipmentSlot = reader.Read<System.Boolean>(ES3Type_bool.Instance);
+						break;
+					case "isConsumableInventorySlot":
+						instance.isConsumableInventorySlot = reader.Read<System.Boolean>(ES3Type_bool.Instance);
+						break;
+					case "isCraftingInventorySlot":
+						instance.isCraftingInventorySlot = reader.Read<System.Boolean>(ES3Type_bool.Instance);
+						break;
+					case "isConsumableItemSlot":
+						instance.isConsumableItemSlot = reader.Read<System.Boolean>(ES3Type_bool.Instance);
 						break;
 					default:
 						reader.Skip();

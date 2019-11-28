@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("upgradePoints", "modSlots", "characterName", "health", "maxHealth", "attackPower", "defensePower", "energyPoints", "maxEnergyPoints", "speed", "abilities", "abilitiesList", "level", "experience", "equipment", "upgradePointsDictionary")]
+	[ES3PropertiesAttribute("upgradePoints", "modSlots", "characterName", "health", "maxHealth", "attackPower", "defensePower", "energyPoints", "maxEnergyPoints", "speed", "abilities", "abilitiesList", "level", "experience", "equipment", "originalMaxHealth", "originalMaxEP", "originalAttackPower", "originalDefensePower", "upgradePointsDictionary")]
 	public class ES3Type_PartyMember : ES3ComponentType
 	{
 		public static ES3Type Instance = null;
@@ -18,7 +18,7 @@ namespace ES3Types
 		{
 			var instance = (BattleSystem.PartyMember)obj;
 			
-			writer.WritePrivateField("upgradePoints", instance);
+			writer.WriteProperty("upgradePoints", instance.upgradePoints, ES3Type_int.Instance);
 			writer.WriteProperty("modSlots", instance.modSlots, ES3Type_int.Instance);
 			writer.WriteProperty("characterName", instance.characterName, ES3Type_string.Instance);
 			writer.WriteProperty("health", instance.health, ES3Type_int.Instance);
@@ -27,12 +27,14 @@ namespace ES3Types
 			writer.WriteProperty("defensePower", instance.defensePower, ES3Type_int.Instance);
 			writer.WriteProperty("energyPoints", instance.energyPoints, ES3Type_int.Instance);
 			writer.WriteProperty("maxEnergyPoints", instance.maxEnergyPoints, ES3Type_int.Instance);
-			writer.WriteProperty("speed", instance.speed, ES3Type_int.Instance);
-			writer.WriteProperty("abilities", instance.abilities);
 			writer.WriteProperty("abilitiesList", instance.abilitiesList);
 			writer.WriteProperty("level", instance.level, ES3Type_int.Instance);
 			writer.WriteProperty("experience", instance.experience, ES3Type_int.Instance);
 			writer.WriteProperty("equipment", instance.equipment, ES3Type_ItemArray.Instance);
+			writer.WriteProperty("originalMaxHealth", instance.originalMaxHealth, ES3Type_int.Instance);
+			writer.WriteProperty("originalMaxEP", instance.originalMaxEP, ES3Type_int.Instance);
+			writer.WriteProperty("originalAttackPower", instance.originalAttackPower, ES3Type_int.Instance);
+			writer.WriteProperty("originalDefensePower", instance.originalDefensePower, ES3Type_int.Instance);
 			writer.WriteProperty("upgradePointsDictionary", instance.upgradePointsDictionary);
 		}
 
@@ -45,8 +47,8 @@ namespace ES3Types
 				{
 					
 					case "upgradePoints":
-					reader.SetPrivateField("upgradePoints", reader.Read<System.Int32>(), instance);
-					break;
+						instance.upgradePoints = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
 					case "modSlots":
 						instance.modSlots = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
@@ -71,12 +73,6 @@ namespace ES3Types
 					case "maxEnergyPoints":
 						instance.maxEnergyPoints = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
-					case "speed":
-						instance.speed = reader.Read<System.Int32>(ES3Type_int.Instance);
-						break;
-					case "abilities":
-						instance.abilities = reader.Read<System.Collections.Generic.List<BattleSystem.Ability>>();
-						break;
 					case "abilitiesList":
 						instance.abilitiesList = reader.Read<System.Collections.Generic.List<System.String>>();
 						break;
@@ -88,6 +84,18 @@ namespace ES3Types
 						break;
 					case "equipment":
 						instance.equipment = reader.Read<Item[]>(ES3Type_ItemArray.Instance);
+						break;
+					case "originalMaxHealth":
+						instance.originalMaxHealth = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "originalMaxEP":
+						instance.originalMaxEP = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "originalAttackPower":
+						instance.originalAttackPower = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "originalDefensePower":
+						instance.originalDefensePower = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					case "upgradePointsDictionary":
 						instance.upgradePointsDictionary = reader.Read<System.Collections.Generic.Dictionary<System.String, System.Int32>>();

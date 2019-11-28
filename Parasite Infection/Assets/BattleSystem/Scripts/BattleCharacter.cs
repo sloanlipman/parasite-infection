@@ -12,8 +12,7 @@ namespace BattleSystem {
     public int defensePower;
     public int energyPoints;
     public int maxEnergyPoints;
-    public int speed;
-    public List<Ability> abilities = new List<Ability>();
+    protected List<Ability> abilities = new List<Ability>();
     public List<string> abilitiesList = new List<string>();
     public int level = 1;
     public int experience;
@@ -50,6 +49,18 @@ namespace BattleSystem {
 
     public Item[] GetEquipment() {
       return equipment;
+    }
+
+    public List<Ability> GetAbilities() {
+      return abilities;
+    }
+
+    public void AddAbility(Ability ability) {
+      abilities.Add(ability);
+    }
+
+    public void ClearAbilities() {
+      abilities.Clear();
     }
 
     public void Hurt (int amount) {

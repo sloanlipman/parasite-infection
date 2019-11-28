@@ -104,8 +104,6 @@ public class SceneController : MonoBehaviour {
   }
 
   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-    Debug.Log("Scene Controller OnSceneLoaded: " + scene.name);
-
     switch(scene.name) {
       case "Intro": {
         currentAct = 0;
@@ -155,7 +153,6 @@ public class SceneController : MonoBehaviour {
 
       case "Biosphere": {
         currentAct = 2;
-        // TODO add more stuff here
         if(questController.IsQuestCompleted("KillPigAlienQuest")) {
           RemovePigAlien();
         }
@@ -170,6 +167,11 @@ public class SceneController : MonoBehaviour {
         if (questController.IsQuestCompleted("SlayOctopusMonsterQuest")) {
           RemoveOctopusMonster();
         }
+        break;
+      }
+
+      case "Labs": {
+        currentAct = 3;
         break;
       }
 
@@ -311,7 +313,12 @@ public class SceneController : MonoBehaviour {
   }
 
   public void StartDefeatOctopusMonsterQuestCompletedDialog() {
-    // TODO FILL THIS IN
+    string[] dialog = new string[] {
+      string.Format("{0}: I've dismantled him."),
+      "He had some data about a potential cure.",
+      "Let's head down to the labs and check it out."
+    };
+    dialogPanel.StartDialog(dialog);
     RemoveOctopusMonster();
     currentAct = 3;
     characterController.AddPlayerToParty(playerRemovedFromPartyForOctopusFight);

@@ -126,19 +126,18 @@ namespace BattleSystem {
 
     public void LoadPlayerAbilities() {
       partyMembers.ForEach(member => {
-        for (int i = 0; i < member.abilities.Count; i++) {
-          member.abilities.Clear();
-          member.abilities.Add(GetAbility(member.abilitiesList[i]));
+        for (int i = 0; i < member.GetAbilities().Count; i++) {
+          member.GetAbilities().Clear();
+          member.AddAbility(GetAbility(member.abilitiesList[i]));
         }
       });
     }
 
     public void LoadEnemyAbilities() {
       enemyList.ForEach(enemy => {
-        for (int i = 0; i < enemy.abilities.Count; i++) {
-          enemy.abilities.Clear();
-          enemy.abilities.Add(GetAbility(enemy.abilitiesList[i]));
-          
+        for (int i = 0; i < enemy.GetAbilities().Count; i++) {
+          enemy.ClearAbilities();
+          enemy.AddAbility(GetAbility(enemy.abilitiesList[i]));
         }
       });
     }

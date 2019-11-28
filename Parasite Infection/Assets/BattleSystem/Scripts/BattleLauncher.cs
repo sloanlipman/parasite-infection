@@ -102,7 +102,7 @@ namespace BattleSystem {
       }
 
       players.ForEach(player => {
-        player.abilities.Clear();
+        player.ClearAbilities();
         player.abilitiesList.Clear();
       });
       BattleController.Instance.StartBattle(players, enemiesToUse);
@@ -126,8 +126,14 @@ namespace BattleSystem {
             maxEnemyId = questController.IsQuestCompleted("DefeatTentacleMonsterQuest") ? 3 : 1;
             break;
           }
+
           case 2: {
             maxEnemyId = 5;
+            break;
+          }
+
+          case 3: {
+            maxEnemyId = 8;
             break;
           }
         }

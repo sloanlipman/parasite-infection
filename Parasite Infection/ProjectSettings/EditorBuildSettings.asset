@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shed.unity
     guid: f421b288a52b9a847b95d9fe5765dd03
+  - enabled: 1
+    path: Assets/Scenes/Labs.unity
+    guid: e65d8dc04d8af2440989beacadc60f29
   m_configObjects: {}

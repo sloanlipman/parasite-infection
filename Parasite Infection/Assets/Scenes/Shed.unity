@@ -35040,12 +35040,17 @@ PrefabInstance:
     - target: {fileID: 970510091392043373, guid: d5172b54542f3944fa3b0898a0a992e7,
         type: 3}
       propertyPath: sceneName
-      value: Shed
+      value: Labs
       objectReference: {fileID: 0}
     - target: {fileID: 970510091392043373, guid: d5172b54542f3944fa3b0898a0a992e7,
         type: 3}
       propertyPath: spawnLocation.x
-      value: -7
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970510091392043373, guid: d5172b54542f3944fa3b0898a0a992e7,
+        type: 3}
+      propertyPath: spawnLocation.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7909192987300371645, guid: d5172b54542f3944fa3b0898a0a992e7, type: 3}

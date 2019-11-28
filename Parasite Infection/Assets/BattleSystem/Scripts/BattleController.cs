@@ -202,7 +202,7 @@ namespace BattleSystem {
             string abilityToAdd = GetListOfAlivePlayers()[i].AddAbilityFromEquipment(players[i].equipment[j]);
             if (abilityToAdd != "") {
               if (!DoesPlayerAlreadyHaveAbility(GetListOfAlivePlayers()[i], abilityToAdd))
-              GetListOfAlivePlayers()[i].abilities.Add(characterController.GetAbility(abilityToAdd));
+              GetListOfAlivePlayers()[i].AddAbility(characterController.GetAbility(abilityToAdd));
             }
           }
         }
@@ -211,15 +211,15 @@ namespace BattleSystem {
       for (int i = 0; i < enemies.Count; i++) {
         GetEnemyList().Add(spawnPoints[i].Spawn(enemies[i])); // Add Enemies to spawn points 0-2
         GetEnemyList()[i].upgradePointsDictionary = enemies[i].upgradePointsDictionary;
-        GetEnemyList()[i].abilities.Clear();
+        GetEnemyList()[i].ClearAbilities();
         for (int j = 0; j < GetEnemyList()[i].abilitiesList.Count; j++) {
-          GetEnemyList()[i].abilities.Add(characterController.GetAbility(GetEnemyList()[i].abilitiesList[j]));
+          GetEnemyList()[i].AddAbility(characterController.GetAbility(GetEnemyList()[i].abilitiesList[j]));
         }
       }
     }
 
     public bool DoesPlayerAlreadyHaveAbility(BattleCharacter player, string abilityName) {
-     return player.abilities.Contains(characterController.GetAbility(abilityName));
+     return player.GetAbilities().Contains(characterController.GetAbility(abilityName));
     }
 
     public BattleCharacter GetRandomPlayer() {
@@ -276,7 +276,7 @@ namespace BattleSystem {
         switch(actTurn) {
           case 0: {
             uiController.ToggleActionState(true);
-            uiController.BuildAbilityList(GetCurrentCharacter().abilities);
+            uiController.BuildAbilityList(GetCurrentCharacter().GetAbilities());
             uiController.BuildItemList();
             break;
           }

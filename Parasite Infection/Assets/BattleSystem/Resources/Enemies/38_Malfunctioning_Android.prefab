@@ -111,12 +111,12 @@ MonoBehaviour:
   - Fireball
   level: 11
   experience: 50
-  originalMaxHealth: 50
+  originalMaxHealth: 40
   originalMaxEP: 50
-  originalAttackPower: 15
-  originalDefensePower: 10
+  originalAttackPower: 20
+  originalDefensePower: 20
   enemyId: 38
-  originalExperience: 50
+  originalExperience: 75
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

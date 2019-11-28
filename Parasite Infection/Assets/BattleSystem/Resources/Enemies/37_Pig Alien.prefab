@@ -62,10 +62,10 @@ MonoBehaviour:
   experience: 25
   originalMaxHealth: 30
   originalMaxEP: 30
-  originalAttackPower: 10
-  originalDefensePower: 10
+  originalAttackPower: 18
+  originalDefensePower: 7
   enemyId: 37
-  originalExperience: 25
+  originalExperience: 30
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0
