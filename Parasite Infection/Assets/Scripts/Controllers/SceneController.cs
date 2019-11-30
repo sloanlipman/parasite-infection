@@ -167,6 +167,9 @@ public class SceneController : MonoBehaviour {
       case "Labs": {
         currentAct = 3;
         StartLabsDialog();
+        RemoveBirdMonster();
+        RemoveDinosaurMonster();
+        RemoveEvolvedBlob();
         break;
       }
 

@@ -114,7 +114,6 @@ public class NPC : Character {
 
   public bool IsQuestCompleted() {
     bool isQuestCompleted = false;
-    // if (questController.completedQuests.Find(quest => quest == this.questName) != null) {
       if (questController.IsQuestCompleted(questName)) {
       isQuestCompleted = true;
     }

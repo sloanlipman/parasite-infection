@@ -138,7 +138,7 @@ MonoBehaviour:
   IsMoving: 0
   wander: 1
   questName: 
-  dialogData: {fileID: 0}
+  dialogData: {fileID: 11400000, guid: 2c25e74e77fc0de4bb94ed0e19caaf0f, type: 2}
   questCompletedDialogData: {fileID: 0}
   npcName: Bird Monster
 --- !u!114 &8178023542986698376

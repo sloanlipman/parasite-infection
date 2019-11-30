@@ -138,7 +138,7 @@ MonoBehaviour:
   IsMoving: 0
   wander: 1
   questName: 
-  dialogData: {fileID: 11400000, guid: ef54eeae2a4518f4ab1c39f164adf8cb, type: 2}
+  dialogData: {fileID: 11400000, guid: a3f57b9cb8c0f9e439473d963ff634ba, type: 2}
   questCompletedDialogData: {fileID: 0}
   npcName: Tentacle Monster
 --- !u!114 &8178023542986698376

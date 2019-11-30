@@ -138,7 +138,7 @@ MonoBehaviour:
   IsMoving: 0
   wander: 1
   questName: 
-  dialogData: {fileID: 0}
+  dialogData: {fileID: 11400000, guid: f23422c5ae4863a4588eac5a879aedbe, type: 2}
   questCompletedDialogData: {fileID: 0}
   npcName: Evolved Blob
 --- !u!114 &8178023542986698376

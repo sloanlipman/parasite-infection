@@ -11,6 +11,9 @@ public class SynthesizeTheCureQuest : Quest {
     goal = new CollectionGoal(1, 13, this);
     inventoryController = FindObjectOfType<InventoryController>();
     questController = FindObjectOfType<QuestController>();
+    questController.AssignQuest("DefeatBirdMonsterQuest");
+    questController.AssignQuest("DefeatDinosaurMonsterQuest");
+    questController.AssignQuest("DefeatEvolvedBlobQuest");
   }
 
   public override void Complete() {
