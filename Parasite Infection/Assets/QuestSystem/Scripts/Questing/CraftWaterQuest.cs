@@ -10,12 +10,13 @@ public class CraftWaterQuest : Quest {
     itemRewards = new List<string>() { "Medkit", "Energy Pack" };
     goal = new CollectionGoal(1, 3, this);
     inventoryController = FindObjectOfType<InventoryController>();
-
-    inventoryController.GiveItem(9);
-    inventoryController.GiveItem(10);
-    inventoryController.GiveItem(7);
-
-    expReward = 10;
+    List<string> waterModuleItems = new List<string>(){
+      "Water Core",
+      "Battery",
+      "Integrated Circuit"
+    };
+    inventoryController.GiveItems(waterModuleItems);
+    expReward = 50;
   }
 
   public override void Complete() {

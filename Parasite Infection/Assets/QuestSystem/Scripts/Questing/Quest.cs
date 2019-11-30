@@ -38,10 +38,7 @@ namespace QuestSystem {
         member.experience += expReward;
         characterController.LevelUp(member);
       });
-      
-      foreach(string item in itemRewards) {
-        inventoryController.GiveItem(item);
-      }
+        inventoryController.GiveItems(itemRewards);
     }
   }
 }

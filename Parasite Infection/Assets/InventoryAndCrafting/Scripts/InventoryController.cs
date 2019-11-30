@@ -46,6 +46,10 @@ public class InventoryController : MonoBehaviour {
     inventoryToUse.GiveItem(item.id);
   }
 
+  public void GiveItems(List<string> itemNames) {
+    itemNames.ForEach(itemName => GiveItem(itemName));
+  }
+
   public void GiveItem(int id) {
     Item item = itemDatabase.GetItem(id);
     Inventory inventoryToUse = PerformSelectCorrectInventory(item);
