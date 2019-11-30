@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,16 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Bird Monster
-  health: 30
-  maxHealth: 30
-  attackPower: 10
-  defensePower: 10
-  energyPoints: 20
-  maxEnergyPoints: 20
+  health: 46
+  maxHealth: 46
+  attackPower: 34
+  defensePower: 36
+  energyPoints: 34
+  maxEnergyPoints: 34
   abilitiesList:
   - Heal
   - Fireball
-  level: 1
+  level: 8
   experience: 50
   originalMaxHealth: 30
   originalMaxEP: 20
