@@ -23,10 +23,12 @@ public class CraftRecipeDatabase : MonoBehaviour {
 
   void BuildCraftRecipeDatabase() {
     recipes = new List<CraftRecipe>() {
-      new CraftRecipe(1, new HashSet<int> {5, 9, 10}), // Heavy Suit
+      new CraftRecipe(1, new HashSet<int> {5, 9, 10}), // Heavy Module
       new CraftRecipe(2, new HashSet<int> {6, 9, 10}), // Fire Module,
       new CraftRecipe(3, new HashSet<int> {7, 9, 10}), // Water Module
-      new CraftRecipe(4, new HashSet<int> {8, 9, 10}) // Water Module
+      new CraftRecipe(19, new HashSet<int> {13, 14}), // Completed Cure
+      new CraftRecipe(13, new HashSet<int> {15, 15, 15}), // Cure
+      new CraftRecipe(14, new HashSet<int> {16, 17, 18}), // Delivery Device
     };
   }
 }

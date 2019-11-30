@@ -75,9 +75,6 @@ TagManager:
   - name: Background
     uniqueID: 3366023991
     locked: 0
-  - name: Decoration
-    uniqueID: 2419524619
-    locked: 0
   - name: Characters
     uniqueID: 1993003049
     locked: 0
@@ -86,6 +83,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 884288523
+    locked: 0
+  - name: Decoration
+    uniqueID: 2419524619
     locked: 0
   - name: UI Top Level
     uniqueID: 2589065835

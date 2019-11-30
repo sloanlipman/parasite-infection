@@ -95,30 +95,61 @@ public class ItemDatabase : MonoBehaviour {
       }),
       new Item(9, "Battery", "Required component to craft any module", 
       new Dictionary<string, int> {
-        {"Value", 100 },
         {"Crafting", 1},
         {"Equippable", 0}
       }),
       new Item(10, "Integrated Circuit", "Required component to craft any module", 
       new Dictionary<string, int> {
-      {"Value", 100 },
       {"Crafting", 1},
       {"Equippable", 0}
       }),
-      new Item(11, "Medkit", "Restores 5 HP", 
+      new Item(11, "Medkit", "Restores 10 HP", 
       new Dictionary<string, int> {
-      {"Value", 5 },
-      {"Health", 5},
+      {"Health", 10},
       {"Equippable", 0},
       {"Crafting", 0}
       }),
       new Item(12, "Energy Pack", "Restores 10 EP",
       new Dictionary<string, int> {
-      {"Value", 5 },
       {"Energy", 10},
       {"Equippable", 0},
       {"Crafting", 0}
-      })
+      }),
+      new Item(13, "Cure", "Needs a Delivery Device to be viable",
+      new Dictionary<string, int> {
+        {"Equippable", 0},
+        {"Crafting", 1}
+      }),
+      new Item(14, "Delivery Device", "Combine this with the Cure",
+      new Dictionary<string, int> {
+        {"Equippable", 0},
+        {"Crafting", 1}      
+      }),
+      new Item(15, "Alien DNA", "Kelly says we need 3 of these to make the cure",
+      new Dictionary<string, int> {
+        {"Equippable", 0},
+        {"Crafting", 1}      
+      }),
+      new Item(16, "Power Source", "This will power the Cure delivery device",
+      new Dictionary<string, int> {
+        {"Equippable", 0},
+        {"Crafting", 1}      
+      }),
+      new Item(17, "Injector", "This will be tough enough to pierce the Parasites' skin",
+      new Dictionary<string, int> {
+        {"Equippable", 0},
+        {"Crafting", 1}      
+      }),
+      new Item(18, "Stabilizer", "This will stabilize the Cure so it'll work",
+      new Dictionary<string, int> {
+        {"Equippable", 0},
+        {"Crafting", 1}      
+      }),
+      new Item(19, "Completed Cure", "This will cure the crew",
+      new Dictionary<string, int> {
+        {"Equippable", 0},
+        {"Crafting", 1}      
+      }),
     };
   }
 }
