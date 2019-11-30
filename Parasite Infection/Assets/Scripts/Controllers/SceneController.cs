@@ -79,6 +79,10 @@ public class SceneController : MonoBehaviour {
     Time.timeScale = 0;
   }
 
+  private string GetPronoun() {
+    return deadCrewMember == "Jake" ? "he" : "she";
+  }
+
   public void UnfreezeTime() {
     if (!menuController.IsGamePaused()) {
       Time.timeScale = 1;
@@ -167,9 +171,13 @@ public class SceneController : MonoBehaviour {
       case "Labs": {
         currentAct = 3;
         StartLabsDialog();
+        SetInfectedAndroidParty();
         RemoveBirdMonster();
         RemoveDinosaurMonster();
         RemoveEvolvedBlob();
+        RemoveInfectedAndroid();
+        ActivateEnhancedParasite();
+        RemoveEnhancedParasite();
         break;
       }
 
@@ -328,7 +336,7 @@ public class SceneController : MonoBehaviour {
     RemoveOctopusMonster();
     currentAct = 3;
     characterController.AddPlayerToParty(playerRemovedFromPartyForOctopusFight);
-    UnlockShedExit(); // TODO make this load act 3
+    UnlockShedExit();
   }
 
   private void ActivateOctopusMonster() {
@@ -350,6 +358,38 @@ public class SceneController : MonoBehaviour {
         Destroy(ocotpusMonsterParent);
       }
     }
+  }
+
+  private void RemoveInfectedAndroid() {
+    if (questController.IsQuestCompleted("DefeatInfectedAndroidQuest")) {
+      GameObject infectedAndroidGameObject = GameObject.FindGameObjectWithTag("Infected Android");
+      if (infectedAndroidGameObject != null) {
+        Destroy(infectedAndroidGameObject);
+      }
+    }
+    EventController.OnDialogPanelClosed -= RemoveInfectedAndroid;
+  }
+
+  private void ActivateEnhancedParasite() {
+    if (questController.IsQuestCompleted("DefeatInfectedAndroidQuest")) {
+      GameObject enhancedParasiteParent = GameObject.FindGameObjectWithTag("Act 3 Boss");
+      if (enhancedParasiteParent != null) {
+        NPC enhancedParasite = enhancedParasiteParent.GetComponentInChildren<NPC>(true);
+        if (enhancedParasite != null) {
+          enhancedParasite.gameObject.SetActive(true);
+        }
+      }
+    }
+  }
+
+  private void RemoveEnhancedParasite() {
+    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
+      GameObject enhancedParasite = GameObject.FindGameObjectWithTag("Act 3 Boss");
+      if (enhancedParasite != null) {
+        Destroy(enhancedParasite);
+      }
+    }
+    EventController.OnDialogPanelClosed -= RemoveEnhancedParasite;
   }
 
   private void OpenDecisionPanelForAct1() {
@@ -473,6 +513,52 @@ public class SceneController : MonoBehaviour {
       "Take the Gateway you come in through."
     };
     dialogPanel.StartDialog(dialog);
-    EventController.OnDialogPanelClosed += ActivateGatewayToLowerLabs;
+    ActivateGatewayToLowerLabs();
+  }
+
+  public void StartDefeatInfectedAndroidQuestCompletedDialog() {
+    string[] dialog = new string[] {
+      string.Format("Alan: Wait a second! Is that {0}!?", deadCrewMember),
+      "Barry! Use the cure!",
+      string.Format("We can bring {0} back to our side!", deadCrewMember),
+      string.Format("You inject {0} with the cure", deadCrewMember),
+      string.Format("but {0} begins to glow.", GetPronoun()),
+      string.Format("In a matter of seconds, {0} is not recognizable.", deadCrewMember),
+      "The cure appears to have failed.",
+      "You have no choice but to fight",
+      "the ally you already lost once before"
+    };
+
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += RemoveInfectedAndroid;
+    ActivateEnhancedParasite();
+  }
+
+  public void StartDefeatEnhancedParasiteQuestCompletedDialog() {
+    // TODO start dialog for Interlude here
+
+    string[] dialog = new string[] {
+      "Fill in later"
+    };
+
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += RemoveEnhancedParasite;
+
+  }
+
+  private void SetInfectedAndroidParty() {
+    BattleSystem.Enemy enemyToFind = characterController.FindEnemyByName(deadCrewMember);
+    BattleSystem.BattleLaunchCharacter infectedAndroid = null;
+
+    NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
+    foreach(NPC n in npcs) {
+      if (n.npcName == "Infected Android") {
+        infectedAndroid = n.GetComponent<BattleSystem.BattleLaunchCharacter>();
+      }
+    }
+
+    if (infectedAndroid != null && enemyToFind != null) {
+      infectedAndroid.AddEnemy(enemyToFind);
+    }
   }
 }

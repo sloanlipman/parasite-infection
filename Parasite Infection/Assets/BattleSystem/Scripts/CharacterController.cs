@@ -60,6 +60,10 @@ namespace BattleSystem {
       return characterDatabase.FindEnemyById(enemyId);
     }
 
+    public Enemy FindEnemyByName(string enemyName) {
+      return characterDatabase.FindEnemyByName(enemyName);
+    }
+
     private void Awake() {
       characterDatabase = GetComponent<CharacterDatabase>();
     }

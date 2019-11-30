@@ -71,12 +71,12 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7498502264579711652, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.64, y: 0.64}
@@ -137,8 +137,8 @@ MonoBehaviour:
   movementSpeed: 0
   IsMoving: 0
   wander: 1
-  questName: 
-  dialogData: {fileID: 0}
+  questName: DefeatInfectedAndroidQuest
+  dialogData: {fileID: 11400000, guid: 34ed5ba383eb5554197f873592482bd0, type: 2}
   questCompletedDialogData: {fileID: 0}
   npcName: Infected Android
 --- !u!114 &4259425398141726940
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 2822308888312228272, guid: 037fbce20d216be498dfb77bb28adc94, type: 3}
-  - {fileID: 2822308888312228272, guid: 6dfc9f65163e1d741b0fa88aaea6095d, type: 3}
-  - {fileID: 2822308888312228272, guid: 325fa45a4005b8142933af89c0f13a12, type: 3}
+  - {fileID: 2822308888312228272, guid: 6fa93b4fb701c624a83e84325b790183, type: 3}
+  - {fileID: 2822308888312228272, guid: 9e7107e518b2f0d4ab0d8d0dcf1a768e, type: 3}
   launcher: {fileID: 0}

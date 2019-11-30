@@ -146,6 +146,10 @@ namespace BattleSystem {
       return enemyList.Find(enemy => enemy.enemyId == enemyId);
     }
 
+    public Enemy FindEnemyByName(string enemyName) {
+      return enemyList.Find(enemy => enemy.characterName == enemyName);
+    }
+
     void BuildEnemyDatabase() {
       Enemy[] enemies = Resources.LoadAll<Enemy>("Enemies");
 

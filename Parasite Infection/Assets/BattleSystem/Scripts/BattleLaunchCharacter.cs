@@ -35,5 +35,11 @@ namespace BattleSystem {
         battleIsCompleted = true;
       }
     }
+
+    public void AddEnemy(Enemy enemy) {
+      if (enemies.Count < 3) {
+        enemies.Add(enemy);
+      }
+    }
   }
 }
