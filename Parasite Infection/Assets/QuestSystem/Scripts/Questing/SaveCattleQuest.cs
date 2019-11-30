@@ -5,7 +5,7 @@ public class SaveCattleQuest : Quest {
   void Awake() {
     slug = "SaveCattleQuest";    
     questName = "Defeat 10 Defense Drones";
-    itemRewards = new List<string>() { 
+    itemRewards = new List<string>() {
       "Medkit",
       "Medkit",
       "Medkit", 

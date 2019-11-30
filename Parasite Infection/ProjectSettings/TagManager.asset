@@ -35,6 +35,11 @@ TagManager:
   - Gateways/Shed Entrance
   - Gateways/Shed Exit
   - Malfunctioning Android
+  - Bird Monster
+  - Evolved Blob
+  - Dinosaur Monster
+  - Pig Alien
+  - Gateways/Lower Labs
   layers:
   - Default
   - TransparentFX

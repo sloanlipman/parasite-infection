@@ -15,6 +15,7 @@ public class DefeatEvolvedBlobQuest : Quest {
   }
 
   public override void GrantReward() {
+    sceneController.RemoveEvolvedBlob();
     base.GrantReward();
   }
 }

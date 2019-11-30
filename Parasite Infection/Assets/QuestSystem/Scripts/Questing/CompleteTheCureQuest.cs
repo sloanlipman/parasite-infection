@@ -22,6 +22,7 @@ public class CompleteTheCureQuest : Quest {
   }
 
   public override void GrantReward() {
+    sceneController.StartCompleteTheCureQuestCompletedDialog();
     base.GrantReward();
   }
 }

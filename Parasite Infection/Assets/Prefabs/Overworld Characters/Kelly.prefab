@@ -122,7 +122,8 @@ MonoBehaviour:
   wander: 0
   questName: CompleteTheCureQuest
   dialogData: {fileID: 11400000, guid: 8abf117a941974f47999325264308e68, type: 2}
-  questCompletedDialogData: {fileID: 0}
+  questCompletedDialogData: {fileID: 11400000, guid: c70a4ce72f880aa46a1dfa8352f7be96,
+    type: 2}
   npcName: Kelly
 --- !u!58 &7925530666122562807
 CircleCollider2D:

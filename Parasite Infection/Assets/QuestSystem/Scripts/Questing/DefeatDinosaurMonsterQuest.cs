@@ -15,6 +15,7 @@ public class DefeatDinosaurMonsterQuest : Quest {
   }
 
   public override void GrantReward() {
+    sceneController.RemoveDinosaurMonster();
     base.GrantReward();
   }
 }

@@ -15,6 +15,7 @@ public class DefeatBirdMonsterQuest : Quest {
   }
 
   public override void GrantReward() {
+    sceneController.RemoveBirdMonster();
     base.GrantReward();
   }
 }

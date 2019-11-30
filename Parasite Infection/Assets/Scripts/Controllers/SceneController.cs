@@ -25,11 +25,13 @@ public class SceneController : MonoBehaviour {
   private bool hasPlayerMadeAct1Decision = false;
 
 // Biosphere
-  private bool hasPigAlienBeenRemoved = false;
   private bool isMalfunctioningAndroidDefeated = false;
 
 // Shed
   private string playerRemovedFromPartyForOctopusFight;
+
+// Labs
+  private bool shouldShowStartLabsDialog = true;
 
   public void Save() {
     ES3.Save<int>("currentAct", currentAct, "SceneController.json");
@@ -39,22 +41,22 @@ public class SceneController : MonoBehaviour {
     ES3.Save<string>("crewMemberWhoJoinedParty", crewMemberWhoJoinedParty, "SceneController.json");
     ES3.Save<bool>("hasJakeOrMeganBeenRemoved", hasJakeOrMeganBeenRemoved, "SceneController.json");
     ES3.Save<bool>("hasPlayerMadeAct1Decision", hasPlayerMadeAct1Decision, "SceneController.json");
-    ES3.Save<bool>("hasPigAlienBeenRemoved", hasPigAlienBeenRemoved, "SceneController.json");
     ES3.Save<bool>("isMalfunctioningAndroidDefeated", isMalfunctioningAndroidDefeated, "SceneController.json");
     ES3.Save<string>("playerRemovedFromPartyForOctopusFight", playerRemovedFromPartyForOctopusFight, "SceneController.json");
+    ES3.Save<bool>("shouldShowStartLabsDialog", shouldShowStartLabsDialog, "SceneController.json");
   }
 
   public void Load() {
-    currentAct = ES3.Load<int>("currentAct", "SceneController.json");
-    hasPlayerDoneTutorial = ES3.Load<bool>("hasPlayerDoneTutorial", "SceneController.json");
-    shouldShowAlanInitialDialog = ES3.Load<bool>("shouldShowAlanInitialDialog", "SceneController.json");
-    deadCrewMember = ES3.Load<string>("deadCrewMember", "SceneController.json");
-    crewMemberWhoJoinedParty = ES3.Load<string>("crewMemberWhoJoinedParty", "SceneController.json");
-    hasJakeOrMeganBeenRemoved = ES3.Load<bool>("hasJakeOrMeganBeenRemoved", "SceneController.json");
-    hasPlayerMadeAct1Decision = ES3.Load<bool>("hasPlayerMadeAct1Decision", "SceneController.json");
-    hasPigAlienBeenRemoved = ES3.Load<bool>("hasPigAlienBeenRemoved", "SceneController.json");
-    isMalfunctioningAndroidDefeated = ES3.Load<bool>("isMalfunctioningAndroidDefeated", "SceneController.json");
-    playerRemovedFromPartyForOctopusFight = ES3.Load<string>("playerRemovedFromPartyForOctopusFight", "SceneController.json");
+    currentAct = ES3.Load<int>("currentAct", "SceneController.json", 1);
+    hasPlayerDoneTutorial = ES3.Load<bool>("hasPlayerDoneTutorial", "SceneController.json", false);
+    shouldShowAlanInitialDialog = ES3.Load<bool>("shouldShowAlanInitialDialog", "SceneController.json", true);
+    deadCrewMember = ES3.Load<string>("deadCrewMember", "SceneController.json", "");
+    crewMemberWhoJoinedParty = ES3.Load<string>("crewMemberWhoJoinedParty", "SceneController.json", "");
+    hasJakeOrMeganBeenRemoved = ES3.Load<bool>("hasJakeOrMeganBeenRemoved", "SceneController.json", false);
+    hasPlayerMadeAct1Decision = ES3.Load<bool>("hasPlayerMadeAct1Decision", "SceneController.json", false);
+    isMalfunctioningAndroidDefeated = ES3.Load<bool>("isMalfunctioningAndroidDefeated", "SceneController.json", false);
+    playerRemovedFromPartyForOctopusFight = ES3.Load<string>("playerRemovedFromPartyForOctopusFight", "SceneController.json", "");
+    shouldShowStartLabsDialog = ES3.Load<bool>("shouldShowStartLabsDialog", "SceneController.json", true);
   }
 
   private void Awake() {
@@ -136,42 +138,35 @@ public class SceneController : MonoBehaviour {
             dialogPanel.StartDialog(dialog);
             shouldShowAlanInitialDialog = false;
           }
-        } else if (questController.IsQuestCompleted("CraftWaterQuest")) {
           OpenGateToTentacleMonster();
-        }
 
-        if (questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
           RemoveTentacleMonster(); // Internally calls to open the gateway
-        }
 
         if (questController.IsQuestCompleted("Act1FinalBossQuest")) {
           RemoveBossTrigger();
           RemoveJakeOrMegan(); // Internally opens gateway to biosphere
         }
-        break;
+      }
+      break;
+
       }
 
       case "Biosphere": {
         currentAct = 2;
-        if(questController.IsQuestCompleted("KillPigAlienQuest")) {
           RemovePigAlien();
-        }
         break;
       }
 
       case "Shed": {
-        if (questController.IsQuestCompleted("DefeatMalfunctioningAndroidQuest")) {
-          ActivateOctopusMonster();
-        }
-
-        if (questController.IsQuestCompleted("SlayOctopusMonsterQuest")) {
-          RemoveOctopusMonster();
-        }
+        currentAct = 2;
+        ActivateOctopusMonster();
+        RemoveOctopusMonster();
         break;
       }
 
       case "Labs": {
         currentAct = 3;
+        StartLabsDialog();
         break;
       }
 
@@ -211,6 +206,10 @@ public class SceneController : MonoBehaviour {
 
   private void UnlockShedExit() {
     GameObject.FindGameObjectWithTag("Gateways/Shed Exit").GetComponent<Gateway>().isActive = true;
+  }
+
+  private void ActivateGatewayToLowerLabs() {
+    GameObject.FindGameObjectWithTag("Gateways/Lower Labs").GetComponent<Gateway>().isActive = true;
   }
 
   private void RemoveBossTrigger() {
@@ -273,22 +272,26 @@ public class SceneController : MonoBehaviour {
   }
 
   private void OpenGateToTentacleMonster() {
+    if (questController.IsQuestCompleted("CraftWaterQuest")) {
     GameObject barricade = GameObject.FindGameObjectWithTag("Barricade/Tentacle Monster");
     if (barricade != null) {
       Destroy(barricade);
     }
+    }
   }
 
   private void RemoveTentacleMonster() {
-    GameObject tentacleMonsterGameObject = GameObject.FindGameObjectWithTag("Tentacle Monster");
-    if (tentacleMonsterGameObject != null) {
-      BattleSystem.BattleLaunchCharacter tentacleMonster = tentacleMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
-      if (tentacleMonster != null) {
-        Destroy(tentacleMonster.gameObject);
+    if (questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
+      GameObject tentacleMonsterGameObject = GameObject.FindGameObjectWithTag("Tentacle Monster");
+      if (tentacleMonsterGameObject != null) {
+        BattleSystem.BattleLaunchCharacter tentacleMonster = tentacleMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        if (tentacleMonster != null) {
+          Destroy(tentacleMonster.gameObject);
+        }
       }
+      EventController.OnDialogPanelClosed -= RemoveTentacleMonster;
+      ActivateGatewayAfterTentacleMonster();
     }
-    EventController.OnDialogPanelClosed -= RemoveTentacleMonster;
-    ActivateGatewayAfterTentacleMonster();
   }
 
   public void StartEndOfAct1Dialog() {
@@ -326,19 +329,23 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateOctopusMonster() {
-    GameObject octopusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
-    if (octopusMonsterParent != null) {
-      NPC octopusMonster = octopusMonsterParent.GetComponentInChildren<NPC>(true);
-      if (octopusMonster != null) {
-        octopusMonster.gameObject.SetActive(true);
+    if (questController.IsQuestCompleted("DefeatMalfunctioningAndroidQuest")) {
+      GameObject octopusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
+      if (octopusMonsterParent != null) {
+        NPC octopusMonster = octopusMonsterParent.GetComponentInChildren<NPC>(true);
+        if (octopusMonster != null) {
+          octopusMonster.gameObject.SetActive(true);
+        }
       }
     }
   }
 
   private void RemoveOctopusMonster() {
-    GameObject ocotpusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
-    if (ocotpusMonsterParent != null) {
-      Destroy(ocotpusMonsterParent);
+    if (questController.IsQuestCompleted("SlayOctopusMonsterQuest")) {
+      GameObject ocotpusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
+      if (ocotpusMonsterParent != null) {
+        Destroy(ocotpusMonsterParent);
+      }
     }
   }
 
@@ -373,6 +380,19 @@ public class SceneController : MonoBehaviour {
     EventController.OnDialogPanelClosed += RemoveJakeOrMegan;
   }
 
+  private void StartLabsDialog() {
+    if (shouldShowStartLabsDialog) {
+      string[] dialog = new string[] {
+        "A voice echoes in your head.",
+        "Kelly. The scientist is named Kelly.",
+        "We must get to Kelly.",
+        "Before it is too late."
+      };
+      dialogPanel.StartDialog(dialog);
+      shouldShowStartLabsDialog = false;
+    }
+  }
+
   private void RemoveJakeOrMegan() {
     if (!hasJakeOrMeganBeenRemoved && hasPlayerMadeAct1Decision) {
       NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
@@ -393,17 +413,63 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemovePigAlien() {
-    if (!hasPigAlienBeenRemoved) {
-      NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
-      foreach(NPC n in npcs) {
-        if (n.npcName == "Pig Alien") {
-          Destroy(n.gameObject);
+    if (questController.IsQuestCompleted("KillPigAlienQuest")) {
+      GameObject pigAlienGameObject = GameObject.FindGameObjectWithTag("Pig Alien");
+      if (pigAlienGameObject != null) {
+        BattleSystem.BattleLaunchCharacter pigAlien = pigAlienGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        if (pigAlien != null) {
+          Destroy(pigAlien.gameObject);
         }
       }
-      hasPigAlienBeenRemoved = true;
+      EventController.OnDialogPanelClosed -= RemovePigAlien;
+      UnlockShedEntrance();
     }
-    EventController.OnDialogPanelClosed -= RemovePigAlien;
+  }
 
-    UnlockShedEntrance();
+  public void RemoveEvolvedBlob() {
+    if (questController.IsQuestCompleted("DefeatEvolvedBlobQuest")) {
+      GameObject evolvedBlobGameObject = GameObject.FindGameObjectWithTag("Evolved Blob");
+      if (evolvedBlobGameObject != null) {
+        BattleSystem.BattleLaunchCharacter evolvedBlob = evolvedBlobGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        if (evolvedBlob != null) {
+          Destroy(evolvedBlob.gameObject);
+        }
+      }
+    }
+  }
+
+  public void RemoveDinosaurMonster() {
+    if (questController.IsQuestCompleted("DefeatDinosaurMonsterQuest")) {
+      GameObject dinosaurMonsterGameObject = GameObject.FindGameObjectWithTag("Dinosaur Monster");
+      if (dinosaurMonsterGameObject != null) {
+        BattleSystem.BattleLaunchCharacter dinosaurMonster = dinosaurMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        if (dinosaurMonster != null) {
+          Destroy(dinosaurMonster.gameObject);
+        }
+      }
+    }
+  }
+
+  public void RemoveBirdMonster() {
+    if (questController.IsQuestCompleted("DefeatBirdMonsterQuest")) {
+      GameObject birdMonsterGameObject = GameObject.FindGameObjectWithTag("Bird Monster");
+      if (birdMonsterGameObject != null) {
+       BattleSystem.BattleLaunchCharacter birdMonster = birdMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+       if (birdMonster != null) {
+          Destroy(birdMonster.gameObject);
+        }
+      }
+    }
+  }
+
+  public void StartCompleteTheCureQuestCompletedDialog() {
+    string[] dialog = new string[] {
+      "Kelly: This should cure everyone.",
+      "But I'm picking up something weird.",
+      "Can you go secure the lower labs?",
+      "Take the Gateway you come in through."
+    };
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += ActivateGatewayToLowerLabs;
   }
 }

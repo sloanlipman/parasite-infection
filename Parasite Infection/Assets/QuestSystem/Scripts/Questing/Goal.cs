@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace QuestSystem { 
+namespace QuestSystem {
   public class Goal {
     public int countNeeded;
     public int countCurrent;

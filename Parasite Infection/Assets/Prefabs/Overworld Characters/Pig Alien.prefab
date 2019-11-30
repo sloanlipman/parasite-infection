@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5694233453104755584}
   m_Layer: 0
   m_Name: Pig Alien
-  m_TagString: Untagged
+  m_TagString: Pig Alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -5039939184326752167, guid: b1326e7c34f4add4680fc67d9bd3ecde,
     type: 3}
