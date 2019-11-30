@@ -120,8 +120,8 @@ MonoBehaviour:
   movementSpeed: 0
   IsMoving: 0
   wander: 0
-  questName: 
-  dialogData: {fileID: 0}
+  questName: CompleteTheCureQuest
+  dialogData: {fileID: 11400000, guid: 8abf117a941974f47999325264308e68, type: 2}
   questCompletedDialogData: {fileID: 0}
   npcName: Kelly
 --- !u!58 &7925530666122562807

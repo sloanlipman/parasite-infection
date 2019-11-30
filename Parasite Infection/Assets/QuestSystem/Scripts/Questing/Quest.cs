@@ -14,6 +14,7 @@ namespace QuestSystem {
     protected ConsumableInventory consumableInventory;
     protected BattleSystem.CharacterController characterController;
     protected SceneController sceneController;
+    protected QuestController questController;
 
     private void Start() {
       inventoryController = FindObjectOfType<InventoryController>();
@@ -21,6 +22,7 @@ namespace QuestSystem {
       consumableInventory = FindObjectOfType<ConsumableInventory>();
       characterController = FindObjectOfType<BattleSystem.CharacterController>();
       sceneController = FindObjectOfType<SceneController>();
+      questController = FindObjectOfType<QuestController>();
     }
 
     public virtual void Complete() {
