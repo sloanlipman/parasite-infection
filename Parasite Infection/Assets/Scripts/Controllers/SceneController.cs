@@ -33,6 +33,14 @@ public class SceneController : MonoBehaviour {
 // Labs
   private string characterKilledDuringInterlude = "";
 
+  private bool IsQuestCompleted(string questName) {
+    return questController.IsQuestCompleted(questName);
+  }
+
+  private bool HasQuestBeenStarted(string questName) {
+    return questController.HasQuestBeenStarted(questName);
+  }
+
   public void Save() {
     ES3.Save<int>("currentAct", currentAct, "SceneController.json");
     ES3.Save<bool>("hasPlayerDoneTutorial", hasPlayerDoneTutorial, "SceneController.json");
@@ -135,13 +143,13 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Command Center": {
-        if (!questController.HasQuestBeenStarted("KillBlobsQuest")) {
+        if (!HasQuestBeenStarted("KillBlobsQuest")) {
           string[] dialog = new string[] {
             "Check in with the Android to get your assignment.",
             "If you need help, press ESC to access the tutorial.",
             };
           dialogPanel.StartDialog(dialog);
-        } else if (questController.IsQuestCompleted("KillBlobsQuest")) {
+        } else if (IsQuestCompleted("KillBlobsQuest")) {
             ActivateGatewayToLeaveCommandCenter();
           }
         break;
@@ -149,13 +157,13 @@ public class SceneController : MonoBehaviour {
 
       case "Central Core": {
         currentAct = 1;
-        if (!questController.HasQuestBeenStarted("CraftWaterQuest")) {
+        if (!HasQuestBeenStarted("CraftWaterQuest")) {
             string[] dialog = new string[] {"Alan: Barry? I'm over here! Follow the green trail!"};
             dialogPanel.StartDialog(dialog);
           }
           OpenGateToTentacleMonster();
           RemoveTentacleMonster(); // Internally calls to open the gateway
-        if (questController.IsQuestCompleted("Act1FinalBossQuest")) {
+        if (IsQuestCompleted("Act1FinalBossQuest")) {
           RemoveBossTrigger();
           RemoveJakeOrMegan(); // Internally opens gateway to biosphere
         }
@@ -231,7 +239,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateGatewayToLowerLabs() {
-    if (questController.IsQuestCompleted("CompleteTheCureQuest")) {
+    if (IsQuestCompleted("CompleteTheCureQuest")) {
       GameObject.FindGameObjectWithTag("Gateways/Lower Labs").GetComponent<Gateway>().isActive = true;
     }
   }
@@ -300,7 +308,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void OpenGateToTentacleMonster() {
-    if (questController.IsQuestCompleted("CraftWaterQuest")) {
+    if (IsQuestCompleted("CraftWaterQuest")) {
     GameObject barricade = GameObject.FindGameObjectWithTag("Barricade/Tentacle Monster");
     if (barricade != null) {
       Destroy(barricade);
@@ -309,7 +317,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemoveTentacleMonster() {
-    if (questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
+    if (IsQuestCompleted("DefeatTentacleMonsterQuest")) {
       GameObject tentacleMonsterGameObject = GameObject.FindGameObjectWithTag("Tentacle Monster");
       if (tentacleMonsterGameObject != null) {
         BattleLaunchCharacter tentacleMonster = tentacleMonsterGameObject.GetComponent<BattleLaunchCharacter>();
@@ -356,7 +364,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateOctopusMonster() {
-    if (questController.IsQuestCompleted("DefeatMalfunctioningAndroidQuest")) {
+    if (IsQuestCompleted("DefeatMalfunctioningAndroidQuest")) {
       GameObject octopusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
       if (octopusMonsterParent != null) {
         NPC octopusMonster = octopusMonsterParent.GetComponentInChildren<NPC>(true);
@@ -368,7 +376,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemoveOctopusMonster() {
-    if (questController.IsQuestCompleted("SlayOctopusMonsterQuest")) {
+    if (IsQuestCompleted("SlayOctopusMonsterQuest")) {
       GameObject ocotpusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
       if (ocotpusMonsterParent != null) {
         Destroy(ocotpusMonsterParent);
@@ -378,7 +386,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemoveInfectedAndroid() {
-    if (questController.IsQuestCompleted("DefeatInfectedAndroidQuest")) {
+    if (IsQuestCompleted("DefeatInfectedAndroidQuest")) {
       GameObject infectedAndroidGameObject = GameObject.FindGameObjectWithTag("Infected Android");
       if (infectedAndroidGameObject != null) {
         Destroy(infectedAndroidGameObject);
@@ -388,7 +396,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateEnhancedParasite() {
-    if (questController.IsQuestCompleted("DefeatInfectedAndroidQuest")) {
+    if (IsQuestCompleted("DefeatInfectedAndroidQuest")) {
       GameObject enhancedParasiteParent = GameObject.FindGameObjectWithTag("Act 3 Boss");
       if (enhancedParasiteParent != null) {
         NPC enhancedParasite = enhancedParasiteParent.GetComponentInChildren<NPC>(true);
@@ -402,7 +410,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemoveEnhancedParasite() {
-    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
+    if (IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
       GameObject enhancedParasite = GameObject.FindGameObjectWithTag("Act 3 Boss");
       if (enhancedParasite != null) {
         Destroy(enhancedParasite);
@@ -452,7 +460,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void StartLabsDialog() {
-    if (!questController.HasQuestBeenStarted("CompleteTheCureQuest")) {
+    if (!HasQuestBeenStarted("CompleteTheCureQuest")) {
       string[] dialog = new string[] {
         "A voice echoes in your head.",
         "Kelly. The scientist is named Kelly.",
@@ -483,7 +491,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void RemovePigAlien() {
-    if (questController.IsQuestCompleted("KillPigAlienQuest")) {
+    if (IsQuestCompleted("KillPigAlienQuest")) {
       GameObject pigAlienGameObject = GameObject.FindGameObjectWithTag("Pig Alien");
       if (pigAlienGameObject != null) {
         BattleLaunchCharacter pigAlien = pigAlienGameObject.GetComponent<BattleLaunchCharacter>();
@@ -497,7 +505,7 @@ public class SceneController : MonoBehaviour {
   }
 
   public void RemoveEvolvedBlob() {
-    if (questController.IsQuestCompleted("DefeatEvolvedBlobQuest")) {
+    if (IsQuestCompleted("DefeatEvolvedBlobQuest")) {
       GameObject evolvedBlobGameObject = GameObject.FindGameObjectWithTag("Evolved Blob");
       if (evolvedBlobGameObject != null) {
         BattleLaunchCharacter evolvedBlob = evolvedBlobGameObject.GetComponent<BattleLaunchCharacter>();
@@ -509,7 +517,7 @@ public class SceneController : MonoBehaviour {
   }
 
   public void RemoveDinosaurMonster() {
-    if (questController.IsQuestCompleted("DefeatDinosaurMonsterQuest")) {
+    if (IsQuestCompleted("DefeatDinosaurMonsterQuest")) {
       GameObject dinosaurMonsterGameObject = GameObject.FindGameObjectWithTag("Dinosaur Monster");
       if (dinosaurMonsterGameObject != null) {
         BattleLaunchCharacter dinosaurMonster = dinosaurMonsterGameObject.GetComponent<BattleLaunchCharacter>();
@@ -521,7 +529,7 @@ public class SceneController : MonoBehaviour {
   }
 
   public void RemoveBirdMonster() {
-    if (questController.IsQuestCompleted("DefeatBirdMonsterQuest")) {
+    if (IsQuestCompleted("DefeatBirdMonsterQuest")) {
       GameObject birdMonsterGameObject = GameObject.FindGameObjectWithTag("Bird Monster");
       if (birdMonsterGameObject != null) {
        BattleLaunchCharacter birdMonster = birdMonsterGameObject.GetComponent<BattleLaunchCharacter>();
@@ -544,7 +552,7 @@ public class SceneController : MonoBehaviour {
   }
 
   public void StartDefeatInfectedAndroidQuestCompletedDialog() {
-    if (questController.IsQuestCompleted("DefeatInfectedAndroidQuest") && !questController.HasQuestBeenStarted("DefeatEnhancedParasiteQuest")) {
+    if (IsQuestCompleted("DefeatInfectedAndroidQuest") && !HasQuestBeenStarted("DefeatEnhancedParasiteQuest")) {
       string[] dialog = new string[] {
         string.Format("Alan: Wait a second! Is that {0}!?", deadCrewMember),
         "Barry! Use the cure!",
@@ -564,7 +572,9 @@ public class SceneController : MonoBehaviour {
   }
 
   public void StartDefeatEnhancedParasiteQuestCompletedDialog() {
-    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
+    if (
+        IsQuestCompleted("DefeatEnhancedParasiteQuest")&&
+        !IsQuestCompleted("InterludeQuest")) {
       Debug.Log("Should start Dialog here in a second");
       RemoveEnhancedParasite();
       string[] dialog = new string[] {
@@ -588,7 +598,7 @@ public class SceneController : MonoBehaviour {
   }
 
     private void FinishEndOfAct3Dialog() {
-    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
+    if (IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
       string[] dialog = new string[] {
         string.Format("{0}: Barry! You KNOW me.", characterKilledDuringInterlude),
         "You know it isn't me!",
