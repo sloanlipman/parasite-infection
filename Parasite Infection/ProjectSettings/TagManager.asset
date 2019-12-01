@@ -40,9 +40,9 @@ TagManager:
   - Dinosaur Monster
   - Pig Alien
   - Gateways/Lower Labs
-  - Gateways/Final Boss
   - Act 3 Boss
   - Infected Android
+  - Gateways/Bridge
   layers:
   - Default
   - TransparentFX

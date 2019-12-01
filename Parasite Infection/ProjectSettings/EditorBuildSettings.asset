@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Labs.unity
     guid: e65d8dc04d8af2440989beacadc60f29
+  - enabled: 1
+    path: Assets/Scenes/Bridge.unity
+    guid: 89445c69327f61046b6baea618c92510
   m_configObjects: {}

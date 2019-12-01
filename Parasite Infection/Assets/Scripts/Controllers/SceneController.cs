@@ -32,6 +32,7 @@ public class SceneController : MonoBehaviour {
 
 // Labs
   private string characterKilledDuringInterlude = "";
+  private bool shouldTellToGoToBridge = true;
 
   private bool IsQuestCompleted(string questName) {
     return questController.IsQuestCompleted(questName);
@@ -51,6 +52,7 @@ public class SceneController : MonoBehaviour {
     ES3.Save<bool>("isMalfunctioningAndroidDefeated", isMalfunctioningAndroidDefeated, "SceneController.json");
     ES3.Save<string>("characterRemovedFromPartyForOctopusFight", characterRemovedFromPartyForOctopusFight, "SceneController.json");
     ES3.Save<string>("characterKilledDuringInterlude", characterKilledDuringInterlude, "SceneController.json");
+    ES3.Save<bool>("shouldTellToGoToBridge", shouldTellToGoToBridge, "SceneController.json");
   }
 
   public void Load() {
@@ -63,6 +65,7 @@ public class SceneController : MonoBehaviour {
     isMalfunctioningAndroidDefeated = ES3.Load<bool>("isMalfunctioningAndroidDefeated", "SceneController.json", false);
     characterRemovedFromPartyForOctopusFight = ES3.Load<string>("characterRemovedFromPartyForOctopusFight", "SceneController.json", "");
     characterKilledDuringInterlude = ES3.Load<string>("characterKilledDuringInterlude", "SceneController.json", "");
+    shouldTellToGoToBridge = ES3.Load<bool>("shouldTellToGoToBridge", "SceneController.json", true);
   }
 
   private void Awake() {
@@ -124,7 +127,6 @@ public class SceneController : MonoBehaviour {
   }
 
   public void OnSceneUnloaded(Scene scene) {
-    Debug.Log("Unloaded scene:" + scene.name.ToString() );
     if (scene.name.ToString() == "Intro") {
       SaveService.Instance.Save();
     }
@@ -155,6 +157,7 @@ public class SceneController : MonoBehaviour {
         break;
       }
 
+// Note: Don't refactor the Central Core case. It isn't worth the effort and functions as it is meant to.
       case "Central Core": {
         currentAct = 1;
         if (!HasQuestBeenStarted("CraftWaterQuest")) {
@@ -197,6 +200,12 @@ public class SceneController : MonoBehaviour {
         ActivateGatewayToLowerLabs();
         StartDefeatInfectedAndroidQuestCompletedDialog();
         StartDefeatEnhancedParasiteQuestCompletedDialog();
+        CompleteInterlude();
+        break;
+      }
+
+      case "Bridge": {
+        currentAct = 4;
         break;
       }
 
@@ -231,21 +240,31 @@ public class SceneController : MonoBehaviour {
   }
 
   private void UnlockShedEntrance() {
-    GameObject.FindGameObjectWithTag("Gateways/Shed Entrance").GetComponent<Gateway>().isActive = true;
+    if (IsQuestCompleted("KillPigAlienQuest")) {
+      OpenGateway("Gateways/Shed Entrance");
+    }
   }
 
   private void UnlockShedExit() {
-    GameObject.FindGameObjectWithTag("Gateways/Shed Exit").GetComponent<Gateway>().isActive = true;
+    if(IsQuestCompleted("SlayOctopusMonsterQuest")) {
+      OpenGateway("Gateways/Shed Exit");
+    }
   }
 
   private void ActivateGatewayToLowerLabs() {
     if (IsQuestCompleted("CompleteTheCureQuest")) {
-      GameObject.FindGameObjectWithTag("Gateways/Lower Labs").GetComponent<Gateway>().isActive = true;
+      OpenGateway("Gateways/Lower Labs");
     }
   }
 
-  private void ActivateGatewayToFinalBoss() {
+  private void ActivateGatewayToBridge() {
+    if (IsQuestCompleted("InterludeQuest")) {
+      OpenGateway("Gateways/Bridge");
+    }
+  }
 
+  private void OpenGateway(string tag) {
+    GameObject.FindGameObjectWithTag(tag).GetComponent<Gateway>().isActive = true;
   }
 
   private void RemoveBossTrigger() {
@@ -545,7 +564,7 @@ public class SceneController : MonoBehaviour {
       "Kelly: This should cure everyone.",
       "But I'm picking up something weird.",
       "Can you go secure the lower labs?",
-      "Take the Gateway you come in through."
+      "Take the Teleporter you came in through."
     };
     dialogPanel.StartDialog(dialog);
     ActivateGatewayToLowerLabs();
@@ -646,8 +665,24 @@ public class SceneController : MonoBehaviour {
     }
 
   public void CompleteInterlude() {
-
-    // Add dialog
-    // Unlock the gateway
+    if (IsQuestCompleted("InterludeQuest") && shouldTellToGoToBridge) {
+      string[] dialog = new string[] {
+        "You sigh a heavy sigh in relief.",
+        "The Parasite Leader is dead.",
+        "Still, something feels off.",
+        "You begin to wonder...",
+        "What if there are more?",
+        "What if killing the leader",
+        "doesn't kill the rest?",
+        "There's only one course of action that remains.",
+        "Make your way to the Bridge.",
+        "Activate the self-destruction.",
+        "Warn the crew to escape while they still can.",
+        "Hurry, Barry. Take the Teleporter."
+      };
+      dialogPanel.StartDialog(dialog);
+      shouldTellToGoToBridge = false;
+    }
+    ActivateGatewayToBridge();
   }
 }
