@@ -12,6 +12,7 @@ Sloan Lipman (sloan.lipman@gmail.com)
   -@dbhvk
 - <https://opengameart.org/content/3x-updated-32x32-scifi-roguelike-enemies>
 - <https://opengameart.org/content/more-rpg-enemies>
+- <https://opengameart.org/content/biomech-dragon-splice>
   -Stephen Challener (Redshrike)
 - <https://www.freepik.com/premium-photo/view-planet-earth-from-huge-spaceship-window-3d-rendering-elements-this-image-furnished-by-nasa_5074337.htm>
 - <https://thkaspar.itch.io/sci-fi-robot-parts>
