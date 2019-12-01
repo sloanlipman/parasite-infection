@@ -39,7 +39,7 @@ namespace QuestSystem {
         characterController.LevelUp(member);
       });
 
-      if (itemRewards.Count > 0) {
+      if (itemRewards != null && itemRewards.Count > 0) {
           inventoryController.GiveItems(itemRewards);
         }
     }

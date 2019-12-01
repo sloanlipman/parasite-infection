@@ -31,7 +31,6 @@ public class SceneController : MonoBehaviour {
   private string characterRemovedFromPartyForOctopusFight;
 
 // Labs
-  private bool shouldShowStartLabsDialog = true;
   private string characterKilledDuringInterlude;
 
   public void Save() {
@@ -43,7 +42,6 @@ public class SceneController : MonoBehaviour {
     ES3.Save<bool>("hasPlayerMadeAct1Decision", hasPlayerMadeAct1Decision, "SceneController.json");
     ES3.Save<bool>("isMalfunctioningAndroidDefeated", isMalfunctioningAndroidDefeated, "SceneController.json");
     ES3.Save<string>("characterRemovedFromPartyForOctopusFight", characterRemovedFromPartyForOctopusFight, "SceneController.json");
-    ES3.Save<bool>("shouldShowStartLabsDialog", shouldShowStartLabsDialog, "SceneController.json");
     ES3.Save<string>("characterKilledDuringInterlude", characterKilledDuringInterlude, "SceneController.json");
   }
 
@@ -56,7 +54,6 @@ public class SceneController : MonoBehaviour {
     hasPlayerMadeAct1Decision = ES3.Load<bool>("hasPlayerMadeAct1Decision", "SceneController.json", false);
     isMalfunctioningAndroidDefeated = ES3.Load<bool>("isMalfunctioningAndroidDefeated", "SceneController.json", false);
     characterRemovedFromPartyForOctopusFight = ES3.Load<string>("characterRemovedFromPartyForOctopusFight", "SceneController.json", "");
-    shouldShowStartLabsDialog = ES3.Load<bool>("shouldShowStartLabsDialog", "SceneController.json", true);
     characterKilledDuringInterlude = ES3.Load<string>("characterKilledDuringInterlude", "SceneController.json", "");
   }
 
@@ -189,6 +186,8 @@ public class SceneController : MonoBehaviour {
         RemoveInfectedAndroid();
         ActivateEnhancedParasite();
         RemoveEnhancedParasite();
+        ActivateGatewayToLowerLabs();
+        StartInterludeBattle();
         break;
       }
 
@@ -231,7 +230,13 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateGatewayToLowerLabs() {
-    GameObject.FindGameObjectWithTag("Gateways/Lower Labs").GetComponent<Gateway>().isActive = true;
+    if (questController.IsQuestCompleted("CompleteTheCureQuest")) {
+      GameObject.FindGameObjectWithTag("Gateways/Lower Labs").GetComponent<Gateway>().isActive = true;
+    }
+  }
+
+  private void ActivateGatewayToFinalBoss() {
+
   }
 
   private void RemoveBossTrigger() {
@@ -391,6 +396,8 @@ public class SceneController : MonoBehaviour {
         }
       }
     }
+    EventController.OnDialogPanelClosed -= ActivateEnhancedParasite;
+
   }
 
   private void RemoveEnhancedParasite() {
@@ -444,7 +451,7 @@ public class SceneController : MonoBehaviour {
   }
 
   private void StartLabsDialog() {
-    if (shouldShowStartLabsDialog) {
+    if (!questController.HasQuestBeenStarted("CompleteTheCureQuest")) {
       string[] dialog = new string[] {
         "A voice echoes in your head.",
         "Kelly. The scientist is named Kelly.",
@@ -452,7 +459,6 @@ public class SceneController : MonoBehaviour {
         "Before it is too late."
       };
       dialogPanel.StartDialog(dialog);
-      shouldShowStartLabsDialog = false;
     }
   }
 
@@ -551,7 +557,8 @@ public class SceneController : MonoBehaviour {
 
     dialogPanel.StartDialog(dialog);
     EventController.OnDialogPanelClosed += RemoveInfectedAndroid;
-    ActivateEnhancedParasite();
+    EventController.OnDialogPanelClosed += ActivateEnhancedParasite;
+    // ActivateEnhancedParasite();
   }
 
   public void StartDefeatEnhancedParasiteQuestCompletedDialog() {
@@ -587,6 +594,8 @@ public class SceneController : MonoBehaviour {
     };
 
     dialogPanel.StartDialog(dialog);
+    questController.AssignQuest("InterludeQuest");
+
     EventController.OnDialogPanelClosed += StartInterludeBattle;
   }
 
@@ -608,15 +617,24 @@ public class SceneController : MonoBehaviour {
   }
 
   private void StartInterludeBattle() {
-    List<Enemy> enemies = new List<Enemy>();
-    enemies.Add(characterController.FindEnemyByName("Parasite Leader"));
-    enemies.Add(characterController.FindEnemyByName("Enhanced Parasite"));
-    enemies.Add(characterController.FindEnemyByName("Evolved Blob"));
-    Player player = GameObject.FindObjectOfType<Player>();
-    Vector2 playerPosition = new Vector2();
-    if (player != null) {
-      playerPosition = player.GetRigidbody().position;
-      battleLauncher.PrepareBattle(playerPosition, enemies);
+    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest") && questController.HasQuestBeenStarted("InterludeQuest")) {
+      List<Enemy> enemies = new List<Enemy>();
+      enemies.Add(characterController.FindEnemyByName("Parasite Leader"));
+      enemies.Add(characterController.FindEnemyByName("Enhanced Parasite"));
+      enemies.Add(characterController.FindEnemyByName("Evolved Blob"));
+      Player player = GameObject.FindObjectOfType<Player>();
+      Vector2 playerPosition = new Vector2();
+      if (player != null) {
+        playerPosition = player.GetRigidbody().position;
+        battleLauncher.PrepareBattle(playerPosition, enemies);
+      }
     }
+    EventController.OnDialogPanelClosed -= StartInterludeBattle;
+  }
+
+  public void CompleteInterlude() {
+
+    // Add dialog
+    // Unlock the gateway
   }
 }
