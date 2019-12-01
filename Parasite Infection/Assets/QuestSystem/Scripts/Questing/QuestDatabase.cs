@@ -43,16 +43,20 @@ namespace QuestSystem {
     public void CompletePendingQuests() {
       if (pendingQuests.Count > 0) {
         pendingQuests.ForEach(quest => {
-          Debug.Log("Pending quest: " + quest.questName);
-          quest.GrantReward();
-          EventController.QuestCompleted(quest);
+          if (quest != null) {
+            Debug.Log("Pending quest: " + quest.questName);
+            quest.GrantReward();
+            EventController.QuestCompleted(quest);
+          }
         });
       }
     }
 
     public bool IsQuestPending(string slug) {
-      Quest pendingQuest;
-      pendingQuest = pendingQuests.Find(quest => quest.slug == slug);
+      Quest pendingQuest = null;
+      if (pendingQuests.Count > 0) {
+        pendingQuest = pendingQuests.Find(quest => quest.slug == slug);
+      }
       return pendingQuest != null;
     }
 
@@ -81,7 +85,9 @@ namespace QuestSystem {
     }
 
     public bool Completed(string slug) {
+      Debug.Log("Quests contains key " + slug + "?" + quests.ContainsKey(slug));
       if (quests.ContainsKey(slug)) {
+        Debug.Log("Is it completed" + System.Convert.ToBoolean(quests[slug][0]));
         return System.Convert.ToBoolean(quests[slug][0]);
       }
       return false;

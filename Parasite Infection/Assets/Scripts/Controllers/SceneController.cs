@@ -19,7 +19,6 @@ public class SceneController : MonoBehaviour {
   private bool hasPlayerDoneTutorial;
 
 // Central Core flags and strings
-  private bool shouldShowAlanInitialDialog = true;
   private string deadCrewMember;
   private string crewMemberWhoJoinedParty;
   private bool hasJakeOrMeganBeenRemoved = false;
@@ -38,7 +37,6 @@ public class SceneController : MonoBehaviour {
   public void Save() {
     ES3.Save<int>("currentAct", currentAct, "SceneController.json");
     ES3.Save<bool>("hasPlayerDoneTutorial", hasPlayerDoneTutorial, "SceneController.json");
-    ES3.Save<bool>("shouldShowAlanInitialDialog", shouldShowAlanInitialDialog, "SceneController.json");
     ES3.Save<string>("deadCrewMember", deadCrewMember, "SceneController.json");
     ES3.Save<string>("crewMemberWhoJoinedParty", crewMemberWhoJoinedParty, "SceneController.json");
     ES3.Save<bool>("hasJakeOrMeganBeenRemoved", hasJakeOrMeganBeenRemoved, "SceneController.json");
@@ -52,7 +50,6 @@ public class SceneController : MonoBehaviour {
   public void Load() {
     currentAct = ES3.Load<int>("currentAct", "SceneController.json", 1);
     hasPlayerDoneTutorial = ES3.Load<bool>("hasPlayerDoneTutorial", "SceneController.json", false);
-    shouldShowAlanInitialDialog = ES3.Load<bool>("shouldShowAlanInitialDialog", "SceneController.json", true);
     deadCrewMember = ES3.Load<string>("deadCrewMember", "SceneController.json", "");
     crewMemberWhoJoinedParty = ES3.Load<string>("crewMemberWhoJoinedParty", "SceneController.json", "");
     hasJakeOrMeganBeenRemoved = ES3.Load<bool>("hasJakeOrMeganBeenRemoved", "SceneController.json", false);
@@ -156,20 +153,15 @@ public class SceneController : MonoBehaviour {
       case "Central Core": {
         currentAct = 1;
         if (!questController.HasQuestBeenStarted("CraftWaterQuest")) {
-          if (shouldShowAlanInitialDialog) {
             string[] dialog = new string[] {"Alan: Barry? I'm over here! Follow the green trail!"};
             dialogPanel.StartDialog(dialog);
-            shouldShowAlanInitialDialog = false;
           }
           OpenGateToTentacleMonster();
-
           RemoveTentacleMonster(); // Internally calls to open the gateway
-
         if (questController.IsQuestCompleted("Act1FinalBossQuest")) {
           RemoveBossTrigger();
           RemoveJakeOrMegan(); // Internally opens gateway to biosphere
         }
-      }
       break;
 
       }
