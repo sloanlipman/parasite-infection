@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -5439872580050162969, guid: f4cdc7382d5ae9a469fb57210123d574,
     type: 3}
@@ -122,21 +122,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Jake
-  health: 20
-  maxHealth: 20
-  attackPower: 10
-  defensePower: 10
-  energyPoints: 20
-  maxEnergyPoints: 20
-  speed: 0
-  abilities: []
+  health: 34
+  maxHealth: 34
+  attackPower: 25
+  defensePower: 26
+  energyPoints: 34
+  maxEnergyPoints: 34
   abilitiesList:
   - Heal
   - Fireball
-  level: 1
-  experience: 33
+  level: 8
+  experience: 30
   originalMaxHealth: 20
-  originalMaxEP: 20
+  originalMaxEP: 15
   originalAttackPower: 10
   originalDefensePower: 10
   enemyId: 32

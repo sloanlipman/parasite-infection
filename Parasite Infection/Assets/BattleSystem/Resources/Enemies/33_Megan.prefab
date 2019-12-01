@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1512110449224189334, guid: 2b002d0d35281c140ac3c4862000e044,
     type: 3}
@@ -122,19 +122,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Megan
-  health: 20
-  maxHealth: 20
-  attackPower: 10
-  defensePower: 10
-  energyPoints: 20
-  maxEnergyPoints: 20
-  speed: 0
-  abilities: []
+  health: 37
+  maxHealth: 37
+  attackPower: 26
+  defensePower: 27
+  energyPoints: 38
+  maxEnergyPoints: 38
   abilitiesList:
-  - Heal
   - Hydroblast
-  level: 1
-  experience: 34
+  level: 9
+  experience: 30
   originalMaxHealth: 20
   originalMaxEP: 20
   originalAttackPower: 10
