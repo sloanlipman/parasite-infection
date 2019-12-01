@@ -43,7 +43,7 @@ namespace BattleSystem {
     }
 
     public void LoadLastSave() {
-      SceneManager.LoadScene(battleLauncher.GetWorldSceneIndex());
+      SaveService.Instance.Load();
     }
 
     public void EndBattle() {
@@ -52,9 +52,7 @@ namespace BattleSystem {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-      if (battleWasLost) {
-        SaveService.Instance.Load();
-      } else {
+      if (!battleWasLost) {
         questController.CompletePendingQuests();
       }
       battleWasLost = false;

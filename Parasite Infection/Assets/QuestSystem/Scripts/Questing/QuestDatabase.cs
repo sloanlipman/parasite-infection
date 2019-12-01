@@ -85,9 +85,7 @@ namespace QuestSystem {
     }
 
     public bool Completed(string slug) {
-      Debug.Log("Quests contains key " + slug + "?" + quests.ContainsKey(slug));
       if (quests.ContainsKey(slug)) {
-        Debug.Log("Is it completed" + System.Convert.ToBoolean(quests[slug][0]));
         return System.Convert.ToBoolean(quests[slug][0]);
       }
       return false;

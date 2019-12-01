@@ -31,7 +31,7 @@ public class SceneController : MonoBehaviour {
   private string characterRemovedFromPartyForOctopusFight;
 
 // Labs
-  private string characterKilledDuringInterlude;
+  private string characterKilledDuringInterlude = "";
 
   public void Save() {
     ES3.Save<int>("currentAct", currentAct, "SceneController.json");
@@ -187,7 +187,8 @@ public class SceneController : MonoBehaviour {
         ActivateEnhancedParasite();
         RemoveEnhancedParasite();
         ActivateGatewayToLowerLabs();
-        StartInterludeBattle();
+        StartDefeatInfectedAndroidQuestCompletedDialog();
+        StartDefeatEnhancedParasiteQuestCompletedDialog();
         break;
       }
 
@@ -543,60 +544,63 @@ public class SceneController : MonoBehaviour {
   }
 
   public void StartDefeatInfectedAndroidQuestCompletedDialog() {
-    string[] dialog = new string[] {
-      string.Format("Alan: Wait a second! Is that {0}!?", deadCrewMember),
-      "Barry! Use the cure!",
-      string.Format("We can bring {0} back to our side!", deadCrewMember),
-      string.Format("You inject {0} with the cure", deadCrewMember),
-      string.Format("but {0} begins to glow.", GetSubjectivePronoun()),
-      string.Format("In a matter of seconds, {0} is not recognizable.", deadCrewMember),
-      "The cure appears to have failed.",
-      "You have no choice but to fight",
-      "the ally you already lost once before"
-    };
+    if (questController.IsQuestCompleted("DefeatInfectedAndroidQuest") && !questController.HasQuestBeenStarted("DefeatEnhancedParasiteQuest")) {
+      string[] dialog = new string[] {
+        string.Format("Alan: Wait a second! Is that {0}!?", deadCrewMember),
+        "Barry! Use the cure!",
+        string.Format("We can bring {0} back to our side!", deadCrewMember),
+        string.Format("You inject {0} with the cure", deadCrewMember),
+        string.Format("but {0} begins to glow.", GetSubjectivePronoun()),
+        string.Format("In a matter of seconds, {0} is not recognizable.", deadCrewMember),
+        "The cure appears to have failed.",
+        "You have no choice but to fight",
+        "the ally you already lost once before"
+      };
 
-    dialogPanel.StartDialog(dialog);
-    EventController.OnDialogPanelClosed += RemoveInfectedAndroid;
-    EventController.OnDialogPanelClosed += ActivateEnhancedParasite;
-    // ActivateEnhancedParasite();
+      dialogPanel.StartDialog(dialog);
+      EventController.OnDialogPanelClosed += RemoveInfectedAndroid;
+      EventController.OnDialogPanelClosed += ActivateEnhancedParasite;
+    }
   }
 
   public void StartDefeatEnhancedParasiteQuestCompletedDialog() {
-    RemoveEnhancedParasite();
-    string[] dialog = new string[] {
-      "You realize something.",
-      string.Format("{0} wasn't even infected in your first battle.", deadCrewMember),
-      "You see a shadowy image in a memor.y",
-      "Someone doubled back to the Central Core.",
-      string.Format("After you killed {0}, someone went back.", deadCrewMember),
-      string.Format("Someone infected {0} AFTER you killed {1}.", deadCrewMember, GetObjectivePronoun()),
-      "But who was it?",
-      "You can't quite remember.",
-      "There's no time to waste, Barry.",
-      "Make a decision NOW.",
-      string.Format("Who infected {0}?", deadCrewMember),
-      "Who is the REAL alien?"
-    };
+    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
+      Debug.Log("Should start Dialog here in a second");
+      RemoveEnhancedParasite();
+      string[] dialog = new string[] {
+        "You realize something.",
+        string.Format("{0} wasn't even infected in your first battle.", deadCrewMember),
+        "You see a shadowy image in a memory.",
+        "Someone doubled back to the Central Core.",
+        string.Format("After you killed {0}, someone went back.", deadCrewMember),
+        string.Format("Someone infected {0} AFTER you killed {1}.", deadCrewMember, GetObjectivePronoun()),
+        "But who was it?",
+        "You can't quite remember.",
+        "There's no time to waste, Barry.",
+        "Make a decision NOW.",
+        string.Format("Who infected {0}?", deadCrewMember),
+        "Who is the REAL alien?"
+      };
 
-    dialogPanel.StartDialog(dialog);
-    EventController.OnDialogPanelClosed += OpenDecisionPanelForAct3;
+      dialogPanel.StartDialog(dialog);
+      EventController.OnDialogPanelClosed += OpenDecisionPanelForAct3;
+    }
   }
 
     private void FinishEndOfAct3Dialog() {
-    string[] dialog = new string[] {
-      string.Format("{0}: Barry! You KNOW me.", characterKilledDuringInterlude),
-      "You know it isn't me!",
-      string.Format("{0}'s pleas fall on your deaf ears.", characterKilledDuringInterlude),
-      string.Format("You see the aliens lining up by {0}'s side.", characterKilledDuringInterlude),
-      string.Format("You no longer see your ally."),
-      string.Format("You only see it for what it truly is:"),
-      string.Format("The Parasite Leader!")
-    };
-
-    dialogPanel.StartDialog(dialog);
-    questController.AssignQuest("InterludeQuest");
-
-    EventController.OnDialogPanelClosed += StartInterludeBattle;
+    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
+      string[] dialog = new string[] {
+        string.Format("{0}: Barry! You KNOW me.", characterKilledDuringInterlude),
+        "You know it isn't me!",
+        string.Format("{0}'s pleas fall on your deaf ears.", characterKilledDuringInterlude),
+        string.Format("You see the aliens lining up by {0}'s side.", characterKilledDuringInterlude),
+        string.Format("You no longer see your ally."),
+        string.Format("You only see it for what it truly is:"),
+        string.Format("The Parasite Leader!")
+      };
+      dialogPanel.StartDialog(dialog);
+      EventController.OnDialogPanelClosed += StartInterludeBattle;
+    }
   }
 
 
@@ -617,20 +621,19 @@ public class SceneController : MonoBehaviour {
   }
 
   private void StartInterludeBattle() {
-    if (questController.IsQuestCompleted("DefeatEnhancedParasiteQuest") && questController.HasQuestBeenStarted("InterludeQuest")) {
       List<Enemy> enemies = new List<Enemy>();
       enemies.Add(characterController.FindEnemyByName("Parasite Leader"));
       enemies.Add(characterController.FindEnemyByName("Enhanced Parasite"));
-      enemies.Add(characterController.FindEnemyByName("Evolved Blob"));
       Player player = GameObject.FindObjectOfType<Player>();
       Vector2 playerPosition = new Vector2();
       if (player != null) {
         playerPosition = player.GetRigidbody().position;
         battleLauncher.PrepareBattle(playerPosition, enemies);
+        questController.AssignQuest("InterludeQuest");
       }
+
+      EventController.OnDialogPanelClosed -= StartInterludeBattle;
     }
-    EventController.OnDialogPanelClosed -= StartInterludeBattle;
-  }
 
   public void CompleteInterlude() {
 

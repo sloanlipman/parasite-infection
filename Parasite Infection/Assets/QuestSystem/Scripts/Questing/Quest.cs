@@ -42,6 +42,8 @@ namespace QuestSystem {
       if (itemRewards != null && itemRewards.Count > 0) {
           inventoryController.GiveItems(itemRewards);
         }
+
+      SaveService.Instance.Save();
     }
   }
 }
