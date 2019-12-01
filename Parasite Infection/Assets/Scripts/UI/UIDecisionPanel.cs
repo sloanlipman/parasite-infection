@@ -25,4 +25,7 @@ public class UIDecisionPanel : MonoBehaviour {
     });
   }
 
+  public void ClearPanel() {
+    // TODO add functionality to clear the panel if I need to
+  }
 }

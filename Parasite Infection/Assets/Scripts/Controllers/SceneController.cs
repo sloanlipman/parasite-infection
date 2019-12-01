@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using BattleSystem;
 
 public class SceneController : MonoBehaviour {
   public static SceneController Instance {get; set;}
@@ -11,7 +12,7 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private BattleSystem.CharacterController characterController;
   [SerializeField] private UIDecisionPanel decisionPanel;
   [SerializeField] private InventoryController inventoryController;
-  [SerializeField] private BattleSystem.BattleLauncher battleLauncher;
+  [SerializeField] private BattleLauncher battleLauncher;
   private MenuController menuController;
 
   private int currentAct = 0;
@@ -28,10 +29,11 @@ public class SceneController : MonoBehaviour {
   private bool isMalfunctioningAndroidDefeated = false;
 
 // Shed
-  private string playerRemovedFromPartyForOctopusFight;
+  private string characterRemovedFromPartyForOctopusFight;
 
 // Labs
   private bool shouldShowStartLabsDialog = true;
+  private string characterKilledDuringInterlude;
 
   public void Save() {
     ES3.Save<int>("currentAct", currentAct, "SceneController.json");
@@ -42,8 +44,9 @@ public class SceneController : MonoBehaviour {
     ES3.Save<bool>("hasJakeOrMeganBeenRemoved", hasJakeOrMeganBeenRemoved, "SceneController.json");
     ES3.Save<bool>("hasPlayerMadeAct1Decision", hasPlayerMadeAct1Decision, "SceneController.json");
     ES3.Save<bool>("isMalfunctioningAndroidDefeated", isMalfunctioningAndroidDefeated, "SceneController.json");
-    ES3.Save<string>("playerRemovedFromPartyForOctopusFight", playerRemovedFromPartyForOctopusFight, "SceneController.json");
+    ES3.Save<string>("characterRemovedFromPartyForOctopusFight", characterRemovedFromPartyForOctopusFight, "SceneController.json");
     ES3.Save<bool>("shouldShowStartLabsDialog", shouldShowStartLabsDialog, "SceneController.json");
+    ES3.Save<string>("characterKilledDuringInterlude", characterKilledDuringInterlude, "SceneController.json");
   }
 
   public void Load() {
@@ -55,8 +58,9 @@ public class SceneController : MonoBehaviour {
     hasJakeOrMeganBeenRemoved = ES3.Load<bool>("hasJakeOrMeganBeenRemoved", "SceneController.json", false);
     hasPlayerMadeAct1Decision = ES3.Load<bool>("hasPlayerMadeAct1Decision", "SceneController.json", false);
     isMalfunctioningAndroidDefeated = ES3.Load<bool>("isMalfunctioningAndroidDefeated", "SceneController.json", false);
-    playerRemovedFromPartyForOctopusFight = ES3.Load<string>("playerRemovedFromPartyForOctopusFight", "SceneController.json", "");
+    characterRemovedFromPartyForOctopusFight = ES3.Load<string>("characterRemovedFromPartyForOctopusFight", "SceneController.json", "");
     shouldShowStartLabsDialog = ES3.Load<bool>("shouldShowStartLabsDialog", "SceneController.json", true);
+    characterKilledDuringInterlude = ES3.Load<string>("characterKilledDuringInterlude", "SceneController.json", "");
   }
 
   private void Awake() {
@@ -79,8 +83,12 @@ public class SceneController : MonoBehaviour {
     Time.timeScale = 0;
   }
 
-  private string GetPronoun() {
+  private string GetSubjectivePronoun() {
     return deadCrewMember == "Jake" ? "he" : "she";
+  }
+
+  private string GetObjectivePronoun() {
+    return deadCrewMember == "Jake" ? "him" : "her";
   }
 
   public void UnfreezeTime() {
@@ -93,13 +101,24 @@ public class SceneController : MonoBehaviour {
     deadCrewMember = choiceName;
     crewMemberWhoJoinedParty = choiceName == "Megan" ? "Jake" : "Megan";
     hasPlayerMadeAct1Decision = true;
+    decisionPanel.ClearPanel();
     FinishEndOfAct1Dialog();
   }
 
   private void MakeAct2Decision(string choiceName) {
-    playerRemovedFromPartyForOctopusFight = choiceName;
+    characterRemovedFromPartyForOctopusFight = choiceName;
     characterController.RemovePlayerFromParty(choiceName);
+    decisionPanel.ClearPanel();
+
     ActivateOctopusMonster();
+  }
+
+  private void MakeAct3Decision(string choiceName) {
+    characterKilledDuringInterlude = choiceName;
+    characterController.RemovePlayerFromParty(choiceName);
+    decisionPanel.ClearPanel();
+
+    FinishEndOfAct3Dialog();
   }
 
   public void OnSceneUnloaded(Scene scene) {
@@ -295,7 +314,7 @@ public class SceneController : MonoBehaviour {
     if (questController.IsQuestCompleted("DefeatTentacleMonsterQuest")) {
       GameObject tentacleMonsterGameObject = GameObject.FindGameObjectWithTag("Tentacle Monster");
       if (tentacleMonsterGameObject != null) {
-        BattleSystem.BattleLaunchCharacter tentacleMonster = tentacleMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        BattleLaunchCharacter tentacleMonster = tentacleMonsterGameObject.GetComponent<BattleLaunchCharacter>();
         if (tentacleMonster != null) {
           Destroy(tentacleMonster.gameObject);
         }
@@ -335,7 +354,7 @@ public class SceneController : MonoBehaviour {
     dialogPanel.StartDialog(dialog);
     RemoveOctopusMonster();
     currentAct = 3;
-    characterController.AddPlayerToParty(playerRemovedFromPartyForOctopusFight);
+    characterController.AddPlayerToParty(characterRemovedFromPartyForOctopusFight);
     UnlockShedExit();
   }
 
@@ -411,6 +430,15 @@ public class SceneController : MonoBehaviour {
     EventController.OnDialogPanelClosed -= OpenDecisionPanelForAct2;
   }
 
+  private void OpenDecisionPanelForAct3() {
+    decisionPanel.gameObject.SetActive(true);
+    decisionPanel.SetTitle("Who is the REAL alien?");
+    decisionPanel.AddChoice("Alan");
+    decisionPanel.AddChoice(crewMemberWhoJoinedParty);
+    EventController.OnDecisionMade += MakeAct3Decision;
+    EventController.OnDialogPanelClosed -= OpenDecisionPanelForAct3;
+  }
+
   private void FinishEndOfAct1Dialog() {
     string[] dialog = new string[] {
       string.Format("*You shoot {0}*", deadCrewMember),
@@ -459,7 +487,7 @@ public class SceneController : MonoBehaviour {
     if (questController.IsQuestCompleted("KillPigAlienQuest")) {
       GameObject pigAlienGameObject = GameObject.FindGameObjectWithTag("Pig Alien");
       if (pigAlienGameObject != null) {
-        BattleSystem.BattleLaunchCharacter pigAlien = pigAlienGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        BattleLaunchCharacter pigAlien = pigAlienGameObject.GetComponent<BattleLaunchCharacter>();
         if (pigAlien != null) {
           Destroy(pigAlien.gameObject);
         }
@@ -473,7 +501,7 @@ public class SceneController : MonoBehaviour {
     if (questController.IsQuestCompleted("DefeatEvolvedBlobQuest")) {
       GameObject evolvedBlobGameObject = GameObject.FindGameObjectWithTag("Evolved Blob");
       if (evolvedBlobGameObject != null) {
-        BattleSystem.BattleLaunchCharacter evolvedBlob = evolvedBlobGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        BattleLaunchCharacter evolvedBlob = evolvedBlobGameObject.GetComponent<BattleLaunchCharacter>();
         if (evolvedBlob != null) {
           Destroy(evolvedBlob.gameObject);
         }
@@ -485,7 +513,7 @@ public class SceneController : MonoBehaviour {
     if (questController.IsQuestCompleted("DefeatDinosaurMonsterQuest")) {
       GameObject dinosaurMonsterGameObject = GameObject.FindGameObjectWithTag("Dinosaur Monster");
       if (dinosaurMonsterGameObject != null) {
-        BattleSystem.BattleLaunchCharacter dinosaurMonster = dinosaurMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        BattleLaunchCharacter dinosaurMonster = dinosaurMonsterGameObject.GetComponent<BattleLaunchCharacter>();
         if (dinosaurMonster != null) {
           Destroy(dinosaurMonster.gameObject);
         }
@@ -497,7 +525,7 @@ public class SceneController : MonoBehaviour {
     if (questController.IsQuestCompleted("DefeatBirdMonsterQuest")) {
       GameObject birdMonsterGameObject = GameObject.FindGameObjectWithTag("Bird Monster");
       if (birdMonsterGameObject != null) {
-       BattleSystem.BattleLaunchCharacter birdMonster = birdMonsterGameObject.GetComponent<BattleSystem.BattleLaunchCharacter>();
+       BattleLaunchCharacter birdMonster = birdMonsterGameObject.GetComponent<BattleLaunchCharacter>();
        if (birdMonster != null) {
           Destroy(birdMonster.gameObject);
         }
@@ -522,7 +550,7 @@ public class SceneController : MonoBehaviour {
       "Barry! Use the cure!",
       string.Format("We can bring {0} back to our side!", deadCrewMember),
       string.Format("You inject {0} with the cure", deadCrewMember),
-      string.Format("but {0} begins to glow.", GetPronoun()),
+      string.Format("but {0} begins to glow.", GetSubjectivePronoun()),
       string.Format("In a matter of seconds, {0} is not recognizable.", deadCrewMember),
       "The cure appears to have failed.",
       "You have no choice but to fight",
@@ -535,30 +563,68 @@ public class SceneController : MonoBehaviour {
   }
 
   public void StartDefeatEnhancedParasiteQuestCompletedDialog() {
-    // TODO start dialog for Interlude here
-
+    RemoveEnhancedParasite();
     string[] dialog = new string[] {
-      "Fill in later"
+      "You realize something.",
+      string.Format("{0} wasn't even infected in your first battle.", deadCrewMember),
+      "You see a shadowy image in a memor.y",
+      "Someone doubled back to the Central Core.",
+      string.Format("After you killed {0}, someone went back.", deadCrewMember),
+      string.Format("Someone infected {0} AFTER you killed {1}.", deadCrewMember, GetObjectivePronoun()),
+      "But who was it?",
+      "You can't quite remember.",
+      "There's no time to waste, Barry.",
+      "Make a decision NOW.",
+      string.Format("Who infected {0}?", deadCrewMember),
+      "Who is the REAL alien?"
     };
 
     dialogPanel.StartDialog(dialog);
-    EventController.OnDialogPanelClosed += RemoveEnhancedParasite;
-
+    EventController.OnDialogPanelClosed += OpenDecisionPanelForAct3;
   }
 
+    private void FinishEndOfAct3Dialog() {
+    string[] dialog = new string[] {
+      string.Format("{0}: Barry! You KNOW me.", characterKilledDuringInterlude),
+      "You know it isn't me!",
+      string.Format("{0}'s pleas fall on your deaf ears.", characterKilledDuringInterlude),
+      string.Format("You see the aliens lining up by {0}'s side.", characterKilledDuringInterlude),
+      string.Format("You no longer see your ally."),
+      string.Format("You only see it for what it truly is:"),
+      string.Format("The Parasite Leader!")
+    };
+
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += StartInterludeBattle;
+  }
+
+
   private void SetInfectedAndroidParty() {
-    BattleSystem.Enemy enemyToFind = characterController.FindEnemyByName(deadCrewMember);
-    BattleSystem.BattleLaunchCharacter infectedAndroid = null;
+    Enemy enemyToFind = characterController.FindEnemyByName(deadCrewMember);
+    BattleLaunchCharacter infectedAndroid = null;
 
     NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
     foreach(NPC n in npcs) {
       if (n.npcName == "Infected Android") {
-        infectedAndroid = n.GetComponent<BattleSystem.BattleLaunchCharacter>();
+        infectedAndroid = n.GetComponent<BattleLaunchCharacter>();
       }
     }
 
     if (infectedAndroid != null && enemyToFind != null) {
       infectedAndroid.AddEnemy(enemyToFind);
+    }
+  }
+
+  private void StartInterludeBattle() {
+    List<Enemy> enemies = new List<Enemy>();
+    enemies.Add(characterController.FindEnemyByName("Parasite Leader"));
+    enemies.Add(characterController.FindEnemyByName("Enhanced Parasite"));
+    enemies.Add(characterController.FindEnemyByName("Evolved Blob"));
+    Player player = GameObject.FindObjectOfType<Player>();
+    Vector2 playerPosition = new Vector2();
+    if (player != null) {
+      playerPosition = player.GetRigidbody().position;
+      battleLauncher.PrepareBattle(playerPosition, enemies);
     }
   }
 }
