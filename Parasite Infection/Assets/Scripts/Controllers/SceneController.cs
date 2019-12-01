@@ -339,7 +339,7 @@ public class SceneController : MonoBehaviour {
 
   public void StartDefeatOctopusMonsterQuestCompletedDialog() {
     string[] dialog = new string[] {
-      string.Format("{0}: I've dismantled him."),
+      string.Format("{0}: I've dismantled him.", characterRemovedFromPartyForOctopusFight),
       "He had some data about a potential cure.",
       "Let's head down to the labs and check it out."
     };
@@ -347,7 +347,6 @@ public class SceneController : MonoBehaviour {
     RemoveOctopusMonster();
     currentAct = 3;
     characterController.AddPlayerToParty(characterRemovedFromPartyForOctopusFight);
-    UnlockShedExit();
   }
 
   private void ActivateOctopusMonster() {
@@ -368,6 +367,7 @@ public class SceneController : MonoBehaviour {
       if (ocotpusMonsterParent != null) {
         Destroy(ocotpusMonsterParent);
       }
+      UnlockShedExit();
     }
   }
 
