@@ -9,7 +9,7 @@ public class Player : Character  {
   }
 
   public void Load() {
-      ES3.Load<GameObject>("Player", "PlayerInfo.json");
+    ES3.Load<GameObject>("Player", "PlayerInfo.json");
   }
 
   private void Update() {

@@ -7,7 +7,7 @@ public class CompleteTheCureQuest : Quest {
   void Awake() {
     slug = "CompleteTheCureQuest";    
     questName = "Complete the Cure";
-    itemRewards = new List<string>() { "Medkit", "Energy Pack" };
+    itemRewards = new List<string>() { "Medkit", "Energy Pack", "Cure-all", "Cure-all", "Cure-all", "Cure-all", "Cure-all" };
     goal = new CollectionGoal(1, 19, this);
     inventoryController = FindObjectOfType<InventoryController>();
     questController = FindObjectOfType<QuestController>();
