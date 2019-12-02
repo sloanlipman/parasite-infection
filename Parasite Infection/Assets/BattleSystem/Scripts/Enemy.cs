@@ -71,7 +71,7 @@ namespace BattleSystem {
 
     public override void LevelUp() {
       CharacterController characterController = FindObjectOfType<CharacterController>();
-      base.LevelUp();
+      this.level++;
       List<string> stats = new List<string>();
       foreach (var stat in upgradePointsDictionary) {
         stats.Add(stat.Key.ToString());
