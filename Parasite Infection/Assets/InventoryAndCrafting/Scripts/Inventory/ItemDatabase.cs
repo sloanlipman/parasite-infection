@@ -156,7 +156,7 @@ public class ItemDatabase : MonoBehaviour {
         {"Crafting", 0},
         {"Health", 20},
         {"Energy", 20}
-      }
+      }),
     };
   }
 }
