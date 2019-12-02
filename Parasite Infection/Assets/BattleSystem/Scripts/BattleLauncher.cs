@@ -34,7 +34,7 @@ namespace BattleSystem {
         if (numberOfSteps > 5000) {
           ResetSteps();
           random = Random.Range(0, 10);
-          if (random < 1) {
+          if (random < 3) {
         // if (IsPlayerNotNullAndMoving()) // Uncomment this line (and comment other condition checks) for debugging battle-related tasks. Otherwise leave this line commented.
             PrepareBattle(player.transform.position);
           }
