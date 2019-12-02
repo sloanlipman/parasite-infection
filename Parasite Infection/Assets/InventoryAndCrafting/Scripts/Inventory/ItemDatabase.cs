@@ -150,7 +150,7 @@ public class ItemDatabase : MonoBehaviour {
         {"Equippable", 0},
         {"Crafting", 1}      
       }),
-      new Item(20, "Cure-all", "Some leftover healing material from synthesizing the cure. Recover 20 HP and 20 EP"),
+      new Item(20, "Cure-all", "Some leftover healing material from synthesizing the cure. Recover 20 HP and 20 EP",
       new Dictionary<string, int> {
         {"Equippable", 0},
         {"Crafting", 0},
