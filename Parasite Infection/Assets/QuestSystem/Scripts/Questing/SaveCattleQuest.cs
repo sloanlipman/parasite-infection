@@ -4,7 +4,7 @@ using QuestSystem;
 public class SaveCattleQuest : Quest {
   void Awake() {
     slug = "SaveCattleQuest";    
-    questName = "Defeat 10 Defense Drones";
+    questName = "Defeat 1 Defense Drone";
     itemRewards = new List<string>() {
       "Medkit",
       "Medkit",
@@ -16,7 +16,7 @@ public class SaveCattleQuest : Quest {
       "Fire Core",
       "Water Core"
       };
-    goal = new KillGoal(10, 5, this);
+    goal = new KillGoal(1, 5, this);
   }
 
   public override void Complete() {
