@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7594697043243188203, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
@@ -102,9 +102,6 @@ MonoBehaviour:
   defensePower: 23
   energyPoints: 35
   maxEnergyPoints: 35
-  speed: 0
-  abilities:
-  - {fileID: 0}
   abilitiesList:
   - Barrage
   - Hydroblast
@@ -134,7 +131,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.78125, y: 0.59375}
+    oldSize: {x: 0.390625, y: 0.296875}
     newSize: {x: 0.21, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

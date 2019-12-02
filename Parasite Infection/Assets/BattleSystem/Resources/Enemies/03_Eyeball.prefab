@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3924562713174096799}
   - component: {fileID: 5126930062819720034}
   m_Layer: 0
-  m_Name: 3_Eyeball
+  m_Name: 03_Eyeball
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7162291741592422905, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
@@ -96,19 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Eyeball
-  health: 25
-  maxHealth: 25
-  attackPower: 12
-  defensePower: 20
-  energyPoints: 25
-  maxEnergyPoints: 25
-  speed: 0
-  abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
+  health: 27
+  maxHealth: 27
+  attackPower: 14
+  defensePower: 22
+  energyPoints: 27
+  maxEnergyPoints: 27
   abilitiesList:
   - Barrage
   - Heal
-  level: 1
+  level: 2
   experience: 15
   originalMaxHealth: 25
   originalMaxEP: 25
@@ -133,7 +130,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.40625, y: 0.53125}
+    oldSize: {x: 0.203125, y: 0.265625}
     newSize: {x: 0.3, y: 0.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

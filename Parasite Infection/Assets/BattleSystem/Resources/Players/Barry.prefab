@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,22 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Barry
-  health: 15
-  maxHealth: 15
-  attackPower: 5
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
-  speed: 0
-  abilities: []
+  health: 21
+  maxHealth: 21
+  attackPower: 11
+  defensePower: 9
+  energyPoints: 21
+  maxEnergyPoints: 21
   abilitiesList: []
-  level: 1
-  experience: 0
+  level: 7
+  experience: 58
   originalMaxHealth: 15
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 3
-  upgradePoints: 1
+  upgradePoints: 3
   modSlots: 1
 --- !u!212 &7264005851067476655
 SpriteRenderer:
@@ -99,9 +97,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1375660066557349284, guid: c0d39b49095deec428f3e56678a9d1b1,
+  m_Sprite: {fileID: -4124643212364371475, guid: 49ceaecdde9f7eb4ba232094e66ebd9e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.78125, y: 0.9375}
+    oldSize: {x: 0.5, y: 0.78125}
     newSize: {x: 0.25, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

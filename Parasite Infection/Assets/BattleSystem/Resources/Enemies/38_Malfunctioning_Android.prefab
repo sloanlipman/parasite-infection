@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,12 +69,12 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8405052368512661918, guid: c0d39b49095deec428f3e56678a9d1b1,
+  m_Sprite: {fileID: 8982070299147119808, guid: dc7ca74a73f51d842b1f9f5665378adb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.21, y: 0.3}
@@ -96,21 +96,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Malfunctioning Android
-  health: 71
-  maxHealth: 71
-  attackPower: 37
-  defensePower: 30
-  energyPoints: 71
-  maxEnergyPoints: 71
-  speed: 0
-  abilities:
-  - {fileID: 0}
+  health: 42
+  maxHealth: 42
+  attackPower: 22
+  defensePower: 22
+  energyPoints: 52
+  maxEnergyPoints: 52
   abilitiesList:
   - Hydroblast
   - Barrage
   - Fireball
-  level: 11
-  experience: 50
+  level: 2
+  experience: 75
   originalMaxHealth: 40
   originalMaxEP: 50
   originalAttackPower: 20
@@ -134,7 +131,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.96875}
+    oldSize: {x: 0.515625, y: 0.84375}
     newSize: {x: 0.21, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

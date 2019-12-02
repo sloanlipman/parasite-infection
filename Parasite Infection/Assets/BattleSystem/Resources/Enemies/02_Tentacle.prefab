@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6862125968610231447, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
@@ -96,19 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Tentacle
-  health: 35
-  maxHealth: 35
-  attackPower: 10
-  defensePower: 10
-  energyPoints: 35
-  maxEnergyPoints: 35
-  speed: 0
-  abilities:
-  - {fileID: 2214528129449449433, guid: 3893b8d091eb3444dbd4958159efe6d3, type: 3}
+  health: 24
+  maxHealth: 24
+  attackPower: 15
+  defensePower: 14
+  energyPoints: 24
+  maxEnergyPoints: 24
   abilitiesList:
   - Barrage
   - Fireball
-  level: 1
+  level: 3
   experience: 13
   originalMaxHealth: 20
   originalMaxEP: 20
@@ -133,7 +130,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.6875}
+    oldSize: {x: 0.3125, y: 0.34375}
     newSize: {x: 0.3, y: 0.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,8 +52,6 @@ MonoBehaviour:
   defensePower: 5
   energyPoints: 15
   maxEnergyPoints: 15
-  speed: 0
-  abilities: []
   abilitiesList: []
   level: 1
   experience: 0
@@ -61,7 +59,7 @@ MonoBehaviour:
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 5
-  upgradePoints: 1
+  upgradePoints: 0
   modSlots: 1
 --- !u!212 &7264005851067476655
 SpriteRenderer:
@@ -99,9 +97,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8405052368512661918, guid: c0d39b49095deec428f3e56678a9d1b1,
+  m_Sprite: {fileID: -9178191127789592537, guid: dc7ca74a73f51d842b1f9f5665378adb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.96875}
+    oldSize: {x: 0.390625, y: 0.84375}
     newSize: {x: 0.24, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

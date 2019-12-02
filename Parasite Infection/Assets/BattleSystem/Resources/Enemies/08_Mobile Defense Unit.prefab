@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7261417317485990582, guid: c0d39b49095deec428f3e56678a9d1b1,
     type: 3}
@@ -98,13 +98,10 @@ MonoBehaviour:
   characterName: Mobile Defense Unit
   health: 30
   maxHealth: 30
-  attackPower: 10
-  defensePower: 10
+  attackPower: 20
+  defensePower: 20
   energyPoints: 20
   maxEnergyPoints: 20
-  speed: 0
-  abilities:
-  - {fileID: 0}
   abilitiesList:
   - Heal
   - Fireball
@@ -133,7 +130,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.71875, y: 0.8125}
+    oldSize: {x: 0.359375, y: 0.40625}
     newSize: {x: 0.21, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

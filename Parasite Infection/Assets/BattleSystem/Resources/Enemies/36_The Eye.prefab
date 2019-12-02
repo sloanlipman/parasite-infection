@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,19 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: The Eye
-  health: 46
-  maxHealth: 46
-  attackPower: 24
-  defensePower: 25
-  energyPoints: 45
-  maxEnergyPoints: 45
-  speed: 0
-  abilities:
-  - {fileID: 0}
+  health: 32
+  maxHealth: 32
+  attackPower: 20
+  defensePower: 22
+  energyPoints: 32
+  maxEnergyPoints: 32
   abilitiesList:
   - Heal
   - Fireball
-  level: 8
+  level: 2
   experience: 50
   originalMaxHealth: 30
   originalMaxEP: 30
@@ -102,7 +99,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993003049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 7
   m_Sprite: {fileID: 4846733450833504848, guid: 6a8868e9b3ad4254eab864607579ad41,
     type: 3}
