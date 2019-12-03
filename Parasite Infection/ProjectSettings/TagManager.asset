@@ -43,6 +43,9 @@ TagManager:
   - Act 3 Boss
   - Infected Android
   - Gateways/Bridge
+  - Computer
+  - The True Parasite
+  - Final Boss
   layers:
   - Default
   - TransparentFX

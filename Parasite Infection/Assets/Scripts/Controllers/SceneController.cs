@@ -689,4 +689,62 @@ public class SceneController : MonoBehaviour {
     }
     ActivateGatewayToBridge();
   }
+
+  private bool PlayerIsAlien() {
+    return characterKilledDuringInterlude == "Alan";
+  }
+
+  private bool AlanDismantledAndroid() {
+    return characterRemovedFromPartyForOctopusFight == "Alan";
+  }
+
+  private bool PlayerSavedMegan() {
+    return crewMemberWhoJoinedParty == "Megan";
+  }
+
+  public void TriggerFinalBattle() {
+    string[] dialog = new string[] {"Test"};
+    if (PlayerIsAlien()) {
+      // Scenario 3A
+      if (PlayerSavedMegan()) {
+        // Scenario 1B
+        if (AlanDismantledAndroid()) {
+          // Scenario 2B
+
+        } else {
+          // Scenario 2A
+
+        }
+      } else {
+        // Scenario 1A
+        if (AlanDismantledAndroid()) {
+          // Scenario 2B
+        } else {
+          // Scenario 2A
+        }
+      }
+
+    } else {
+      // Scenario 3B
+      if (AlanDismantledAndroid()) {
+        // Scenario 2A
+      } else {
+        // Scenario 2B
+      }
+    }
+
+   dialogPanel.StartDialog(dialog);
+   EventController.OnDialogPanelClosed +=  ActivateFinalBoss;
+  }
+
+  private void ActivateFinalBoss() {
+    GameObject finalBossParent = GameObject.FindGameObjectWithTag("Final Boss");
+      if (finalBossParent != null) {
+        NPC finalBoss = finalBossParent.GetComponentInChildren<NPC>(true);
+        if (finalBoss != null) {
+          finalBoss.gameObject.SetActive(true);
+        }
+      }
+      EventController.OnDialogPanelClosed -= ActivateFinalBoss;
+    }
 }
