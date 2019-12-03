@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private InventoryController inventoryController;
   [SerializeField] private BattleLauncher battleLauncher;
   private MenuController menuController;
+  private List<Enemy> finalBattleEnemyParty = new List<Enemy>();
 
   private int currentAct = 0;
   private bool hasPlayerDoneTutorial;
@@ -34,6 +35,9 @@ public class SceneController : MonoBehaviour {
 // Labs
   private string characterKilledDuringInterlude = "";
   private bool shouldTellToGoToBridge = true;
+
+// Final boss
+  private bool finalBossShouldBeAlien = true;
 
   private bool IsQuestCompleted(string questName) {
     return questController.IsQuestCompleted(questName);
@@ -717,6 +721,8 @@ public class SceneController : MonoBehaviour {
         }
       } else {
         // Scenario 1A
+        finalBossShouldBeAlien = false; // Instead, should activate the "good guys" to come be your enemies
+
         if (AlanDismantledAndroid()) {
           // Scenario 2B
         } else {
@@ -733,18 +739,50 @@ public class SceneController : MonoBehaviour {
       }
     }
 
-   dialogPanel.StartDialog(dialog);
-   EventController.OnDialogPanelClosed +=  ActivateFinalBoss;
+    dialogPanel.StartDialog(dialog);
+    EventController.OnDialogPanelClosed += ActivateFinalBoss;
   }
 
   private void ActivateFinalBoss() {
     GameObject finalBossParent = GameObject.FindGameObjectWithTag("Final Boss");
       if (finalBossParent != null) {
-        NPC finalBoss = finalBossParent.GetComponentInChildren<NPC>(true);
-        if (finalBoss != null) {
-          finalBoss.gameObject.SetActive(true);
+        NPC[] possibleBosses = finalBossParent.GetComponentsInChildren<NPC>(true);
+
+        List<NPC> possibleBossList = new List<NPC>();
+        foreach(NPC boss in possibleBosses) {
+          possibleBossList.Add(boss);
+        }
+
+        if (finalBossShouldBeAlien) {
+          this.PerformActivateFinalBoss("The True Parasite", possibleBossList);
+        } else {
+          this.PerformActivateFinalBoss("Jake", possibleBossList);
         }
       }
       EventController.OnDialogPanelClosed -= ActivateFinalBoss;
     }
+
+    private void PerformActivateFinalBoss(string bossName, List<NPC> possibleBossList) {
+       NPC finalBoss = possibleBossList.Find(boss => boss.npcName == bossName);
+          if (finalBoss != null) {
+            finalBoss.gameObject.SetActive(true);
+          }
+    }
 }
+
+/**
+  private void StartInterludeBattle() {
+      List<Enemy> enemies = new List<Enemy>();
+      enemies.Add(characterController.FindEnemyByName("Parasite Leader"));
+      enemies.Add(characterController.FindEnemyByName("Enhanced Parasite"));
+      Player player = GameObject.FindObjectOfType<Player>();
+      Vector2 playerPosition = new Vector2();
+      if (player != null) {
+        playerPosition = player.GetRigidbody().position;
+        battleLauncher.PrepareBattle(playerPosition, enemies);
+        questController.AssignQuest("InterludeQuest");
+      }
+
+      EventController.OnDialogPanelClosed -= StartInterludeBattle;
+    }
+*/

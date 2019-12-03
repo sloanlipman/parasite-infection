@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0
   IsMoving: 0
-  wander: 1
+  wander: 0
   questName: 
   dialogData: {fileID: 0}
   questCompletedDialogData: {fileID: 0}
