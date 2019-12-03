@@ -14,10 +14,12 @@ public class Character : MonoBehaviour {
   protected Animator animator;
   public bool IsMoving;
   void Awake() {
-
     body = GetComponent<Rigidbody2D>();
     sprite = GetComponent<SpriteRenderer>();
-    
+  }
+
+  public void SetSprite(Sprite sprite) {
+    this.sprite.sprite = sprite;
   }
 
   public void Move (Vector2 inputVector) {

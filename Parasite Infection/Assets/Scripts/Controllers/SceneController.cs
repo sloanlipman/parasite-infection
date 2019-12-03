@@ -707,11 +707,81 @@ public class SceneController : MonoBehaviour {
   }
 
   public void TriggerFinalBattle() {
-    string[] dialog = new string[] {"Test"};
+    List<string> dialog = new List<string>();
+    dialog.Add("You key in the self-destruct sequence");
+    dialog.Add("and prepare to make an announcement to the ship.");
+    dialog.Add("Barry: Attention, crew of the USS Hecate.");
+    dialog.Add("We can no longer hold the ship.");
+    dialog.Add("We've lost the Android.");
+    dialog.Add("We've lost too many crew members.");
+    dialog.Add("Hurry to the escape pods.");
+    dialog.Add("I've triggered the self-destruct protocol.");
+    dialog.Add("The ship will blow up in T-minus 20 minutes.");
+    dialog.Add("May God have mercy on your souls.");
+
     if (PlayerIsAlien()) {
       // Scenario 3A
+      dialog.Add("Ten minutes pass.");
+      dialog.Add("One by one, crew members radio back to you.");
+      dialog.Add("They are starting to make it to the pods.");
+      dialog.Add("You feel a sense of relief.");
+      dialog.Add("Even though you lost some good friends");
+      dialog.Add("and even though you are about to");
+      dialog.Add("go down with the ship as you defend");
+      dialog.Add("the self-destruct panel,");
+      dialog.Add("you feel a sense of relief");
+      dialog.Add("These people will make it home.");
+      dialog.Add("These people will make it back to their families");
+      dialog.Add("These people will see Earth again.");
+      dialog.Add("And then the screaming begins.");
+      dialog.Add("You hear them all cry out in agony");
+      dialog.Add("as the Parasites claw their way out of their hosts");
+      dialog.Add("You feel horror and shock as you realize");
+      dialog.Add("that you have just freed the aliens");
+      dialog.Add("and have sent them to Earth.");
+      dialog.Add("You then feel something stir within you.");
+      dialog.Add("Flashes of your battles from the last few hours.");
+      dialog.Add(string.Format("{0} was not the one who doubled back.", characterKilledDuringInterlude));
+      dialog.Add(string.Format("{0} was not the one who killed {1}.", characterKilledDuringInterlude, deadCrewMember));
+      dialog.Add("Voice: It was you.");
+      dialog.Add("Yes, Barry.");
+      dialog.Add("Don't you see?");
+      dialog.Add("It's always been you.");
+      dialog.Add("Megan and Jake? They were never infected.");
+      dialog.Add(string.Format("But I made you come back and infect {0}!", deadCrewMember));
+      dialog.Add("I made you infect the android!");
+      dialog.Add("I made you botch the cure!");
+      dialog.Add("Don't you get it, Barry?");
+      dialog.Add("The moment you touched the Tentacle Monster");
+      dialog.Add("You belonged to us.");
+      dialog.Add("Remember? He told you that you were already dead");
+      dialog.Add("And now your body is MINE!");
+      dialog.Add("Barry: No... stop... THAT'S ENOUGH");
+      dialog.Add("You let out an anguished yelp.");
+      dialog.Add(string.Format("You begin to glow, just as {0} did", deadCrewMember));
+      dialog.Add("right before you administered the botched cure");
+      dialog.Add(string.Format("{0}: Barry? Can you hear me?", crewMemberWhoJoinedParty));
+      dialog.Add("You've got to fight it, Barry.");
+      dialog.Add("I know you're still in there.");
+      dialog.Add("So fight it! We're all counting on you");
+      dialog.Add("to stop the Parasites.");
+      dialog.Add("REMEMBER WHO YOU ARE!!!!");
+      dialog.Add(string.Format("As {0} screams, you do remember everything.", crewMemberWhoJoinedParty));
       if (PlayerSavedMegan()) {
         // Scenario 1B
+        dialog.Add("You remember the feeling of joy");
+        dialog.Add("when you first met Megan");
+        dialog.Add("You feel fear at the thought of losing her.");
+        dialog.Add("And you embrace this fear.");
+        dialog.Add("You feel the Parasite trying to escape your body,");
+        dialog.Add("and you fight back");
+        dialog.Add("It begins to shriek,");
+        dialog.Add("unable to tolerate the love that flows through you.");
+        dialog.Add("It phases through you, freeing you from its thrall.");
+        dialog.Add("True Parasite: Filthy humans...");
+        dialog.Add("I am getting off this putrid ship.");
+        dialog.Add("Now stand aside or PERISH!!!!!!!!!!");
+
         if (AlanDismantledAndroid()) {
           // Scenario 2B
 
@@ -722,6 +792,20 @@ public class SceneController : MonoBehaviour {
       } else {
         // Scenario 1A
         finalBossShouldBeAlien = false; // Instead, should activate the "good guys" to come be your enemies
+        dialog.Add("You remember the pain and suffering you went through");
+        dialog.Add("as your crew continued to drop one by one.");
+        dialog.Add("You remember how good it felt to give in");
+        dialog.Add("to the fear and paranoia");
+        dialog.Add("as you were the one who made them drop");
+        dialog.Add("You remember who you are.");
+        dialog.Add("You are the True Parasite");
+        dialog.Add("You tear apart Barry's flesh and reveal your true form");
+        dialog.Add("True Parasite: Pitiful human.");
+        dialog.Add("My way off this ship is on its way.");
+        dialog.Add("Now stand aside or PERISH");
+        dialog.Add("Jake: Barry... what happened?");
+        dialog.Add("True Parasite: Barry is long dead.");
+        dialog.Add("Now it's your turn to join him");
 
         if (AlanDismantledAndroid()) {
           // Scenario 2B
@@ -739,7 +823,7 @@ public class SceneController : MonoBehaviour {
       }
     }
 
-    dialogPanel.StartDialog(dialog);
+    dialogPanel.StartDialog(dialog.ToArray());
     EventController.OnDialogPanelClosed += ActivateFinalBoss;
   }
 
@@ -757,17 +841,19 @@ public class SceneController : MonoBehaviour {
           this.PerformActivateFinalBoss("The True Parasite", possibleBossList);
         } else {
           this.PerformActivateFinalBoss("Jake", possibleBossList);
+          Player player = GameObject.FindObjectOfType<Player>();
+          player.SetSprite(Resources.Load<Sprite>("True Parasite"));
         }
       }
       EventController.OnDialogPanelClosed -= ActivateFinalBoss;
     }
 
-    private void PerformActivateFinalBoss(string bossName, List<NPC> possibleBossList) {
-       NPC finalBoss = possibleBossList.Find(boss => boss.npcName == bossName);
-          if (finalBoss != null) {
-            finalBoss.gameObject.SetActive(true);
-          }
+  private void PerformActivateFinalBoss(string bossName, List<NPC> possibleBossList) {
+    NPC finalBoss = possibleBossList.Find(boss => boss.npcName == bossName);
+      if (finalBoss != null) {
+        finalBoss.gameObject.SetActive(true);
     }
+  }
 }
 
 /**
