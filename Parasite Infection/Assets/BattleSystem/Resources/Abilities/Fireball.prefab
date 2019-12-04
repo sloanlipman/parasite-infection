@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Fireball
-  power: 5
-  energyCost: 5
+  power: 10
+  energyCost: 8
   abilityType: 0
 --- !u!198 &4790020554421059177
 ParticleSystem:
@@ -4745,7 +4745,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 884288523
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

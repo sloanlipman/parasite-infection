@@ -63,7 +63,7 @@ namespace BattleSystem {
       abilities.Clear();
     }
 
-    public void Hurt (int amount) {
+    public void Hurt (int amount, string damageSource, int rawPower = 0) {
       int damageAmount;
       if (amount < defensePower) {
         damageAmount = Random.Range(0, amount / 2);
@@ -76,8 +76,40 @@ namespace BattleSystem {
       if (health == 0) {
         Die();
       }
+
       BattleController.Instance.SetDamageLabel(damageAmount);
-      BattleController.Instance.ShowLabel("hurt");
+
+      switch(damageSource) {
+        case "attack": {
+          BattleController.Instance.ShowLabel("hurt");
+          break;
+        }
+
+        case "Hydroblast": {
+          LowerDefense(rawPower / 2);
+          break;
+        }
+
+        case "Fireball": {
+          ReduceEnergy(damageAmount);
+          break;
+        }
+      }
+
+    }
+
+    public void LowerDefense(int amount) {
+      int amountToDecrease = Mathf.Max(defensePower - amount, 0);
+      defensePower -= amountToDecrease;
+      BattleController.Instance.SetDefenseDecreaseAmount(amountToDecrease);
+      BattleController.Instance.ShowLabel("Hydroblast");
+    }
+
+    public void ReduceEnergy(int amount) {
+      int amountToDecrease = Mathf.Max(energyPoints - amount, 0);
+      energyPoints -= amountToDecrease;
+      BattleController.Instance.SetEPDecreaseAmount(amountToDecrease);
+      BattleController.Instance.ShowLabel("Fireball");
     }
 
     public void Heal (int amount) {

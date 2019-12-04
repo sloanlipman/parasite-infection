@@ -28,9 +28,11 @@ namespace BattleSystem {
     private bool didEnemyUseAbility;
 
     private string labelDamage;
-    private string labelDefense;
+    private string labelDefenseIncrease;
     private string labelHeal;
     private string labelEPRecovery;
+    private string labelDefenseDecrease;
+    private string labelEPDecrease;
 
     private int actTurn; // act refers to Action (i.e. who is up on the current side?)
                         // Turn refers to are Enemies going or are players going?
@@ -46,7 +48,7 @@ namespace BattleSystem {
     }
 
     public void SetDefenseIncrease (int amount) {
-      labelDefense = amount.ToString();
+      labelDefenseIncrease = amount.ToString();
     }
 
     public void SetEnergyRecoveryAmount (int amount) {
@@ -57,15 +59,33 @@ namespace BattleSystem {
       labelHeal = amount.ToString();
     }
 
+    public void SetCureAllAmount (int hp, int ep) {
+      SetHealAmount(hp);
+      SetEnergyRecoveryAmount(ep);
+    }
+
+    public void SetDefenseDecreaseAmount (int amount) {
+      labelDefenseDecrease = amount.ToString();
+    }
+
+    public void SetEPDecreaseAmount(int amount) {
+      labelEPDecrease = amount.ToString();
+    }
+
     public void ShowLabel(string label) {
       switch (label) {
         case "defense": {
-          labelText.ShowDefend(labelDefense, labelEPRecovery, currentTarget);
+          labelText.ShowDefend(labelDefenseIncrease, labelEPRecovery, currentTarget);
           break;
         }
 
         case "heal": {
           labelText.ShowHeal(labelHeal, currentTarget);
+          break;
+        }
+
+        case "cureAll": {
+          labelText.ShowCureAll(labelHeal, labelEPRecovery, currentTarget);
           break;
         }
 
@@ -76,6 +96,16 @@ namespace BattleSystem {
 
         case "EP": {
           labelText.ShowEnergyRecovered(labelEPRecovery, currentTarget);
+          break;
+        }
+
+        case "Hydroblast": {
+          labelText.ShowHydroblastEffects(labelDamage, labelDefenseDecrease, currentTarget);
+          break;
+        }
+
+        case "Fireball": {
+          labelText.ShowFireballEffects(labelDamage, labelEPDecrease, currentTarget);
           break;
         }
       }
@@ -362,7 +392,7 @@ namespace BattleSystem {
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
       Debug.Log(attacker.characterName + " is attacking " + target.characterName);
-      target.Hurt(attacker.attackPower);
+      target.Hurt(attacker.attackPower, "attack");
     }
 
     private void AddEnemyExperience(int enemyId) {

@@ -21,7 +21,6 @@ namespace BattleSystem {
       SetPosition(target.transform.position);
       yield return new WaitForSeconds(.75f);
       label.gameObject.SetActive(false);
-
     }
 
     public void ShowDefend(string defense, string EP, BattleCharacter target) {
@@ -44,12 +43,34 @@ namespace BattleSystem {
       string energyString = "EP + " + amount;
       StartCoroutine(ShowLabel(energyString, target));
     }
-    
+
+    public void ShowCureAll(string HP, string EP, BattleCharacter target) {
+      label.gameObject.SetActive(true);
+      label.color = Color.cyan;
+      string cureAllString = string.Format("HP + {0}\nEP + {1}", HP, EP);
+      StartCoroutine(ShowLabel(cureAllString, target));
+    }
+
     public void ShowDamage(string amount, BattleCharacter target) {
       label.gameObject.SetActive(true);
       label.color = Color.red;
       string damageString = "HP - " + amount;
       StartCoroutine(ShowLabel(damageString, target));
+    }
+
+    public void ShowHydroblastEffects(string damage, string defense, BattleCharacter target) {
+      label.gameObject.SetActive(true);
+      label.color = Color.blue;
+
+      string hydroblastEffects = string.Format("HP - {0}\nDefense - {1}", damage, defense);
+      StartCoroutine(ShowLabel(hydroblastEffects, target));
+    }
+
+    public void ShowFireballEffects(string damage, string EP, BattleCharacter target) {
+      label.gameObject.SetActive(true);
+      label.color = Color.magenta;
+      string fireballEffects = string.Format("HP - {0}\nEP - {1}", damage, EP);
+      StartCoroutine(ShowLabel(fireballEffects, target));
     }
   }
 }

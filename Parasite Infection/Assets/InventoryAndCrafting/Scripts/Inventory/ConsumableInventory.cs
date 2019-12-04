@@ -48,14 +48,22 @@ public class ConsumableInventory : Inventory {
 
   public bool UseItem(BattleCharacter target, Item item) {
     bool success = false;
-    if (item.stats.ContainsKey("Health") && BattleController.Instance.IsValidHealTarget(target)) {
+
+    if (item.stats.ContainsKey("Health") && item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
+      target.Heal(item.stats["Health"]);
+      target.RecoverEnergy(item.stats["Energy"]);
+
+      BattleController.Instance.SetCureAllAmount(item.stats["Health"], item.stats["Energy"]);
+      BattleController.Instance.ShowLabel("cureAll");
+      success = true;
+
+    } else if (item.stats.ContainsKey("Health") && BattleController.Instance.IsValidHealTarget(target)) {
       target.Heal(item.stats["Health"]);
       BattleController.Instance.SetHealAmount(item.stats["Health"]);
       BattleController.Instance.ShowLabel("heal");
       success = true;
-    }
 
-    if (item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
+    } else if (item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
       target.RecoverEnergy(item.stats["Energy"]);
       success = true;
       BattleController.Instance.SetEnergyRecoveryAmount(item.stats["Energy"]);

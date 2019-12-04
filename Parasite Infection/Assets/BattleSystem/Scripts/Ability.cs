@@ -28,8 +28,8 @@ namespace BattleSystem {
     public void Cast(BattleCharacter caster, BattleCharacter target, int power) {
       targetPosition = target.transform.position;
       if (abilityType == AbilityType.Attack) {
-        int damage = power + caster.level; // Experimental
-        target.Hurt(damage);
+        int damage = power + caster.level;
+        target.Hurt(damage, abilityName, power);
       } else if (abilityType == AbilityType.Heal) {
         target.Heal(power);
       }
