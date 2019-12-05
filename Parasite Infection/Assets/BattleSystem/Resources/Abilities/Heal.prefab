@@ -48,6 +48,7 @@ MonoBehaviour:
   abilityName: Heal
   power: 10
   energyCost: 10
+  description: Heal your allies!
   abilityType: 1
 --- !u!198 &4790020554421059177
 ParticleSystem:

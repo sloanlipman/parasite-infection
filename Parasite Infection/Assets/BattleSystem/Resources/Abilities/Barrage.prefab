@@ -48,6 +48,7 @@ MonoBehaviour:
   abilityName: Barrage
   power: 7
   energyCost: 3
+  description: Fire a fast barrage of bullets!
   abilityType: 0
 --- !u!198 &4790020554421059177
 ParticleSystem:

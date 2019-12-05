@@ -48,6 +48,7 @@ MonoBehaviour:
   abilityName: Hydroblast
   power: 15
   energyCost: 10
+  description: Use the power of water! Lower your enemies' defense!
   abilityType: 0
 --- !u!198 &4790020554421059177
 ParticleSystem:

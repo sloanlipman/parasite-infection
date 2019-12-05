@@ -48,6 +48,7 @@ MonoBehaviour:
   abilityName: Fireball
   power: 10
   energyCost: 8
+  description: Use the power of fire! Drains Energy from your enemies.
   abilityType: 0
 --- !u!198 &4790020554421059177
 ParticleSystem:

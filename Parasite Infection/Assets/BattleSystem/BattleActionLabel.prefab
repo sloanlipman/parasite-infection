@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 805040304}
   - component: {fileID: 805040306}
   - component: {fileID: 805040305}
+  - component: {fileID: 805040307}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &805040307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805040303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e07a213e6af754db7d8a6e7a7c30e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 805040305}
 --- !u!1 &6830087907427403817
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +103,6 @@ GameObject:
   - component: {fileID: 6830087907427403818}
   - component: {fileID: 6830087907427403819}
   - component: {fileID: 6830087907427403816}
-  - component: {fileID: 6830087907427403812}
   - component: {fileID: 6830087907427403814}
   m_Layer: 5
   m_Name: BattleActionLabel
@@ -178,19 +191,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6830087907427403812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6830087907427403817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31e07a213e6af754db7d8a6e7a7c30e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  label: {fileID: 0}
 --- !u!222 &6830087907427403814
 CanvasRenderer:
   m_ObjectHideFlags: 0

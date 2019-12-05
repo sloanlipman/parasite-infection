@@ -8,6 +8,7 @@ namespace BattleSystem {
     public string abilityName;
     public int power;
     public int energyCost;
+    public string description;
     public enum AbilityType { Attack, Heal };
     public AbilityType abilityType;
 
