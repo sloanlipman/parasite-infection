@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +18,7 @@ namespace BattleSystem {
     private IEnumerator ShowLabel(string amount, BattleCharacter target) {
       SetText(amount);
       SetPosition(target.transform.position);
-      yield return new WaitForSeconds(.75f);
+      yield return new WaitForSeconds(2f);
       label.gameObject.SetActive(false);
     }
 
@@ -60,7 +59,7 @@ namespace BattleSystem {
 
     public void ShowHydroblastEffects(string damage, string defense, BattleCharacter target) {
       label.gameObject.SetActive(true);
-      label.color = Color.blue;
+      label.color = Color.white;
 
       string hydroblastEffects = string.Format("HP - {0}\nDefense - {1}", damage, defense);
       StartCoroutine(ShowLabel(hydroblastEffects, target));

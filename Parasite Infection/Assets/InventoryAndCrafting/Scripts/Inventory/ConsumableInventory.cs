@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using BattleSystem;
 
 public class ConsumableInventory : Inventory {
@@ -48,6 +46,7 @@ public class ConsumableInventory : Inventory {
 
   public bool UseItem(BattleCharacter target, Item item) {
     bool success = false;
+    string tooltipString = string.Format("{0} recovered with {1}.", target.characterName, item.itemName);
 
     if (item.stats.ContainsKey("Health") && item.stats.ContainsKey("Energy") && BattleController.Instance.IsValidEnergyHealTarget(target)) {
       target.Heal(item.stats["Health"]);
@@ -71,7 +70,11 @@ public class ConsumableInventory : Inventory {
     }
 
     if (success) {
+      BattleController.Instance.GetTooltip().GenerateAutoDismissTooltip(tooltipString);
+
       RemoveItemFromUI(item);
+    } else {
+        BattleController.Instance.GetTooltip().GenerateAutoDismissTooltip("Invalid target for that item!");
     }
 
     return success;

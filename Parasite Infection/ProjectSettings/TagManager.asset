@@ -46,6 +46,7 @@ TagManager:
   - Computer
   - The True Parasite
   - Final Boss
+  - Bottom Tooltip
   layers:
   - Default
   - TransparentFX

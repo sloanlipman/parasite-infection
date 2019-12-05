@@ -167,7 +167,6 @@ public class SceneController : MonoBehaviour {
 // Note: Don't refactor the Central Core case. It isn't worth the effort and functions as it is meant to.
       case "Central Core": {
         currentAct = 1;
-        characterController.FindPartyMemberByName("Barry").modSlots = 2;
         if (shouldAlanCallOutToBarry) {
             string[] dialog = new string[] {"Alan: Barry? I'm over here! Follow the green trail!"};
             dialogPanel.StartDialog(dialog);

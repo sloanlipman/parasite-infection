@@ -71,7 +71,6 @@ namespace BattleSystem {
       else {
         damageAmount = amount - defensePower;
       }
-      Debug.Log("Damage amount: " + damageAmount);
       health = Mathf.Max(health - damageAmount, 0);
       if (health == 0) {
         Die();
@@ -80,11 +79,6 @@ namespace BattleSystem {
       BattleController.Instance.SetDamageLabel(damageAmount);
 
       switch(damageSource) {
-        case "attack": {
-          BattleController.Instance.ShowLabel("hurt");
-          break;
-        }
-
         case "Hydroblast": {
           LowerDefense(rawPower / 2);
           break;
@@ -92,6 +86,11 @@ namespace BattleSystem {
 
         case "Fireball": {
           ReduceEnergy(damageAmount);
+          break;
+        }
+
+        default: {
+          BattleController.Instance.ShowLabel("hurt");
           break;
         }
       }
@@ -129,6 +128,7 @@ namespace BattleSystem {
       int energyToRecover = (int)Mathf.Round(0.1f * maxEnergyPoints);
       RecoverEnergy(energyToRecover, false);
       BattleController.Instance.ShowLabel("defense");
+      BattleController.Instance.GetTooltip().GenerateAutoDismissTooltip(string.Format("{0} defended.", characterName));
     }
 
     public void RecoverEnergy(int amount, bool showLabel = true) {
@@ -144,7 +144,7 @@ namespace BattleSystem {
 
     public bool UseAbility(Ability ability, BattleCharacter targetCharacter) {
       bool successful = energyPoints >= ability.energyCost;
-      Debug.Log("Successful use of ability?" + successful);
+      BattleController.Instance.GetTooltip().GenerateAutoDismissTooltip(string.Format("{0} used {1} on {2}!", characterName, ability.abilityName, targetCharacter.characterName));
       if (successful) {
         Ability abilityToCast = Instantiate<Ability>(ability, transform.position, Quaternion.identity);
         energyPoints -= ability.energyCost;
@@ -168,7 +168,7 @@ namespace BattleSystem {
 
     public virtual void Die() {
       Destroy(this.gameObject);
-      Debug.LogFormat("{0} has died!", characterName);
+      BattleController.Instance.GetTooltip().GenerateAutoDismissTooltip(string.Format("{0} has died!", characterName));
     }
 
     public string AddAbilityFromEquipment(Item item) {

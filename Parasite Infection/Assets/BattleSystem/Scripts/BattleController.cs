@@ -12,6 +12,7 @@ namespace BattleSystem {
     [SerializeField] private BattleUIController uiController;
     [SerializeField] private BattleSpawnPoint[] spawnPoints;
     [SerializeField] private BattleActionLabel labelText;
+    [SerializeField] private BattleTooltip tooltip;
     private BattleSummaryPanel battleSummaryPanel;
     private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
@@ -40,6 +41,10 @@ namespace BattleSystem {
 
     private int xpToReward;
     private List<Item> itemsToGive = new List<Item>();
+
+    public BattleTooltip GetTooltip() {
+      return tooltip;
+    }
 
     public void SetCurrentTarget(BattleCharacter target) {
       currentTarget = target;
@@ -108,6 +113,11 @@ namespace BattleSystem {
 
         case "Fireball": {
           labelText.ShowFireballEffects(labelDamage, labelEPDecrease, currentTarget);
+          break;
+        }
+
+        case "Barrage": {
+          labelText.ShowDamage(labelDamage, currentTarget);
           break;
         }
       }
@@ -273,6 +283,7 @@ namespace BattleSystem {
     }
 
     private void NextTurn() {
+      StartCoroutine(WaitBetweenTurnsAndActs());
       actTurn = actTurn == 0? 1 : 0; // Swap between Players & Enemies
       if (IsCurrentTurnPlayerTurn()) {
         uiController.SetColor(0, Color.red);
@@ -285,6 +296,7 @@ namespace BattleSystem {
     }
 
     public void NextAct() {
+      StartCoroutine(WaitBetweenTurnsAndActs());
       if (IsCurrentTurnPlayerTurn()) {
         uiController.SetColor(characterTurnIndex, Color.white);
       }
@@ -344,30 +356,33 @@ namespace BattleSystem {
         Enemy enemy = GetCurrentCharacter() as Enemy;
         enemy.Act();
         uiController.UpdateCharacterUI();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         NextAct();
       }
+    }
+
+    IEnumerator WaitBetweenTurnsAndActs() {
+      yield return new WaitForSeconds(2f);
     }
 
     public void SelectTarget(BattleCharacter target) {
       SetCurrentTarget(target);
       if (playerIsAttacking) {
         if (IsCharacterAPlayer(target)) {
-          Debug.LogWarning("Don't target your own team!");
+          tooltip.GenerateAutoDismissTooltip("Don't target your own team!");
         } else {
         DoAttack(GetCurrentCharacter(), target);
         NextAct();
         }
       }
       else if (abilityToBeUsed != null) {
-        if (abilityToBeUsed.abilityType == Ability.AbilityType.Heal) { // TODO Could add support spells here too
+        if (abilityToBeUsed.abilityType == Ability.AbilityType.Heal) {
           if (!IsValidHealTarget(target)) {
-            Debug.LogWarning("You can't heal your enemies, or your health is already maxed out!!");
             return;
           }
-        } else if (abilityToBeUsed.abilityType == Ability.AbilityType.Attack) { // TODO Could add debuff spells here too
+        } else if (abilityToBeUsed.abilityType == Ability.AbilityType.Attack) {
             if (IsCharacterAPlayer(target)) {
-              Debug.LogWarning("Don't target your own team!");
+              tooltip.GenerateAutoDismissTooltip("Don't target your own team!");
               return;
             }
         }
@@ -377,7 +392,7 @@ namespace BattleSystem {
           NextAct();
         }
         else {
-          Debug.LogWarning("Not enough Energy to cast that Ability!");
+          tooltip.GenerateAutoDismissTooltip("Not enough Energy to cast that Ability!");
         }
       } else if (itemToBeUsed != null) {
         if (items.UseItem(target, itemToBeUsed)) {
@@ -395,7 +410,7 @@ namespace BattleSystem {
     }
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
-      Debug.Log(attacker.characterName + " is attacking " + target.characterName);
+      tooltip.GenerateAutoDismissTooltip(string.Format("{0} attacked {1}!",attacker.characterName, target.characterName));
       target.Hurt(attacker.attackPower, "attack");
     }
 

@@ -21,7 +21,6 @@ namespace BattleSystem {
     }
 
     public void PrepareBattle(Character character) {
-      Debug.Log("Battle completed already? " + battleIsCompleted);
       if (!battleIsCompleted) {
         players = characterController.GetActiveParty();
         battleWasLaunched = true;

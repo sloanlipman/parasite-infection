@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace BattleSystem {
-  public class BattleHoverAction : MonoBehaviour,  IPointerEnterHandler, IPointerExitHandler {
+  public class BattleHoverAction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     private Ability ability;
     private Button button;
     private string abilityName;
@@ -14,8 +14,12 @@ namespace BattleSystem {
 
     private void Start() {
       characterController = FindObjectOfType<CharacterController>();
-      tooltip = FindObjectOfType<BattleTooltip>();
-
+      BattleTooltip[] tooltips = FindObjectsOfType<BattleTooltip>();
+      foreach (BattleTooltip t in tooltips) {
+        if (t.tag == "Bottom Tooltip") {
+          this.tooltip = t;
+        }
+      }
       button = GetComponent<Button>();
       abilityName = button.GetComponentInChildren<Text>().text;
 
@@ -24,7 +28,7 @@ namespace BattleSystem {
 
     public void OnPointerEnter(PointerEventData eventData) {
       if (this.ability != null) {
-        tooltip.GenerateTooltip(this.ability, eventData.position);
+        tooltip.GenerateTooltip(this.ability);
       }
     }
 

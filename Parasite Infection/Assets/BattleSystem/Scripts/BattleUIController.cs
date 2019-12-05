@@ -14,7 +14,6 @@ namespace BattleSystem {
     [SerializeField] private Transform characterInfoParent;
     [SerializeField] private Text characterInfoText;
 
-
     void Start() {
       abilityPanel.SetActive(false);
       itemPanel.SetActive(false);
