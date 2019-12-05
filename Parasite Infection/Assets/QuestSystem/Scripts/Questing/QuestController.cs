@@ -129,5 +129,9 @@ namespace QuestSystem {
       questDatabase.CompletePendingQuests();
       questDatabase.ClearPendingQuests();
     }
+
+    public List<Quest> GetPendingQuests() {
+      return questDatabase.GetPendingQuests();
+    }
   }
 }

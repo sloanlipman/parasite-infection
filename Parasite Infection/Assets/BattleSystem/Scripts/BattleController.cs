@@ -15,6 +15,7 @@ namespace BattleSystem {
     private BattleSummaryPanel battleSummaryPanel;
     private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
+    private InventoryController inventoryController;
 
     private BattleCharacter currentTarget;
 
@@ -38,6 +39,7 @@ namespace BattleSystem {
                         // Turn refers to are Enemies going or are players going?
 
     private int xpToReward;
+    private List<Item> itemsToGive = new List<Item>();
 
     public void SetCurrentTarget(BattleCharacter target) {
       currentTarget = target;
@@ -202,8 +204,10 @@ namespace BattleSystem {
 
     private void Awake() {
       characterController = FindObjectOfType<CharacterController>();
+      inventoryController = FindObjectOfType<InventoryController>();
       items = FindObjectOfType<ConsumableInventory>();
       EventController.OnEnemyDied += AddEnemyExperience;
+      EventController.OnEnemyDied += AddRandomItem;
       HideMenus();
     }
 
@@ -327,7 +331,7 @@ namespace BattleSystem {
     IEnumerator EndBattle() {
       yield return new WaitForSeconds(1f);
         if (AreAnyPlayersAlive()) {
-        battleSummaryPanel.ShowVictoryPanel(xpToReward);
+        battleSummaryPanel.ShowVictoryPanel(xpToReward, itemsToGive);
         characterController.UpdatePlayers(GetListOfAlivePlayers(), xpToReward);
       } else {
         battleSummaryPanel.ShowDefeatPanel();
@@ -400,5 +404,21 @@ namespace BattleSystem {
       deadEnemies.Add(killedEnemy);
       xpToReward += killedEnemy.experience;
    }
+
+    private void AddRandomItem(int enemyId) {
+      Item itemToGive = null;
+      int roll = Random.Range(0, 10);
+      if (roll < 3) {
+        int randomItem = Random.Range(1, 13);
+        if (randomItem < 13) {
+          itemToGive = inventoryController.GetItem(randomItem);
+        } else {
+          itemToGive = inventoryController.GetItem(20); // Cure-all comes out of sequence, so its ID gets hardcoded
+        }
+      }
+      if (itemToGive != null) {
+        itemsToGive.Add(itemToGive);
+      }
+    }
   }
 }

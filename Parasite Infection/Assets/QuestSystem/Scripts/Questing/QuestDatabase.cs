@@ -52,6 +52,10 @@ namespace QuestSystem {
       }
     }
 
+    public List<Quest> GetPendingQuests() {
+      return pendingQuests;
+    }
+
     public bool IsQuestPending(string slug) {
       Quest pendingQuest = null;
       if (pendingQuests.Count > 0) {

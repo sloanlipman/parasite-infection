@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour {
 
   public void LoadGame() {
     SaveService.Instance.Load();
-
   }
 
   public void ShowCredits() {
