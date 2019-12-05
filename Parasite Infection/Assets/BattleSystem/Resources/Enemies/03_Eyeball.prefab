@@ -108,7 +108,7 @@ MonoBehaviour:
   level: 2
   experience: 15
   originalMaxHealth: 25
-  originalMaxEP: 25
+  originalMaxEP: 35
   originalAttackPower: 12
   originalDefensePower: 20
   enemyId: 3

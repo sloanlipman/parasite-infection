@@ -95,24 +95,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Octopus Monster
+  characterName: The Eye
   health: 33
   maxHealth: 33
-  attackPower: 14
-  defensePower: 12
-  energyPoints: 21
-  maxEnergyPoints: 21
+  attackPower: 20
+  defensePower: 22
+  energyPoints: 32
+  maxEnergyPoints: 32
   abilitiesList:
   - Heal
-  - Hydroblast
-  level: 4
-  experience: 60
-  originalMaxHealth: 25
-  originalMaxEP: 15
-  originalAttackPower: 7
-  originalDefensePower: 6
-  enemyId: 35
-  originalExperience: 60
+  - Fireball
+  level: 3
+  experience: 50
+  originalMaxHealth: 40
+  originalMaxEP: 60
+  originalAttackPower: 18
+  originalDefensePower: 20
+  enemyId: 36
+  originalExperience: 100
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

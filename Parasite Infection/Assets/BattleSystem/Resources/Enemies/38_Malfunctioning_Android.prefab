@@ -95,24 +95,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Malfunctioning Android
-  health: 42
-  maxHealth: 42
-  attackPower: 22
-  defensePower: 22
-  energyPoints: 52
-  maxEnergyPoints: 52
+  characterName: Dinosaur Monster
+  health: 30
+  maxHealth: 30
+  attackPower: 20
+  defensePower: 20
+  energyPoints: 20
+  maxEnergyPoints: 20
   abilitiesList:
-  - Hydroblast
-  - Barrage
+  - Heal
   - Fireball
-  level: 2
-  experience: 75
-  originalMaxHealth: 40
-  originalMaxEP: 50
+  level: 1
+  experience: 50
+  originalMaxHealth: 50
+  originalMaxEP: 60
   originalAttackPower: 20
   originalDefensePower: 20
-  enemyId: 38
+  enemyId: 39
   originalExperience: 75
 --- !u!61 &9192391036177522714
 BoxCollider2D:

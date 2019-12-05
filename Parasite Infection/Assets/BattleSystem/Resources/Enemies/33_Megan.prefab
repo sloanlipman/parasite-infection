@@ -132,9 +132,9 @@ MonoBehaviour:
   - Hydroblast
   level: 9
   experience: 30
-  originalMaxHealth: 20
-  originalMaxEP: 20
+  originalMaxHealth: 30
+  originalMaxEP: 50
   originalAttackPower: 10
   originalDefensePower: 10
   enemyId: 33
-  originalExperience: 30
+  originalExperience: 45

@@ -103,12 +103,11 @@ MonoBehaviour:
   energyPoints: 24
   maxEnergyPoints: 24
   abilitiesList:
-  - Barrage
   - Fireball
   level: 3
   experience: 13
   originalMaxHealth: 20
-  originalMaxEP: 20
+  originalMaxEP: 30
   originalAttackPower: 10
   originalDefensePower: 10
   enemyId: 2

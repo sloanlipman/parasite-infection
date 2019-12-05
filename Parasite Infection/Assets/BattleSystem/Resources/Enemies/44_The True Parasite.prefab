@@ -107,8 +107,8 @@ MonoBehaviour:
   - Barrage
   level: 10
   experience: 75
-  originalMaxHealth: 60
-  originalMaxEP: 60
+  originalMaxHealth: 100
+  originalMaxEP: 100
   originalAttackPower: 30
   originalDefensePower: 30
   enemyId: 44

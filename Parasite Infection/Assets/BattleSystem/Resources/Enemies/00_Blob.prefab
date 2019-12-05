@@ -53,7 +53,6 @@ MonoBehaviour:
   energyPoints: 15
   maxEnergyPoints: 15
   abilitiesList:
-  - Fireball
   - Hydroblast
   level: 1
   experience: 5

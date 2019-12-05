@@ -95,23 +95,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Infected Android
-  health: 25
-  maxHealth: 25
-  attackPower: 7
-  defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
+  characterName: Octopus Monster
+  health: 26
+  maxHealth: 26
+  attackPower: 8
+  defensePower: 8
+  energyPoints: 16
+  maxEnergyPoints: 16
   abilitiesList:
+  - Heal
   - Hydroblast
-  level: 1
-  experience: 35
-  originalMaxHealth: 25
-  originalMaxEP: 15
+  level: 2
+  experience: 60
+  originalMaxHealth: 35
+  originalMaxEP: 60
   originalAttackPower: 7
-  originalDefensePower: 3
-  enemyId: 34
-  originalExperience: 35
+  originalDefensePower: 6
+  enemyId: 35
+  originalExperience: 150
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0
