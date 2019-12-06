@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using BattleSystem;
 
 public class NPC : Character {
@@ -16,6 +14,8 @@ public class NPC : Character {
 
   [SerializeField] private DialogData dialogData;
   [SerializeField] private DialogData questCompletedDialogData;
+
+  private Gateway gateway;
 
   private DialogPanel dialog;
   private DialogCanvas dialogCanvas;
@@ -35,6 +35,7 @@ public class NPC : Character {
   private void Awake() {
     FindDialogPanel();
     sceneController = FindObjectOfType<SceneController>();
+    gateway = GetComponent<Gateway>();
   }
   
   private void Start() {
@@ -66,7 +67,11 @@ public class NPC : Character {
         FindDialogPanel();
       }
       if (IsCharacterMalfunctiongAndroidOrIsTheAndroidDefeated()) {
-        dialog.StartDialog(dialogData.dialog);
+        if (gateway == null) {
+          dialog.StartDialog(dialogData.dialog);
+        } else if (gateway != null && !gateway.isActive) {
+          dialog.StartDialog(dialogData.dialog);
+        }
       }
 
       EventController.OnDialogPanelClosed += UnfreezeTime;
