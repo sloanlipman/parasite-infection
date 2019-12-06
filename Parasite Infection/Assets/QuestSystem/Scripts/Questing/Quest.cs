@@ -8,7 +8,7 @@ namespace QuestSystem {
     public Goal goal;
     public bool completed;
     public List<string> itemRewards;
-    public int expReward;
+    public int expReward = 0;
     protected InventoryController inventoryController;
     protected CraftingInventory craftingInventory;
     protected ConsumableInventory consumableInventory;
@@ -17,6 +17,10 @@ namespace QuestSystem {
     protected QuestController questController;
 
     private void Start() {
+      GetControllers();
+    }
+
+    protected void GetControllers() {
       inventoryController = FindObjectOfType<InventoryController>();
       craftingInventory = FindObjectOfType<CraftingInventory>();
       consumableInventory = FindObjectOfType<ConsumableInventory>();
@@ -34,9 +38,12 @@ namespace QuestSystem {
     }
 
     public virtual void GrantReward() {
+      GetControllers();
       characterController.GetActiveParty().ForEach(member => {
-        member.experience += expReward;
-        characterController.LevelUp(member);
+        if (expReward > 0) {
+          member.experience += expReward;
+          characterController.LevelUp(member);
+        }
       });
 
       if (itemRewards != null && itemRewards.Count > 0) {

@@ -47,6 +47,10 @@ public class SceneController : MonoBehaviour {
     return questController.HasQuestBeenStarted(questName);
   }
 
+  private bool IsQuestInProgress (string questName) {
+    return HasQuestBeenStarted(questName) && !IsQuestCompleted(questName);
+  }
+
   public void Save() {
     ES3.Save<int>("currentAct", currentAct, "SceneController.json");
     ES3.Save<bool>("hasPlayerDoneTutorial", hasPlayerDoneTutorial, "SceneController.json");
@@ -184,7 +188,8 @@ public class SceneController : MonoBehaviour {
 
       case "Biosphere": {
         currentAct = 2;
-          RemovePigAlien();
+        ActivatePigAlien();
+        RemovePigAlien();
         break;
       }
 
@@ -199,10 +204,17 @@ public class SceneController : MonoBehaviour {
         currentAct = 3;
         StartLabsDialog();
         SetInfectedAndroidParty();
+
+        ActivateBirdMonster();
+        ActivateDinosaurMonster();
+        ActivateEvolvedBlob();
+
         RemoveBirdMonster();
         RemoveDinosaurMonster();
         RemoveEvolvedBlob();
+
         RemoveInfectedAndroid();
+
         ActivateEnhancedParasite();
         RemoveEnhancedParasite();
         ActivateGatewayToLowerLabs();
@@ -368,6 +380,18 @@ public class SceneController : MonoBehaviour {
     EventController.OnDialogPanelClosed += OpenDecisionPanelForAct1;
   }
 
+    public void ActivatePigAlien() {
+    if (IsQuestInProgress("KillPigAlienQuest")) {
+      GameObject pigAlienParent = GameObject.FindGameObjectWithTag("Pig Alien");
+      if (pigAlienParent != null) {
+        NPC pigAlien = pigAlienParent.GetComponentInChildren<NPC>(true);
+        if (pigAlien != null) {
+          pigAlien.gameObject.SetActive(true);
+        }
+      }
+    }
+  }
+
   public void StartDefeatMalfunctioningAndroidQuestCompletedDialog() {
     string[] dialog = new string[] {
       "Alan: Bar, there's a nasty parasite incoming,",
@@ -519,50 +543,73 @@ public class SceneController : MonoBehaviour {
 
   private void RemovePigAlien() {
     if (IsQuestCompleted("KillPigAlienQuest")) {
-      GameObject pigAlienGameObject = GameObject.FindGameObjectWithTag("Pig Alien");
-      if (pigAlienGameObject != null) {
-        BattleLaunchCharacter pigAlien = pigAlienGameObject.GetComponent<BattleLaunchCharacter>();
-        if (pigAlien != null) {
-          Destroy(pigAlien.gameObject);
+      GameObject pigAlienParent = GameObject.FindGameObjectWithTag("Pig Alien");
+      if (pigAlienParent != null) {
+          Destroy(pigAlienParent);
         }
-      }
       EventController.OnDialogPanelClosed -= RemovePigAlien;
       UnlockShedEntrance();
     }
   }
 
+  public void ActivateEvolvedBlob() {
+    if (IsQuestInProgress("DefeatEvolvedBlobQuest")) {
+      GameObject evolvedBlobParent = GameObject.FindGameObjectWithTag("Evolved Blob");
+      if (evolvedBlobParent != null) {
+        NPC evolvedBlob = evolvedBlobParent.GetComponentInChildren<NPC>(true);
+        if (evolvedBlob != null) {
+          evolvedBlob.gameObject.SetActive(true);
+        }
+      }
+    }
+  }
+   public void ActivateDinosaurMonster() {
+    if (IsQuestInProgress("DefeatDinosaurMonsterQuest")) {
+      GameObject dinosaurMonsterParent = GameObject.FindGameObjectWithTag("Dinosaur Monster");
+      if (dinosaurMonsterParent != null) {
+        NPC dinosaurMonster = dinosaurMonsterParent.GetComponentInChildren<NPC>(true);
+        if (dinosaurMonster != null) {
+          dinosaurMonster.gameObject.SetActive(true);
+        }
+      }
+    }
+  }
+   public void ActivateBirdMonster() {
+    if (IsQuestInProgress("DefeatBirdMonsterQuest")) {
+      GameObject birdMonsterParent = GameObject.FindGameObjectWithTag("Bird Monster");
+      if (birdMonsterParent != null) {
+        NPC birdMonster = birdMonsterParent.GetComponentInChildren<NPC>(true);
+        if (birdMonster != null) {
+          birdMonster.gameObject.SetActive(true);
+        }
+      }
+    }
+  }
+
+
   public void RemoveEvolvedBlob() {
     if (IsQuestCompleted("DefeatEvolvedBlobQuest")) {
-      GameObject evolvedBlobGameObject = GameObject.FindGameObjectWithTag("Evolved Blob");
-      if (evolvedBlobGameObject != null) {
-        BattleLaunchCharacter evolvedBlob = evolvedBlobGameObject.GetComponent<BattleLaunchCharacter>();
-        if (evolvedBlob != null) {
-          Destroy(evolvedBlob.gameObject);
-        }
+      GameObject evolvedBlobParent = GameObject.FindGameObjectWithTag("Evolved Blob");
+      if (evolvedBlobParent != null) {
+        Destroy(evolvedBlobParent);
       }
     }
   }
 
   public void RemoveDinosaurMonster() {
     if (IsQuestCompleted("DefeatDinosaurMonsterQuest")) {
-      GameObject dinosaurMonsterGameObject = GameObject.FindGameObjectWithTag("Dinosaur Monster");
-      if (dinosaurMonsterGameObject != null) {
-        BattleLaunchCharacter dinosaurMonster = dinosaurMonsterGameObject.GetComponent<BattleLaunchCharacter>();
-        if (dinosaurMonster != null) {
-          Destroy(dinosaurMonster.gameObject);
-        }
+      GameObject dinosaurMonsterParent = GameObject.FindGameObjectWithTag("Dinosaur Monster");
+      if (dinosaurMonsterParent != null) {
+        Destroy(dinosaurMonsterParent);
       }
     }
   }
 
   public void RemoveBirdMonster() {
     if (IsQuestCompleted("DefeatBirdMonsterQuest")) {
-      GameObject birdMonsterGameObject = GameObject.FindGameObjectWithTag("Bird Monster");
-      if (birdMonsterGameObject != null) {
-       BattleLaunchCharacter birdMonster = birdMonsterGameObject.GetComponent<BattleLaunchCharacter>();
-       if (birdMonster != null) {
-          Destroy(birdMonster.gameObject);
-        }
+      GameObject birdMonsterParent = GameObject.FindGameObjectWithTag("Bird Monster");
+      if (birdMonsterParent != null) {
+        Destroy(birdMonsterParent);
       }
     }
   }

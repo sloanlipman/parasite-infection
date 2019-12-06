@@ -9,6 +9,11 @@ public class KillPigAlienQuest : Quest {
     itemRewards = new List<string>() { "Medkit", "Energy Pack" };
     goal = new KillGoal(3, 37, this);
     expReward = 100;
+    sceneController = FindObjectOfType<SceneController>();
+  }
+
+  void Start() {
+    sceneController.ActivatePigAlien();
   }
 
   public override void Complete() {
