@@ -95,17 +95,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: The True Parasite
-  health: 73
-  maxHealth: 73
-  attackPower: 43
-  defensePower: 42
-  energyPoints: 73
-  maxEnergyPoints: 73
+  health: 105
+  maxHealth: 105
+  attackPower: 33
+  defensePower: 33
+  energyPoints: 103
+  maxEnergyPoints: 103
   abilitiesList:
   - Heal
   - Fireball
   - Barrage
-  level: 10
+  level: 4
   experience: 75
   originalMaxHealth: 100
   originalMaxEP: 100
@@ -113,6 +113,8 @@ MonoBehaviour:
   originalDefensePower: 30
   enemyId: 44
   originalExperience: 75
+  originalCharacterName: The True Parasite
+  originalEnemyId: 44
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

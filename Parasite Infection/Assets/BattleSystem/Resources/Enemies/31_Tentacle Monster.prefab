@@ -95,24 +95,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Tentacle Monster
-  health: 20
-  maxHealth: 20
-  attackPower: 10
-  defensePower: 10
-  energyPoints: 30
-  maxEnergyPoints: 15
+  characterName: Jake
+  health: 22
+  maxHealth: 22
+  attackPower: 12
+  defensePower: 12
+  energyPoints: 17
+  maxEnergyPoints: 17
   abilitiesList:
-  - Hydroblast
+  - Heal
   - Fireball
-  level: 1
+  level: 3
   experience: 30
-  originalMaxHealth: 30
-  originalMaxEP: 50
+  originalMaxHealth: 20
+  originalMaxEP: 15
   originalAttackPower: 10
   originalDefensePower: 10
-  enemyId: 31
-  originalExperience: 45
+  enemyId: 32
+  originalExperience: 31
+  originalCharacterName: Tentacle Monster
+  originalEnemyId: 0
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

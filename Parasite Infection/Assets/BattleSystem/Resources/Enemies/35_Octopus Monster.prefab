@@ -96,23 +96,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: The Eye
-  health: 33
-  maxHealth: 33
+  health: 32
+  maxHealth: 32
   attackPower: 20
   defensePower: 22
-  energyPoints: 32
-  maxEnergyPoints: 32
+  energyPoints: 33
+  maxEnergyPoints: 33
   abilitiesList:
   - Heal
   - Fireball
   level: 3
   experience: 50
-  originalMaxHealth: 40
-  originalMaxEP: 60
+  originalMaxHealth: 30
+  originalMaxEP: 30
   originalAttackPower: 18
   originalDefensePower: 20
   enemyId: 36
-  originalExperience: 100
+  originalExperience: 50
+  originalCharacterName: Octopus Monster
+  originalEnemyId: 35
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

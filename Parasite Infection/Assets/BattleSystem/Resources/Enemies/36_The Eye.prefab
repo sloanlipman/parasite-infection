@@ -48,20 +48,22 @@ MonoBehaviour:
   characterName: Pig Alien
   health: 32
   maxHealth: 32
-  attackPower: 19
-  defensePower: 8
-  energyPoints: 31
-  maxEnergyPoints: 31
+  attackPower: 20
+  defensePower: 9
+  energyPoints: 32
+  maxEnergyPoints: 32
   abilitiesList:
   - Fireball
-  level: 2
+  level: 3
   experience: 30
   originalMaxHealth: 30
-  originalMaxEP: 50
+  originalMaxEP: 30
   originalAttackPower: 18
   originalDefensePower: 7
   enemyId: 37
-  originalExperience: 50
+  originalExperience: 30
+  originalCharacterName: The Eye
+  originalEnemyId: 36
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0

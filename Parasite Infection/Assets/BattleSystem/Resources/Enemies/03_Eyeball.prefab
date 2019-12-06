@@ -98,21 +98,23 @@ MonoBehaviour:
   characterName: Eyeball
   health: 27
   maxHealth: 27
-  attackPower: 14
-  defensePower: 22
-  energyPoints: 27
-  maxEnergyPoints: 27
+  attackPower: 13
+  defensePower: 21
+  energyPoints: 26
+  maxEnergyPoints: 26
   abilitiesList:
   - Barrage
   - Heal
   level: 2
   experience: 15
   originalMaxHealth: 25
-  originalMaxEP: 35
+  originalMaxEP: 25
   originalAttackPower: 12
   originalDefensePower: 20
   enemyId: 3
   originalExperience: 15
+  originalCharacterName: Eyeball
+  originalEnemyId: 3
 --- !u!61 &5126930062819720034
 BoxCollider2D:
   m_ObjectHideFlags: 0

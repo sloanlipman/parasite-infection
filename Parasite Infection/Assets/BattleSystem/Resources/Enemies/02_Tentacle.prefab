@@ -98,20 +98,23 @@ MonoBehaviour:
   characterName: Tentacle
   health: 24
   maxHealth: 24
-  attackPower: 15
-  defensePower: 14
-  energyPoints: 24
-  maxEnergyPoints: 24
+  attackPower: 14
+  defensePower: 13
+  energyPoints: 23
+  maxEnergyPoints: 23
   abilitiesList:
+  - Barrage
   - Fireball
-  level: 3
+  level: 4
   experience: 13
   originalMaxHealth: 20
-  originalMaxEP: 30
+  originalMaxEP: 20
   originalAttackPower: 10
   originalDefensePower: 10
   enemyId: 2
   originalExperience: 13
+  originalCharacterName: Tentacle
+  originalEnemyId: 2
 --- !u!61 &5126930062819720034
 BoxCollider2D:
   m_ObjectHideFlags: 0

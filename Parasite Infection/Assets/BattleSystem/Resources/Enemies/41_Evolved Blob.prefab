@@ -96,23 +96,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Enhanced Parasite
-  health: 61
-  maxHealth: 61
-  attackPower: 31
-  defensePower: 31
-  energyPoints: 61
-  maxEnergyPoints: 61
+  health: 63
+  maxHealth: 63
+  attackPower: 33
+  defensePower: 34
+  energyPoints: 64
+  maxEnergyPoints: 64
   abilitiesList:
   - Heal
   - Fireball
-  level: 2
+  level: 4
   experience: 75
   originalMaxHealth: 60
   originalMaxEP: 60
   originalAttackPower: 30
   originalDefensePower: 30
   enemyId: 42
-  originalExperience: 100
+  originalExperience: 75
+  originalCharacterName: Evolved Blob
+  originalEnemyId: 41
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

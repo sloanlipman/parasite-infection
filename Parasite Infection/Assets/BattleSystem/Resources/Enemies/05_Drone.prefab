@@ -96,24 +96,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Drone
-  health: 25
-  maxHealth: 25
-  attackPower: 15
-  defensePower: 10
-  energyPoints: 15
-  maxEnergyPoints: 15
+  health: 26
+  maxHealth: 26
+  attackPower: 16
+  defensePower: 11
+  energyPoints: 16
+  maxEnergyPoints: 16
   abilitiesList:
   - Barrage
   - Hydroblast
   - Fireball
-  level: 1
+  level: 2
   experience: 25
   originalMaxHealth: 25
-  originalMaxEP: 50
+  originalMaxEP: 15
   originalAttackPower: 15
   originalDefensePower: 10
   enemyId: 5
   originalExperience: 25
+  originalCharacterName: Drone
+  originalEnemyId: 5
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

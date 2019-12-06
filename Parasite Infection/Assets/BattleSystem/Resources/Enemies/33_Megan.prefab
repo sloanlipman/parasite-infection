@@ -122,19 +122,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Megan
-  health: 37
-  maxHealth: 37
-  attackPower: 26
-  defensePower: 27
-  energyPoints: 38
-  maxEnergyPoints: 38
+  health: 22
+  maxHealth: 22
+  attackPower: 11
+  defensePower: 11
+  energyPoints: 21
+  maxEnergyPoints: 21
   abilitiesList:
   - Hydroblast
-  level: 9
+  level: 2
   experience: 30
-  originalMaxHealth: 30
-  originalMaxEP: 50
+  originalMaxHealth: 20
+  originalMaxEP: 20
   originalAttackPower: 10
   originalDefensePower: 10
   enemyId: 33
-  originalExperience: 45
+  originalExperience: 30
+  originalCharacterName: Megan
+  originalEnemyId: 33

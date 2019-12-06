@@ -122,20 +122,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Jake
-  health: 34
-  maxHealth: 34
-  attackPower: 25
-  defensePower: 26
-  energyPoints: 34
-  maxEnergyPoints: 34
+  health: 22
+  maxHealth: 22
+  attackPower: 12
+  defensePower: 12
+  energyPoints: 17
+  maxEnergyPoints: 17
   abilitiesList:
   - Heal
   - Fireball
-  level: 8
+  level: 3
   experience: 30
-  originalMaxHealth: 30
-  originalMaxEP: 50
+  originalMaxHealth: 20
+  originalMaxEP: 15
   originalAttackPower: 10
   originalDefensePower: 10
   enemyId: 32
-  originalExperience: 45
+  originalExperience: 30
+  originalCharacterName: Jake
+  originalEnemyId: 32

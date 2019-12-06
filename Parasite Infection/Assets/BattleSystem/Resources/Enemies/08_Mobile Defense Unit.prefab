@@ -96,23 +96,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Mobile Defense Unit
-  health: 30
-  maxHealth: 30
-  attackPower: 20
-  defensePower: 20
-  energyPoints: 20
-  maxEnergyPoints: 20
+  health: 34
+  maxHealth: 34
+  attackPower: 24
+  defensePower: 25
+  energyPoints: 24
+  maxEnergyPoints: 24
   abilitiesList:
   - Heal
   - Fireball
-  level: 1
+  level: 5
   experience: 50
   originalMaxHealth: 30
-  originalMaxEP: 50
+  originalMaxEP: 20
   originalAttackPower: 20
   originalDefensePower: 20
   enemyId: 8
   originalExperience: 50
+  originalCharacterName: Mobile Defense Unit
+  originalEnemyId: 8
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

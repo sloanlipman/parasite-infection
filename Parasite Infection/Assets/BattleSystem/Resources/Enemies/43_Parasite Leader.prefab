@@ -98,14 +98,14 @@ MonoBehaviour:
   characterName: Parasite Leader
   health: 73
   maxHealth: 73
-  attackPower: 43
-  defensePower: 42
-  energyPoints: 73
-  maxEnergyPoints: 73
+  attackPower: 33
+  defensePower: 32
+  energyPoints: 72
+  maxEnergyPoints: 72
   abilitiesList:
   - Heal
   - Fireball
-  level: 10
+  level: 3
   experience: 75
   originalMaxHealth: 70
   originalMaxEP: 70
@@ -113,6 +113,8 @@ MonoBehaviour:
   originalDefensePower: 30
   enemyId: 43
   originalExperience: 75
+  originalCharacterName: Parasite Leader
+  originalEnemyId: 43
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

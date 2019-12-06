@@ -99,20 +99,22 @@ MonoBehaviour:
   health: 26
   maxHealth: 26
   attackPower: 8
-  defensePower: 8
-  energyPoints: 16
-  maxEnergyPoints: 16
+  defensePower: 7
+  energyPoints: 17
+  maxEnergyPoints: 17
   abilitiesList:
   - Heal
   - Hydroblast
   level: 2
   experience: 60
-  originalMaxHealth: 35
-  originalMaxEP: 60
+  originalMaxHealth: 25
+  originalMaxEP: 15
   originalAttackPower: 7
   originalDefensePower: 6
   enemyId: 35
-  originalExperience: 150
+  originalExperience: 60
+  originalCharacterName: Infected Android
+  originalEnemyId: 34
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

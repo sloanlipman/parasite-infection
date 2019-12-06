@@ -100,19 +100,20 @@ MonoBehaviour:
   maxHealth: 32
   attackPower: 17
   defensePower: 17
-  energyPoints: 23
-  maxEnergyPoints: 23
+  energyPoints: 22
+  maxEnergyPoints: 22
   abilitiesList:
   - Barrage
-  - Fireball
   level: 3
   experience: 50
   originalMaxHealth: 30
-  originalMaxEP: 50
+  originalMaxEP: 20
   originalAttackPower: 15
   originalDefensePower: 15
   enemyId: 6
   originalExperience: 50
+  originalCharacterName: Defense Golem
+  originalEnemyId: 6
 --- !u!61 &9192391036177522714
 BoxCollider2D:
   m_ObjectHideFlags: 0

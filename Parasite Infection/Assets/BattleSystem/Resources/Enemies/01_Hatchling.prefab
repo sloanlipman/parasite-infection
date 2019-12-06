@@ -98,7 +98,7 @@ MonoBehaviour:
   characterName: Hatchling
   health: 12
   maxHealth: 12
-  attackPower: 7
+  attackPower: 8
   defensePower: 22
   energyPoints: 12
   maxEnergyPoints: 12
@@ -107,11 +107,13 @@ MonoBehaviour:
   level: 3
   experience: 8
   originalMaxHealth: 10
-  originalMaxEP: 30
+  originalMaxEP: 10
   originalAttackPower: 5
   originalDefensePower: 20
   enemyId: 1
   originalExperience: 8
+  originalCharacterName: Hatchling
+  originalEnemyId: 1
 --- !u!61 &5126930062819720034
 BoxCollider2D:
   m_ObjectHideFlags: 0
