@@ -4,18 +4,13 @@ using QuestSystem;
 public class DefeatFinalBossQuest : Quest {
   private bool hasFinalBattleBeenTriggered = false;
   void Awake() {
-    slug = "DefeatFinalBossQuest";    
-    questName = "Defeat the Final Challenge";
-    // itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy Pack" };
+    slug = "DefeatFinalBossQuest";
     goal = new KillGoal(1, 44, this);
+    sceneController = FindObjectOfType<SceneController>();
+    SetUpFinalBattleQuest();
+    sceneController.LaunchFinalBattle();
   }
 
-  private void Update() {
-    if (sceneController != null && !hasFinalBattleBeenTriggered) {
-      sceneController.TriggerFinalBattle();
-      hasFinalBattleBeenTriggered = true;
-    }
-  }
 
   public override void Complete() {
     base.Complete();
@@ -24,5 +19,16 @@ public class DefeatFinalBossQuest : Quest {
   public override void GrantReward() {
     // sceneController.StartDefeatEnhancedParasiteQuestCompletedDialog();
     base.GrantReward();
+  }
+
+  private void SetUpFinalBattleQuest() {
+
+    if (sceneController.GetFinalBattleScenario() == 1) {
+      goal = new KillGoal(1, 46, this);
+      questName = "Annihilate Jake and his Mechs";
+    } else {
+      goal = new KillGoal(1, 44, this);
+      questName = "Defeat the True Parasite Leader";
+    }
   }
 }

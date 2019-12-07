@@ -68,9 +68,9 @@ namespace BattleSystem {
 
     public List<PartyMember> GetActiveParty() {
       List<PartyMember> activePartyMemberList = new List<PartyMember>();
-      activePartyMembers.ForEach(name => {
+      activePartyMembers.ForEach(memberName => {
         partyMembers.ForEach(member => {
-          if (member.characterName == name) {
+          if (member.characterName == memberName) {
             activePartyMemberList.Add(member);
           }
         });

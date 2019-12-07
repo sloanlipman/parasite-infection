@@ -76,6 +76,8 @@ namespace BattleSystem {
       titleText.text = "You're dead!";
       battleWasLost = true;
       backToWorld.gameObject.SetActive(false);
+      questText.gameObject.SetActive(false);
+      itemText.gameObject.SetActive(false);
     }
 
     public void LoadLastSave() {

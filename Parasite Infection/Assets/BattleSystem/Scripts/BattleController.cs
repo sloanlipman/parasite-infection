@@ -410,7 +410,7 @@ namespace BattleSystem {
     }
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
-      tooltip.GenerateAutoDismissTooltip(string.Format("{0} attacked {1}!",attacker.characterName, target.characterName));
+      tooltip.GenerateAutoDismissTooltip(string.Format("{0} attacked {1}!", attacker.characterName, target.characterName));
       target.Hurt(attacker.attackPower, "attack");
     }
 

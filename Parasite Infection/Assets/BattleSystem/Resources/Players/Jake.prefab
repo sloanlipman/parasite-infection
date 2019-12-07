@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Jake
-  health: 15
-  maxHealth: 15
-  attackPower: 5
+  health: 18
+  maxHealth: 18
+  attackPower: 6
   defensePower: 3
-  energyPoints: 15
-  maxEnergyPoints: 15
+  energyPoints: 18
+  maxEnergyPoints: 18
   abilitiesList: []
   level: 1
   experience: 0
@@ -59,6 +59,7 @@ MonoBehaviour:
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 3
+  originalCharacterName: Jake
   upgradePoints: 0
   modSlots: 1
 --- !u!212 &7264005851067476655

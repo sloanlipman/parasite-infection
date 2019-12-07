@@ -22,6 +22,7 @@ namespace BattleSystem {
     public int originalMaxEP;
     public int originalAttackPower;
     public int originalDefensePower;
+    public string originalCharacterName;
 
     public Dictionary<string, int> upgradePointsDictionary = new Dictionary<string, int>();
 
@@ -34,6 +35,7 @@ namespace BattleSystem {
         energyPoints = maxEnergyPoints;
         attackPower = originalAttackPower;
         defensePower = originalDefensePower;
+        characterName = originalCharacterName;
         upgradePointsDictionary = new Dictionary<string, int> {
             {"HP", 0},
             {"EP", 0},
@@ -214,6 +216,39 @@ namespace BattleSystem {
       maxEnergyPoints++;
       attackPower++;
       defensePower++;
+    }
+
+    public void ReduceFinalBossStats() {
+      health = ReduceStat(health);
+      maxHealth = ReduceStat(maxHealth);
+      attackPower = ReduceStat(attackPower);
+      defensePower = ReduceStat(defensePower);
+      energyPoints = ReduceStat(energyPoints);
+      maxEnergyPoints = ReduceStat(maxEnergyPoints);
+    }
+
+    public void IncreaseFinalBossStats() {
+      health = IncreaseStat(health);
+      maxHealth = IncreaseStat(maxHealth);
+      attackPower = IncreaseStat(attackPower);
+      defensePower = IncreaseStat(defensePower);
+      energyPoints = IncreaseStat(energyPoints);
+      maxEnergyPoints = IncreaseStat(maxEnergyPoints);
+    }
+
+    private int  ReduceStat(int stat) {
+      return stat * 3 /4;
+    }
+
+    private int IncreaseStat(int stat) {
+      return stat + stat / 4;
+    }
+
+    public void SetSprite(Sprite sprite) {
+      SpriteRenderer spriteRender = GetComponent<SpriteRenderer>();
+      if (spriteRender != null) {
+        spriteRender.sprite = sprite;
+      }
     }
   }
 }

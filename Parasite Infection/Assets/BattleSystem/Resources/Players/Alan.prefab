@@ -53,13 +53,14 @@ MonoBehaviour:
   energyPoints: 15
   maxEnergyPoints: 15
   abilitiesList: []
-  level: 0
+  level: 1
   experience: 0
   originalMaxHealth: 15
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 3
-  upgradePoints: 1
+  originalCharacterName: Alan
+  upgradePoints: 0
   modSlots: 1
 --- !u!212 &7264005851067476655
 SpriteRenderer:

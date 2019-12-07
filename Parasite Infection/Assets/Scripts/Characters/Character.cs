@@ -19,6 +19,9 @@ public class Character : MonoBehaviour {
   }
 
   public void SetSprite(Sprite sprite) {
+    if (this.sprite == null) {
+      this.sprite = GetComponent<SpriteRenderer>();
+    }
     this.sprite.sprite = sprite;
   }
 

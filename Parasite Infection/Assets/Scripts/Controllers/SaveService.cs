@@ -90,9 +90,7 @@ public class SaveService : MonoBehaviour {
 
   private void LoadSavedScene() {
     int sceneIndex = ES3.Load<int>("sceneIndex");
-    if (SceneManager.GetActiveScene().buildIndex != sceneIndex) {
-      SceneManager.LoadScene(sceneIndex);
-    }
+    SceneManager.LoadScene(sceneIndex);
   }
 
   private void SavePlayer() {

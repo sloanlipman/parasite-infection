@@ -39,7 +39,6 @@ namespace BattleSystem {
       characterDatabase.RemovePlayerFromParty(name);
     }
 
-
     private List<PartyMember> GetPartyMembers() {
       return characterDatabase.GetPartyMembers();
     }
@@ -142,34 +141,34 @@ namespace BattleSystem {
     }
 
     public void ApplyUpgradePoint(string key, BattleCharacter character) {
-        switch(key) {
-          case "HP": {
-            character.maxHealth++;
-            character.health++;
-            break;
-          }
-
-          case "EP": {
-            character.maxEnergyPoints++;
-            character.energyPoints++;
-            break;
-          }
-
-          case "Attack": {
-            character.attackPower++;
-            break;
-          }
-
-          case "Defense": {
-            character.defensePower++;
-            break;
-          }
-
-          default: {
-            // Do nothing. All other cases are abilities and are handled at the time of battle
-            break;
-          }
+      switch(key) {
+        case "HP": {
+          character.maxHealth++;
+          character.health++;
+          break;
         }
+
+        case "EP": {
+          character.maxEnergyPoints++;
+          character.energyPoints++;
+          break;
+        }
+
+        case "Attack": {
+          character.attackPower++;
+          break;
+        }
+
+        case "Defense": {
+          character.defensePower++;
+          break;
+        }
+
+        default: {
+          // Do nothing. All other cases are abilities and are handled at the time of battle
+          break;
+        }
+      }
     }
   }
 }

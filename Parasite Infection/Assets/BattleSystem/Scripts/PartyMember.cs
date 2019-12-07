@@ -70,5 +70,21 @@ namespace BattleSystem {
       health = maxHealth;
       energyPoints = maxEnergyPoints;
     }
+
+    public void CopyPartyMember(PartyMember member) {
+      upgradePoints = member.upgradePoints;
+      modSlots = member.modSlots;
+      level = member.level;
+
+      health = member.health;
+      maxHealth = member.maxHealth;
+      attackPower = member.attackPower;
+      defensePower = member.defensePower;
+      energyPoints = member.energyPoints;
+      maxEnergyPoints = member.maxEnergyPoints;
+      experience = member.experience;
+      upgradePointsDictionary = member.upgradePointsDictionary;
+      equipment = member.equipment;
+    }
   }
 }

@@ -7,13 +7,11 @@ namespace BattleSystem {
     public int enemyId;
     public Enemy() {}
     public int originalExperience;
-    public string originalCharacterName;
     public int originalEnemyId;
 
     public override void SetDefaultValues() {
       base.SetDefaultValues();
       experience = originalExperience;
-      characterName = originalCharacterName;
       enemyId = originalEnemyId;
     }
 

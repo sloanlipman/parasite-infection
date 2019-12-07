@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -111,9 +111,9 @@ MonoBehaviour:
   originalMaxEP: 70
   originalAttackPower: 30
   originalDefensePower: 30
+  originalCharacterName: Parasite Leader
   enemyId: 43
   originalExperience: 75
-  originalCharacterName: Parasite Leader
   originalEnemyId: 43
 --- !u!61 &9192391036177522714
 BoxCollider2D:

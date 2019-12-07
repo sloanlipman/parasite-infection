@@ -59,6 +59,7 @@ MonoBehaviour:
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 5
+  originalCharacterName: Android
   upgradePoints: 0
   modSlots: 1
 --- !u!212 &7264005851067476655
