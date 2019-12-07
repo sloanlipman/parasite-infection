@@ -762,6 +762,7 @@ public class SceneController : MonoBehaviour {
       };
       dialogPanel.StartDialog(dialog);
       shouldTellToGoToBridge = false;
+      currentAct = 4;
     }
     ActivateGatewayToBridge();
   }
