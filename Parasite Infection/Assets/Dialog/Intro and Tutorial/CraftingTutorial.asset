@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CraftingTutorial
   m_EditorClassIdentifier: 
   dialog:
-  - The panel with a blue-grayish background is your Crafting Inventory. As you play
-    through the game, you'll get different components used to craft Modules. Equipping
-    a Module gives that character a special ability to use in battle. To craft a Module,
-    drop a Battery, an Integrated Circuit, and a corresponding Module Core into the
-    crafting slots to the right of the inventory! Who knows what Modules are even
-    out there!
+  - <i><b>The panel with a blue-grayish background is your Crafting Inventory. As
+    you play through the game, you'll get different components used to craft Modules.
+    Equipping a Module gives that character a special ability to use in battle. To
+    craft a Module, drop a Battery, an Integrated Circuit, and a corresponding Module
+    Core into the crafting slots to the right of the inventory! Who knows what Modules
+    are even out there!</b></i>

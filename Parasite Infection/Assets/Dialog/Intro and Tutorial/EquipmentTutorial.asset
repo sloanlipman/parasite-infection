@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EquipmentTutorial
   m_EditorClassIdentifier: 
   dialog:
-  - The Equipment Slots next to your stats are where you equip Modules. Modules give
-    you special abilities to use in battle. Keep leveling up to unlock more equipment
-    slots! You can get up to 4 slots. You can also see some of your stats here!
+  - <i><b>The Equipment Slots next to your stats are where you equip Modules. Modules
+    give you special abilities to use in battle. Keep leveling up to unlock more equipment
+    slots! You can get up to 4 slots. You can also see some of your stats here!</b></i>

@@ -108,7 +108,8 @@ namespace BattleSystem {
       });
     }
 
-    public void LevelUp(PartyMember member) {
+    public bool LevelUp(PartyMember member) {
+      int originalLevel = member.level;
       bool shouldKeepLevelingUp = true;
       int xpToNextLevel = NextLevel(member.level);
       while (shouldKeepLevelingUp) {
@@ -125,6 +126,8 @@ namespace BattleSystem {
         }
       }
       member.SetModSlots();
+
+      return member.level > originalLevel;
     }
 
     public void LevelUpEnemies() {

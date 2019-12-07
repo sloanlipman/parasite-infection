@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: UpgradeTutorial
   m_EditorClassIdentifier: 
   dialog:
-  - The red panel is where you spend upgrade points. You'll get one point for every
-    three levels you gain! You can upgrade stats or abilities here.
+  - <i><b>The red panel is where you spend upgrade points. You'll get one point for
+    every three levels you gain! You can upgrade stats or abilities here.</b></i>

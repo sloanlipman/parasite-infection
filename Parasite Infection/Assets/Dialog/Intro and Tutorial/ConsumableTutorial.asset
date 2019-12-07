@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ConsumableTutorial
   m_EditorClassIdentifier: 
   dialog:
-  - The panel with an orange background? That's your Consumable Inventory. It has
-    items that you can use to heal in or out of battle! To use an item, open your
+  - <i><b>The panel with an orange background? That's your Consumable Inventory. It
+    has items that you can use to heal in or out of battle! To use an item, open your
     Party Panel and click on a party member. An item slot on an orange background
     just like the Consumable Inventory should appear. Drop an item there and presto-healo!
-    You'll be feeling better in no time.
+    You'll be feeling better in no time.</b></i>

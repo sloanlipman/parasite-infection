@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TutorialDialog
   m_EditorClassIdentifier: 
   dialog:
-  - Barry! You found the Tutorial! Here's what you need to know.
-  - 'Parasite: Infection uses a turn-based battle system. As you walk around the USS
-    Hecate, you''ll encounter all kinds of aliens and other enemies!'
-  - You'll want to make sure you equip different Modules on your battle suit so you
-    can always be fighting in tip-top shape!
-  - Open different menu options to learn more!
+  - <i><b>Barry! You found the Tutorial! Here's what you need to know</b></i>
+  - '<i><b>Parasite: Infection uses a turn-based battle system. As you walk around
+    the USS Hecate, you''ll encounter all kinds of aliens and other enemies!</b></i>'
+  - <i><b>You'll want to make sure you equip different Modules on your battle suit
+    so you can always be fighting in tip-top shape!</b></i>
+  - <i><b>Open different menu options to learn more!</b></i>

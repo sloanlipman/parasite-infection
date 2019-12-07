@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: QuestTutorial
   m_EditorClassIdentifier: 
   dialog:
-  - The blue panel labeled "Active Quests" is your Quest Panel. It shows your active
-    quests and your current progress. Something good might happen if you finish a
-    quest!
+  - <i><b>The blue panel labeled "Active Quests" is your Quest Panel. It shows your
+    active quests and your current progress. Something good might happen if you finish
+    a quest!</b></i>
+  - <i><b>The blue panel labeled "Active Quests" is your Quest Panel. It shows your
+    active quests and your current progress. Something good might happen if you finish
+    a quest!</b></i>

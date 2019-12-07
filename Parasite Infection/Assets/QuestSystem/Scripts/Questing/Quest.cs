@@ -39,16 +39,21 @@ namespace QuestSystem {
 
     public virtual void GrantReward() {
       GetControllers();
+      List<BattleSystem.PartyMember> whoLeveledUp = new List<BattleSystem.PartyMember>();
       characterController.GetActiveParty().ForEach(member => {
         if (expReward > 0) {
           member.experience += expReward;
-          characterController.LevelUp(member);
+          if (characterController.LevelUp(member)) {
+            whoLeveledUp.Add(member);
+          }
         }
       });
 
       if (itemRewards != null && itemRewards.Count > 0) {
           inventoryController.GiveItems(itemRewards);
-        }
+      }
+
+      questController.ShowAlert(questName, whoLeveledUp, itemRewards);
 
       SaveService.Instance.Save();
     }

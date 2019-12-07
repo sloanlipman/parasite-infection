@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private UIDecisionPanel decisionPanel;
   [SerializeField] private InventoryController inventoryController;
   [SerializeField] private BattleLauncher battleLauncher;
+  [SerializeField] private AlertPanel alertPanel;
   private MenuController menuController;
   private List<Enemy> finalBattleEnemyParty = new List<Enemy>();
 
@@ -173,7 +174,8 @@ public class SceneController : MonoBehaviour {
       case "Command Center": {
         if (!HasQuestBeenStarted("KillBlobsQuest")) {
           string[] dialog = new string[] {
-            "<i><b>Check in with the Android to get your assignment. If you need help, press ESC to access the Tutorial!</b></i>",
+            "<i><b>Check in with the Android to get your assignment.</b></i>",
+            "<i><b>If you need help, press ESC to access the Tutorial!</b></i>"
             };
           dialogPanel.StartDialog(dialog);
         } else if (IsQuestCompleted("KillBlobsQuest")) {
@@ -241,7 +243,8 @@ public class SceneController : MonoBehaviour {
       case "Bridge": {
         currentAct = 4;
         ActivateFinalBoss();
-        RemoveFinalBossTrigger();
+        ActivateFinalBossTrigger();
+        DeactivateFinalBossTrigger();
         RemoveFinalBoss();
         break;
       }
@@ -388,7 +391,7 @@ public class SceneController : MonoBehaviour {
     EventController.OnDialogPanelClosed += OpenDecisionPanelForAct1;
   }
 
-    public void ActivatePigAlien() {
+  public void ActivatePigAlien() {
     GameObject pigAlienParent = GameObject.FindGameObjectWithTag("Pig Alien");
       if (pigAlienParent != null) {
         NPC pigAlien = pigAlienParent.GetComponentInChildren<NPC>(true);
@@ -654,9 +657,9 @@ public class SceneController : MonoBehaviour {
       string[] dialog = new string[] {
         string.Format("{0}: Barry! You KNOW me. You know it isn't me!!!", characterKilledDuringInterlude),
         "You know it isn't me!",
-        string.Format("<b><i>{0}'s pleas fall on your deaf ears.</i></b>", characterKilledDuringInterlude),
-        string.Format("<b><i>You see the aliens lining up by {0}'s side.</i></b>", characterKilledDuringInterlude),
-        string.Format("<b><i>You no longer see your ally. You only see it for what it truly is: The Parasite Leader.</i></b>")
+        string.Format("<b><i>{0}'s pleas fall on your deaf ears.</b></i>", characterKilledDuringInterlude),
+        string.Format("<b><i>You see the aliens lining up by {0}'s side.</b></i>", characterKilledDuringInterlude),
+        string.Format("<b><i>You no longer see your ally. You only see it for what it truly is: The Parasite Leader.</b></i>")
       };
       dialogPanel.StartDialog(dialog);
       EventController.OnDialogPanelClosed += StartInterludeBattle;
@@ -729,23 +732,23 @@ public class SceneController : MonoBehaviour {
   public void TriggerSelfDestruct() {
     finalBattleEnemyParty.Clear();
     List<string> dialog = new List<string>();
-    dialog.Add("<i><b>You key in the self-destruct sequence and prepare to make an announcement to the ship.</b><i>");
+    dialog.Add("<i><b>You key in the self-destruct sequence and prepare to make an announcement to the ship.</b></i>");
     dialog.Add("Barry: Attention, crew of the USS Hecate. We can no longer hold the ship.");
     dialog.Add("We've lost the Android. We've lost too many crew members.");
     dialog.Add("Hurry to the escape pods.");
     dialog.Add("I've triggered the self-destruct protocol. The ship will blow up in T-minus 20 minutes.");
     dialog.Add("May God have mercy on your souls.");
     dialog.Add("<i><b>Ten minutes pass.</b></i>");
-    dialog.Add("<i><b>One by one, crew members radio back to you.</i></b>");
-    dialog.Add("<i><b>They are starting to make it to the pods.</i></b>");
-    dialog.Add("<i><b>You feel a sense of relief.</i></b>");
-    dialog.Add("<i><b>Even though you lost some good friends</i></b>");
-    dialog.Add("<i><b>and even though you are about to go down with the ship</i></b>");
-    dialog.Add("<i><b>as you defend the self-destruct panel, you feel a sense of relief</i></b>");
-    dialog.Add("<i><b>These people will make it home. Back to their families. Back to Earth.</i></b>");
-    dialog.Add("<i><b>And then the screaming begins.</i></b>");
-    dialog.Add("<i><b>You hear them all cry out in agony as the Parasites claw their way out of their hosts</i></b>");
-    dialog.Add("<i><b>You feel horror and shock as you realize that you have just sent an army of Parasites to Earth...</i></b>");
+    dialog.Add("<i><b>One by one, crew members radio back to you.</b></i>");
+    dialog.Add("<i><b>They are starting to make it to the pods.</b></i>");
+    dialog.Add("<i><b>You feel a sense of relief.</b></i>");
+    dialog.Add("<i><b>Even though you lost some good friends</b></i>");
+    dialog.Add("<i><b>and even though you are about to go down with the ship</b></i>");
+    dialog.Add("<i><b>as you defend the self-destruct panel, you feel a sense of relief</b></i>");
+    dialog.Add("<i><b>These people will make it home. Back to their families. Back to Earth.</b></i>");
+    dialog.Add("<i><b>And then the screaming begins.</b></i>");
+    dialog.Add("<i><b>You hear them all cry out in agony as the Parasites claw their way out of their hosts</b></i>");
+    dialog.Add("<i><b>You feel horror and shock as you realize that you have just sent an army of Parasites to Earth...</b></i>");
 
     if (PlayerIsAlien()) {
       // Scenario 3A
@@ -926,6 +929,7 @@ public class SceneController : MonoBehaviour {
 
     dialogPanel.StartDialog(dialog.ToArray());
     hasBossBeenRevealed = true;
+    DeactivateFinalBossTrigger();
     EventController.OnDialogPanelClosed += ActivateFinalBoss;
   }
 
@@ -987,11 +991,24 @@ public class SceneController : MonoBehaviour {
     }
   }
 
-  private void RemoveFinalBossTrigger() {
+  public void ActivateFinalBossTrigger() {
+    GameObject finalBossTriggerParent = GameObject.FindGameObjectWithTag("Final Boss Trigger");
+      if (finalBossTriggerParent != null) {
+        FinalBossTrigger trigger = finalBossTriggerParent.GetComponentInChildren<FinalBossTrigger>(true);
+        if (trigger != null) {
+          trigger.gameObject.SetActive(true);
+      }
+    }
+  }
+
+  private void DeactivateFinalBossTrigger() {
     if (hasBossBeenRevealed) {
-      FinalBossTrigger trigger = FindObjectOfType<FinalBossTrigger>();
-      if (trigger != null) {
-        Destroy(trigger.gameObject);
+      GameObject finalBossTriggerParent = GameObject.FindGameObjectWithTag("Final Boss Trigger");
+      if (finalBossTriggerParent != null) {
+        FinalBossTrigger trigger = finalBossTriggerParent.GetComponentInChildren<FinalBossTrigger>(true);
+        if (trigger != null) {
+          trigger.gameObject.SetActive(false);
+        }
       }
     }
   }

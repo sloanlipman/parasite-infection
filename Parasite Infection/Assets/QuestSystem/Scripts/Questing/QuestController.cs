@@ -10,6 +10,7 @@ namespace QuestSystem {
     [SerializeField] private Transform questUIParent;
     private QuestDatabase questDatabase;
     [SerializeField] private QuestPanel questPanel;
+    [SerializeField] private AlertPanel alertPanel;
 
     private void Awake() {
       questDatabase = GetComponent<QuestDatabase>();
@@ -27,6 +28,16 @@ namespace QuestSystem {
       if (questPanel != null) {
         questPanel.gameObject.SetActive(false);
       }
+    }
+
+    public void ShowAlert(string questName, List<BattleSystem.PartyMember> members, List<string> items) {
+      alertPanel.gameObject.SetActive(true);
+      List<string> dialog = new List<string>();
+      dialog.Add(string.Format("Completed quest: {0}", questName));
+      members.ForEach(member => dialog.Add(string.Format("{0} leveled up! Go spend upgrade points!", member.characterName)));
+      items.ForEach(item => dialog.Add(string.Format("Got item: {0}", item)));
+
+      alertPanel.StartDialog(dialog.ToArray());
     }
 
     public void Save() {

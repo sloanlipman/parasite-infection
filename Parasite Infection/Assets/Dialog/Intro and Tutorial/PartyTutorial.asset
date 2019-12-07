@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PartyTutorial
   m_EditorClassIdentifier: 
   dialog:
-  - You want to know why your party member's names are on your screen? That's your
-    Party Panel. Click the name of a party member to see and upgrade their stats,
-    equip Modules, and use Consumable items!
+  - <i><b>You want to know why your party member's names are on your screen? That's
+    your Party Panel. Click the name of a party member to see and upgrade their stats,
+    equip Modules, and use Consumable items!</b></i>

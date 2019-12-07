@@ -11,6 +11,5 @@ public class FinalBossTrigger : MonoBehaviour {
 
   public void Interact() {
     this.sceneController.TriggerSelfDestruct();
-    Destroy(this.gameObject);
   }
 }
