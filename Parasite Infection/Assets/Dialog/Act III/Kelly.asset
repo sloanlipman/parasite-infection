@@ -13,17 +13,10 @@ MonoBehaviour:
   m_Name: Kelly
   m_EditorClassIdentifier: 
   dialog:
-  - 'Kelly: We know how to make a cure, sir.'
-  - We just need a few components.
-  - Can you get them for me?
-  - We need a power source, an injector,
-  - and a stabilizer
-  - to make the delivery device.
-  - Strip some mechs for parts.
-  - We also need some Parasite DNA
-  - so that we can find the right genetic markers
-  - DNA from 3 aliens should be enough.
-  - I saw some tough-looking ones nearby.
-  - Make the delivery device, synthesize the cure,
-  - and combine the two.
+  - 'Kelly: We know how to make a cure, sir. We just need a few components.'
+  - We need a power source, an injector, and a stabilizer to make the delivery device.
+  - Strip some mechs for these parts.
+  - We also need some Parasite DNA so that we can find the right genetic markers.
+  - DNA from 3 aliens should be enough. I saw some tough-looking ones nearby.
+  - Make the delivery device, synthesize the cure, and then combine the two.
   - Then come talk to me again.

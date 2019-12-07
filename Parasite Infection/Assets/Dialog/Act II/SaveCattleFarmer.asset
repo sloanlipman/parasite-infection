@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: SaveCattleFarmer
   m_EditorClassIdentifier: 
   dialog:
-  - 'Farmer: Barry, help!'
-  - The Biosphere is under attack!
-  - Them aliens got control of the defense droids.
-  - They're attacking the animals!
+  - 'Farmer: Barry, help! The Biosphere is under attack!'
+  - Them aliens got control of the defense mechs. They're attacking the animals!
   - Kill one and I'll give you some good items!

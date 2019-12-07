@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Alan (intro)
   m_EditorClassIdentifier: 
   dialog:
-  - 'Alan: Barry... They''re everywhere.'
-  - Craft me a Water Module and let's go.
-  - Not sure how? Press escape.
-  - Then open the Crafting Menu and hit Tutorial.
-  - I'll give you the right items.
+  - 'Alan: Barry... They''re everywhere. Craft me a Water Module and let''s go.'
+  - Not sure how? Press escape to pause and get to the Crafting Menu.
+  - There's a Tutorial in there that will teach you about crafting.
+  - I'll give you all of the components you need.

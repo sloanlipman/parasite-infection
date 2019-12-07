@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: PigFarmer (after quest)
   m_EditorClassIdentifier: 
   dialog:
-  - 'Pig Farmer: Thanks for the help!'
-  - I think I saw the Android go into the shed.
-  - I'll unlock for door for ya.
+  - 'Pig Farmer: Thanks for the help! I think I saw the Android go into the shed.
+    Here''s the key!'

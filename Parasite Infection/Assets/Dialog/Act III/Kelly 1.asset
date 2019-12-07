@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Kelly 1
   m_EditorClassIdentifier: 
   dialog:
-  - 'Kelly: This should cure everyone.'
-  - But I'm picking up something weird.
-  - Can you go secure the lower labs?
-  - Take the Gateway you come in through.
+  - 'Kelly: That should do it! But now I''m picking up some weird readings. Aliens
+    in the Lower Labs!'
+  - Take the teleported you came in through and go stop the threat!

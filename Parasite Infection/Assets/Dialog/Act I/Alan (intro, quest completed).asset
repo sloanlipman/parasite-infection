@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Alan (intro, quest completed)
   m_EditorClassIdentifier: 
   dialog:
-  - 'Alan: Good stuff. All right, let''s get outta here.'
-  - The captain is up ahead.
-  - I'll open the security gate.
-  - I'm right behind you.
+  - 'Alan: Good stuff. This will help a lot. Let''s get outta here. The captain should
+    be right up ahead.'
+  - I've opened the security gate. I'm right behind you, Barry.

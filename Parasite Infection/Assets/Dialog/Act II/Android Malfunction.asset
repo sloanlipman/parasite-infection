@@ -13,10 +13,5 @@ MonoBehaviour:
   m_Name: Android Malfunction
   m_EditorClassIdentifier: 
   dialog:
-  - 'Android: Error!'
-  - Barry is not the captain,
-  - but he wears the captain's badge!
-  - Mutiny detected!
-  - Must stop the mutineer!
-  - Alien lifeforms also detected!
-  - Error! Conflicting objectives!
+  - 'Android: Error! Barry is not the captain, but he wears the badge.'
+  - Mutiny detected! Must stop the mutineer!

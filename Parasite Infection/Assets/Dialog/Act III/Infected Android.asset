@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Infected Android
   m_EditorClassIdentifier: 
   dialog:
-  - 'Android: Sorry, Barry.'
-  - I know we were once friends.
-  - But now I serve a greater purpose.
-  - But you already know that.
-  - SAY GOODBYE TO YOUR FRIENDS, BARRY.
+  - 'Android: Sorry, Barry. I know we were friends once, but now I serve a greater
+    purpose.'
+  - You already know that though.
+  - It's time to give in. LET THE INFECTION TAKE OVER.

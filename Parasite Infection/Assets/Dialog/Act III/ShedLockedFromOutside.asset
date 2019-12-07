@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: ShedLockedFromOutside
   m_EditorClassIdentifier: 
   dialog:
-  - It's locked.
-  - Maybe one of the farmers has the key?
+  - It's locked. Maybe one of the farmers has the key?

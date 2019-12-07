@@ -14,6 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog:
   - 'Android: Here''s a Fire Module. Don''t forget to equip it.'
-  - Let's go help the others.
-  - Head down to the transporter.
-  - We should look for Alan.
+  - Let's go help the others. Head through the teleporter, and we can look for Alan.

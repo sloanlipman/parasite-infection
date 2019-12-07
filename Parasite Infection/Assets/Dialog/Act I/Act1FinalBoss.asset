@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: Act1FinalBoss
   m_EditorClassIdentifier: 
   dialog:
-  - 'Alan: What are you guys doing down here?'
-  - This area is off-limits.
-  - 'Android: Scanning for alien lifeforms.'
-  - Barry... they're compromised.
-  - 'Alan: We''ve gotta take them out'
-  - before it's too late!
+  - 'Alan: What are you guys doing down here? This area is off-limits.'
+  - 'Android: Scanning for alien lifeforms. Barry... they''re compromised.'
+  - 'Alan: We''ve gotta take them out before they infect us all!!!'

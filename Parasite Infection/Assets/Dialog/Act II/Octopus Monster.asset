@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Octopus Monster
   m_EditorClassIdentifier: 
   dialog:
-  - 'Octopus Monster: Filthy human!'
-  - DIE!!!!!!!!!
+  - 'Octopus Monster: Filthy human! DIE!!!!!!!!!!'
