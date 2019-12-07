@@ -4,15 +4,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Character : MonoBehaviour {
-  // Start is called before the first frame update
 
-  private Rigidbody2D body;
-  [SerializeField]
-  private float movementSpeed;
-  private SpriteRenderer sprite;
+  protected Rigidbody2D body;
+  [SerializeField] private float movementSpeed;
+  protected SpriteRenderer sprite;
   protected bool colliding;
   protected Animator animator;
   public bool IsMoving;
+
   void Awake() {
     body = GetComponent<Rigidbody2D>();
     sprite = GetComponent<SpriteRenderer>();

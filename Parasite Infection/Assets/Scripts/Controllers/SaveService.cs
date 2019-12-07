@@ -22,6 +22,9 @@ public class SaveService : MonoBehaviour {
   private bool needToLoadPlayer = false;
   private bool needToLoadNPCs = false;
 
+  private Vector2 playerPosition;
+  private int sceneIndex;
+
   // Start is called before the first frame update
   public void Save() {
     inventoryController.PrepareForSave();
@@ -46,10 +49,10 @@ public class SaveService : MonoBehaviour {
       characterController.Load();
       sceneController.Load();
 
-      LoadPlayer();
-      LoadNPCs();
       ResetDialog();
       LoadSavedScene();
+      LoadPlayer();
+      LoadNPCs();
       menuController.UnpauseGame();
 
     } else {
@@ -89,20 +92,30 @@ public class SaveService : MonoBehaviour {
   }
 
   private void LoadSavedScene() {
-    int sceneIndex = ES3.Load<int>("sceneIndex");
-    SceneManager.LoadScene(sceneIndex);
+    sceneIndex = ES3.Load<int>("sceneIndex");
+
+    // Load the scene if it's a different one
+    if (SceneManager.GetActiveScene().buildIndex != sceneIndex) {
+      SceneManager.LoadScene(sceneIndex);
+    } else {
+      // Otherwise run scene initialization methods
+      sceneController.OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
   }
 
   private void SavePlayer() {
     Player player = GetPlayer();
     if (player != null) {
-      player.Save();
+      ES3.Save<Player>("Player", player, "PlayerInfo.json");
+      ES3.Save<Vector2>("Position", player.GetRigidbody().position, "PlayerInfo.json");
     }
   }
 
   private void LoadPlayer() {
-    if (GetPlayer() != null && ES3.FileExists("PlayerInfo.json")) {
-      ES3.Load<GameObject>("Player", "PlayerInfo.json");
+    Player player = GetPlayer();
+    if (player != null && ES3.FileExists("PlayerInfo.json")) {
+      ES3.LoadInto<Player>("Player", "PlayerInfo.json", player);
+      player.GetRigidbody().position = ES3.Load<Vector2>("Position", "PlayerInfo.json");
     } else {
       needToLoadPlayer = true;
     }

@@ -158,7 +158,7 @@ public class SceneController : MonoBehaviour {
     }
   }
 
-  private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+  public void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
     switch(scene.name) {
       case "Intro": {
         currentAct = 0;
@@ -369,7 +369,7 @@ public class SceneController : MonoBehaviour {
     GameObject barricade = GameObject.FindGameObjectWithTag("Barricade/Tentacle Monster");
     if (barricade != null) {
       Destroy(barricade);
-    }
+      }
     }
   }
 
@@ -399,13 +399,11 @@ public class SceneController : MonoBehaviour {
   }
 
     public void ActivatePigAlien() {
-    if (IsQuestInProgress("KillPigAlienQuest")) {
-      GameObject pigAlienParent = GameObject.FindGameObjectWithTag("Pig Alien");
+    GameObject pigAlienParent = GameObject.FindGameObjectWithTag("Pig Alien");
       if (pigAlienParent != null) {
         NPC pigAlien = pigAlienParent.GetComponentInChildren<NPC>(true);
         if (pigAlien != null) {
-          pigAlien.gameObject.SetActive(true);
-        }
+          pigAlien.gameObject.SetActive(IsQuestInProgress("KillPigAlienQuest"));
       }
     }
   }
@@ -433,13 +431,11 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateOctopusMonster() {
-    if (IsQuestCompleted("DefeatMalfunctioningAndroidQuest")) {
-      GameObject octopusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
-      if (octopusMonsterParent != null) {
-        NPC octopusMonster = octopusMonsterParent.GetComponentInChildren<NPC>(true);
-        if (octopusMonster != null) {
-          octopusMonster.gameObject.SetActive(true);
-        }
+    GameObject octopusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
+    if (octopusMonsterParent != null) {
+      NPC octopusMonster = octopusMonsterParent.GetComponentInChildren<NPC>(true);
+      if (octopusMonster != null) {
+        octopusMonster.gameObject.SetActive(IsQuestCompleted("DefeatMalfunctioningAndroidQuest"));
       }
     }
   }
@@ -465,17 +461,14 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateEnhancedParasite() {
-    if (IsQuestCompleted("DefeatInfectedAndroidQuest")) {
-      GameObject enhancedParasiteParent = GameObject.FindGameObjectWithTag("Act 3 Boss");
-      if (enhancedParasiteParent != null) {
-        NPC enhancedParasite = enhancedParasiteParent.GetComponentInChildren<NPC>(true);
-        if (enhancedParasite != null) {
-          enhancedParasite.gameObject.SetActive(true);
-        }
+    GameObject enhancedParasiteParent = GameObject.FindGameObjectWithTag("Act 3 Boss");
+    if (enhancedParasiteParent != null) {
+      NPC enhancedParasite = enhancedParasiteParent.GetComponentInChildren<NPC>(true);
+      if (enhancedParasite != null) {
+        enhancedParasite.gameObject.SetActive(IsQuestCompleted("DefeatInfectedAndroidQuest"));
       }
     }
-    EventController.OnDialogPanelClosed -= ActivateEnhancedParasite;
-
+  EventController.OnDialogPanelClosed -= ActivateEnhancedParasite;
   }
 
   private void RemoveEnhancedParasite() {
@@ -571,35 +564,29 @@ public class SceneController : MonoBehaviour {
   }
 
   public void ActivateEvolvedBlob() {
-    if (IsQuestInProgress("DefeatEvolvedBlobQuest")) {
-      GameObject evolvedBlobParent = GameObject.FindGameObjectWithTag("Evolved Blob");
-      if (evolvedBlobParent != null) {
-        NPC evolvedBlob = evolvedBlobParent.GetComponentInChildren<NPC>(true);
-        if (evolvedBlob != null) {
-          evolvedBlob.gameObject.SetActive(true);
-        }
+    GameObject evolvedBlobParent = GameObject.FindGameObjectWithTag("Evolved Blob");
+    if (evolvedBlobParent != null) {
+      NPC evolvedBlob = evolvedBlobParent.GetComponentInChildren<NPC>(true);
+      if (evolvedBlob != null) {
+        evolvedBlob.gameObject.SetActive(IsQuestInProgress("DefeatEvolvedBlobQuest"));
       }
     }
   }
    public void ActivateDinosaurMonster() {
-    if (IsQuestInProgress("DefeatDinosaurMonsterQuest")) {
-      GameObject dinosaurMonsterParent = GameObject.FindGameObjectWithTag("Dinosaur Monster");
-      if (dinosaurMonsterParent != null) {
-        NPC dinosaurMonster = dinosaurMonsterParent.GetComponentInChildren<NPC>(true);
-        if (dinosaurMonster != null) {
-          dinosaurMonster.gameObject.SetActive(true);
-        }
+    GameObject dinosaurMonsterParent = GameObject.FindGameObjectWithTag("Dinosaur Monster");
+    if (dinosaurMonsterParent != null) {
+      NPC dinosaurMonster = dinosaurMonsterParent.GetComponentInChildren<NPC>(true);
+      if (dinosaurMonster != null) {
+        dinosaurMonster.gameObject.SetActive(IsQuestInProgress("DefeatDinosaurMonsterQuest"));
       }
     }
   }
    public void ActivateBirdMonster() {
-    if (IsQuestInProgress("DefeatBirdMonsterQuest")) {
-      GameObject birdMonsterParent = GameObject.FindGameObjectWithTag("Bird Monster");
-      if (birdMonsterParent != null) {
-        NPC birdMonster = birdMonsterParent.GetComponentInChildren<NPC>(true);
-        if (birdMonster != null) {
-          birdMonster.gameObject.SetActive(true);
-        }
+    GameObject birdMonsterParent = GameObject.FindGameObjectWithTag("Bird Monster");
+    if (birdMonsterParent != null) {
+      NPC birdMonster = birdMonsterParent.GetComponentInChildren<NPC>(true);
+      if (birdMonster != null) {
+        birdMonster.gameObject.SetActive(IsQuestInProgress("DefeatBirdMonsterQuest"));
       }
     }
   }
@@ -1075,36 +1062,34 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateFinalBoss() {
-    if (IsQuestInProgress("DefeatFinalBossQuest") || hasBossBeenRevealed) {
-      Sprite trueParasiteSprite = Resources.Load<Sprite>("True Parasite");
-      GameObject finalBossParent = GameObject.FindGameObjectWithTag("Final Boss");
-        if (finalBossParent != null) {
-          NPC finalBoss = finalBossParent.GetComponentInChildren<NPC>(true);
-          if (finalBoss != null) {
-            finalBoss.gameObject.SetActive(true);
-          }
-
-          if (finalBossShouldBeAlien) {
-            Enemy boss = characterController.FindEnemyByName("The True Parasite");
-            finalBattleEnemyParty.Add(boss);
-            finalBoss.SetSprite(trueParasiteSprite);
-          } else {
-            Player player = GameObject.FindObjectOfType<Player>();
-            player.SetSprite(trueParasiteSprite);
-            PartyMember barry = characterController.FindPartyMemberByName("Barry");
-            PartyMember parasite = characterController.FindPartyMemberByName("The True Parasite");
-
-            parasite.experience = barry.experience;
-            parasite.CopyPartyMember(barry);
-            parasite.IncreaseFinalBossStats();
-
-            characterController.RemovePlayerFromParty("Barry");
-            characterController.AddPlayerToParty("The True Parasite");
-          }
+    Sprite trueParasiteSprite = Resources.Load<Sprite>("True Parasite");
+    GameObject finalBossParent = GameObject.FindGameObjectWithTag("Final Boss");
+      if (finalBossParent != null) {
+        NPC finalBoss = finalBossParent.GetComponentInChildren<NPC>(true);
+        if (finalBoss != null) {
+          finalBoss.gameObject.SetActive(IsQuestInProgress("DefeatFinalBossQuest") || hasBossBeenRevealed);
         }
-        Resources.UnloadAsset(trueParasiteSprite);
-      EventController.OnDialogPanelClosed -= ActivateFinalBoss;
-    }
+
+        if (finalBossShouldBeAlien) {
+          Enemy boss = characterController.FindEnemyByName("The True Parasite");
+          finalBattleEnemyParty.Add(boss);
+          finalBoss.SetSprite(trueParasiteSprite);
+        } else {
+          Player player = GameObject.FindObjectOfType<Player>();
+          player.SetSprite(trueParasiteSprite);
+          PartyMember barry = characterController.FindPartyMemberByName("Barry");
+          PartyMember parasite = characterController.FindPartyMemberByName("The True Parasite");
+
+          parasite.experience = barry.experience;
+          parasite.CopyPartyMember(barry);
+          parasite.IncreaseFinalBossStats();
+
+          characterController.RemovePlayerFromParty("Barry");
+          characterController.AddPlayerToParty("The True Parasite");
+        }
+      }
+      Resources.UnloadAsset(trueParasiteSprite);
+    EventController.OnDialogPanelClosed -= ActivateFinalBoss;
   }
 
   private void RemoveFinalBoss() {
