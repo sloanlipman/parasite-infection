@@ -178,22 +178,6 @@ public class MenuController : MonoBehaviour {
   }
 
   public void ToggleQuestPanel() {
-    if (IsPartyPanelOpen()) {
-      partyPanel.gameObject.SetActive(false);
-    }
-
-    if (IsPlayerInfoOpen()) {
-      playerInfo.gameObject.SetActive(false);
-    }
-
-    if (IsPlayerEquipmentOpen()) {
-      playerEquipment.gameObject.SetActive(false);
-    }
-
-    if (IsUpgradePanelOpen()) {
-      upgradePointPanel.gameObject.SetActive(false);
-    }
-
     questPanel.gameObject.SetActive(!IsQuestPanelOpen());
 
     if (IsQuestPanelOpen() && IsTutorialOpen()) {
@@ -202,9 +186,6 @@ public class MenuController : MonoBehaviour {
   }
 
   public void TogglePartyPanel() {
-    if (IsQuestPanelOpen()) {
-        questPanel.gameObject.SetActive(false);
-      }
     partyPanel.gameObject.SetActive(!IsPartyPanelOpen());
     if (IsPartyPanelOpen()) {
       partyPanel.ResetSelectedPartyMember();

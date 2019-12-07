@@ -173,8 +173,7 @@ public class SceneController : MonoBehaviour {
       case "Command Center": {
         if (!HasQuestBeenStarted("KillBlobsQuest")) {
           string[] dialog = new string[] {
-            "Check in with the Android to get your assignment.",
-            "If you need help, press ESC to access the tutorial.",
+            "<i><b>Check in with the Android to get your assignment. If you need help, press ESC to access the Tutorial!</b></i>",
             };
           dialogPanel.StartDialog(dialog);
         } else if (IsQuestCompleted("KillBlobsQuest")) {
@@ -332,10 +331,8 @@ public class SceneController : MonoBehaviour {
 
   public void StartCraftWaterQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Alan: Good stuff. All right, let's get outta here.",
-      "The captain is up ahead.",
-      "I'll open the security gate.",
-      "I'm right behind you."
+      "Alan: Good stuff. This will help a lot. Let's get outta here. The captain should be right up ahead.",
+      "I've opened the security gate. I'm right behind you, Barry."
     };
     dialogPanel.StartDialog(dialog);
     EventController.OnDialogPanelClosed += OpenGateToTentacleMonster;
@@ -343,12 +340,8 @@ public class SceneController : MonoBehaviour {
 
   public void StartDefeatTentacleMonsterQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Tentacle Monster: IMPOSSIBLE!!!",
-      "How could a human defeat my spawn?",
-      "I won't forget this... Barry...",
-      "Alan: Let's head back to the teleporter.",
-      "We can head down to the Central Core",
-      "and regroup with the crew"
+      "Tentacle Monster: IMPOSSIBLE!!! How could a human defeat my spawn? I won't forget this... Barry",
+      "Alan: Let's head back to the teleporter so we can secure the Central Core."
     };
     dialogPanel.StartDialog(dialog);
     EventController.OnDialogPanelClosed += RemoveTentacleMonster;
@@ -356,9 +349,7 @@ public class SceneController : MonoBehaviour {
 
   public void StartKillPigAlienQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Pig Farmer: Thanks for the help!",
-      "I think I saw the Android go into the shed.",
-      "I'll unlock for door for ya."
+    "Pig Farmer: Thanks for the help! I think I saw the Android go into the shed. Here's the key!"
     };
     dialogPanel.StartDialog(dialog);
     EventController.OnDialogPanelClosed += RemovePigAlien;
@@ -390,9 +381,8 @@ public class SceneController : MonoBehaviour {
   public void StartEndOfAct1Dialog() {
     // RemoveBossTrigger();
     string[] dialog = new string[] {
-      "Android: Yo. Now I'm only reading one alien.",
-      "Alan: One of them must have been mind controlled.",
-      "Barry, what do we do?"
+      "Android: Sensors are only picking up one alien now...",
+      "Alan: These aliens must have mind control powers. Barry, what do we do?",
     };
     dialogPanel.StartDialog(dialog);
     EventController.OnDialogPanelClosed += OpenDecisionPanelForAct1;
@@ -410,8 +400,7 @@ public class SceneController : MonoBehaviour {
 
   public void StartDefeatMalfunctioningAndroidQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Alan: Bar, there's a nasty parasite incoming,",
-      "but one of us needs to dismantle the Android.",
+      "Alan: Bar, there's a nasty Parasite incoming, but one of us needs to finish turning off the Android",
       "Who's it going to be?"
     };
     dialogPanel.StartDialog(dialog);
@@ -420,9 +409,7 @@ public class SceneController : MonoBehaviour {
 
   public void StartDefeatOctopusMonsterQuestCompletedDialog() {
     string[] dialog = new string[] {
-      string.Format("{0}: I've dismantled him.", characterRemovedFromPartyForOctopusFight),
-      "He had some data about a potential cure.",
-      "Let's head down to the labs and check it out."
+      string.Format("{0}: I've deactivated him. He had some info about a potential cure. Let's get to the Labs.", characterRemovedFromPartyForOctopusFight),
     };
     dialogPanel.StartDialog(dialog);
     RemoveOctopusMonster();
@@ -512,9 +499,8 @@ public class SceneController : MonoBehaviour {
   private void FinishEndOfAct1Dialog() {
     string[] dialog = new string[] {
       string.Format("*You shoot {0}*", deadCrewMember),
-      "Android: Alien life detected in the Biosphere.",
-      "I'll go on ahead.",
-      string.Format("{0}, stick with these guys", crewMemberWhoJoinedParty),
+      "Android: Alien life detected in the Biosphere. I'll go on ahead.",
+      string.Format("{0}, stick with these guys. Here's an extra Heavy Module.", crewMemberWhoJoinedParty),
       "Take this extra Heavy Module."
     };
     dialogPanel.StartDialog(dialog);
@@ -524,10 +510,8 @@ public class SceneController : MonoBehaviour {
   private void StartLabsDialog() {
     if (!HasQuestBeenStarted("CompleteTheCureQuest")) {
       string[] dialog = new string[] {
-        "A voice echoes in your head.",
-        "Kelly. The scientist is named Kelly.",
-        "We must get to Kelly.",
-        "Before it is too late."
+        "<i><b>A voice echoes in your head...</b></i>",
+        "<i><b>Kelly... The scientist... She has the cure... We must get to her before it's too late....</b></i>"
       };
       dialogPanel.StartDialog(dialog);
     }
@@ -621,10 +605,8 @@ public class SceneController : MonoBehaviour {
 
   public void StartCompleteTheCureQuestCompletedDialog() {
     string[] dialog = new string[] {
-      "Kelly: This should cure everyone.",
-      "But I'm picking up something weird.",
-      "Can you go secure the lower labs?",
-      "Take the Teleporter you came in through."
+      "Kelly: That should do it! But now I'm picking up some weird readings. Aliens in the Lower Labs!",
+      "Take the teleporter you came in through and go stop the threat!",
     };
     dialogPanel.StartDialog(dialog);
     ActivateGatewayToLowerLabs();
@@ -633,15 +615,9 @@ public class SceneController : MonoBehaviour {
   public void StartDefeatInfectedAndroidQuestCompletedDialog() {
     if (IsQuestCompleted("DefeatInfectedAndroidQuest") && !HasQuestBeenStarted("DefeatEnhancedParasiteQuest")) {
       string[] dialog = new string[] {
-        string.Format("Alan: Wait a second! Is that {0}!?", deadCrewMember),
-        "Barry! Use the cure!",
-        string.Format("We can bring {0} back to our side!", deadCrewMember),
-        string.Format("You inject {0} with the cure", deadCrewMember),
-        string.Format("but {0} begins to glow.", GetSubjectivePronounForDeadCrewMember()),
-        string.Format("In a matter of seconds, {0} is not recognizable.", deadCrewMember),
-        "The cure appears to have failed.",
-        "You have no choice but to fight",
-        "the ally you already lost once before"
+        string.Format("Alan: Wait a second! Is that {0}!? Barry, use the cure! We can bring {1} back!", deadCrewMember, GetObjectivePronounForDeadCrewMember()),
+        string.Format("<i><b>You inject {0} with the cure, but {1} begins to grow. In a few seconds, you don't recognize {1}.</b></i>", deadCrewMember, GetObjectivePronounForDeadCrewMember(), GetSubjectivePronounForDeadCrewMember()),
+        "The cure appears to have failed. You have no choice but to fight the ally you have already lost."
       };
 
       dialogPanel.StartDialog(dialog);
@@ -657,18 +633,15 @@ public class SceneController : MonoBehaviour {
       Debug.Log("Should start Dialog here in a second");
       RemoveEnhancedParasite();
       string[] dialog = new string[] {
-        "You realize something.",
-        string.Format("{0} wasn't even infected in your first battle.", deadCrewMember),
-        "You see a shadowy image in a memory.",
-        "Someone doubled back to the Central Core.",
-        string.Format("After you killed {0}, someone went back.", deadCrewMember),
-        string.Format("Someone infected {0} AFTER you killed {1}.", deadCrewMember, GetObjectivePronounForDeadCrewMember()),
-        "But who was it?",
-        "You can't quite remember.",
-        "There's no time to waste, Barry.",
-        "Make a decision NOW.",
-        string.Format("Who infected {0}?", deadCrewMember),
-        "Who is the REAL alien?"
+
+        string.Format("<i><b>You realize something. {0} wasn't even infected in your first battle.</b></i>", deadCrewMember),
+        "<i><b>You see a shadowy image in a memory. Someone doubled back to the Central Core.</b></i>",
+        string.Format("<i><b>After you killed {0}, someone went back.</b></i>", deadCrewMember),
+        string.Format("<i></b>Someone infected {0} AFTER you killed {1}.</b></i>", deadCrewMember, GetObjectivePronounForDeadCrewMember()),
+        "<i><b>Who was it though? You can't remember. But there's no time to waste, Barry.</b></i>",
+        "<i><b>Make a decision NOW.</b></i>",
+        string.Format("<i><b>Who infected {0}?</b></i>", deadCrewMember),
+        "<i><b>Who is the REAL alien?</b></i>"
       };
 
       dialogPanel.StartDialog(dialog);
@@ -679,19 +652,16 @@ public class SceneController : MonoBehaviour {
     private void FinishEndOfAct3Dialog() {
     if (IsQuestCompleted("DefeatEnhancedParasiteQuest")) {
       string[] dialog = new string[] {
-        string.Format("{0}: Barry! You KNOW me.", characterKilledDuringInterlude),
+        string.Format("{0}: Barry! You KNOW me. You know it isn't me!!!", characterKilledDuringInterlude),
         "You know it isn't me!",
-        string.Format("{0}'s pleas fall on your deaf ears.", characterKilledDuringInterlude),
-        string.Format("You see the aliens lining up by {0}'s side.", characterKilledDuringInterlude),
-        string.Format("You no longer see your ally."),
-        string.Format("You only see it for what it truly is:"),
-        string.Format("The Parasite Leader!")
+        string.Format("<b><i>{0}'s pleas fall on your deaf ears.</i></b>", characterKilledDuringInterlude),
+        string.Format("<b><i>You see the aliens lining up by {0}'s side.</i></b>", characterKilledDuringInterlude),
+        string.Format("<b><i>You no longer see your ally. You only see it for what it truly is: The Parasite Leader.</i></b>")
       };
       dialogPanel.StartDialog(dialog);
       EventController.OnDialogPanelClosed += StartInterludeBattle;
     }
   }
-
 
   private void SetInfectedAndroidParty() {
     Enemy enemyToFind = characterController.FindEnemyByName(deadCrewMember);
@@ -727,25 +697,15 @@ public class SceneController : MonoBehaviour {
   public void CompleteInterlude() {
     if (IsQuestCompleted("InterludeQuest") && shouldTellToGoToBridge) {
       string[] dialog = new string[] {
-        "You defeat the Parasite Leader",
-        "and inject it with what remains of the cure",
-        "holding on to a thin glimmer of hope",
-        "that you can bring your friend back.",
-        "But you know it's no use.",
-        "You release a heavy sigh of despair.",
-        "But still.",
-        "It's over at last.",
-        "The Parasite Leader is dead.",
-        "But somethingd doesn't feel quite right.",
-        "You begin to wonder...",
-        "What if there are more?",
-        "What if killing the leader",
-        "doesn't kill the rest?",
-        "There's only one course of action that remains.",
-        "Make your way to the Bridge.",
-        "Activate the self-destruction.",
-        "Warn the crew to escape while they still can.",
-        "Hurry, Barry. Take the Teleporter."
+        "<i><b>You defeat the Parasite Leader and inject it with what remains of the cure.</b></i>",
+        "<i><b>You hold on to a thin glimmer of hope that you can bring your friend back.</b></i>",
+        "<i><b>Nothing happens.</b></i>",
+        "<i><b>You sign in despair, but at least it's over. The Parasite Leader is dead.</b></i>",
+        "<i><b>Something still feels off though. You begin to wonder...</b></i>",
+        "<i><b>What if there is a stronger one out there? What if you didn't really stop the infection?</b></i>",
+        "<i><b>There's only one course of action that remains. Make your way to the Bridge.</b></i>",
+        "<i><b>Activate the self-destruction. Warn the crew to escape while they still can.</b></i>",
+        "<i><b>Hurry, Barry....</b></i>"
       };
       dialogPanel.StartDialog(dialog);
       shouldTellToGoToBridge = false;
@@ -769,91 +729,62 @@ public class SceneController : MonoBehaviour {
   public void TriggerSelfDestruct() {
     finalBattleEnemyParty.Clear();
     List<string> dialog = new List<string>();
-    dialog.Add("You key in the self-destruct sequence");
-    dialog.Add("and prepare to make an announcement to the ship.");
-    dialog.Add("Barry: Attention, crew of the USS Hecate.");
-    dialog.Add("We can no longer hold the ship.");
-    dialog.Add("We've lost the Android.");
-    dialog.Add("We've lost too many crew members.");
+    dialog.Add("<i><b>You key in the self-destruct sequence and prepare to make an announcement to the ship.</b><i>");
+    dialog.Add("Barry: Attention, crew of the USS Hecate. We can no longer hold the ship.");
+    dialog.Add("We've lost the Android. We've lost too many crew members.");
     dialog.Add("Hurry to the escape pods.");
-    dialog.Add("I've triggered the self-destruct protocol.");
-    dialog.Add("The ship will blow up in T-minus 20 minutes.");
+    dialog.Add("I've triggered the self-destruct protocol. The ship will blow up in T-minus 20 minutes.");
     dialog.Add("May God have mercy on your souls.");
-    dialog.Add("Ten minutes pass.");
-    dialog.Add("One by one, crew members radio back to you.");
-    dialog.Add("They are starting to make it to the pods.");
-    dialog.Add("You feel a sense of relief.");
-    dialog.Add("Even though you lost some good friends");
-    dialog.Add("and even though you are about to");
-    dialog.Add("go down with the ship as you defend");
-    dialog.Add("the self-destruct panel,");
-    dialog.Add("you feel a sense of relief");
-    dialog.Add("These people will make it home.");
-    dialog.Add("These people will make it back to their families.");
-    dialog.Add("These people will see Earth again.");
-    dialog.Add("And then the screaming begins.");
-    dialog.Add("You hear them all cry out in agony");
-    dialog.Add("as the Parasites claw their way out of their hosts");
-    dialog.Add("You feel horror and shock as you realize");
-    dialog.Add("that you have just freed the aliens");
-    dialog.Add("and have sent them to Earth.");
+    dialog.Add("<i><b>Ten minutes pass.</b></i>");
+    dialog.Add("<i><b>One by one, crew members radio back to you.</i></b>");
+    dialog.Add("<i><b>They are starting to make it to the pods.</i></b>");
+    dialog.Add("<i><b>You feel a sense of relief.</i></b>");
+    dialog.Add("<i><b>Even though you lost some good friends</i></b>");
+    dialog.Add("<i><b>and even though you are about to go down with the ship</i></b>");
+    dialog.Add("<i><b>as you defend the self-destruct panel, you feel a sense of relief</i></b>");
+    dialog.Add("<i><b>These people will make it home. Back to their families. Back to Earth.</i></b>");
+    dialog.Add("<i><b>And then the screaming begins.</i></b>");
+    dialog.Add("<i><b>You hear them all cry out in agony as the Parasites claw their way out of their hosts</i></b>");
+    dialog.Add("<i><b>You feel horror and shock as you realize that you have just sent an army of Parasites to Earth...</i></b>");
 
     if (PlayerIsAlien()) {
       // Scenario 3A
-      dialog.Add("You then feel something stir within you.");
-      dialog.Add("Flashes of your battles from the last few hours.");
+      dialog.Add("<i><b>You then feel something stir within you. Flashes of your battles from the last few hours.</b></i>");
       dialog.Add(string.Format("{0} was not the one who doubled back.", characterKilledDuringInterlude));
       dialog.Add(string.Format("{0} was not the one who killed {1}.", characterKilledDuringInterlude, deadCrewMember));
-      dialog.Add("Voice: It was you.");
-      dialog.Add("Yes, Barry.");
-      dialog.Add("Don't you see?");
-      dialog.Add("It's always been you.");
-      dialog.Add("Megan and Jake? They were never infected.");
-      dialog.Add(string.Format("But I made you come back and infect {0}!", deadCrewMember));
-      dialog.Add("I made you infect the Android!");
+      dialog.Add("Voice: It was you. Don't you see, Barry? It's always been you.");
+      dialog.Add(string.Format("Megan and Jake? They were never infected. But I made you come back and infect {0}!", deadCrewMember));
+      dialog.Add("I made you infect the Android AND botch the cure!!!");
       dialog.Add("I made you botch the cure!");
-      dialog.Add("Don't you get it, Barry?");
-      dialog.Add("The moment you touched the Tentacle Monster");
-      dialog.Add("you belonged to us.");
+      dialog.Add("Don't you get it, Barry? The moment you touched the Tentacle Monster, you belonged to us.");
       dialog.Add("Remember? We told you that you were already dead");
       dialog.Add("And now your body is MINE!");
       dialog.Add("The best part though?");
       dialog.Add("You didn't set off any kind of self destruct sequence!");
       dialog.Add("You actually set off a DISTRESS BEACON!!!");
-      dialog.Add("We'll infect the ship that responds,");
-      dialog.Add("and together, we shall rule the universe!!!!");
+      dialog.Add("We'll infect the ship that responds, and together, we shall rule the universe!!!!");
       dialog.Add("Barry: No... stop... THAT'S ENOUGH");
-      dialog.Add("You let out an anguished yelp.");
-      dialog.Add(string.Format("You begin to glow, just as {0} did", deadCrewMember));
-      dialog.Add("right before you administered the botched cure");
+      dialog.Add("<i><b>You let out an anguished yelp.</b></i>");
+      dialog.Add(string.Format("You begin to glow, just as {0} did right before you administered the botched cure</b></i>", deadCrewMember));
       dialog.Add(string.Format("{0}: Barry? Can you hear me?", crewMemberWhoJoinedParty));
-      dialog.Add("You've got to fight it, Barry.");
-      dialog.Add("I know you're still in there.");
-      dialog.Add("So fight it! We're all counting on you");
-      dialog.Add("to stop the Parasites.");
+      dialog.Add("You've got to fight it, Barry. I know you're still in there.");
+      dialog.Add("So fight it! We're all counting on you to stop the Parasites!");
       dialog.Add("REMEMBER WHO YOU ARE!!!!");
-      dialog.Add(string.Format("As {0} screams, you do remember everything.", crewMemberWhoJoinedParty));
+      dialog.Add(string.Format("<i><b>As {0} screams, you do remember everything.</b></i>", crewMemberWhoJoinedParty));
 
       if (PlayerSavedMegan()) {
         // Scenarios 3 and 4
-        dialog.Add("You remember the feeling of joy");
-        dialog.Add("when you first met Megan");
-        dialog.Add("You feel fear at the thought of losing her.");
-        dialog.Add("And you embrace this fear.");
-        dialog.Add("You feel the Parasite trying to escape your body,");
-        dialog.Add("and you fight back");
-        dialog.Add("It begins to shriek,");
-        dialog.Add("unable to tolerate the love that flows through you.");
+        dialog.Add("<i><b>You remember the feeling of joy when you first met Megan</b></i>");
+        dialog.Add("<i><b>You feel fear at the thought of losing her and find strength in it.</b></i>");
+        dialog.Add("<i><b>You feel the Parasite trying to commandeer your body, and you fight back.</b></i>");
+        dialog.Add("<i><b>It begins to shriek,unable to tolerate the love that flows through you.</b></i>");
         dialog.Add("It phases through you, freeing you from its thrall.");
-        dialog.Add("True Parasite: Filthy humans...");
-        dialog.Add("I am getting off this putrid ship.");
+        dialog.Add("True Parasite: Filthy humans... I am getting off this putrid ship.");
         dialog.Add("Now stand aside or PERISH!!!!!!!!!!");
 
         if (AlanDismantledAndroid()) {
-          dialog.Add("Barry: We aren't afraid of you.");
-          dialog.Add("We have a connection,");
-          dialog.Add("and I can see how much energy you used");
-          dialog.Add("getting out of my body.");
+          dialog.Add("Barry: We aren't afraid of you. We're still connected.");
+          dialog.Add("I can feel how much energy you used getting out of my body.");
           dialog.Add("You don't stand a chance!");
 
           // Scenario 4
@@ -863,14 +794,12 @@ public class SceneController : MonoBehaviour {
 
         } else {
           // Scenario 3
-          dialog.Add("Megan: We're in this together, Barry!");
-          dialog.Add("I'm glad I could bring you back.");
-          dialog.Add("When I was dismantling the Android,");
-          dialog.Add("I found out about the emergency Battle Mechs,");
-          dialog.Add("and there's one in here.");
-          dialog.Add("Let's use it to show this alien");
-          dialog.Add("that Earthlings don't mess around!!!");
+          dialog.Add("Megan: Barry! I'm glad I could bring you back. We're in this together, until the end.");
+          dialog.Add("When I was dismantling the Android, I got access to the emergency Battle Mechs");
+          dialog.Add("Let's use one to show this alien that Earthlings don't mess around!");
+
           GivePlayerControlOfBattleMech(1);
+
           finalBattleScenario = 3;
           Debug.Log("Final battle scenario? " + finalBattleScenario);
 
@@ -878,20 +807,14 @@ public class SceneController : MonoBehaviour {
       } else {
         // Scenarios 1 and 2
         finalBossShouldBeAlien = false; // Instead, should activate the "good guys" to come be your enemies
-        dialog.Add("You remember the pain and suffering you felt");
-        dialog.Add("as your crew continued to drop one by one.");
-        dialog.Add("You remember how good it felt to give in");
-        dialog.Add("to the fear and paranoia");
-        dialog.Add("while you slaughtered them.");
-        dialog.Add("You remember who you are.");
-        dialog.Add("You are the True Parasite.");
-        dialog.Add("You tear apart Barry's flesh and reveal your true form.");
-        dialog.Add("True Parasite: Pitiful human.");
-        dialog.Add("My way off this ship is on its way.");
+        dialog.Add("<i><b>You remember the pain and suffering you felt as your crew dropped one by one.</b></i>");
+        dialog.Add("<i><b>You remember how good it felt to give in to the fear and paranoia while you slaughtered them.</b></i>");
+        dialog.Add("<i><b>You remember who you are. You are the True Parasite.</b></i>");
+        dialog.Add("i><b>You tear apart Barry's flesh and reveal your true form.</b></i>");
+        dialog.Add("True Parasite: Pitiful human. Stand aside or PERISH.");
         dialog.Add("Now stand aside or PERISH");
         dialog.Add("Jake: Barry... what happened?");
-        dialog.Add("True Parasite: Barry is long dead.");
-        dialog.Add("Now it's your turn to join him!!!");
+        dialog.Add("True Parasite: Barry is long dead. Now it's your turn to join him!!!!!!");
 
         Enemy jake = characterController.FindEnemyById(46);
         Enemy mech = characterController.FindEnemyById(45);
@@ -906,12 +829,8 @@ public class SceneController : MonoBehaviour {
 
         } else {
           // Scenario 1
-          dialog.Add("Jake: Joke's on you, punk!");
-          dialog.Add("When I was fixing up the Android, I found something.");
-          dialog.Add("I found our break glass in case of emergency:");
-          dialog.Add("Battle Mechs!");
-          dialog.Add("They're under my control");
-          dialog.Add("and are programmed to take you out!");
+          dialog.Add("Jake: Joke's on you, punk! When I was taking apart the Android, I found out about something.");
+          dialog.Add("We have emergency Battle Mechs that are gonna take you out! I WILL AVENGE MY FRIENDS!!");
           finalBattleEnemyParty.Add(mech);
           finalBattleEnemyParty.Add(jake);
           finalBattleEnemyParty.Add(mech);
@@ -922,53 +841,32 @@ public class SceneController : MonoBehaviour {
 
     } else {
       // Scenarios 5 and 6
-      dialog.Add("Alan: Hehehehehe");
+      dialog.Add("Alan: Hehehehehe... HAHAHAAHAH... BARRY, YOU FOOOOL!!!!");
       dialog.Add("HAHAHAAHAH");
       dialog.Add("BARRY, YOU FOOOOOL!!!!!");
-      dialog.Add("It was me all along!");
-      dialog.Add("And I've been manipulating you this entire time!");
-      dialog.Add("Megan and Jake were never infected");
-      dialog.Add("until you gave me the opportunity!");
-      dialog.Add(string.Format("I got you to shoot {0}", deadCrewMember));
-      dialog.Add(string.Format("so that I could go back and infect {0},", GetObjectivePronounForDeadCrewMember()));
-      dialog.Add(string.Format("and I manipulated you into shooting {0} too!", characterKilledDuringInterlude));
-      dialog.Add("As soon as you came in contact");
-      dialog.Add("with the Tentacle Monster,");
-      dialog.Add("you were exposed to its spores.");
+      dialog.Add("It's been me all along! I've been manipulating you this entire time!");
+      dialog.Add("Megan and Jake were never infected until you gave me the opportunity!");
+      dialog.Add(string.Format("I got you to shoot {0} so that I could go back and infect {1}! I got you to shoot {2} too!", deadCrewMember, GetObjectivePronounForDeadCrewMember(), characterKilledDuringInterlude));
+      dialog.Add("As soon as you came in contact with the Tentacle Monster, you were exposed to its spores!");
       dialog.Add("I've been able to plant suggestions in your mind.");
       dialog.Add("The best part though?");
       dialog.Add("You actually set off a DISTRESS BEACON!!!");
       dialog.Add("It's time to complete your transformation, Barry");
-      dialog.Add("We'll infect the ship that responds,");
-      dialog.Add("and together, we shall rule the universe!!!!");
-
+      dialog.Add("We'll infect the ship that responds, and together, we shall rule the universe!!!!");
       dialog.Add("Barry: No, Alan. I'll stop you.");
-      dialog.Add("Alan: Don't you get it, you fool?");
-      dialog.Add("It's futile to resist.");
-      dialog.Add("I've sealed your fate.");
-      dialog.Add("I forced you to botch the cure.");
-      dialog.Add("It doesn't cure you filthy humans.");
-      dialog.Add("It makes you into one of us!");
+      dialog.Add("Alan: Don't you get it, you fool? It's futile to resist. I've sealed your fate.");
+      dialog.Add("I forced you to botch the cure. It doesn't cure you filthy humans! It makes you into one of us!");
 
       if (AlanDismantledAndroid()) {
         // Scenario 5
 
-      dialog.Add(string.Format("{0} was never infected", characterKilledDuringInterlude));
-      dialog.Add("I made you see what I wanted you to see.");
-      dialog.Add("Together we butchered your crew.");
-      dialog.Add("What makes this even sweeter?");
-      dialog.Add(string.Format("I didn't make you inject {0}'s corpse!", characterKilledDuringInterlude));
-      dialog.Add("You did that all on your own!");
-      dialog.Add(string.Format("Now, {0} truly is one of us", characterKilledDuringInterlude));
-      dialog.Add("and remembers your betrayal.");
-      dialog.Add(string.Format("{0} and I will make you one of us.", characterKilledDuringInterlude));
-      dialog.Add("Resistance is futile!.");
-      dialog.Add("Barry: It doesn't matter.");
-      dialog.Add("Like I said, I'll stop you.");
-      dialog.Add("With my authority as acting captain,");
-      dialog.Add("I have access to the ship's emergency battle mechs");
-      dialog.Add("They're programmed to kill you,");
-      dialog.Add("and they won't stop until you're dead!!!");
+      dialog.Add(string.Format("{0} was never infected. I made you see what I <b>wanted</b> you to see! Together we BUTCHERED your crew!", characterKilledDuringInterlude));
+      dialog.Add(string.Format("I didn't make you inject {0}'s corpse! You did that all on your own!", characterKilledDuringInterlude));
+      dialog.Add(string.Format("{0}} remembers your betray, and we will make you join us now. Resistance is <B>FUTILE</B>", characterKilledDuringInterlude));
+      dialog.Add("Barry: It doesn't matter, Alan. Like I said, I'll stop you.");
+      dialog.Add("As acting captain, I have direct acess to our emergency Battle Mechs.");
+      dialog.Add("While you've been blabbering, I've programmed them to kill you. Then won't stop until the infection is over!");
+
       finalBattleScenario = 5;
       Debug.Log("Final battle scenario? " + finalBattleScenario);
 
@@ -981,40 +879,26 @@ public class SceneController : MonoBehaviour {
       } else {
         // Scenario 6
 
-        dialog.Add("Barry: Heh... you're wrong.");
-        dialog.Add("You didn't have control of me.");
-        dialog.Add("Not completely, anyway.");
-        dialog.Add("I sensed something was off");
-        dialog.Add("when things started feeling too easy.");
-        dialog.Add("It was just a little too easy");
-        dialog.Add("to get the components for the cure.");
+        dialog.Add("Barry: Heh... you're wrong. You didn't have control over me. Not completely, anyway.");
+
+        dialog.Add("Something felt off when we were making the cure. It felt too... easy. Like someone guiding me.");
         dialog.Add("It felt like someone was guiding me.");
         dialog.Add("That's why I went against my instincts.");
-        dialog.Add("My gut told me to grab certain parts");
-        dialog.Add("from the mechs.");
-        dialog.Add("So I ignored it.");
-        dialog.Add("The cure you tried to hard to make me botch?");
-        dialog.Add("I added a little something extra.");
-        dialog.Add("A delay.");
+        dialog.Add("When we were dismantling the mechs for the delivery device, my gut told me to take certain parts.");
+        dialog.Add("I ignored the voice in my head. I ignored your voice. I took a few different parts to change the way the cure worked.");
+        dialog.Add("I added a delay.");
         dialog.Add("Alan: You did WHAT?");
-        dialog.Add("Barry: The real effects should have kicked in");
-        dialog.Add("about 5 minutes after you and I left the Labs.");
+        dialog.Add("Barry: The <b>real</b> effects should have kicked in about 5 minutes after you and I got up here.");
         dialog.Add("Megan and Jake should be on their way up here,");
-        dialog.Add("And together, we'll stop you!");
-        dialog.Add("Oh, and they'll still have their extra strength");
-        dialog.Add("that your nasty serum gave.");
-        dialog.Add("So thanks for that, pal.");
-        dialog.Add("Alan: Im... impossible!");
-        dialog.Add("But wait...");
-        dialog.Add("When we took control of the captain,");
-        dialog.Add("We learned about your emergency battle mechs.");
-        dialog.Add("And reprogrammed them to obey us");
-        dialog.Add("and shoot humans on sight!");
+        dialog.Add("Megan and Jake are on their way up here, and together, we WILL stop you!!!");
+        dialog.Add("Oh, and the extra strength from your nasty serum? They'll keep that. So thanks, pal.");
+        dialog.Add("Alan: Im... im.... IMPOSSIBLE!!!!!!");
+        dialog.Add("Alan: Heh... I just remembered something. When we took over the captain's body, we learned a nice secret.");
+        dialog.Add("The Hecate is equipped with emergency Battle Mechs.");
+        dialog.Add("They've been programmed to obey us and shoot humans on sight.");
         dialog.Add("They should be in this room, shouldn't they?");
-        dialog.Add("Ah yes.");
-        dialog.Add("Now you're done for.");
-        dialog.Add("I'll kill all three of you!");
-        dialog.Add("AND I WILL RULE THIS UNIVERSE MYSELF!!!");
+        dialog.Add("I believe there are some hidden in this very room, aren't there? Ah yes. Now you're done for.");
+        dialog.Add("<b>I WILL KILL ALL THREE OF YOU AND RULE THIS WRETECHED UNIVERSE ALONE!!!!!</b>");
 
         characterController.AddPlayerToParty("Megan");
         characterController.AddPlayerToParty("Jake");
