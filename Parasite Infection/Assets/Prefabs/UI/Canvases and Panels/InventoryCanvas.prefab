@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiItems: []
-  numberOfSlots: 40
+  numberOfSlots: 100
   slotPrefab: {fileID: 304958176398776742, guid: 25c26cf917c38484a89cd441df96cfd6,
     type: 3}
 --- !u!114 &6211770251740248017
@@ -1540,7 +1540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiItems: []
-  numberOfSlots: 40
+  numberOfSlots: 100
   slotPrefab: {fileID: 304958176398776742, guid: 25c26cf917c38484a89cd441df96cfd6,
     type: 3}
 --- !u!114 &3987854764759674820
