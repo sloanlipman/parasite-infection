@@ -16,9 +16,33 @@ public class SceneController : MonoBehaviour {
   private MenuController menuController;
   private List<Enemy> finalBattleEnemyParty = new List<Enemy>();
 
+  private AudioSource source;
+  [SerializeField] private AudioClip menuMusic;
+  [SerializeField] private AudioClip commandCenterMusic;
+  [SerializeField] private AudioClip centralCoreMusic;
+  [SerializeField] private AudioClip biosphereClip;
+  [SerializeField] private AudioClip shedClip;
+  [SerializeField] private AudioClip labsClip;
+  [SerializeField] private AudioClip bridgeClip;
+  [SerializeField] private AudioClip battleClip;
+  [SerializeField] private AudioClip androidTheme;
+  [SerializeField] private AudioClip infectedAndroidTheme;
+  [SerializeField] private AudioClip infectedCrewMemberTheme;
+  [SerializeField] private AudioClip parasiteLeaderTheme;
+  [SerializeField] private AudioClip finalBossTheme;
+  [SerializeField] private AudioClip generalBossTheme;
+  [SerializeField] private AudioClip finalMusicTheme;
+
   private int currentAct = 0;
   private bool hasPlayerDoneTutorial;
   private int finalBattleScenario = 0;
+
+  private bool isGeneralBossFight;
+  private bool isMalfunctioningAndroidFight;
+  private bool isInfectedAndroidFight;
+  private bool isInfectedCrewMemberFight;
+  private bool isParasiteLeaderFight;
+  private bool isFinalBossFight;
 
   public int GetFinalBattleScenario() {
     return finalBattleScenario;
@@ -55,6 +79,69 @@ public class SceneController : MonoBehaviour {
 
   private bool IsQuestInProgress (string questName) {
     return HasQuestBeenStarted(questName) && !IsQuestCompleted(questName);
+  }
+
+  public void ResetBossFightBoolean() {
+    isGeneralBossFight = false;
+    isMalfunctioningAndroidFight = false;
+    isInfectedAndroidFight = false;
+    isInfectedCrewMemberFight = false;
+    isParasiteLeaderFight = false;
+    isFinalBossFight = false;
+  }
+
+  public void setGeneralBossFight() {
+    isGeneralBossFight = true;
+    isMalfunctioningAndroidFight = false;
+    isInfectedAndroidFight = false;
+    isInfectedCrewMemberFight = false;
+    isParasiteLeaderFight = false;
+    isFinalBossFight = false;
+  }
+
+  public void SetMalfunctioningAndroidFight() {
+    isGeneralBossFight = false;
+    isMalfunctioningAndroidFight = true;
+    isInfectedAndroidFight = false;
+    isInfectedCrewMemberFight = false;
+    isParasiteLeaderFight = false;
+    isFinalBossFight = false;
+  }
+
+  public void SetInfectedAndroidFight() {
+    isGeneralBossFight = false;
+    isMalfunctioningAndroidFight = false;
+    isInfectedAndroidFight = true;
+    isInfectedCrewMemberFight = false;
+    isParasiteLeaderFight = false;
+    isFinalBossFight = false;
+  }
+
+  public void SetInfectedCrewMemberFight() {
+    isGeneralBossFight = false;
+    isMalfunctioningAndroidFight = false;
+    isInfectedAndroidFight = false;
+    isInfectedCrewMemberFight = true;
+    isParasiteLeaderFight = false;
+    isFinalBossFight = false;
+  }
+
+  public void SetParasiteLeaderFight() {
+    isGeneralBossFight = false;
+    isMalfunctioningAndroidFight = false;
+    isInfectedAndroidFight = false;
+    isInfectedCrewMemberFight = false;
+    isParasiteLeaderFight = true;
+    isFinalBossFight = false;
+  }
+
+  public void SetFinalBossFight() {
+    isGeneralBossFight = false;
+    isMalfunctioningAndroidFight = false;
+    isInfectedAndroidFight = false;
+    isInfectedCrewMemberFight = false;
+    isParasiteLeaderFight = false;
+    isFinalBossFight = true;
   }
 
   public void Save() {
@@ -95,6 +182,7 @@ public class SceneController : MonoBehaviour {
       }
 
     menuController = FindObjectOfType<MenuController>();
+    source = GetComponent<AudioSource>();
 
     DontDestroyOnLoad(this.gameObject);
     SceneManager.sceneLoaded += OnSceneLoaded;
@@ -174,9 +262,16 @@ public class SceneController : MonoBehaviour {
     if (scene.name.ToString() == "Intro") {
       SaveService.Instance.Save();
     }
+    // source.Stop();
   }
 
   public void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+    // source.Stop();
+    AudioClip newClip;
+    if (scene != SceneManager.GetSceneByName("Battle")) {
+      ResetBossFightBoolean();
+    }
+
     switch(scene.name) {
       case "Intro": {
         currentAct = 0;
@@ -185,10 +280,12 @@ public class SceneController : MonoBehaviour {
         DialogPanel introPanel = GameObject.FindGameObjectWithTag("UI/Intro Panel").GetComponent<DialogPanel>();
         introPanel.StartDialog(gameIntroDialog.dialog);
         EventController.OnDialogPanelClosed += LoadCommandCenter;
+        newClip = menuMusic;
         break;
       }
 
       case "Command Center": {
+        newClip = commandCenterMusic;
         ActivateBlob();
         RemoveBlob();
         if (!HasQuestBeenStarted("KillBlobsQuest")) {
@@ -206,6 +303,7 @@ public class SceneController : MonoBehaviour {
 // Note: Don't refactor the Central Core case. It isn't worth the effort and functions as it is meant to.
       case "Central Core": {
         currentAct = 1;
+        newClip = centralCoreMusic;
         if (shouldAlanCallOutToBarry) {
             string[] dialog = new string[] {"Alan: Barry? I'm over here! Follow the green trail!"};
             dialogPanel.StartDialog(dialog);
@@ -223,6 +321,7 @@ public class SceneController : MonoBehaviour {
 
       case "Biosphere": {
         currentAct = 2;
+        newClip = biosphereClip;
         ActivatePigAlien();
         RemovePigAlien();
         break;
@@ -230,6 +329,7 @@ public class SceneController : MonoBehaviour {
 
       case "Shed": {
         currentAct = 2;
+        newClip = shedClip;
         ActivateOctopusMonster();
         RemoveOctopusMonster();
         break;
@@ -237,6 +337,7 @@ public class SceneController : MonoBehaviour {
 
       case "Labs": {
         currentAct = 3;
+        newClip = labsClip;
         StartLabsDialog();
         SetInfectedAndroidParty();
 
@@ -261,6 +362,7 @@ public class SceneController : MonoBehaviour {
 
       case "Bridge": {
         currentAct = 4;
+        newClip = bridgeClip;
         ActivateFinalBoss();
         ActivateFinalBossTrigger();
         DeactivateFinalBossTrigger();
@@ -269,6 +371,7 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Final Scene": {
+        newClip = finalMusicTheme;
         DialogPanel finalScenePanel = GameObject.FindGameObjectWithTag("UI/Final Scene Panel").GetComponent<DialogPanel>();
         List<string> finalDialog = GetFinalDialog();
         alertPanel.CloseDialog();
@@ -277,9 +380,35 @@ public class SceneController : MonoBehaviour {
         break;
       }
 
-      default: {
+      case "Battle": {
+        if (isGeneralBossFight) {
+          newClip = generalBossTheme;
+        } else if (isMalfunctioningAndroidFight) {
+          newClip = androidTheme;
+        } else if (isInfectedAndroidFight) {
+          newClip = infectedAndroidTheme;
+        } else if (isInfectedCrewMemberFight) {
+          newClip = infectedCrewMemberTheme;
+        } else if (isParasiteLeaderFight) {
+          newClip = parasiteLeaderTheme;
+        } else if (isFinalBossFight) {
+          newClip = finalBossTheme;
+        } else {
+          newClip = battleClip;
+        }
         break;
       }
+
+      default: {
+        newClip = menuMusic;
+        break;
+      }
+    }
+    if (newClip != source.clip && source.isPlaying) {
+      source.clip = newClip;
+      source.Play();
+    } else if (source.clip != null && !source.isPlaying) {
+      source.Play();
     }
   }
 
@@ -1076,6 +1205,7 @@ public class SceneController : MonoBehaviour {
     if (player != null) {
       playerPosition = player.GetRigidbody().position;
       bool showDialog = false;
+      SetFinalBossFight();
       battleLauncher.PrepareBattle(playerPosition, showDialog, this.finalBattleEnemyParty);
     }
   }

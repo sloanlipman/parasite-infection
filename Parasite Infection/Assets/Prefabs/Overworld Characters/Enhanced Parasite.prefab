@@ -157,3 +157,9 @@ MonoBehaviour:
   - {fileID: 2822308888312228272, guid: 4890b4d6c8b170c46bac6cdb36a5c22a, type: 3}
   - {fileID: 2822308888312228272, guid: 4890b4d6c8b170c46bac6cdb36a5c22a, type: 3}
   launcher: {fileID: 0}
+  isBoss: 0
+  isMalfunctioningAndroid: 0
+  isInfectedAndroid: 0
+  isParasiteLeader: 0
+  isFinalBoss: 0
+  isInfectedCrewMember: 1

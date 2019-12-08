@@ -38,7 +38,7 @@ namespace BattleSystem {
       this.alivePlayers = alivePlayers;
 
       SetItemText(itemsToGive);
-
+      BattleController.Instance.PlaySound("victory");
       loadLastSave.gameObject.SetActive(false);
       if (questController.IsQuestPending("DefeatMalfunctioningAndroidQuest")) {
         sceneController.DefeatMalfunctioningAndroid();
@@ -67,6 +67,7 @@ namespace BattleSystem {
       battleWasLost = true;
       backToWorld.gameObject.SetActive(false);
       itemText.gameObject.SetActive(false);
+      BattleController.Instance.PlaySound("defeat");
     }
 
     public void LoadLastSave() {

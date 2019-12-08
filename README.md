@@ -24,4 +24,21 @@ Sloan Lipman (sloan.lipman@gmail.com)
   -By MillionthVector (<http://millionthvector.blogspot.de>)
   -ArMM1998 (<https://opengameart.org/content/zelda-like-tilesets-and-sprites>)
   -LPC-style Farm Animals by Daniel Eddeland (<https://opengameart.org/content/lpc-style-farm-animals>)
-  
+  - <https://opengameart.org/content/monster-sound-effects-pack>
+  - <https://opengameart.org/content/spell-sounds-starter-pack>
+
+  - The following music from sound-image.org by Eric Matyas
+  - <http://soundimage.org/wp-content/uploads/2016/04/Laser-Shot-1.mp3>
+  - <http://soundimage.org/wp-content/uploads/2016/04/Explosion7.mp3>
+  - <http://soundimage.org/wp-content/uploads/2014/09/Lost-Forever.mp3>
+  - <http://soundimage.org/wp-content/uploads/2014/08/Star-Light.mp3>
+  - <http://soundimage.org/wp-content/uploads/2014/07/Machine-Madness.mp3>
+  - <http://soundimage.org/wp-content/uploads/2014/07/Dystopic-Dreamscape.mp3>
+  - <http://soundimage.org/wp-content/uploads/2015/05/Escape-From-the-Insane-Machines.mp3>
+- <http://soundimage.org/wp-content/uploads/2015/04/Off-to-Another-Heist.mp3>
+- <http://soundimage.org/wp-content/uploads/2016/06/Tronic-Trouble_v001.mp3>
+- <http://soundimage.org/wp-content/uploads/2017/03/Grunge-Bot_Looping.mp3>
+- <http://soundimage.org/wp-content/uploads/2016/03/Once-Around-the-Solar-System_Looping.mp3>
+- <http://soundimage.org/wp-content/uploads/2017/05/Monsters-on-Board-3.mp3>
+- <http://soundimage.org/wp-content/uploads/2017/09/Dark-Future-Factory.mp3>
+- <http://soundimage.org/wp-content/uploads/2016/02/Theyre-Here_Looping.mp3>

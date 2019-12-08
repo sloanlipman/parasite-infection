@@ -82,12 +82,19 @@ namespace BattleSystem {
 
       switch(damageSource) {
         case "Hydroblast": {
-          LowerDefense(rawPower / 5);
+          LowerDefense(rawPower / 2);
+          BattleController.Instance.PlaySound("hydroblast");
           break;
         }
 
         case "Fireball": {
-          ReduceEnergy(damageAmount / 5);
+          ReduceEnergy(damageAmount / 2);
+          BattleController.Instance.PlaySound("fireball");
+          break;
+        }
+
+        case "Barrage": {
+          BattleController.Instance.PlaySound("barrage");
           break;
         }
 
@@ -100,16 +107,14 @@ namespace BattleSystem {
     }
 
     public void LowerDefense(int amount) {
-      int amountToDecrease = Mathf.Max(defensePower - amount, 0);
-      defensePower -= amountToDecrease;
-      BattleController.Instance.SetDefenseDecreaseAmount(amountToDecrease);
+      defensePower = Mathf.Max(defensePower - amount, 0);
+      BattleController.Instance.SetDefenseDecreaseAmount(amount);
       BattleController.Instance.ShowLabel("Hydroblast");
     }
 
     public void ReduceEnergy(int amount) {
-      int amountToDecrease = Mathf.Max(energyPoints - amount, 0);
-      energyPoints -= amountToDecrease;
-      BattleController.Instance.SetEPDecreaseAmount(amountToDecrease);
+      energyPoints = Mathf.Max(energyPoints - amount, 0);
+      BattleController.Instance.SetEPDecreaseAmount(amount);
       BattleController.Instance.ShowLabel("Fireball");
     }
 
@@ -119,6 +124,7 @@ namespace BattleSystem {
       if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle")) {
         BattleController.Instance.SetHealAmount(healAmount);
         BattleController.Instance.ShowLabel("heal");
+        BattleController.Instance.PlaySound("heal");
       }
     }
 
@@ -131,6 +137,7 @@ namespace BattleSystem {
       RecoverEnergy(energyToRecover, false);
       BattleController.Instance.ShowLabel("defense");
       BattleController.Instance.GetTooltip().GenerateAutoDismissTooltip(string.Format("{0} defended.", characterName));
+      BattleController.Instance.PlaySound("defend");
     }
 
     public void RecoverEnergy(int amount, bool showLabel = true) {

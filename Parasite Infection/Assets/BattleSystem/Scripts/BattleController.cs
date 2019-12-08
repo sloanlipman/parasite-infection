@@ -8,6 +8,7 @@ namespace BattleSystem {
     public static BattleController Instance { get; set; }
     public ConsumableInventory items;
 
+    private BattleSoundController soundController;
     private CharacterController characterController;
     [SerializeField] private BattleUIController uiController;
     [SerializeField] private BattleSpawnPoint[] spawnPoints;
@@ -43,6 +44,10 @@ namespace BattleSystem {
 
     private int xpToReward;
     private List<Item> itemsToGive = new List<Item>();
+
+    public void PlaySound(string sound) {
+      soundController.PlaySound(sound);
+    }
 
     public BattleTooltip GetTooltip() {
       return tooltip;
@@ -224,6 +229,7 @@ namespace BattleSystem {
       characterController = FindObjectOfType<CharacterController>();
       inventoryController = FindObjectOfType<InventoryController>();
       questController = FindObjectOfType<QuestSystem.QuestController>();
+      soundController = GetComponent<BattleSoundController>();
       items = FindObjectOfType<ConsumableInventory>();
       EventController.OnEnemyDied += AddEnemyExperience;
       EventController.OnEnemyDied += AddRandomItem;
@@ -404,6 +410,7 @@ namespace BattleSystem {
         }
       } else if (itemToBeUsed != null) {
         if (items.UseItem(target, itemToBeUsed)) {
+          PlaySound("item");
 
           uiController.UpdateCharacterUI();
           NextAct();
@@ -420,6 +427,11 @@ namespace BattleSystem {
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
       tooltip.GenerateAutoDismissTooltip(string.Format("{0} attacked {1}!", attacker.characterName, target.characterName));
       target.Hurt(attacker.attackPower, "attack");
+      if (IsCharacterAPlayer(attacker)) {
+        PlaySound("playerAttack");
+      } else {
+        PlaySound("enemyAttack");
+      }
     }
 
     private void AddEnemyExperience(int enemyId) {

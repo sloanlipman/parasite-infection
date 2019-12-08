@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 5597415150234554168}
   - component: {fileID: 4883295478090127333}
   - component: {fileID: 5694233453104755584}
+  - component: {fileID: 823977039360908082}
   m_Layer: 0
   m_Name: Pig Alien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5597415150234554170
 Transform:
   m_ObjectHideFlags: 0
@@ -140,3 +141,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &823977039360908082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597415150234554175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61407d131926624491de80af3418d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 4451484942459561568, guid: 35ca60748b6ef7f4c996e5190283b774, type: 3}
+  - {fileID: 4451484942459561568, guid: 35ca60748b6ef7f4c996e5190283b774, type: 3}
+  - {fileID: 4451484942459561568, guid: 35ca60748b6ef7f4c996e5190283b774, type: 3}
+  launcher: {fileID: 0}
+  isBoss: 1
+  isMalfunctioningAndroid: 0
+  isInfectedAndroid: 0
+  isParasiteLeader: 0
+  isFinalBoss: 0
+  isInfectedCrewMember: 0
