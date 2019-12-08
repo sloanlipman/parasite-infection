@@ -111,9 +111,9 @@ MonoBehaviour:
   originalMaxEP: 20
   originalAttackPower: 20
   originalDefensePower: 20
+  originalCharacterName: Dinosaur Monster
   enemyId: 40
   originalExperience: 50
-  originalCharacterName: Dinosaur Monster
   originalEnemyId: 39
 --- !u!61 &9192391036177522714
 BoxCollider2D:
@@ -139,5 +139,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2, y: 1.3}
   m_EdgeRadius: 0

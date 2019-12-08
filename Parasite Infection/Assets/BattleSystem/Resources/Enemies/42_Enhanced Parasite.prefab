@@ -110,9 +110,9 @@ MonoBehaviour:
   originalMaxEP: 60
   originalAttackPower: 30
   originalDefensePower: 30
+  originalCharacterName: Enhanced Parasite
   enemyId: 43
   originalExperience: 75
-  originalCharacterName: Enhanced Parasite
   originalEnemyId: 42
 --- !u!61 &9192391036177522714
 BoxCollider2D:
@@ -138,5 +138,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0

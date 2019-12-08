@@ -111,9 +111,9 @@ MonoBehaviour:
   originalMaxEP: 20
   originalAttackPower: 10
   originalDefensePower: 10
+  originalCharacterName: Tentacle
   enemyId: 2
   originalExperience: 13
-  originalCharacterName: Tentacle
   originalEnemyId: 2
 --- !u!61 &5126930062819720034
 BoxCollider2D:
@@ -139,5 +139,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
