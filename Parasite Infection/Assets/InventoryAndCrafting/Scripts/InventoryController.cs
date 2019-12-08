@@ -44,6 +44,10 @@ public class InventoryController : MonoBehaviour {
     return itemDatabase.GetItem(id);
   }
 
+  public Item GetItem(string itemName) {
+    return itemDatabase.GetItem(itemName);
+  }
+
   public void GiveItem(string itemName) {
     Item item = itemDatabase.GetItem(itemName);
     Inventory inventoryToUse = PerformSelectCorrectInventory(item);

@@ -18,9 +18,33 @@ namespace BattleSystem {
 
     public void GenerateTooltip (Ability ability) {
       PersistTooltip();
-      string tooltip = string.Format("<b>{0}</b>\nEP Cost: {1}\n{2}", ability.abilityName, ability.energyCost, ability.description);
+      string tooltip = string.Format("EP Cost: {0}\n{1}", ability.energyCost, ability.description);
       tooltipText.text = tooltip;
     }
+
+    public void GenerateTooltip (Item item) {
+      PersistTooltip();
+      string tooltip = "";
+      string health = "";
+      string energy = "";
+      foreach(var stat in item.stats) {
+        if (stat.Key.ToString() == "Health") {
+          health = string.Format("Restores {0} Health", stat.Value.ToString());
+        } else if (stat.Key.ToString() == "Energy") {
+          energy = string.Format("Restores {0} Energy", stat.Value.ToString());
+        }
+      }
+
+      if (health.Length > 0 && energy.Length > 0) {
+        tooltip = string.Format("{0}\n{1}", health, energy);
+      } else if (health.Length > 0 && energy.Length < 1) {
+        tooltip = health;
+      } else if (energy.Length > 0) {
+        tooltip = energy;
+      }
+      tooltipText.text = tooltip;
+    }
+
 
     public void GenerateTooltip (string tooltip) {
       PersistTooltip();

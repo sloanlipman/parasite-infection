@@ -95,6 +95,7 @@ namespace BattleSystem {
 
         case "Barrage": {
           BattleController.Instance.PlaySound("barrage");
+          BattleController.Instance.ShowLabel("hurt");
           break;
         }
 

@@ -136,8 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0
   IsMoving: 0
-  wander: 1
-  questName: 
+  wander: 0
+  questName: DefeatTentacleMonsterQuest
   dialogData: {fileID: 11400000, guid: ef54eeae2a4518f4ab1c39f164adf8cb, type: 2}
   questCompletedDialogData: {fileID: 0}
   npcName: Tentacle Monster
@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 3924562713174096799, guid: 5b6806208955998489845c30d966cac3, type: 3}
   - {fileID: 2822308888312228272, guid: cc158d874ef08174c8f9a58dafb9e6de, type: 3}
-  - {fileID: 3924562713174096799, guid: 5b6806208955998489845c30d966cac3, type: 3}
+  - {fileID: 3924562713174096799, guid: fbd6310e9af3bef4bb9387dfc14b690a, type: 3}
+  - {fileID: 3924562713174096799, guid: 3cd86af5f51465744a5f7014b6e04fa4, type: 3}
   launcher: {fileID: 0}
   isBoss: 1
   isMalfunctioningAndroid: 0
