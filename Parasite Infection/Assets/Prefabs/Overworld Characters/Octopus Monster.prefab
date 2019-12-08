@@ -138,8 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 4451484942459561568, guid: 46f7fc5feea1e2d469732e4f18f0b14e, type: 3}
   - {fileID: 2822308888312228272, guid: ce594e20547b0494db929623f015ba31, type: 3}
+  - {fileID: 4451484942459561568, guid: 46f7fc5feea1e2d469732e4f18f0b14e, type: 3}
+  - {fileID: 4451484942459561568, guid: 46f7fc5feea1e2d469732e4f18f0b14e, type: 3}
   launcher: {fileID: 0}
 --- !u!61 &6343607387956142734
 BoxCollider2D:
