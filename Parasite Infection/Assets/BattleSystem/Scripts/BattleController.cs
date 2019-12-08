@@ -216,6 +216,7 @@ namespace BattleSystem {
     private void Awake() {
       characterController = FindObjectOfType<CharacterController>();
       inventoryController = FindObjectOfType<InventoryController>();
+      questController = FindObjectOfType<QuestSystem.QuestController>();
       items = FindObjectOfType<ConsumableInventory>();
       EventController.OnEnemyDied += AddEnemyExperience;
       EventController.OnEnemyDied += AddRandomItem;
