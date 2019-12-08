@@ -35,7 +35,9 @@ namespace BattleSystem {
     }
 
     public void RemovePlayerFromParty(string name) {
-      activePartyMembers.Remove(name);
+      if (activePartyMembers.Contains(name)) {
+        activePartyMembers.Remove(name);
+      }
     }
 
     public void Load() {

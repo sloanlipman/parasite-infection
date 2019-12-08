@@ -63,13 +63,13 @@ public class SceneController : MonoBehaviour {
     ES3.Save<bool>("shouldAlanCallOutToBarry", shouldAlanCallOutToBarry, "SceneController.json");
     ES3.Save<string>("deadCrewMember", deadCrewMember, "SceneController.json");
     ES3.Save<string>("crewMemberWhoJoinedParty", crewMemberWhoJoinedParty, "SceneController.json");
-    ES3.Save<bool>("hasJakeOrMeganBeenRemoved", hasJakeOrMeganBeenRemoved, "SceneController.json");
     ES3.Save<bool>("hasPlayerMadeAct1Decision", hasPlayerMadeAct1Decision, "SceneController.json");
     ES3.Save<bool>("isMalfunctioningAndroidDefeated", isMalfunctioningAndroidDefeated, "SceneController.json");
     ES3.Save<string>("characterRemovedFromPartyForOctopusFight", characterRemovedFromPartyForOctopusFight, "SceneController.json");
     ES3.Save<string>("characterKilledDuringInterlude", characterKilledDuringInterlude, "SceneController.json");
     ES3.Save<bool>("shouldTellToGoToBridge", shouldTellToGoToBridge, "SceneController.json");
     ES3.Save<bool>("hasBossBeenRevealed", hasBossBeenRevealed, "SceneController.json");
+    ES3.Save<bool>("finalBossShouldBeAlien", finalBossShouldBeAlien, "SceneController.json");
   }
 
   public void Load() {
@@ -78,13 +78,13 @@ public class SceneController : MonoBehaviour {
     shouldAlanCallOutToBarry = ES3.Load<bool>("shouldAlanCallOutToBarry", "SceneController.json", true);
     deadCrewMember = ES3.Load<string>("deadCrewMember", "SceneController.json", "");
     crewMemberWhoJoinedParty = ES3.Load<string>("crewMemberWhoJoinedParty", "SceneController.json", "");
-    hasJakeOrMeganBeenRemoved = ES3.Load<bool>("hasJakeOrMeganBeenRemoved", "SceneController.json", false);
     hasPlayerMadeAct1Decision = ES3.Load<bool>("hasPlayerMadeAct1Decision", "SceneController.json", false);
     isMalfunctioningAndroidDefeated = ES3.Load<bool>("isMalfunctioningAndroidDefeated", "SceneController.json", false);
     characterRemovedFromPartyForOctopusFight = ES3.Load<string>("characterRemovedFromPartyForOctopusFight", "SceneController.json", "");
     characterKilledDuringInterlude = ES3.Load<string>("characterKilledDuringInterlude", "SceneController.json", "");
     shouldTellToGoToBridge = ES3.Load<bool>("shouldTellToGoToBridge", "SceneController.json", true);
     hasBossBeenRevealed = ES3.Load<bool>("hasBossBeenRevealed", "SceneController.json", false);
+    finalBossShouldBeAlien = ES3.Load<bool>("finalBossShouldBeAlien", "SceneController.json", true);
   }
 
   private void Awake() {
@@ -980,6 +980,7 @@ public class SceneController : MonoBehaviour {
           parasite.CopyPartyMember(barry);
           parasite.IncreaseFinalBossStats();
 
+          characterController.RemovePlayerFromParty("Jake");
           characterController.RemovePlayerFromParty("Barry");
           characterController.AddPlayerToParty("The True Parasite");
         }
