@@ -70,6 +70,7 @@ public class SceneController : MonoBehaviour {
     ES3.Save<bool>("shouldTellToGoToBridge", shouldTellToGoToBridge, "SceneController.json");
     ES3.Save<bool>("hasBossBeenRevealed", hasBossBeenRevealed, "SceneController.json");
     ES3.Save<bool>("finalBossShouldBeAlien", finalBossShouldBeAlien, "SceneController.json");
+    ES3.Save<int>("finalBattleScenario", finalBattleScenario, "SceneController.json");
   }
 
   public void Load() {
@@ -85,6 +86,7 @@ public class SceneController : MonoBehaviour {
     shouldTellToGoToBridge = ES3.Load<bool>("shouldTellToGoToBridge", "SceneController.json", true);
     hasBossBeenRevealed = ES3.Load<bool>("hasBossBeenRevealed", "SceneController.json", false);
     finalBossShouldBeAlien = ES3.Load<bool>("finalBossShouldBeAlien", "SceneController.json", true);
+    finalBattleScenario = ES3.Load<int>("finalBattleScenario", "SceneController.json", 0);
   }
 
   private void Awake() {
@@ -257,6 +259,15 @@ public class SceneController : MonoBehaviour {
         break;
       }
 
+      case "Final Scene": {
+        DialogPanel finalScenePanel = GameObject.FindGameObjectWithTag("UI/Final Scene Panel").GetComponent<DialogPanel>();
+        List<string> finalDialog = GetFinalDialog();
+        alertPanel.CloseDialog();
+        finalScenePanel.StartDialog(finalDialog.ToArray());
+        EventController.OnDialogPanelClosed += ReturnToMainMenu;
+        break;
+      }
+
       default: {
         break;
       }
@@ -273,6 +284,10 @@ public class SceneController : MonoBehaviour {
   private void LoadCommandCenter() {
     SceneManager.LoadScene("Command Center");
     EventController.OnDialogPanelClosed -= LoadCommandCenter;
+  }
+
+  private void ReturnToMainMenu() {
+    menuController.Quit();
   }
 
   private void ActivateGatewayToLeaveCommandCenter() {
@@ -878,7 +893,7 @@ public class SceneController : MonoBehaviour {
       dialog.Add(string.Format("{0}} remembers your betray, and we will make you join us now. Resistance is <B>FUTILE</B>", characterKilledDuringInterlude));
       dialog.Add("Barry: It doesn't matter, Alan. Like I said, I'll stop you.");
       dialog.Add("As acting captain, I have direct acess to our emergency Battle Mechs.");
-      dialog.Add("While you've been blabbering, I've programmed them to kill you. Then won't stop until the infection is over!");
+      dialog.Add("While you've been blabbering, I've programmed them to kill you. They won't stop until the infection is over!");
 
       finalBattleScenario = 5;
       Debug.Log("Final battle scenario? " + finalBattleScenario);
@@ -1000,7 +1015,7 @@ public class SceneController : MonoBehaviour {
           Destroy(finalBossParent);
         }
       EventController.OnDialogPanelClosed -= RemoveFinalBoss;
-      // TODO show end of game dialog
+     LaunchFinalScene();
     }
   }
 
@@ -1034,5 +1049,96 @@ public class SceneController : MonoBehaviour {
       bool showDialog = false;
       battleLauncher.PrepareBattle(playerPosition, showDialog, this.finalBattleEnemyParty);
     }
+  }
+
+  private void LaunchFinalScene() {
+    if (IsQuestCompleted("DefeatFinalBossQuest")) {
+      SceneManager.LoadScene("Final Scene");
+    }
+  }
+
+  private List<string> GetFinalDialog() {
+    List<string> dialog = new List<string>();
+
+    switch(finalBattleScenario) {
+      case 1: {
+        dialog.Add("<i><b>You take down Jake and his Battle Mechs and patiently wait for another ship to respond to the beacon.</b></i>");
+        dialog.Add("<i><b>You smile, knowing that your army is on its way to Earth and that you soon shall join it.</b></i>");
+        dialog.Add("<i><b>Finally, the Parasites will return to the universe and save it from itself.</b></i>");
+        dialog.Add("<i><b>All organic life will join your hive mind or die resisting.</b></i>");
+        dialog.Add("<i><b>It is inevitable.</b></i>");
+        break;
+      }
+
+      case 2: {
+        dialog.Add("<i><b>You take down Jake and patiently wait for another ship to respond to the beacon.</b></i>");
+        dialog.Add("<i><b>You smile, knowing that your army is on its way to Earth and that you soon shall join it.</b></i>");
+        dialog.Add("<i><b>Finally, the Parasites will return to the universe and save it from itself.</b></i>");
+        dialog.Add("<i><b>All organic life will join your hive mind or die resisting.</b></i>");
+        dialog.Add("<i><b>It is inevitable.</b></i>");
+        break;
+      }
+
+      case 3: {
+        dialog.Add("<i><b>Finally... this chapter of the nightmare is over.</b></i>");
+        dialog.Add("<i><b>As you prepare to shut off the distress beacon, Megan confronts you.</b></i>");
+        dialog.Add("Megan: Heh... You thought you were rid of me, filthy human?");
+        dialog.Add("<i><b>She begins to glow.</b></i>");
+        dialog.Add("Megan: Barry!!! Help!!!");
+        dialog.Add("<i><b>You train your weapon on Megan.</b></i>");
+        dialog.Add("Barry: I see... You got to her right before we killed you... In a last ditch effort, you infected her and took over her mind...");
+        dialog.Add("'Megan': Precisely, my dear Barry! And now it's over for you. My army is on its way to Earth where we will save humanity from itself.");
+        dialog.Add("I will impose my will on all organic life and slaughter those who stand in my way! It's your turn to join your fallen comrades, Barry.");
+        dialog.Add("<i><b>As the final vestiges of humanity are erased from Megan's body, she approaches you.</b></i>");
+        dialog.Add("<i><b>The True Parasite emerges and ends your life.</b></i>");
+        break;
+      }
+
+      case 4: {
+        dialog.Add("<i><b>Finally... this chapter of the nightmare is over.</b></i>");
+        dialog.Add("<i><b>As you prepare to shut off the distress beacon, Megan confronts you.</b></i>");
+        dialog.Add("Megan: Barry... you said you were still connected to this monster. How can I trust you? How do I know you won't still turn?");
+        dialog.Add("I'm sorry, my love, but I must do this for the greater good of all humanity");
+        dialog.Add("<i><b>She shoots you in the gut. As you lie on the ground, you hear the voice again.</b></i>");
+        dialog.Add("The True Parasite: She was right, you know. I left a small part of myself behind in you.");
+        dialog.Add("I transferred my full consciousness back into you right before you killed me.");
+        dialog.Add("Nothing changes though. My army is still on its way to Earth.");
+        dialog.Add("As soon as Megan turns off the beacon, the ship is going to blow up anyway. Call it a failsafe.");
+        dialog.Add("If I couldn't get off this ship, neither can you!");
+        dialog.Add("<i><b>You watch as Megan makes her way to the panel to shut off the beacon.</b></i>");
+        dialog.Add("<i><b>Your mouth is pooling with blood, and you are unable to call out to her.</b></i>");
+        dialog.Add("<i><b>Too weak to keep them open, your eyes shut, just as you feel the heat of the explosion that has sealed your fate.</b></i>");
+        break;
+      }
+
+      case 5: {
+        dialog.Add("<i><b>Finally... this chapter of the nightmare is over.</b></i>");
+        dialog.Add("<i><b>As you prepare to shut off the distress beacon, you find yourself suddenly unable to move.</b></i>");
+        dialog.Add("<i><b>Out of the corner of your eye, you see the True Parasite rise off the ground, struggling to breathe.</b></i>");
+        dialog.Add("<i><b>With what little remains of its strength, it has paralyzed you and slowly approaches.</b></i>");
+        dialog.Add("<i><b>It chuckles and then turns gaseous. It enters your body and starts to take over.</b></i>");
+        dialog.Add("<i><b>You feel your conscious fading from existence, as a new one emerges.</b></i>");
+        dialog.Add("<i><b>Barry is no more.</b></i>");
+        break;
+      }
+
+      case 6: {
+        dialog.Add("<i><b>Finally... this chapter of the nightmare is over.</b></i>");
+        dialog.Add("<i><b>You make your way to the panel to disable the distress beacon and alert all nearby ships of the impending invasion of Earth.</b></i>");
+        dialog.Add("<i><b>As you enter the last keystrokes, you get locked out of the system.</b></i>");
+        dialog.Add("<i><b>The ship begins to explode. As you, Jake, and Megan die, any hope of warning Earth dies too.</b></i>");
+        dialog.Add("<i><b>Humanity is doomed.</b></i>");
+        break;
+      }
+
+      default: {
+        dialog.Add("<i><b>Something went loading this scene, but you did beat the game! Congratulations!</b></i>");
+        break;
+      }
+    }
+
+    dialog.Add("<i><b>Think what you've got what it takes to play again? There are 6 different endings. Every decision matters!</b></i>");
+
+    return dialog;
   }
 }

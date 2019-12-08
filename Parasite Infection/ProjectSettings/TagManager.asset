@@ -49,6 +49,7 @@ TagManager:
   - Bottom Tooltip
   - Final Boss Trigger
   - UI/Tutorial Panel
+  - UI/Final Scene Panel
   layers:
   - Default
   - TransparentFX

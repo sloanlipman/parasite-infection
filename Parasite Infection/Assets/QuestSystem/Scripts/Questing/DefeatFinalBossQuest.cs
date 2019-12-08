@@ -5,7 +5,6 @@ public class DefeatFinalBossQuest : Quest {
   private bool hasFinalBattleBeenTriggered = false;
   void Awake() {
     slug = "DefeatFinalBossQuest";
-    goal = new KillGoal(1, 44, this);
     sceneController = FindObjectOfType<SceneController>();
     SetUpFinalBattleQuest();
     sceneController.LaunchFinalBattle();
