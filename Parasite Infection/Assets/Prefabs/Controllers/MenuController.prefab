@@ -47,13 +47,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dialogPanel: {fileID: 0}
   menuPanel: {fileID: 0}
   craftingInventory: {fileID: 0}
   consumableInventory: {fileID: 0}
   questPanel: {fileID: 0}
+  questPanelTitle: {fileID: 0}
   partyPanel: {fileID: 0}
   playerEquipment: {fileID: 0}
   upgradePointPanel: {fileID: 0}
   playerInfo: {fileID: 0}
   tooltip: {fileID: 0}
   inventoryController: {fileID: 0}
+  partyTutorial: {fileID: 11400000, guid: 1f7bfc46a66a3fc4ebaa56dba2ebb440, type: 2}
+  consumableTutorial: {fileID: 11400000, guid: fcc2140af9d91184ebcadfc047854e22, type: 2}
+  craftingTutorial: {fileID: 11400000, guid: 1133239e68b516849b16e891ccd08f14, type: 2}
+  equipmentTutorial: {fileID: 11400000, guid: 53aecb9359d10d746a189d812c7428b7, type: 2}
+  questTutorial: {fileID: 11400000, guid: 3481accb64083404bb0095afe1ef6370, type: 2}
+  upgradeTutorial: {fileID: 11400000, guid: 0be037c194157f24d84ce01d96f8ae6e, type: 2}
+  tutorialDialog: {fileID: 11400000, guid: 13fed43e38fd0a94a8e531bdb3104d50, type: 2}
+  tutorialPanel: {fileID: 0}
