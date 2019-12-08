@@ -95,24 +95,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Evolved Blob
-  health: 34
-  maxHealth: 34
-  attackPower: 22
-  defensePower: 22
-  energyPoints: 22
-  maxEnergyPoints: 22
+  characterName: Bird Monster
+  health: 52
+  maxHealth: 52
+  attackPower: 41
+  defensePower: 40
+  energyPoints: 40
+  maxEnergyPoints: 40
   abilitiesList:
   - Heal
   - Fireball
-  level: 3
+  level: 20
   experience: 50
-  originalMaxHealth: 30
-  originalMaxEP: 20
-  originalAttackPower: 20
-  originalDefensePower: 20
+  originalMaxHealth: 100
+  originalMaxEP: 30
+  originalAttackPower: 30
+  originalDefensePower: 40
   originalCharacterName: Bird Monster
-  enemyId: 41
+  enemyId: 40
   originalExperience: 50
   originalEnemyId: 40
 --- !u!61 &9192391036177522714

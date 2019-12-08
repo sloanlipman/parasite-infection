@@ -82,12 +82,12 @@ namespace BattleSystem {
 
       switch(damageSource) {
         case "Hydroblast": {
-          LowerDefense(rawPower / 2);
+          LowerDefense(rawPower / 5);
           break;
         }
 
         case "Fireball": {
-          ReduceEnergy(damageAmount);
+          ReduceEnergy(damageAmount / 5);
           break;
         }
 

@@ -94,24 +94,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Parasite Leader
-  health: 61
-  maxHealth: 61
-  attackPower: 31
-  defensePower: 31
-  energyPoints: 61
-  maxEnergyPoints: 61
+  characterName: Enhanced Parasite
+  health: 74
+  maxHealth: 74
+  attackPower: 46
+  defensePower: 45
+  energyPoints: 77
+  maxEnergyPoints: 77
   abilitiesList:
   - Heal
   - Fireball
-  level: 2
+  level: 15
   experience: 75
-  originalMaxHealth: 60
+  originalMaxHealth: 100
   originalMaxEP: 60
-  originalAttackPower: 30
-  originalDefensePower: 30
+  originalAttackPower: 40
+  originalDefensePower: 50
   originalCharacterName: Enhanced Parasite
-  enemyId: 43
+  enemyId: 42
   originalExperience: 75
   originalEnemyId: 42
 --- !u!61 &9192391036177522714

@@ -96,23 +96,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Battle Mech
-  health: 105
-  maxHealth: 105
-  attackPower: 33
-  defensePower: 33
-  energyPoints: 103
-  maxEnergyPoints: 103
+  health: 36
+  maxHealth: 36
+  attackPower: 43
+  defensePower: 41
+  energyPoints: 38
+  maxEnergyPoints: 38
   abilitiesList:
   - Hydroblast
   - Barrage
-  level: 1
+  level: 16
   experience: 75
-  originalMaxHealth: 20
+  originalMaxHealth: 85
   originalMaxEP: 20
-  originalAttackPower: 25
-  originalDefensePower: 25
+  originalAttackPower: 40
+  originalDefensePower: 40
   originalCharacterName: Battle Mech
-  enemyId: 44
+  enemyId: 45
   originalExperience: 75
   originalEnemyId: 45
 --- !u!61 &9192391036177522714

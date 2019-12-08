@@ -95,24 +95,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Bird Monster
-  health: 35
-  maxHealth: 35
-  attackPower: 24
-  defensePower: 25
-  energyPoints: 25
-  maxEnergyPoints: 25
+  characterName: Dinosaur Monster
+  health: 46
+  maxHealth: 46
+  attackPower: 33
+  defensePower: 34
+  energyPoints: 35
+  maxEnergyPoints: 35
   abilitiesList:
   - Heal
   - Fireball
-  level: 5
+  level: 14
   experience: 50
-  originalMaxHealth: 30
-  originalMaxEP: 20
-  originalAttackPower: 20
-  originalDefensePower: 20
+  originalMaxHealth: 100
+  originalMaxEP: 30
+  originalAttackPower: 30
+  originalDefensePower: 50
   originalCharacterName: Dinosaur Monster
-  enemyId: 40
+  enemyId: 39
   originalExperience: 50
   originalEnemyId: 39
 --- !u!61 &9192391036177522714

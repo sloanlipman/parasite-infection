@@ -96,21 +96,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Evolved Blob
-  health: 60
-  maxHealth: 60
-  attackPower: 30
-  defensePower: 30
-  energyPoints: 60
-  maxEnergyPoints: 60
+  health: 73
+  maxHealth: 73
+  attackPower: 43
+  defensePower: 44
+  energyPoints: 74
+  maxEnergyPoints: 74
   abilitiesList:
   - Heal
   - Fireball
-  level: 1
+  level: 13
   experience: 75
-  originalMaxHealth: 60
+  originalMaxHealth: 100
   originalMaxEP: 60
   originalAttackPower: 30
-  originalDefensePower: 30
+  originalDefensePower: 55
   originalCharacterName: Evolved Blob
   enemyId: 41
   originalExperience: 75

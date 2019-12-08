@@ -96,23 +96,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Defense Golem
-  health: 30
-  maxHealth: 30
-  attackPower: 15
-  defensePower: 15
-  energyPoints: 20
-  maxEnergyPoints: 20
+  health: 45
+  maxHealth: 45
+  attackPower: 31
+  defensePower: 32
+  energyPoints: 38
+  maxEnergyPoints: 38
   abilitiesList:
   - Barrage
-  level: 1
+  level: 16
   experience: 50
   originalMaxHealth: 30
   originalMaxEP: 20
   originalAttackPower: 15
-  originalDefensePower: 15
+  originalDefensePower: 30
   originalCharacterName: Defense Golem
   enemyId: 6
-  originalExperience: 50
+  originalExperience: 30
   originalEnemyId: 6
 --- !u!61 &9192391036177522714
 BoxCollider2D:

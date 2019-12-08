@@ -96,24 +96,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Octopus Monster
-  health: 32
-  maxHealth: 32
-  attackPower: 20
-  defensePower: 22
-  energyPoints: 33
-  maxEnergyPoints: 33
+  health: 46
+  maxHealth: 46
+  attackPower: 32
+  defensePower: 23
+  energyPoints: 43
+  maxEnergyPoints: 43
   abilitiesList:
-  - Heal
   - Fireball
-  level: 3
-  experience: 50
-  originalMaxHealth: 30
+  level: 14
+  experience: 30
+  originalMaxHealth: 75
   originalMaxEP: 30
   originalAttackPower: 18
-  originalDefensePower: 20
+  originalDefensePower: 50
   originalCharacterName: Octopus Monster
   enemyId: 35
-  originalExperience: 50
+  originalExperience: 30
   originalEnemyId: 35
 --- !u!61 &9192391036177522714
 BoxCollider2D:
