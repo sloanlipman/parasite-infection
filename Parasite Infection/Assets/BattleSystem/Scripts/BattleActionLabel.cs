@@ -59,7 +59,7 @@ namespace BattleSystem {
 
     public void ShowHydroblastEffects(string damage, string defense, BattleCharacter target) {
       label.gameObject.SetActive(true);
-      label.color = Color.white;
+      label.color = Color.green;
 
       string hydroblastEffects = string.Format("HP - {0}\nDefense - {1}", damage, defense);
       StartCoroutine(ShowLabel(hydroblastEffects, target));

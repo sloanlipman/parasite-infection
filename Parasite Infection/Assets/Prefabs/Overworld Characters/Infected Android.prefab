@@ -156,7 +156,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 2822308888312228272, guid: 9e7107e518b2f0d4ab0d8d0dcf1a768e, type: 3}
   - {fileID: 2822308888312228272, guid: 6fa93b4fb701c624a83e84325b790183, type: 3}
-  - {fileID: 2822308888312228272, guid: 6fa93b4fb701c624a83e84325b790183, type: 3}
+  - {fileID: 0}
   launcher: {fileID: 0}
   isBoss: 0
   isMalfunctioningAndroid: 0

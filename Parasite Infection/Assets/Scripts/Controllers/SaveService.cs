@@ -14,7 +14,8 @@ public class SaveService : MonoBehaviour {
   private ConsumableInventory consumableInventory;
   private QuestController questController;
   private MenuController menuController;
-  private DialogPanel[] dialogPanels;
+  [SerializeField] ActualDialogPanel dialogPanel;
+  [SerializeField] TutorialPanel tutorialPanel;
   private SlotPanel[] slotPanels = new SlotPanel[] {};
   [SerializeField] private AlertPanel alertPanel;
 
@@ -26,41 +27,49 @@ public class SaveService : MonoBehaviour {
 
   // Start is called before the first frame update
   public void Save() {
-    inventoryController.PrepareForSave();
-    craftingInventory.Save();
-    consumableInventory.Save();
-    questController.Save();
-    characterController.Save();
-    sceneController.Save();
+    if (!dialogPanel.gameObject.activeSelf) {
+      inventoryController.PrepareForSave();
+      craftingInventory.Save();
+      consumableInventory.Save();
+      questController.Save();
+      characterController.Save();
+      sceneController.Save();
 
-    SavePlayer();
-    SaveNPCs();
-    SaveScene();
-    ShowAlert("Saved game!");
+      SavePlayer();
+      SaveNPCs();
+      SaveScene();
+      ShowAlert("Saved game!");
+    } else {
+      ShowAlert("Can't save right now!");
+    }
   }
 
   public void Load(bool loadedFromMenu) {
-    if (ES3.FileExists()) {
-      ClearAll();
-      questController.Load();
-      menuController.CloseAllMenus();
-      craftingInventory.Load();
-      consumableInventory.Load();
-      characterController.Load();
-      sceneController.Load();
+    if (!dialogPanel.gameObject.activeSelf) {
+      if (ES3.FileExists()) {
+        ClearAll();
+        questController.Load();
+        menuController.CloseAllMenus();
+        craftingInventory.Load();
+        consumableInventory.Load();
+        characterController.Load();
+        sceneController.Load();
 
-      CloseDialog();
-      LoadSavedScene();
-      LoadPlayer();
-      LoadNPCs();
-      menuController.UnpauseGame();
+        CloseDialog();
+        LoadSavedScene();
+        LoadPlayer();
+        LoadNPCs();
+        menuController.UnpauseGame();
 
-      if (loadedFromMenu) {
-        ShowAlert("Loaded game!");
+        if (loadedFromMenu) {
+          ShowAlert("Loaded game!");
+        }
+
+      } else {
+        ShowAlert("No file to load from!");
       }
-
     } else {
-      ShowAlert("No file to load from!");
+      ShowAlert("Can't load right now!");
     }
   }
 
@@ -164,12 +173,9 @@ public class SaveService : MonoBehaviour {
   }
 
   private void CloseDialog() {
-    dialogPanels = FindObjectsOfType<DialogPanel>();
-    foreach(DialogPanel d in dialogPanels) {
-      if (d != null) {
-        d.CloseDialog();
-      }
-    }
+    alertPanel.CloseDialog();
+    tutorialPanel.CloseDialog();
+    dialogPanel.CloseDialog();
   }
 
   private void Awake() {
