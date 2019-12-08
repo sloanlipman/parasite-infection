@@ -402,7 +402,7 @@ public class SceneController : MonoBehaviour {
     GameObject pigAlienParent = GameObject.FindGameObjectWithTag("Pig Alien");
       if (pigAlienParent != null) {
         NPC pigAlien = pigAlienParent.GetComponentInChildren<NPC>(true);
-        if (pigAlien != null) {
+        if (pigAlien != null && !pigAlien.gameObject.activeSelf) {
           pigAlien.gameObject.SetActive(IsQuestInProgress("KillPigAlienQuest"));
       }
     }
@@ -431,7 +431,7 @@ public class SceneController : MonoBehaviour {
     GameObject octopusMonsterParent = GameObject.FindGameObjectWithTag("Act 2 Boss");
     if (octopusMonsterParent != null) {
       NPC octopusMonster = octopusMonsterParent.GetComponentInChildren<NPC>(true);
-      if (octopusMonster != null) {
+      if (octopusMonster != null  && !octopusMonster.gameObject.activeSelf) {
         octopusMonster.gameObject.SetActive(IsQuestCompleted("DefeatMalfunctioningAndroidQuest"));
       }
     }
@@ -461,7 +461,7 @@ public class SceneController : MonoBehaviour {
     GameObject enhancedParasiteParent = GameObject.FindGameObjectWithTag("Act 3 Boss");
     if (enhancedParasiteParent != null) {
       NPC enhancedParasite = enhancedParasiteParent.GetComponentInChildren<NPC>(true);
-      if (enhancedParasite != null) {
+      if (enhancedParasite != null  && !enhancedParasite.gameObject.activeSelf) {
         enhancedParasite.gameObject.SetActive(IsQuestCompleted("DefeatInfectedAndroidQuest"));
       }
     }
@@ -564,7 +564,7 @@ public class SceneController : MonoBehaviour {
     GameObject evolvedBlobParent = GameObject.FindGameObjectWithTag("Evolved Blob");
     if (evolvedBlobParent != null) {
       NPC evolvedBlob = evolvedBlobParent.GetComponentInChildren<NPC>(true);
-      if (evolvedBlob != null) {
+      if (evolvedBlob != null && !evolvedBlob.gameObject.activeSelf) {
         evolvedBlob.gameObject.SetActive(IsQuestInProgress("DefeatEvolvedBlobQuest"));
       }
     }
@@ -573,7 +573,7 @@ public class SceneController : MonoBehaviour {
     GameObject dinosaurMonsterParent = GameObject.FindGameObjectWithTag("Dinosaur Monster");
     if (dinosaurMonsterParent != null) {
       NPC dinosaurMonster = dinosaurMonsterParent.GetComponentInChildren<NPC>(true);
-      if (dinosaurMonster != null) {
+      if (dinosaurMonster != null && !dinosaurMonster.gameObject.activeSelf) {
         dinosaurMonster.gameObject.SetActive(IsQuestInProgress("DefeatDinosaurMonsterQuest"));
       }
     }
@@ -582,7 +582,7 @@ public class SceneController : MonoBehaviour {
     GameObject birdMonsterParent = GameObject.FindGameObjectWithTag("Bird Monster");
     if (birdMonsterParent != null) {
       NPC birdMonster = birdMonsterParent.GetComponentInChildren<NPC>(true);
-      if (birdMonster != null) {
+      if (birdMonster != null && !birdMonster.gameObject.activeSelf) {
         birdMonster.gameObject.SetActive(IsQuestInProgress("DefeatBirdMonsterQuest"));
       }
     }
@@ -966,7 +966,9 @@ public class SceneController : MonoBehaviour {
       if (finalBossParent != null) {
         NPC finalBoss = finalBossParent.GetComponentInChildren<NPC>(true);
         if (finalBoss != null) {
-          finalBoss.gameObject.SetActive(IsQuestInProgress("DefeatFinalBossQuest") || hasBossBeenRevealed);
+          finalBoss.gameObject.SetActive(
+            (IsQuestInProgress("DefeatFinalBossQuest") || hasBossBeenRevealed) &&
+            !finalBoss.gameObject.activeSelf);
         }
 
         if (finalBossShouldBeAlien) {
@@ -1007,7 +1009,7 @@ public class SceneController : MonoBehaviour {
     GameObject finalBossTriggerParent = GameObject.FindGameObjectWithTag("Final Boss Trigger");
       if (finalBossTriggerParent != null) {
         FinalBossTrigger trigger = finalBossTriggerParent.GetComponentInChildren<FinalBossTrigger>(true);
-        if (trigger != null) {
+        if (trigger != null  && !trigger.gameObject.activeSelf) {
           trigger.gameObject.SetActive(true);
       }
     }

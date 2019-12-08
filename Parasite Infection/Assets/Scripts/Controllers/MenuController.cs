@@ -234,8 +234,8 @@ public class MenuController : MonoBehaviour {
   }
 
   public void Quit() {
-
     SceneManager.LoadScene("Main Menu");
+    SaveService.Instance.ClearAll();
     UnpauseGame();
     dialogPanel.gameObject.SetActive(false);
     tutorialPanel.gameObject.SetActive(false);

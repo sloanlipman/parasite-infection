@@ -83,7 +83,7 @@ public class SaveService : MonoBehaviour {
     SaveService.Instance.Save();
   }
 
-  private void ClearAll() {
+  public void ClearAll() {
     inventoryController.PrepareForLoad();
     slotPanels = Resources.FindObjectsOfTypeAll(typeof(SlotPanel)) as SlotPanel[];
     foreach(SlotPanel panel in slotPanels) {
