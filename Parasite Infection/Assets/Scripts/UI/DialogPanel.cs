@@ -47,18 +47,10 @@ public class DialogPanel : MonoBehaviour {
     dialogText.text = dialog[dialogIndex];
   }
 
-  private void ResetDialog() {
+  public virtual void CloseDialog() {
     dialog = null;
     dialogText.text = "";
     dialogPanel.SetActive(false);
     dialogIndex = 0;
-  }
-
-  public void CloseDialog() {
-    ResetDialog();
-    EventController.DialogPanelClosed();
-    if (sceneController != null) {
-      sceneController.UnfreezeTime();
-    }
   }
 }

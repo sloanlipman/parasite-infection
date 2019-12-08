@@ -37,7 +37,15 @@ namespace QuestSystem {
     public void ShowAlert(string questName, List<BattleSystem.BattleCharacter> members, List<string> items) {
       alertToShow.Add(string.Format("Completed quest: {0}", questName));
       AddPartyMemberAlert(members);
-      items.ForEach(item => alertToShow.Add(string.Format("Got item: {0}", item)));
+      List<string> itemsToAdd = new List<string>();
+
+      items.ForEach(item => {
+        if (!itemsToAdd.Contains(item)) {
+          itemsToAdd.Add(item);
+        }
+      });
+
+      itemsToAdd.ForEach(item => alertToShow.Add(string.Format("Got item: {0}", item)));
     }
 
     public void ShowAlert(List<BattleSystem.BattleCharacter> members) {
@@ -51,7 +59,7 @@ namespace QuestSystem {
           alertToShow.Add(string.Format("{0} leveled up!", member.characterName));
           BattleSystem.PartyMember p = (BattleSystem.PartyMember) member;
           if (p.upgradePoints > 0) {
-            alertToShow.Add(string.Format("{0} has {1} {2} to spend.", p.characterName, p.upgradePoints, GetUpgradePointOrPoints(p.upgradePoints)));
+            alertToShow.Add(string.Format("{0} has {1} upgrade {2} to spend.", p.characterName, p.upgradePoints, GetUpgradePointOrPoints(p.upgradePoints)));
           }
         }
       });

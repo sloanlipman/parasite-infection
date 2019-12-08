@@ -390,7 +390,6 @@ public class SceneController : MonoBehaviour {
   }
 
   public void StartEndOfAct1Dialog() {
-    // RemoveBossTrigger();
     string[] dialog = new string[] {
       "Android: Sensors are only picking up one alien now...",
       "Alan: These aliens must have mind control powers. Barry, what do we do?",
@@ -552,7 +551,7 @@ public class SceneController : MonoBehaviour {
       GameObject pigAlienParent = GameObject.FindGameObjectWithTag("Pig Alien");
       if (pigAlienParent != null) {
           Destroy(pigAlienParent);
-        }
+      }
       EventController.OnDialogPanelClosed -= RemovePigAlien;
       UnlockShedEntrance();
     }
@@ -648,7 +647,7 @@ public class SceneController : MonoBehaviour {
         string.Format("<i><b>You realize something. {0} wasn't even infected in your first battle.</b></i>", deadCrewMember),
         "<i><b>You see a shadowy image in a memory. Someone doubled back to the Central Core.</b></i>",
         string.Format("<i><b>After you killed {0}, someone went back.</b></i>", deadCrewMember),
-        string.Format("<i></b>Someone infected {0} AFTER you killed {1}.</b></i>", deadCrewMember, GetObjectivePronounForDeadCrewMember()),
+        string.Format("<i><b>Someone infected {0} AFTER you killed {1}.</b></i>", deadCrewMember, GetObjectivePronounForDeadCrewMember()),
         "<i><b>Who was it though? You can't remember. But there's no time to waste, Barry.</b></i>",
         "<i><b>Make a decision NOW.</b></i>",
         string.Format("<i><b>Who infected {0}?</b></i>", deadCrewMember),
@@ -665,9 +664,9 @@ public class SceneController : MonoBehaviour {
       string[] dialog = new string[] {
         string.Format("{0}: Barry! You KNOW me. You know it isn't me!!!", characterKilledDuringInterlude),
         "You know it isn't me!",
-        string.Format("<b><i>{0}'s pleas fall on your deaf ears.</b></i>", characterKilledDuringInterlude),
-        string.Format("<b><i>You see the aliens lining up by {0}'s side.</b></i>", characterKilledDuringInterlude),
-        string.Format("<b><i>You no longer see your ally. You only see it for what it truly is: The Parasite Leader.</b></i>")
+        string.Format("<i><b>{0}'s pleas fall on your deaf ears.</b></i>", characterKilledDuringInterlude),
+        string.Format("<i><b>You see the aliens lining up by {0}'s side.</b></i>", characterKilledDuringInterlude),
+        string.Format("<i><b>You no longer see your ally. You only see it for what it truly is: The Parasite Leader.</b></i>")
       };
       dialogPanel.StartDialog(dialog);
       EventController.OnDialogPanelClosed += StartInterludeBattle;
@@ -761,8 +760,8 @@ public class SceneController : MonoBehaviour {
     if (PlayerIsAlien()) {
       // Scenario 3A
       dialog.Add("<i><b>You then feel something stir within you. Flashes of your battles from the last few hours.</b></i>");
-      dialog.Add(string.Format("{0} was not the one who doubled back.", characterKilledDuringInterlude));
-      dialog.Add(string.Format("{0} was not the one who killed {1}.", characterKilledDuringInterlude, deadCrewMember));
+      dialog.Add(string.Format("<i><b>{0} was not the one who doubled back.</b></i>", characterKilledDuringInterlude));
+      dialog.Add(string.Format("<i><b>{0} was not the one who killed {1}.</b></i>", characterKilledDuringInterlude, deadCrewMember));
       dialog.Add("Voice: It was you. Don't you see, Barry? It's always been you.");
       dialog.Add(string.Format("Megan and Jake? They were never infected. But I made you come back and infect {0}!", deadCrewMember));
       dialog.Add("I made you infect the Android AND botch the cure!!!");
@@ -776,7 +775,7 @@ public class SceneController : MonoBehaviour {
       dialog.Add("We'll infect the ship that responds, and together, we shall rule the universe!!!!");
       dialog.Add("Barry: No... stop... THAT'S ENOUGH");
       dialog.Add("<i><b>You let out an anguished yelp.</b></i>");
-      dialog.Add(string.Format("You begin to glow, just as {0} did right before you administered the botched cure</b></i>", deadCrewMember));
+      dialog.Add(string.Format("<i><b>You begin to glow, just as {0} did right before you administered the botched cure</b></i>", deadCrewMember));
       dialog.Add(string.Format("{0}: Barry? Can you hear me?", crewMemberWhoJoinedParty));
       dialog.Add("You've got to fight it, Barry. I know you're still in there.");
       dialog.Add("So fight it! We're all counting on you to stop the Parasites!");
@@ -821,7 +820,7 @@ public class SceneController : MonoBehaviour {
         dialog.Add("<i><b>You remember the pain and suffering you felt as your crew dropped one by one.</b></i>");
         dialog.Add("<i><b>You remember how good it felt to give in to the fear and paranoia while you slaughtered them.</b></i>");
         dialog.Add("<i><b>You remember who you are. You are the True Parasite.</b></i>");
-        dialog.Add("i><b>You tear apart Barry's flesh and reveal your true form.</b></i>");
+        dialog.Add("<i><b>You tear apart Barry's flesh and reveal your true form.</b></i>");
         dialog.Add("True Parasite: Pitiful human. Stand aside or PERISH.");
         dialog.Add("Now stand aside or PERISH");
         dialog.Add("Jake: Barry... what happened?");
