@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,23 +96,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Drill
-  health: 28
-  maxHealth: 28
-  attackPower: 15
+  health: 27
+  maxHealth: 27
+  attackPower: 14
   defensePower: 13
-  energyPoints: 43
-  maxEnergyPoints: 43
+  energyPoints: 42
+  maxEnergyPoints: 42
   abilitiesList:
   - Heal
-  level: 4
+  level: 3
   experience: 20
   originalMaxHealth: 25
   originalMaxEP: 40
   originalAttackPower: 12
   originalDefensePower: 10
+  originalCharacterName: Drill
   enemyId: 4
   originalExperience: 20
-  originalCharacterName: Drill
   originalEnemyId: 4
 --- !u!61 &9192391036177522714
 BoxCollider2D:

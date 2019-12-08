@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PigFarmer
   m_EditorClassIdentifier: 
   dialog:
-  - 'Pig Farmer: Hey Barry. I think the aliens got to my pigs!'
+  - 'Pig Farmer: I think the aliens got to my pigs!'
+  - There's one out there who looks like a pig!
   - Think you can find the imposter?
   - Walk up to them pigs and snuff out the faker!

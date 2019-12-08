@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,25 +96,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Drone
-  health: 26
-  maxHealth: 26
-  attackPower: 16
-  defensePower: 11
-  energyPoints: 16
-  maxEnergyPoints: 16
+  health: 30
+  maxHealth: 30
+  attackPower: 21
+  defensePower: 17
+  energyPoints: 20
+  maxEnergyPoints: 20
   abilitiesList:
   - Barrage
   - Hydroblast
   - Fireball
-  level: 2
+  level: 6
   experience: 25
   originalMaxHealth: 25
   originalMaxEP: 15
   originalAttackPower: 15
   originalDefensePower: 10
+  originalCharacterName: Drone
   enemyId: 5
   originalExperience: 25
-  originalCharacterName: Drone
   originalEnemyId: 5
 --- !u!61 &9192391036177522714
 BoxCollider2D:

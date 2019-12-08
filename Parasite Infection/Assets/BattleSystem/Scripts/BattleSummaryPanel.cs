@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -9,7 +8,6 @@ namespace BattleSystem {
     [SerializeField] private Text titleText;
     [SerializeField] private Text xpText;
     [SerializeField] private Text itemText;
-    [SerializeField] private Text questText;
     [SerializeField] private Button loadLastSave;
     [SerializeField] private Button backToWorld;
     private SceneController sceneController;
@@ -19,8 +17,11 @@ namespace BattleSystem {
     private List<Item> items = new List<Item>();
 
     private bool battleWasLost;
+    private List<BattleCharacter> alivePlayers = new List<BattleCharacter>();
+    private int xpToReward;
 
     private void Awake() {
+      alivePlayers.Clear();
       questController = FindObjectOfType<QuestSystem.QuestController>();
       battleLauncher = FindObjectOfType<BattleLauncher>();
       sceneController = FindObjectOfType<SceneController>();
@@ -28,14 +29,15 @@ namespace BattleSystem {
       SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void ShowVictoryPanel(int xp, List<Item> itemsToGive) {
+    public void ShowVictoryPanel(int xp, List<Item> itemsToGive, List<BattleCharacter> alivePlayers) {
       gameObject.SetActive(true);
       titleText.text = "Victory!";
       xpText.text = "Experience Gained: " + xp;
       battleWasLost = false;
+      xpToReward = xp;
+      this.alivePlayers = alivePlayers;
 
       SetItemText(itemsToGive);
-      SetQuestText(questController.GetPendingQuests());
 
       loadLastSave.gameObject.SetActive(false);
       if (questController.IsQuestPending("DefeatMalfunctioningAndroidQuest")) {
@@ -58,25 +60,12 @@ namespace BattleSystem {
       }
     }
 
-    private void SetQuestText(List<QuestSystem.Quest> pendingQuests) {
-      if (pendingQuests.Count > 0) {
-        questText.gameObject.SetActive(true);
-        questText.text = "Quests Completed: ";
-        pendingQuests.ForEach(quest => questText.text += quest.questName + ", ");
-        questText.text = questText.text.Substring(0, questText.text.Length - 2);
-
-      } else {
-        questText.gameObject.SetActive(false);
-      }
-    }
-
     public void ShowDefeatPanel() {
       gameObject.SetActive(true);
       xpText.text = "";
       titleText.text = "You're dead!";
       battleWasLost = true;
       backToWorld.gameObject.SetActive(false);
-      questText.gameObject.SetActive(false);
       itemText.gameObject.SetActive(false);
     }
 
@@ -90,11 +79,13 @@ namespace BattleSystem {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-      if (!battleWasLost) {
-        questController.CompletePendingQuests();
+      if (scene != SceneManager.GetSceneByName("Battle")) {
+        if (!battleWasLost) {
+          questController.CompletePendingQuests(alivePlayers, xpToReward);
+        }
+        battleWasLost = false;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
       }
-      battleWasLost = false;
-      SceneManager.sceneLoaded -= OnSceneLoaded;
     }
   }
 }

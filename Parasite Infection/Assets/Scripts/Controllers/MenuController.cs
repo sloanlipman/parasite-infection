@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour {
   [SerializeField] private UIInventory craftingInventory;
   [SerializeField] private UIInventory consumableInventory;
   [SerializeField] private QuestSystem.QuestPanel questPanel;
+  [SerializeField] private Transform questPanelTitle;
   [SerializeField] private UIPartyPanel partyPanel;
   [SerializeField] private GameObject playerEquipment;
   [SerializeField] private UIUpgradePointPanel upgradePointPanel;
@@ -76,6 +77,7 @@ public class MenuController : MonoBehaviour {
     craftingInventory.gameObject.SetActive(false);
     consumableInventory.gameObject.SetActive(false);
     questPanel.gameObject.SetActive(false);
+    questPanelTitle.gameObject.SetActive(false);
     partyPanel.gameObject.SetActive(false);
     upgradePointPanel.gameObject.SetActive(false);
     partyPanel.ClearPartyMember();
@@ -178,6 +180,7 @@ public class MenuController : MonoBehaviour {
   }
 
   public void ToggleQuestPanel() {
+    questPanelTitle.gameObject.SetActive(!IsQuestPanelOpen());
     questPanel.gameObject.SetActive(!IsQuestPanelOpen());
 
     if (IsQuestPanelOpen() && IsTutorialOpen()) {

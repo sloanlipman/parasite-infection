@@ -9,6 +9,11 @@
       this.itemID = itemID;
       this.quest = quest;
       EventController.OnItemCollected += ItemCollected;
+      EventController.OnGameReloaded += DestroyCollectionGoal;
+    }
+
+    public void DestroyCollectionGoal() {
+      EventController.OnItemCollected -= ItemCollected;
     }
 
     void ItemCollected(int itemID) {

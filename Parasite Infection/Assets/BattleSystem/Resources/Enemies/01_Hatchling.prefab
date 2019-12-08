@@ -96,23 +96,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Hatchling
-  health: 12
-  maxHealth: 12
-  attackPower: 8
-  defensePower: 22
-  energyPoints: 12
-  maxEnergyPoints: 12
+  health: 10
+  maxHealth: 10
+  attackPower: 5
+  defensePower: 20
+  energyPoints: 10
+  maxEnergyPoints: 10
   abilitiesList:
   - Barrage
-  level: 3
+  level: 1
   experience: 8
   originalMaxHealth: 10
   originalMaxEP: 10
   originalAttackPower: 5
   originalDefensePower: 20
+  originalCharacterName: Hatchling
   enemyId: 1
   originalExperience: 8
-  originalCharacterName: Hatchling
   originalEnemyId: 1
 --- !u!61 &5126930062819720034
 BoxCollider2D:

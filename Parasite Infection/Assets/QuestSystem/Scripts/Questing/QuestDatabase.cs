@@ -44,11 +44,11 @@ namespace QuestSystem {
       if (pendingQuests.Count > 0) {
         pendingQuests.ForEach(quest => {
           if (quest != null) {
-            Debug.Log("Pending quest: " + quest.questName);
             quest.GrantReward();
             EventController.QuestCompleted(quest);
           }
         });
+        EventController.CompletePendingQuests();
       }
     }
 
@@ -59,7 +59,9 @@ namespace QuestSystem {
     public bool IsQuestPending(string slug) {
       Quest pendingQuest = null;
       if (pendingQuests.Count > 0) {
-        pendingQuest = pendingQuests.Find(quest => quest.slug == slug);
+        if (quests.ContainsKey(slug)) {
+          pendingQuest = pendingQuests.Find(quest => quest.slug == slug);
+        }
       }
       return pendingQuest != null;
     }

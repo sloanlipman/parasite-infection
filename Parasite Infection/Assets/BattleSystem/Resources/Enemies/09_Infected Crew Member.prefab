@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   health: 43
   maxHealth: 43
   attackPower: 24
-  defensePower: 25
+  defensePower: 24
   energyPoints: 53
   maxEnergyPoints: 53
   abilitiesList:
@@ -111,9 +111,9 @@ MonoBehaviour:
   originalMaxEP: 50
   originalAttackPower: 20
   originalDefensePower: 20
+  originalCharacterName: Infected Crew Member
   enemyId: 9
   originalExperience: 75
-  originalCharacterName: Infected Crew Member
   originalEnemyId: 9
 --- !u!61 &9192391036177522714
 BoxCollider2D:

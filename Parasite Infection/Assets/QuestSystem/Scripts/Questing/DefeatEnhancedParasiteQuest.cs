@@ -5,7 +5,6 @@ public class DefeatEnhancedParasiteQuest : Quest {
   void Awake() {
     slug = "DefeatEnhancedParasiteQuest";    
     questName = "Defeat your former ally who is beyond saving";
-    // itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy Pack" };
     goal = new KillGoal(1, 42, this);
   }
 

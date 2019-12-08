@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogPanel : MonoBehaviour {
-  [SerializeField] private UnityEngine.UI.Text dialogText;
-  [SerializeField] private GameObject dialogPanel;
-  private string[] dialog;
-  private int dialogIndex;
-  private SceneController sceneController;
+  [SerializeField] protected UnityEngine.UI.Text dialogText;
+  [SerializeField] protected GameObject dialogPanel;
+  protected string[] dialog = new string[]{};
+  protected int dialogIndex;
+  protected SceneController sceneController;
 
   private void Awake() {
     sceneController = FindObjectOfType<SceneController>();
   }
 
   public void StartDialog(string[] dialog) {
-    dialogIndex = 0;
-    this.dialog = dialog;
-    if (dialogPanel != null) {
-      dialogPanel.SetActive(true);
-      dialogText.text = dialog[0];
-      sceneController.FreezeTime();
+    if (dialog != null && dialog.Length > 0) {
+      dialogIndex = 0;
+      this.dialog = dialog;
+      if (dialogPanel != null) {
+        dialogPanel.SetActive(true);
+        dialogText.text = dialog[0];
+        if (sceneController != null) {
+          sceneController.FreezeTime();
+        }
+      }
+    } else {
+      gameObject.SetActive(false);
     }
   }
 
@@ -47,6 +53,8 @@ public class DialogPanel : MonoBehaviour {
     dialogPanel.SetActive(false);
     dialogIndex = 0;
     EventController.DialogPanelClosed();
-    sceneController.UnfreezeTime();
+    if (sceneController != null) {
+      sceneController.UnfreezeTime();
+    }
   }
 }

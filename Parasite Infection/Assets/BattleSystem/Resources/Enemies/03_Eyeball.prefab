@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,24 +96,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Eyeball
-  health: 27
-  maxHealth: 27
-  attackPower: 13
-  defensePower: 21
-  energyPoints: 26
-  maxEnergyPoints: 26
+  health: 25
+  maxHealth: 25
+  attackPower: 12
+  defensePower: 20
+  energyPoints: 25
+  maxEnergyPoints: 25
   abilitiesList:
   - Barrage
   - Heal
-  level: 2
+  level: 1
   experience: 15
   originalMaxHealth: 25
   originalMaxEP: 25
   originalAttackPower: 12
   originalDefensePower: 20
+  originalCharacterName: Eyeball
   enemyId: 3
   originalExperience: 15
-  originalCharacterName: Eyeball
   originalEnemyId: 3
 --- !u!61 &5126930062819720034
 BoxCollider2D:

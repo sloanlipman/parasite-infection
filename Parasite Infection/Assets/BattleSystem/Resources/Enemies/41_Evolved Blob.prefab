@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,25 +95,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1999cad488ae2fa429b84d3e0baff877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Enhanced Parasite
-  health: 63
-  maxHealth: 63
-  attackPower: 33
+  characterName: Evolved Blob
+  health: 65
+  maxHealth: 65
+  attackPower: 34
   defensePower: 34
-  energyPoints: 64
-  maxEnergyPoints: 64
+  energyPoints: 66
+  maxEnergyPoints: 66
   abilitiesList:
   - Heal
   - Fireball
-  level: 4
+  level: 5
   experience: 75
   originalMaxHealth: 60
   originalMaxEP: 60
   originalAttackPower: 30
   originalDefensePower: 30
-  enemyId: 42
-  originalExperience: 75
   originalCharacterName: Evolved Blob
+  enemyId: 41
+  originalExperience: 75
   originalEnemyId: 41
 --- !u!61 &9192391036177522714
 BoxCollider2D:

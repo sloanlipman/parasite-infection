@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -122,22 +122,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Jake
-  health: 22
-  maxHealth: 22
-  attackPower: 12
-  defensePower: 12
-  energyPoints: 17
-  maxEnergyPoints: 17
+  health: 56
+  maxHealth: 56
+  attackPower: 56
+  defensePower: 57
+  energyPoints: 57
+  maxEnergyPoints: 57
   abilitiesList:
   - Heal
   - Fireball
-  level: 3
+  level: 7
   experience: 30
   originalMaxHealth: 50
   originalMaxEP: 50
   originalAttackPower: 50
   originalDefensePower: 50
-  enemyId: 32
-  originalExperience: 30
   originalCharacterName: Jake
+  enemyId: 46
+  originalExperience: 30
   originalEnemyId: 46

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,22 +46,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Android
-  health: 25
-  maxHealth: 25
-  attackPower: 5
-  defensePower: 5
-  energyPoints: 15
-  maxEnergyPoints: 15
+  health: 38
+  maxHealth: 38
+  attackPower: 18
+  defensePower: 18
+  energyPoints: 28
+  maxEnergyPoints: 28
   abilitiesList: []
-  level: 1
-  experience: 0
+  level: 14
+  experience: 271
   originalMaxHealth: 25
   originalMaxEP: 15
   originalAttackPower: 5
   originalDefensePower: 5
   originalCharacterName: Android
-  upgradePoints: 0
-  modSlots: 1
+  upgradePoints: 1
+  modSlots: 2
 --- !u!212 &7264005851067476655
 SpriteRenderer:
   m_ObjectHideFlags: 0

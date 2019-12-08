@@ -18,7 +18,7 @@ namespace BattleSystem {
 
     public void GenerateTooltip (Ability ability) {
       PersistTooltip();
-      string tooltip = string.Format("<b>{0}</b>\nEP Cost:{1}\n{2}", ability.abilityName, ability.energyCost, ability.description);
+      string tooltip = string.Format("<b>{0}</b>\nEP Cost: {1}\n{2}", ability.abilityName, ability.energyCost, ability.description);
       tooltipText.text = tooltip;
     }
 

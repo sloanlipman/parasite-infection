@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using QuestSystem;
+
 namespace QuestSystem {
   public class QuestController : MonoBehaviour {
     public List<Quest> assignedQuests = new List<Quest>();
@@ -11,10 +10,15 @@ namespace QuestSystem {
     private QuestDatabase questDatabase;
     [SerializeField] private QuestPanel questPanel;
     [SerializeField] private AlertPanel alertPanel;
+    private BattleSystem.CharacterController characterController;
+
+    List<string> alertToShow = new List<string>();
+    List<string> charactersWhoLeveledUp = new List<string>();
 
     private void Awake() {
       questDatabase = GetComponent<QuestDatabase>();
-
+      characterController = FindObjectOfType<BattleSystem.CharacterController>();
+      EventController.OnPendingQuestsComplete += PerformShowAlert;
     }
 
     private void Start() {
@@ -30,14 +34,40 @@ namespace QuestSystem {
       }
     }
 
-    public void ShowAlert(string questName, List<BattleSystem.PartyMember> members, List<string> items) {
-      alertPanel.gameObject.SetActive(true);
-      List<string> dialog = new List<string>();
-      dialog.Add(string.Format("Completed quest: {0}", questName));
-      members.ForEach(member => dialog.Add(string.Format("{0} leveled up! Go spend upgrade points!", member.characterName)));
-      items.ForEach(item => dialog.Add(string.Format("Got item: {0}", item)));
+    public void ShowAlert(string questName, List<BattleSystem.BattleCharacter> members, List<string> items) {
+      alertToShow.Add(string.Format("Completed quest: {0}", questName));
+      AddPartyMemberAlert(members);
+      items.ForEach(item => alertToShow.Add(string.Format("Got item: {0}", item)));
+    }
 
-      alertPanel.StartDialog(dialog.ToArray());
+    public void ShowAlert(List<BattleSystem.BattleCharacter> members) {
+      AddPartyMemberAlert(members);
+    }
+
+    private void AddPartyMemberAlert(List<BattleSystem.BattleCharacter> members) {
+      members.ForEach(member => {
+        if (!charactersWhoLeveledUp.Contains(member.characterName)) {
+          charactersWhoLeveledUp.Add(member.characterName);
+          alertToShow.Add(string.Format("{0} leveled up!", member.characterName));
+          BattleSystem.PartyMember p = (BattleSystem.PartyMember) member;
+          if (p.upgradePoints > 0) {
+            alertToShow.Add(string.Format("{0} has {1} {2} to spend.", p.characterName, p.upgradePoints, GetUpgradePointOrPoints(p.upgradePoints)));
+          }
+        }
+      });
+    }
+
+    private string GetUpgradePointOrPoints(int points) {
+      return points > 1 ? "points" : "point";
+    }
+
+
+    private void PerformShowAlert() {
+      if (alertPanel != null) {
+        alertPanel.gameObject.SetActive(true);
+        alertPanel.StartDialog(alertToShow.ToArray());
+        alertToShow.Clear();
+      }
     }
 
     public void Save() {
@@ -79,7 +109,7 @@ namespace QuestSystem {
       foreach(var quest in questDatabase.quests) {
         questNamesToAdd.Add(quest.Key);
       }
-      // Assign IP quests, mark completed quests as completed
+      // Assign in-progress quests, mark completed quests as completed
         foreach (string questName in questNamesToAdd) {
           if (questDatabase.Completed(questName)) {
             completedQuests.Add(questName);
@@ -136,7 +166,12 @@ namespace QuestSystem {
       return GetComponent(System.Type.GetType(questSlug)) as Quest;
     }
 
-    public void CompletePendingQuests() {
+    public void CompletePendingQuests(List<BattleSystem.BattleCharacter> alivePlayers, int xpToReward) {
+      List<BattleSystem.BattleCharacter> whoLeveledUp = new List<BattleSystem.BattleCharacter>();
+      if (alivePlayers != null && xpToReward > 0) {
+        whoLeveledUp = characterController.UpdatePlayers(alivePlayers, xpToReward);
+        ShowAlert(whoLeveledUp);
+      }
       questDatabase.CompletePendingQuests();
       questDatabase.ClearPendingQuests();
     }

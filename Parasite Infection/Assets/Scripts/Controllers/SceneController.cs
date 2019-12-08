@@ -133,6 +133,8 @@ public class SceneController : MonoBehaviour {
     deadCrewMember = choiceName;
     crewMemberWhoJoinedParty = choiceName == "Megan" ? "Jake" : "Megan";
     hasPlayerMadeAct1Decision = true;
+    EventController.OnDecisionMade -= MakeAct1Decision;
+
     decisionPanel.ClearPanel();
     FinishEndOfAct1Dialog();
   }
@@ -140,6 +142,9 @@ public class SceneController : MonoBehaviour {
   private void MakeAct2Decision(string choiceName) {
     characterRemovedFromPartyForOctopusFight = choiceName;
     characterController.RemovePlayerFromParty(choiceName);
+
+    EventController.OnDecisionMade -= MakeAct2Decision;
+
     decisionPanel.ClearPanel();
 
     ActivateOctopusMonster();
@@ -148,6 +153,9 @@ public class SceneController : MonoBehaviour {
   private void MakeAct3Decision(string choiceName) {
     characterKilledDuringInterlude = choiceName;
     characterController.RemovePlayerFromParty(choiceName);
+
+    EventController.OnDecisionMade -= MakeAct3Decision;
+
     decisionPanel.ClearPanel();
 
     FinishEndOfAct3Dialog();

@@ -343,8 +343,7 @@ namespace BattleSystem {
     IEnumerator EndBattle() {
       yield return new WaitForSeconds(1f);
         if (AreAnyPlayersAlive()) {
-        battleSummaryPanel.ShowVictoryPanel(xpToReward, itemsToGive);
-        characterController.UpdatePlayers(GetListOfAlivePlayers(), xpToReward);
+        battleSummaryPanel.ShowVictoryPanel(xpToReward, itemsToGive, GetListOfAlivePlayers());
       } else {
         battleSummaryPanel.ShowDefeatPanel();
       }

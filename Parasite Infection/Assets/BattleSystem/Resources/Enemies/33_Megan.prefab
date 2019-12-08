@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -122,21 +122,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Megan
-  health: 22
-  maxHealth: 22
-  attackPower: 11
-  defensePower: 11
-  energyPoints: 21
-  maxEnergyPoints: 21
+  health: 29
+  maxHealth: 29
+  attackPower: 18
+  defensePower: 18
+  energyPoints: 27
+  maxEnergyPoints: 27
   abilitiesList:
   - Hydroblast
-  level: 2
+  level: 8
   experience: 30
   originalMaxHealth: 20
   originalMaxEP: 20
   originalAttackPower: 10
   originalDefensePower: 10
+  originalCharacterName: Megan
   enemyId: 33
   originalExperience: 30
-  originalCharacterName: Megan
   originalEnemyId: 33

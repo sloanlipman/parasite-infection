@@ -88,8 +88,8 @@ namespace BattleSystem {
       return characterDatabase.FindPartyMemberByName(characterName);
     }
 
-    public void UpdatePlayers(List<BattleCharacter> partyMembers, int xp) {
-
+    public List<BattleCharacter> UpdatePlayers(List<BattleCharacter> partyMembers, int xp) {
+      List<BattleCharacter> whoLeveledUp = new List<BattleCharacter>();
   // Set all to a default value
       BattleController.Instance.GetDeadPlayersList().ForEach(member => {
         PartyMember p = characterDatabase.FindPartyMemberByName(member.characterName);
@@ -100,12 +100,17 @@ namespace BattleSystem {
   // Survivors only
       partyMembers.ForEach(member => {
         PartyMember p = characterDatabase.FindPartyMemberByName(member.characterName);
+        int originalLevel = p.level;
         p.health = member.health;
         p.energyPoints = member.energyPoints;
         p.experience += xp;
-        Debug.Log(p.characterName + " Got XP: " + xp + ". Current XP is: " + p.experience);
-        LevelUp(p);
+        if (LevelUp(p)) {
+          Debug.Log(p.characterName + " leveled up!");
+          whoLeveledUp.Add(p);
+        }
       });
+
+      return whoLeveledUp;
     }
 
     public bool LevelUp(PartyMember member) {

@@ -5,7 +5,7 @@ public class DefeatInfectedAndroidQuest : Quest {
   void Awake() {
     slug = "DefeatInfectedAndroidQuest";    
     questName = "Defeat the Infected Android";
-    itemRewards = new List<string>() { "Medic Module", "Medkit", "Energy Pack" };
+    itemRewards = new List<string>() { "Battery", "Integrated Circuit", "Medkit", "Energy Pack" };
     goal = new KillGoal(1, 34, this);
   }
 
