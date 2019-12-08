@@ -535,7 +535,10 @@ public class SceneController : MonoBehaviour {
           Destroy(n.gameObject);
         }
       }
-      characterController.AddPlayerToParty(crewMemberWhoJoinedParty);
+      PartyMember p = characterController.FindPartyMemberByName(crewMemberWhoJoinedParty);
+      if (!characterController.GetActiveParty().Contains(p)) {
+        characterController.AddPlayerToParty(crewMemberWhoJoinedParty);
+      }
       characterController.RemovePlayerFromParty("Android");
       int androidExperience = characterController.GetExperience("Android");
       characterController.SetExperience(androidExperience, crewMemberWhoJoinedParty);
