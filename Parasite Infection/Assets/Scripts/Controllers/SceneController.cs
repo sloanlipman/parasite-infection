@@ -697,7 +697,8 @@ public class SceneController : MonoBehaviour {
       Vector2 playerPosition = new Vector2();
       if (player != null) {
         playerPosition = player.GetRigidbody().position;
-        battleLauncher.PrepareBattle(playerPosition, enemies);
+        bool showDialog = false;
+        battleLauncher.PrepareBattle(playerPosition, showDialog, enemies);
         questController.AssignQuest("InterludeQuest");
       }
 
@@ -1025,7 +1026,8 @@ public class SceneController : MonoBehaviour {
     Vector2 playerPosition = new Vector2();
     if (player != null) {
       playerPosition = player.GetRigidbody().position;
-      battleLauncher.PrepareBattle(playerPosition, this.finalBattleEnemyParty);
+      bool showDialog = false;
+      battleLauncher.PrepareBattle(playerPosition, showDialog, this.finalBattleEnemyParty);
     }
   }
 }

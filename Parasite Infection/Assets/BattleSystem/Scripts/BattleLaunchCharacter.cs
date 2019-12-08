@@ -24,7 +24,8 @@ namespace BattleSystem {
       if (!battleIsCompleted) {
         players = characterController.GetActiveParty();
         battleWasLaunched = true;
-        launcher.PrepareBattle(character.transform.position, enemies);
+        bool showDialog = false;
+        launcher.PrepareBattle(character.transform.position, showDialog, enemies);
       }
     }
 

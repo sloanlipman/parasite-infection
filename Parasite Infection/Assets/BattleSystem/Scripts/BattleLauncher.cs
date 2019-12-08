@@ -36,7 +36,8 @@ namespace BattleSystem {
           random = Random.Range(0, 10);
           if (random < 3) {
         // if (IsPlayerNotNullAndMoving()) // Uncomment this line (and comment other condition checks) for debugging battle-related tasks. Otherwise leave this line commented.
-            PrepareBattle(player.transform.position);
+            bool showDialog = true;
+            PrepareBattle(player.transform.position, showDialog);
           }
         }
       }
@@ -79,7 +80,7 @@ namespace BattleSystem {
       }
     }
 
-    public void PrepareBattle(Vector2 position, List<Enemy> enemiesToUse = null) {
+    public void PrepareBattle(Vector2 position, bool showDialog, List<Enemy> enemiesToUse = null) {
       worldPosition = position;
       worldSceneIndex = SceneManager.GetActiveScene().buildIndex;
       this.players = characterController.GetActiveParty();
@@ -87,10 +88,22 @@ namespace BattleSystem {
 
       this.presetEnemyParty = enemiesToUse;
 
+      if (showDialog) {
+        string[] warning = new string[]{"Aliens approaching! Prepare for battle!"};
+        EventController.OnDialogPanelClosed += LoadBattleScene;
+        dialog.StartDialog(warning);
+      } else {
+        LoadBattleScene();
+      }
+    }
+
+    private void LoadBattleScene() {
       SceneManager.LoadScene("Battle");
       if (dialog != null) {
         dialog.gameObject.SetActive(false);
       }
+
+      EventController.OnDialogPanelClosed -= LoadBattleScene;
     }
 
     public void Launch() {
