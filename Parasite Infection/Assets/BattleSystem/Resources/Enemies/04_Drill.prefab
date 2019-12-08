@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7264005851067476654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,15 +96,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Drill
-  health: 27
-  maxHealth: 27
-  attackPower: 14
-  defensePower: 13
-  energyPoints: 42
-  maxEnergyPoints: 42
+  health: 25
+  maxHealth: 25
+  attackPower: 12
+  defensePower: 10
+  energyPoints: 40
+  maxEnergyPoints: 40
   abilitiesList:
   - Heal
-  level: 3
+  level: 1
   experience: 20
   originalMaxHealth: 25
   originalMaxEP: 40
