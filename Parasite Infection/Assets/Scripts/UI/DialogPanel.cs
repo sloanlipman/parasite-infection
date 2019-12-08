@@ -32,7 +32,7 @@ public class DialogPanel : MonoBehaviour {
   public void NextLine() {
     dialogIndex = Mathf.Min(dialogIndex + 1, dialog.Length);
     if (dialogIndex >= this.dialog.Length) {
-      ResetDialog();
+      CloseDialog();
     } else {
       dialogText.text = dialog[dialogIndex];
     }
@@ -47,11 +47,15 @@ public class DialogPanel : MonoBehaviour {
     dialogText.text = dialog[dialogIndex];
   }
 
-  public void ResetDialog() {
+  private void ResetDialog() {
     dialog = null;
     dialogText.text = "";
     dialogPanel.SetActive(false);
     dialogIndex = 0;
+  }
+
+  public void CloseDialog() {
+    ResetDialog();
     EventController.DialogPanelClosed();
     if (sceneController != null) {
       sceneController.UnfreezeTime();

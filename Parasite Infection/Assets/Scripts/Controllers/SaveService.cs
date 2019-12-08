@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using QuestSystem;
 using BattleSystem;
 using UnityEngine.SceneManagement;
@@ -16,7 +14,7 @@ public class SaveService : MonoBehaviour {
   private ConsumableInventory consumableInventory;
   private QuestController questController;
   private MenuController menuController;
-  private DialogPanel dialogPanel;
+  private DialogPanel[] dialogPanels;
   private SlotPanel[] slotPanels = new SlotPanel[] {};
 
   private bool needToLoadPlayer = false;
@@ -49,7 +47,7 @@ public class SaveService : MonoBehaviour {
       characterController.Load();
       sceneController.Load();
 
-      ResetDialog();
+      CloseDialog();
       LoadSavedScene();
       LoadPlayer();
       LoadNPCs();
@@ -143,10 +141,12 @@ public class SaveService : MonoBehaviour {
     }
   }
 
-  private void ResetDialog() {
-    dialogPanel = FindObjectOfType<DialogPanel>();
-    if (dialogPanel != null) {
-      dialogPanel.ResetDialog();
+  private void CloseDialog() {
+    dialogPanels = FindObjectsOfType<DialogPanel>();
+    foreach(DialogPanel d in dialogPanels) {
+      if (d != null) {
+        d.CloseDialog();
+      }
     }
   }
 

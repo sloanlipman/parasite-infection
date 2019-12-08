@@ -118,7 +118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7745539553765447280}
+      - m_Target: {fileID: 0}
         m_MethodName: ResetDialog
         m_Mode: 1
         m_Arguments:
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7745539553765447280}
+      - m_Target: {fileID: 0}
         m_MethodName: PreviousLine
         m_Mode: 1
         m_Arguments:
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7745539553765447280}
+      - m_Target: {fileID: 0}
         m_MethodName: NextLine
         m_Mode: 1
         m_Arguments:
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 7635492761260728222}
   - component: {fileID: 7637919570853626620}
   - component: {fileID: 7741948571928868738}
-  - component: {fileID: 7745539553765447280}
+  - component: {fileID: 1780614806642085185}
   m_Layer: 0
   m_Name: TutorialPanel
   m_TagString: Untagged
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7745539553765447280
+--- !u!114 &1780614806642085185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7705050580999898570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8460f72aca0ec740b0992b8d92e99a2, type: 3}
+  m_Script: {fileID: 11500000, guid: b195180ada828424aadd97aaf03e3753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText: {fileID: 7745658674424045890}
