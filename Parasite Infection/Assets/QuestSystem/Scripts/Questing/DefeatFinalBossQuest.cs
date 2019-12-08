@@ -17,7 +17,6 @@ public class DefeatFinalBossQuest : Quest {
   }
 
   public override void GrantReward() {
-    // sceneController.StartDefeatEnhancedParasiteQuestCompletedDialog();
     base.GrantReward();
   }
 

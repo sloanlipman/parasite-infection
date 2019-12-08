@@ -51,7 +51,9 @@ public class InventoryController : MonoBehaviour {
   }
 
   public void GiveItems(List<string> itemNames) {
-    itemNames.ForEach(itemName => GiveItem(itemName));
+    if (itemNames != null & itemNames.Count > 0) {
+      itemNames.ForEach(itemName => GiveItem(itemName));
+    }
   }
 
   public void GiveItem(int id) {

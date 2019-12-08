@@ -13,7 +13,6 @@ public class DefeatEnhancedParasiteQuest : Quest {
   }
 
   public override void GrantReward() {
-    sceneController.StartDefeatEnhancedParasiteQuestCompletedDialog();
     base.GrantReward();
   }
 }

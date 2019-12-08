@@ -38,12 +38,13 @@ namespace QuestSystem {
       alertToShow.Add(string.Format("Completed quest: {0}", questName));
       AddPartyMemberAlert(members);
       List<string> itemsToAdd = new List<string>();
-
-      items.ForEach(item => {
-        if (!itemsToAdd.Contains(item)) {
-          itemsToAdd.Add(item);
-        }
-      });
+      if (items != null && items.Count > 0) {
+        items.ForEach(item => {
+          if (!itemsToAdd.Contains(item)) {
+            itemsToAdd.Add(item);
+          }
+        });
+      }
 
       itemsToAdd.ForEach(item => alertToShow.Add(string.Format("Got item: {0}", item)));
     }

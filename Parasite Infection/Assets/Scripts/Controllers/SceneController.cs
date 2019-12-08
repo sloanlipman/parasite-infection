@@ -643,7 +643,6 @@ public class SceneController : MonoBehaviour {
     if (
         IsQuestCompleted("DefeatEnhancedParasiteQuest")&&
         !IsQuestCompleted("InterludeQuest")) {
-      Debug.Log("Should start Dialog here in a second");
       RemoveEnhancedParasite();
       string[] dialog = new string[] {
 
