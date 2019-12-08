@@ -71,10 +71,11 @@ namespace QuestSystem {
 
 
     private void PerformShowAlert() {
-      if (alertPanel != null) {
+      if (alertPanel != null && alertToShow.Count > 0) {
         alertPanel.gameObject.SetActive(true);
         alertPanel.StartDialog(alertToShow.ToArray());
         alertToShow.Clear();
+        charactersWhoLeveledUp.Clear();
       }
     }
 
@@ -179,6 +180,9 @@ namespace QuestSystem {
       if (alivePlayers != null && xpToReward > 0) {
         whoLeveledUp = characterController.UpdatePlayers(alivePlayers, xpToReward);
         ShowAlert(whoLeveledUp);
+        if (questDatabase.GetPendingQuests().Count == 0) { // No quests were pending
+          PerformShowAlert();
+        }
       }
       questDatabase.CompletePendingQuests();
       questDatabase.ClearPendingQuests();

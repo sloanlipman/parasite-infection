@@ -35,7 +35,7 @@ namespace BattleSystem {
           ResetSteps();
           random = Random.Range(0, 10);
           if (random < 3) {
-        // if (IsPlayerNotNullAndMoving()) // Uncomment this line (and comment other condition checks) for debugging battle-related tasks. Otherwise leave this line commented.
+        // if (IsPlayerNotNullAndMoving()) {// Uncomment this line (and comment other condition checks) for debugging battle-related tasks. Otherwise leave this line commented.
             bool showDialog = true;
             PrepareBattle(player.transform.position, showDialog);
           }
