@@ -48,10 +48,11 @@ namespace QuestSystem {
             whoLeveledUp.Add(member);
           }
         }
-        if (itemRewards != null && itemRewards.Count > 0) {
-          inventoryController.GiveItems(itemRewards);
-        }
       });
+
+      if (itemRewards != null && itemRewards.Count > 0) {
+        inventoryController.GiveItems(itemRewards);
+      }
 
       questController.ShowAlert(questName, whoLeveledUp, itemRewards);
       SaveService.Instance.Save();
