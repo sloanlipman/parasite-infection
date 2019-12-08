@@ -101,6 +101,13 @@ public class SceneController : MonoBehaviour {
     SceneManager.sceneUnloaded += OnSceneUnloaded;
   }
 
+  private void AddToParty(string characterName) {
+    PartyMember p = characterController.FindPartyMemberByName(characterName);
+    if (!characterController.GetActiveParty().Contains(p)) {
+      characterController.AddPlayerToParty(characterName);
+    }
+  }
+
   public int GetCurrentAct() {
     return currentAct;
   }
@@ -182,6 +189,8 @@ public class SceneController : MonoBehaviour {
       }
 
       case "Command Center": {
+        ActivateBlob();
+        RemoveBlob();
         if (!HasQuestBeenStarted("KillBlobsQuest")) {
           string[] dialog = new string[] {
             "<i><b>Check in with the Android to get your assignment.</b></i>",
@@ -345,6 +354,25 @@ public class SceneController : MonoBehaviour {
     return isMalfunctioningAndroidDefeated;
   }
 
+   public void ActivateBlob() {
+    GameObject blobParent = GameObject.FindGameObjectWithTag("Blob Parent");
+    if (blobParent != null) {
+      NPC blob = blobParent.GetComponentInChildren<NPC>(true);
+      if (blob != null && !blob.gameObject.activeSelf) {
+        blob.gameObject.SetActive(IsQuestInProgress("KillBlobsQuest"));
+      }
+    }
+  }
+
+  public void RemoveBlob() {
+    if (IsQuestCompleted("KillBlobsQuest")) {
+      GameObject blobParent = GameObject.FindGameObjectWithTag("Blob Parent");
+      if (blobParent != null) {
+        Destroy(blobParent);
+      }
+    }
+  }
+
   public void StartKillBlobsQuestCompletedDialog() {
     string[] dialog = new string[] {
       "Android: Here's a Fire Module. Don't forget to equip it.",
@@ -352,6 +380,8 @@ public class SceneController : MonoBehaviour {
       "Head down to the transporter.",
       "We should look for Alan."
     };
+
+    AddToParty("Android");
     dialogPanel.StartDialog(dialog);
   }
 
@@ -439,7 +469,7 @@ public class SceneController : MonoBehaviour {
     dialogPanel.StartDialog(dialog);
     RemoveOctopusMonster();
     currentAct = 3;
-    characterController.AddPlayerToParty(characterRemovedFromPartyForOctopusFight);
+    AddToParty(characterRemovedFromPartyForOctopusFight);
   }
 
   private void ActivateOctopusMonster() {
@@ -550,10 +580,7 @@ public class SceneController : MonoBehaviour {
           Destroy(n.gameObject);
         }
       }
-      PartyMember p = characterController.FindPartyMemberByName(crewMemberWhoJoinedParty);
-      if (!characterController.GetActiveParty().Contains(p)) {
-        characterController.AddPlayerToParty(crewMemberWhoJoinedParty);
-      }
+      AddToParty(crewMemberWhoJoinedParty);
       characterController.RemovePlayerFromParty("Android");
       int androidExperience = characterController.GetExperience("Android");
       characterController.SetExperience(androidExperience, crewMemberWhoJoinedParty);
@@ -584,6 +611,7 @@ public class SceneController : MonoBehaviour {
       }
     }
   }
+
    public void ActivateDinosaurMonster() {
     GameObject dinosaurMonsterParent = GameObject.FindGameObjectWithTag("Dinosaur Monster");
     if (dinosaurMonsterParent != null) {
@@ -593,6 +621,7 @@ public class SceneController : MonoBehaviour {
       }
     }
   }
+
    public void ActivateBirdMonster() {
     GameObject birdMonsterParent = GameObject.FindGameObjectWithTag("Bird Monster");
     if (birdMonsterParent != null) {
@@ -602,7 +631,6 @@ public class SceneController : MonoBehaviour {
       }
     }
   }
-
 
   public void RemoveEvolvedBlob() {
     if (IsQuestCompleted("DefeatEvolvedBlobQuest")) {
@@ -928,8 +956,9 @@ public class SceneController : MonoBehaviour {
         dialog.Add("I believe there are some hidden in this very room, aren't there? Ah yes. Now you're done for.");
         dialog.Add("<b>I WILL KILL ALL THREE OF YOU AND RULE THIS WRETECHED UNIVERSE ALONE!!!!!</b>");
 
-        characterController.AddPlayerToParty("Megan");
-        characterController.AddPlayerToParty("Jake");
+
+        AddToParty("Megan");
+        AddToParty("Jake");
 
         PartyMember megan = characterController.FindPartyMemberByName("Megan");
         PartyMember jake = characterController.FindPartyMemberByName("Jake");
@@ -960,7 +989,7 @@ public class SceneController : MonoBehaviour {
 
   private void GivePlayerControlOfBattleMech(int count) {
     string characterName = "Battle Mech #" + count;
-    characterController.AddPlayerToParty(characterName);
+    AddToParty(characterName);
     PartyMember mech = characterController.FindPartyMemberByName(characterName);
     mech.experience = characterController.FindPartyMemberByName("Barry").experience;
     characterController.LevelUp(mech);
@@ -1001,7 +1030,7 @@ public class SceneController : MonoBehaviour {
 
           characterController.RemovePlayerFromParty("Jake");
           characterController.RemovePlayerFromParty("Barry");
-          characterController.AddPlayerToParty("The True Parasite");
+          AddToParty("The True Parasite");
         }
       }
       Resources.UnloadAsset(trueParasiteSprite);

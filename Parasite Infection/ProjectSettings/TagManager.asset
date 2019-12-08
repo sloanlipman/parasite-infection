@@ -50,6 +50,9 @@ TagManager:
   - Final Boss Trigger
   - UI/Tutorial Panel
   - UI/Final Scene Panel
+  - Blob Parent
+  - Blob 1
+  - Blob 2
   layers:
   - Default
   - TransparentFX

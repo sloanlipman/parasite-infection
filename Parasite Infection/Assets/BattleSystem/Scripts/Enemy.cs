@@ -29,32 +29,40 @@ namespace BattleSystem {
           break;
         }
         case 1: {
+          if (abilitiesList.Count > 0) {
           Ability abilityToCast = GetRandomAbility();
           if (abilityToCast != null) {
-
-            if (abilityToCast.abilityType == Ability.AbilityType.Heal) {
+            if (AbilityIsHeal(abilityToCast)) {
               actualTarget = healTarget;
               BattleController.Instance.SetCurrentTarget(actualTarget);
             }
-
             if (!UseAbility(abilityToCast, actualTarget)) {
               actualTarget = damageTarget;
-              BattleController.Instance.SetCurrentTarget(actualTarget);
-              BattleController.Instance.DoAttack(this, actualTarget);
+              PerformAttack(actualTarget);
             }
-
           } else {
-            BattleController.Instance.SetCurrentTarget(damageTarget);
-            BattleController.Instance.DoAttack(this, damageTarget);
+            PerformAttack(damageTarget);
           }
-          break;
+        } else {
+          PerformAttack(damageTarget);
         }
+        break;
+      }
+
         case 2: {
-          BattleController.Instance.SetCurrentTarget(damageTarget);
-          BattleController.Instance.DoAttack(this, damageTarget);
+          PerformAttack(damageTarget);
           break;
         }
       }
+    }
+
+    private void PerformAttack(BattleCharacter target) {
+      BattleController.Instance.SetCurrentTarget(target);
+      BattleController.Instance.DoAttack(this, target);
+    }
+
+    private bool AbilityIsHeal(Ability ability) {
+      return ability.abilityType == Ability.AbilityType.Heal;
     }
 
     Ability GetRandomAbility() {

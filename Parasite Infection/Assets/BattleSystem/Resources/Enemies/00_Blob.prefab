@@ -46,15 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Blob
-  health: 12
-  maxHealth: 12
-  attackPower: 8
-  defensePower: 3
-  energyPoints: 18
-  maxEnergyPoints: 18
-  abilitiesList:
-  - Hydroblast
-  level: 3
+  health: 10
+  maxHealth: 10
+  attackPower: 5
+  defensePower: 1
+  energyPoints: 15
+  maxEnergyPoints: 15
+  abilitiesList: []
+  level: 1
   experience: 5
   originalMaxHealth: 10
   originalMaxEP: 15
