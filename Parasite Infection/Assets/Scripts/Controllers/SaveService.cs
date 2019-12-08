@@ -16,6 +16,7 @@ public class SaveService : MonoBehaviour {
   private MenuController menuController;
   private DialogPanel[] dialogPanels;
   private SlotPanel[] slotPanels = new SlotPanel[] {};
+  [SerializeField] private AlertPanel alertPanel;
 
   private bool needToLoadPlayer = false;
   private bool needToLoadNPCs = false;
@@ -35,9 +36,10 @@ public class SaveService : MonoBehaviour {
     SavePlayer();
     SaveNPCs();
     SaveScene();
+    ShowAlert("Saved game!");
   }
 
-  public void Load() {
+  public void Load(bool loadedFromMenu) {
     if (ES3.FileExists()) {
       ClearAll();
       questController.Load();
@@ -53,8 +55,24 @@ public class SaveService : MonoBehaviour {
       LoadNPCs();
       menuController.UnpauseGame();
 
+      if (loadedFromMenu) {
+        ShowAlert("Loaded game!");
+      }
+
     } else {
-      Debug.LogWarning("No file to load from!");
+      ShowAlert("No file to load from!");
+    }
+  }
+
+  private void ShowAlert(string message) {
+    if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Intro")) {
+      alertPanel.gameObject.SetActive(true);
+
+      string[] dialog = new string[]{
+        message
+      };
+
+      alertPanel.StartDialog(dialog);
     }
   }
 

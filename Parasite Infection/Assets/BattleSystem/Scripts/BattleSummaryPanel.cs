@@ -70,7 +70,8 @@ namespace BattleSystem {
     }
 
     public void LoadLastSave() {
-      SaveService.Instance.Load();
+      bool loadedFromMenu = false;
+      SaveService.Instance.Load(loadedFromMenu);
     }
 
     public void EndBattle() {

@@ -7,11 +7,11 @@ public class MainMenu : MonoBehaviour {
   }
 
   public void LoadGame() {
-    SaveService.Instance.Load();
+    bool loadedFromMenu = false;
+    SaveService.Instance.Load(loadedFromMenu);
   }
 
   public void ShowCredits() {
-    Application.OpenURL("http://www.google.com");
-
+    Application.OpenURL("https://github.com/sloanlipman/parasite-infection");
   }
 }
