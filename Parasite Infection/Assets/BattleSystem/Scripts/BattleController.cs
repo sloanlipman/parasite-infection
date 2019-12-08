@@ -17,6 +17,7 @@ namespace BattleSystem {
     private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
     private InventoryController inventoryController;
+    private QuestSystem.QuestController questController;
 
     private BattleCharacter currentTarget;
 
@@ -420,18 +421,20 @@ namespace BattleSystem {
    }
 
     private void AddRandomItem(int enemyId) {
-      Item itemToGive = null;
-      int roll = Random.Range(0, 10);
-      if (roll < 3) {
-        int randomItem = Random.Range(1, 13);
-        if (randomItem < 13) {
-          itemToGive = inventoryController.GetItem(randomItem);
-        } else {
-          itemToGive = inventoryController.GetItem(20); // Cure-all comes out of sequence, so its ID gets hardcoded
+      if (questController.IsQuestCompleted("CraftWaterQuest")) {
+        Item itemToGive = null;
+        int roll = Random.Range(0, 10);
+        if (roll < 3) {
+          int randomItem = Random.Range(1, 13);
+          if (randomItem < 13) {
+            itemToGive = inventoryController.GetItem(randomItem);
+          } else {
+            itemToGive = inventoryController.GetItem(20); // Cure-all comes out of sequence, so its ID gets hardcoded
+          }
         }
-      }
-      if (itemToGive != null) {
-        itemsToGive.Add(itemToGive);
+        if (itemToGive != null) {
+          itemsToGive.Add(itemToGive);
+        }
       }
     }
   }
