@@ -14,4 +14,8 @@ public class MainMenu : MonoBehaviour {
   public void ShowCredits() {
     Application.OpenURL("https://github.com/sloanlipman/parasite-infection");
   }
+
+  public void Quit() {
+    Application.Quit();
+  }
 }
