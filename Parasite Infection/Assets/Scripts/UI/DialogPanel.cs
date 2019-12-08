@@ -13,14 +13,14 @@ public class DialogPanel : MonoBehaviour {
     sceneController = FindObjectOfType<SceneController>();
   }
 
-  public void StartDialog(string[] dialog) {
+  public void StartDialog(string[] dialog, bool shouldPauseGame = true) {
     if (dialog != null && dialog.Length > 0) {
       dialogIndex = 0;
       this.dialog = dialog;
       if (dialogPanel != null) {
         dialogPanel.SetActive(true);
         dialogText.text = dialog[0];
-        if (sceneController != null) {
+        if (sceneController != null && shouldPauseGame) {
           sceneController.FreezeTime();
         }
       }

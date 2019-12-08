@@ -12,7 +12,7 @@ namespace QuestSystem {
     [SerializeField] private AlertPanel alertPanel;
     private BattleSystem.CharacterController characterController;
 
-    List<string> alertToShow = new List<string>();
+    public List<string> alertToShow = new List<string>();
     List<string> charactersWhoLeveledUp = new List<string>();
 
     private void Awake() {
@@ -74,7 +74,8 @@ namespace QuestSystem {
     private void PerformShowAlert() {
       if (alertPanel != null && alertToShow.Count > 0) {
         alertPanel.gameObject.SetActive(true);
-        alertPanel.StartDialog(alertToShow.ToArray());
+        bool shouldPauseGame = false;
+        alertPanel.StartDialog(alertToShow.ToArray(), shouldPauseGame);
         alertToShow.Clear();
         charactersWhoLeveledUp.Clear();
       }

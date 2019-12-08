@@ -66,13 +66,17 @@ public class SaveService : MonoBehaviour {
 
   private void ShowAlert(string message) {
     if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Intro")) {
+      if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle")) {
+        questController.alertToShow.Insert(0, message);
+      } else {
       alertPanel.gameObject.SetActive(true);
 
       string[] dialog = new string[]{
         message
       };
-
-      alertPanel.StartDialog(dialog);
+      bool shouldPauseGame = false;
+      alertPanel.StartDialog(dialog, shouldPauseGame);
+      }
     }
   }
 

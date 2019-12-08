@@ -16,6 +16,7 @@ namespace BattleSystem {
     private BattleSummaryPanel battleSummaryPanel;
     private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
+    private AlertPanel alertPanel;
     private InventoryController inventoryController;
     private QuestSystem.QuestController questController;
 
@@ -198,6 +199,8 @@ namespace BattleSystem {
       questPanel = FindObjectOfType<QuestSystem.QuestPanel>();
       inventoryPanels = FindObjectsOfType<UIInventory>();
       battleSummaryPanel = FindObjectOfType<BattleSummaryPanel>();
+      alertPanel = FindObjectOfType<AlertPanel>();
+
       if (questPanel != null) {
         questPanel.gameObject.SetActive(false);
       }
@@ -210,6 +213,10 @@ namespace BattleSystem {
 
       if (battleSummaryPanel != null) {
         battleSummaryPanel.gameObject.SetActive(false);
+      }
+
+      if (alertPanel != null) {
+        alertPanel.gameObject.SetActive(false);
       }
     }
 
