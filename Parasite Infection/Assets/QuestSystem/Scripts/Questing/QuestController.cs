@@ -70,7 +70,6 @@ namespace QuestSystem {
       return points > 1 ? "points" : "point";
     }
 
-
     private void PerformShowAlert() {
       if (alertPanel != null && alertToShow.Count > 0) {
         alertPanel.gameObject.SetActive(true);

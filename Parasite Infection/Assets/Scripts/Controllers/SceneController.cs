@@ -979,7 +979,6 @@ public class SceneController : MonoBehaviour {
           dialog.Add("You don't stand a chance!");
 
           // Scenario 4
-          finalBattleEnemyParty[0].ReduceFinalBossStats(); // Reduce boss stats by 75%
           finalBattleScenario = 4;
           Debug.Log("Final battle scenario? " + finalBattleScenario);
 
@@ -1115,6 +1114,7 @@ public class SceneController : MonoBehaviour {
     hasBossBeenRevealed = true;
     DeactivateFinalBossTrigger();
     EventController.OnDialogPanelClosed += ActivateFinalBoss;
+    EventController.OnDialogPanelClosed += ShowAlertForFinalBattle;
   }
 
   private void GivePlayerControlOfBattleMech(int count) {
@@ -1131,6 +1131,15 @@ public class SceneController : MonoBehaviour {
     if (count > 0) {
       GivePlayerControlOfBattleMech(count);
     }
+  }
+
+  private void ShowAlertForFinalBattle() {
+    List<string> alert = new List<string>();
+    alert.Add("Heads up! Your party might have changed just now!");
+    alert.Add("You should check for upgrade points and make sure everyone is equipped!");
+    alert.ForEach(a => questController.alertToShow.Add(a));
+    bool shouldPauseGame = false;
+    alertPanel.StartDialog(alert.ToArray(), shouldPauseGame);
   }
 
   private void ActivateFinalBoss() {
@@ -1169,6 +1178,10 @@ public class SceneController : MonoBehaviour {
 
           }
         }
+      }
+
+      if (finalBattleScenario == 4 && finalBattleEnemyParty.Count > 0) {
+        finalBattleEnemyParty[0].ReduceFinalBossStats(); // Reduce boss stats by 75%
       }
     EventController.OnDialogPanelClosed -= ActivateFinalBoss;
   }
