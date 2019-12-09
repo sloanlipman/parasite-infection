@@ -21,9 +21,9 @@ public class DefeatFinalBossQuest : Quest {
 
   private void SetUpFinalBattleQuest() {
 
-    if (sceneController.GetFinalBattleScenario() == 1) {
+    if (sceneController.GetFinalBattleScenario() == 2) {
       goal = new KillGoal(1, 46, this);
-      questName = "Annihilate Jake and his Mechs";
+      questName = "Annihilate Jake";
     } else {
       goal = new KillGoal(1, 44, this);
       questName = "Defeat the True Parasite Leader";

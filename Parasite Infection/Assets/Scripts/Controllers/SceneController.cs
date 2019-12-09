@@ -399,6 +399,12 @@ public class SceneController : MonoBehaviour {
         break;
       }
 
+      case "Main Menu": {
+        newClip = menuMusic;
+        EventController.OnDialogPanelClosed -= ReturnToMainMenu;
+        break;
+      }
+
       default: {
         newClip = menuMusic;
         break;
@@ -1018,7 +1024,6 @@ public class SceneController : MonoBehaviour {
           dialog.Add("We have emergency Battle Mechs that are gonna take you out! I WILL AVENGE MY FRIENDS!!");
           finalBattleEnemyParty.Add(mech);
           finalBattleEnemyParty.Add(jake);
-          finalBattleEnemyParty.Add(mech);
           finalBattleScenario = 1;
           Debug.Log("Final battle scenario? " + finalBattleScenario);
         }
@@ -1047,7 +1052,7 @@ public class SceneController : MonoBehaviour {
 
       dialog.Add(string.Format("{0} was never infected. I made you see what I <b>wanted</b> you to see! Together we BUTCHERED your crew!", characterKilledDuringInterlude));
       dialog.Add(string.Format("I didn't make you inject {0}'s corpse! You did that all on your own!", characterKilledDuringInterlude));
-      dialog.Add(string.Format("{0}} remembers your betray, and we will make you join us now. Resistance is <B>FUTILE</B>", characterKilledDuringInterlude));
+      dialog.Add(string.Format("{0} remembers your betray, and we will make you join us now. Resistance is <B>FUTILE</B>", characterKilledDuringInterlude));
       dialog.Add("Barry: It doesn't matter, Alan. Like I said, I'll stop you.");
       dialog.Add("As acting captain, I have direct acess to our emergency Battle Mechs.");
       dialog.Add("While you've been blabbering, I've programmed them to kill you. They won't stop until the infection is over!");
@@ -1055,9 +1060,7 @@ public class SceneController : MonoBehaviour {
       finalBattleScenario = 5;
       Debug.Log("Final battle scenario? " + finalBattleScenario);
 
-      Enemy parasiteLeader = characterController.FindEnemyByName("Parasite Leader");
       Enemy infectedCrewMember = characterController.FindEnemyByName("Infected Crew Member");
-      finalBattleEnemyParty.Add(parasiteLeader);
       finalBattleEnemyParty.Add(infectedCrewMember);
 
       GivePlayerControlOfBattleMech(2);
@@ -1085,7 +1088,6 @@ public class SceneController : MonoBehaviour {
         dialog.Add("I believe there are some hidden in this very room, aren't there? Ah yes. Now you're done for.");
         dialog.Add("<b>I WILL KILL ALL THREE OF YOU AND RULE THIS WRETECHED UNIVERSE ALONE!!!!!</b>");
 
-
         AddToParty("Megan");
         AddToParty("Jake");
 
@@ -1102,7 +1104,6 @@ public class SceneController : MonoBehaviour {
 
       // Give two mechs
         Enemy mech = characterController.FindEnemyById(45);
-        finalBattleEnemyParty.Add(mech);
         finalBattleEnemyParty.Add(mech);
 
         finalBattleScenario = 6;
@@ -1155,11 +1156,17 @@ public class SceneController : MonoBehaviour {
 
             parasite.experience = barry.experience;
             parasite.CopyPartyMember(barry);
-            parasite.IncreaseFinalBossStats();
 
             characterController.RemovePlayerFromParty("Jake");
             characterController.RemovePlayerFromParty("Barry");
             AddToParty("The True Parasite");
+
+          characterController.GetActiveParty().ForEach(member => {
+            member.IncreaseFinalBossStats();
+            member.health = member.maxHealth;
+            member.energyPoints = member.maxEnergyPoints;
+          });
+
           }
         }
       }

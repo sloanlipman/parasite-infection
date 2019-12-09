@@ -95,12 +95,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: The True Parasite
-  health: 117
-  maxHealth: 117
-  attackPower: 46
-  defensePower: 45
-  energyPoints: 116
-  maxEnergyPoints: 116
+  health: 200
+  maxHealth: 200
+  attackPower: 60
+  defensePower: 60
+  energyPoints: 60
+  maxEnergyPoints: 60
   abilitiesList:
   - Heal
   - Fireball
@@ -109,8 +109,8 @@ MonoBehaviour:
   experience: 75
   originalMaxHealth: 200
   originalMaxEP: 50
-  originalAttackPower: 75
-  originalDefensePower: 80
+  originalAttackPower: 40
+  originalDefensePower: 40
   originalCharacterName: The True Parasite
   enemyId: 44
   originalExperience: 75

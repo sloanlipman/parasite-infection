@@ -135,8 +135,8 @@ MonoBehaviour:
   experience: 30
   originalMaxHealth: 200
   originalMaxEP: 50
-  originalAttackPower: 75
-  originalDefensePower: 80
+  originalAttackPower: 40
+  originalDefensePower: 40
   originalCharacterName: Jake
   enemyId: 46
   originalExperience: 30
