@@ -53,6 +53,7 @@ TagManager:
   - Blob Parent
   - Blob 1
   - Blob 2
+  - UI/Credits
   layers:
   - Default
   - TransparentFX
