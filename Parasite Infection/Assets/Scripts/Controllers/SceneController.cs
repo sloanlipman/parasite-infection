@@ -1142,27 +1142,27 @@ public class SceneController : MonoBehaviour {
             (IsQuestInProgress("DefeatFinalBossQuest") || hasBossBeenRevealed) &&
             !finalBoss.gameObject.activeSelf);
         }
+      if (hasBossBeenRevealed) {
+          if (finalBossShouldBeAlien) {
+            Enemy boss = characterController.FindEnemyByName("The True Parasite");
+            finalBattleEnemyParty.Add(boss);
+            finalBoss.SetSprite(trueParasiteSprite);
+          } else {
+            Player player = GameObject.FindObjectOfType<Player>();
+            player.SetSprite(trueParasiteSprite);
+            PartyMember barry = characterController.FindPartyMemberByName("Barry");
+            PartyMember parasite = characterController.FindPartyMemberByName("The True Parasite");
 
-        if (finalBossShouldBeAlien) {
-          Enemy boss = characterController.FindEnemyByName("The True Parasite");
-          finalBattleEnemyParty.Add(boss);
-          finalBoss.SetSprite(trueParasiteSprite);
-        } else {
-          Player player = GameObject.FindObjectOfType<Player>();
-          player.SetSprite(trueParasiteSprite);
-          PartyMember barry = characterController.FindPartyMemberByName("Barry");
-          PartyMember parasite = characterController.FindPartyMemberByName("The True Parasite");
+            parasite.experience = barry.experience;
+            parasite.CopyPartyMember(barry);
+            parasite.IncreaseFinalBossStats();
 
-          parasite.experience = barry.experience;
-          parasite.CopyPartyMember(barry);
-          parasite.IncreaseFinalBossStats();
-
-          characterController.RemovePlayerFromParty("Jake");
-          characterController.RemovePlayerFromParty("Barry");
-          AddToParty("The True Parasite");
+            characterController.RemovePlayerFromParty("Jake");
+            characterController.RemovePlayerFromParty("Barry");
+            AddToParty("The True Parasite");
+          }
         }
       }
-      Resources.UnloadAsset(trueParasiteSprite);
     EventController.OnDialogPanelClosed -= ActivateFinalBoss;
   }
 
