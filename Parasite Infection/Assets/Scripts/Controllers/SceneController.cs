@@ -67,7 +67,7 @@ public class SceneController : MonoBehaviour {
 
 // Final boss
   private bool finalBossShouldBeAlien = true;
-  private bool hasBossBeenRevealed = false;
+  public bool hasBossBeenRevealed = false;
 
   private bool IsQuestCompleted(string questName) {
     return questController.IsQuestCompleted(questName);

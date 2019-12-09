@@ -48,7 +48,8 @@ namespace BattleSystem {
         questController.HasQuestBeenStarted("KillBlobsQuest") &&
         SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Battle") &&
         IsPlayerNotNullAndMoving() &&
-        !IsGamePaused();
+        !IsGamePaused() &&
+        !sceneController.hasBossBeenRevealed;
     }
 
     private bool IsGamePaused() {
