@@ -96,24 +96,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Defense Mech
-  health: 57
-  maxHealth: 57
-  attackPower: 49
-  defensePower: 46
-  energyPoints: 47
-  maxEnergyPoints: 47
+  health: 42
+  maxHealth: 42
+  attackPower: 23
+  defensePower: 32
+  energyPoints: 22
+  maxEnergyPoints: 22
   abilitiesList:
   - Barrage
   - Heal
-  level: 26
-  experience: 50
+  level: 3
+  experience: 30
   originalMaxHealth: 40
   originalMaxEP: 20
   originalAttackPower: 20
   originalDefensePower: 30
   originalCharacterName: Defense Mech
   enemyId: 7
-  originalExperience: 30
+  originalExperience: 40
   originalEnemyId: 7
 --- !u!61 &9192391036177522714
 BoxCollider2D:

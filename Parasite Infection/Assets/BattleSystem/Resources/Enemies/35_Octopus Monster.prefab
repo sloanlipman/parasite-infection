@@ -106,10 +106,10 @@ MonoBehaviour:
   - Fireball
   level: 14
   experience: 30
-  originalMaxHealth: 75
+  originalMaxHealth: 50
   originalMaxEP: 30
   originalAttackPower: 18
-  originalDefensePower: 50
+  originalDefensePower: 25
   originalCharacterName: Octopus Monster
   enemyId: 35
   originalExperience: 30

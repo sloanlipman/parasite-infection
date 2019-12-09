@@ -96,24 +96,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Tentacle Monster
-  health: 29
-  maxHealth: 29
-  attackPower: 19
-  defensePower: 18
-  energyPoints: 24
-  maxEnergyPoints: 24
+  health: 21
+  maxHealth: 21
+  attackPower: 11
+  defensePower: 11
+  energyPoints: 16
+  maxEnergyPoints: 16
   abilitiesList:
   - Heal
   - Fireball
-  level: 9
+  level: 2
   experience: 30
-  originalMaxHealth: 50
+  originalMaxHealth: 20
   originalMaxEP: 15
   originalAttackPower: 10
-  originalDefensePower: 25
+  originalDefensePower: 10
   originalCharacterName: Tentacle Monster
   enemyId: 31
-  originalExperience: 30
+  originalExperience: 50
   originalEnemyId: 31
 --- !u!61 &9192391036177522714
 BoxCollider2D:

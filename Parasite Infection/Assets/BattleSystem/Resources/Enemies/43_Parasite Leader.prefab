@@ -107,10 +107,10 @@ MonoBehaviour:
   - Fireball
   level: 21
   experience: 75
-  originalMaxHealth: 150
+  originalMaxHealth: 100
   originalMaxEP: 70
   originalAttackPower: 40
-  originalDefensePower: 60
+  originalDefensePower: 50
   originalCharacterName: Parasite Leader
   enemyId: 43
   originalExperience: 75

@@ -96,24 +96,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Infected Crew Member
-  health: 54
-  maxHealth: 54
-  attackPower: 33
-  defensePower: 35
-  energyPoints: 64
-  maxEnergyPoints: 64
+  health: 67
+  maxHealth: 67
+  attackPower: 28
+  defensePower: 49
+  energyPoints: 58
+  maxEnergyPoints: 58
   abilitiesList:
   - Fireball
   - Barrage
-  level: 14
-  experience: 75
+  level: 8
+  experience: 25
   originalMaxHealth: 60
   originalMaxEP: 50
   originalAttackPower: 20
   originalDefensePower: 40
   originalCharacterName: Infected Crew Member
   enemyId: 9
-  originalExperience: 25
+  originalExperience: 60
   originalEnemyId: 9
 --- !u!61 &9192391036177522714
 BoxCollider2D:

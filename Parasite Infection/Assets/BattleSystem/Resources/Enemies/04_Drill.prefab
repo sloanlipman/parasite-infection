@@ -96,15 +96,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Drill
-  health: 41
-  maxHealth: 41
-  attackPower: 30
-  defensePower: 26
-  energyPoints: 55
-  maxEnergyPoints: 55
+  health: 27
+  maxHealth: 27
+  attackPower: 15
+  defensePower: 23
+  energyPoints: 42
+  maxEnergyPoints: 42
   abilitiesList:
   - Heal
-  level: 16
+  level: 3
   experience: 20
   originalMaxHealth: 25
   originalMaxEP: 40
@@ -112,7 +112,7 @@ MonoBehaviour:
   originalDefensePower: 20
   originalCharacterName: Drill
   enemyId: 4
-  originalExperience: 20
+  originalExperience: 25
   originalEnemyId: 4
 --- !u!61 &9192391036177522714
 BoxCollider2D:
