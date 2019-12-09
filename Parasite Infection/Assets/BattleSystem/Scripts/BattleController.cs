@@ -14,6 +14,7 @@ namespace BattleSystem {
     [SerializeField] private BattleSpawnPoint[] spawnPoints;
     [SerializeField] private BattleActionLabel labelText;
     [SerializeField] private BattleTooltip tooltip;
+    [SerializeField] private Ability attackAnimation;
     private BattleSummaryPanel battleSummaryPanel;
     private UIInventory[] inventoryPanels;
     private QuestSystem.QuestPanel questPanel;
@@ -425,6 +426,9 @@ namespace BattleSystem {
     }
 
     public void DoAttack(BattleCharacter attacker, BattleCharacter target) {
+      Ability attack = Instantiate<Ability>(attackAnimation, attacker.transform.position, Quaternion.identity);
+      attack.SetTargetPosition(target.transform.position);
+
       tooltip.GenerateAutoDismissTooltip(string.Format("{0} attacked {1}!", attacker.characterName, target.characterName));
       target.Hurt(attacker.attackPower, "attack");
       if (IsCharacterAPlayer(attacker)) {

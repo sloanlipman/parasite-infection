@@ -16,7 +16,7 @@ namespace BattleSystem {
 
     private void Update() {
       if (targetPosition != Vector3.zero) {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, .15f);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, .01f);
 
         if (Vector3.Distance(transform.position, targetPosition) < 0.25f) {
           Destroy(this.gameObject, 1);
@@ -24,6 +24,10 @@ namespace BattleSystem {
       } else {
           Destroy(this.gameObject);
       }
+    }
+
+    public void SetTargetPosition(Vector3 position) {
+      targetPosition = position;
     }
 
     public void Cast(BattleCharacter caster, BattleCharacter target, int power) {

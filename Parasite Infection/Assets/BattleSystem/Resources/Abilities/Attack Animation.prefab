@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4790020554421059177}
   - component: {fileID: 4790020554421059176}
   m_Layer: 0
-  m_Name: Barrage
+  m_Name: Attack Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087b8276716727547b17795e7aebc66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Barrage
-  power: 7
-  energyCost: 3
-  description: Fire a fast barrage of bullets!
+  abilityName: AttackAnimation
+  power: 0
+  energyCost: 0
+  description: 
   abilityType: 0
 --- !u!198 &4790020554421059177
 ParticleSystem:
@@ -58,7 +58,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427600953068413254}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -186,7 +186,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -240,7 +240,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3773585, g: 0.36023462, b: 0.3257387, a: 1}
+      maxColor: {r: 0.079316735, g: 0.8962264, b: 0.038047332, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -618,7 +618,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1000,7 +1000,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.98648643
           inSlope: 0
           outSlope: 0
           tangentMode: 34
@@ -1009,7 +1009,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0.98648643
           inSlope: 0
           outSlope: 0
           tangentMode: 34
