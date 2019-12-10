@@ -1101,7 +1101,6 @@ public class SceneController : MonoBehaviour {
         dialog.Add("I believe there are some hidden in this very room, aren't there? Ah yes. Now you're done for.");
         dialog.Add("<b>I WILL KILL ALL THREE OF YOU AND RULE THIS WRETCHED UNIVERSE ALONE!!!!!</b>");
 
-        characterController.RemovePlayerFromParty("Alan");
         AddToParty("Megan");
         AddToParty("Jake");
 
@@ -1114,6 +1113,8 @@ public class SceneController : MonoBehaviour {
           member.experience = barry.experience;
           characterController.LevelUp(member);
           member.IncreaseFinalBossStats();
+          member.health = member.maxHealth;
+          member.energyPoints = member.maxEnergyPoints;
         });
 
       // Give two mechs
@@ -1169,6 +1170,7 @@ public class SceneController : MonoBehaviour {
         }
       if (hasBossBeenRevealed) {
           if (finalBossShouldBeAlien) {
+            characterController.RemovePlayerFromParty("Alan");
             Enemy boss = characterController.FindEnemyByName("The True Parasite");
             finalBattleEnemyParty.Add(boss);
             finalBoss.SetSprite(trueParasiteSprite);
