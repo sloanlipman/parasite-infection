@@ -33,6 +33,9 @@ public class SceneController : MonoBehaviour {
   [SerializeField] private AudioClip generalBossTheme;
   [SerializeField] private AudioClip finalMusicTheme;
 
+  [SerializeField] private Sprite trueParasiteSprite;
+  [SerializeField] private Sprite barrySprite;
+
   private int currentAct = 0;
   private bool hasPlayerDoneTutorial;
   private int finalBattleScenario = 0;
@@ -174,6 +177,16 @@ public class SceneController : MonoBehaviour {
     hasBossBeenRevealed = ES3.Load<bool>("hasBossBeenRevealed", "SceneController.json", false);
     finalBossShouldBeAlien = ES3.Load<bool>("finalBossShouldBeAlien", "SceneController.json", true);
     finalBattleScenario = ES3.Load<int>("finalBattleScenario", "SceneController.json", 0);
+
+    Player player = GameObject.FindObjectOfType<Player>();
+    if (player != null) {
+      PartyMember parasite = characterController.FindPartyMemberByName("The True Parasite");
+      if (characterController.GetActiveParty().Contains(parasite)) {
+        player.SetSprite(trueParasiteSprite);
+      } else {
+        player.SetSprite(barrySprite);
+      }
+    }
   }
 
   private void Awake() {
@@ -1087,6 +1100,7 @@ public class SceneController : MonoBehaviour {
         dialog.Add("I believe there are some hidden in this very room, aren't there? Ah yes. Now you're done for.");
         dialog.Add("<b>I WILL KILL ALL THREE OF YOU AND RULE THIS WRETECHED UNIVERSE ALONE!!!!!</b>");
 
+        characterController.RemovePlayerFromParty("Alan");
         AddToParty("Megan");
         AddToParty("Jake");
 
@@ -1140,6 +1154,7 @@ public class SceneController : MonoBehaviour {
     alert.ForEach(a => questController.alertToShow.Add(a));
     bool shouldPauseGame = false;
     alertPanel.StartDialog(alert.ToArray(), shouldPauseGame);
+    EventController.OnDialogPanelClosed -= ShowAlertForFinalBattle;
   }
 
   private void ActivateFinalBoss() {
@@ -1180,9 +1195,6 @@ public class SceneController : MonoBehaviour {
         }
       }
 
-      if (finalBattleScenario == 4 && finalBattleEnemyParty.Count > 0) {
-        finalBattleEnemyParty[0].ReduceFinalBossStats(); // Reduce boss stats by 75%
-      }
     EventController.OnDialogPanelClosed -= ActivateFinalBoss;
   }
 

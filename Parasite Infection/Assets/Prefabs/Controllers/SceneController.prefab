@@ -69,7 +69,8 @@ MonoBehaviour:
   finalBossTheme: {fileID: 8300000, guid: a8cad382a5c084b4e847de997a2ab5a4, type: 3}
   generalBossTheme: {fileID: 8300000, guid: f143e49119814824ea144a78fd73a57b, type: 3}
   finalMusicTheme: {fileID: 8300000, guid: 969fdfc0505759543afd7bcc620e6347, type: 3}
-  originalSpriteForBarry: {fileID: -6102457659451608791, guid: 49ceaecdde9f7eb4ba232094e66ebd9e,
+  trueParasiteSprite: {fileID: 21300000, guid: bebed092be83ad64b8dbb59cd4a3c6ca, type: 3}
+  barrySprite: {fileID: 7009852267907826064, guid: 49ceaecdde9f7eb4ba232094e66ebd9e,
     type: 3}
   hasBossBeenRevealed: 0
 --- !u!82 &5054120581648840264

@@ -91,7 +91,7 @@ namespace BattleSystem {
         characterController.ApplyUpgradePoint(stat, this);
       });
       int maxRoll = upgradePointsDictionary.Count;
-      int dieRoll = Random.Range(0, maxRoll);
+      int dieRoll = Random.Range(0, maxRoll + 1);
       if (dieRoll == maxRoll) {
         experience++;
       } else {

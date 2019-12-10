@@ -36,14 +36,15 @@ namespace BattleSystem {
 
     public void RemovePlayerFromParty(string name) {
       if (activePartyMembers.Contains(name)) {
-        activePartyMembers.Remove(name);
+      activePartyMembers.Remove(name);
       }
     }
 
     public void Load() {
       ES3.LoadInto("PartyMembers", "Party.json", partyMembers);
       ES3.LoadInto("Enemies", "Enemies.json", enemyList);
-      activePartyMembers = ES3.Load<List<string>>("ActiveParty", "ActiveParty.json");
+      activePartyMembers.Clear();
+      ES3.Load<List<string>>("ActiveParty", "ActiveParty.json").ForEach(member => activePartyMembers.Add(member));
 
       partyMembers.ForEach(member => {
         foreach(Item item in member.equipment) {

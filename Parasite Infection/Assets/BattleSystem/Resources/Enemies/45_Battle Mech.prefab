@@ -96,16 +96,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Battle Mech
-  health: 36
-  maxHealth: 36
-  attackPower: 43
-  defensePower: 41
-  energyPoints: 38
-  maxEnergyPoints: 38
+  health: 116
+  maxHealth: 116
+  attackPower: 67
+  defensePower: 67
+  energyPoints: 49
+  maxEnergyPoints: 49
   abilitiesList:
-  - Hydroblast
   - Barrage
-  level: 16
+  level: 26
   experience: 75
   originalMaxHealth: 85
   originalMaxEP: 20
