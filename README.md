@@ -27,7 +27,7 @@ Sloan Lipman (sloan.lipman@gmail.com)
   - <https://opengameart.org/content/monster-sound-effects-pack>
   - <https://opengameart.org/content/spell-sounds-starter-pack>
 
-  - The following music from sound-image.org by Eric Matyas
+ The following music is from sound-image.org by Eric Matyas
   - <http://soundimage.org/wp-content/uploads/2016/04/Laser-Shot-1.mp3>
   - <http://soundimage.org/wp-content/uploads/2016/04/Explosion7.mp3>
   - <http://soundimage.org/wp-content/uploads/2014/09/Lost-Forever.mp3>
