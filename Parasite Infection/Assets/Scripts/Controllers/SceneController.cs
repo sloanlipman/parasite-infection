@@ -1042,6 +1042,7 @@ public class SceneController : MonoBehaviour {
       }
 
     } else {
+      finalBossShouldBeAlien = true;
       // Scenarios 5 and 6
       dialog.Add("Alan: Hehehehehe... HAHAHAAHAH... BARRY, YOU FOOOOL!!!!");
       dialog.Add("HAHAHAAHAH");
@@ -1098,7 +1099,7 @@ public class SceneController : MonoBehaviour {
         dialog.Add("They've been programmed to obey us and shoot humans on sight.");
         dialog.Add("They should be in this room, shouldn't they?");
         dialog.Add("I believe there are some hidden in this very room, aren't there? Ah yes. Now you're done for.");
-        dialog.Add("<b>I WILL KILL ALL THREE OF YOU AND RULE THIS WRETECHED UNIVERSE ALONE!!!!!</b>");
+        dialog.Add("<b>I WILL KILL ALL THREE OF YOU AND RULE THIS WRETCHED UNIVERSE ALONE!!!!!</b>");
 
         characterController.RemovePlayerFromParty("Alan");
         AddToParty("Megan");
@@ -1158,7 +1159,6 @@ public class SceneController : MonoBehaviour {
   }
 
   private void ActivateFinalBoss() {
-    Sprite trueParasiteSprite = Resources.Load<Sprite>("True Parasite");
     GameObject finalBossParent = GameObject.FindGameObjectWithTag("Final Boss");
       if (finalBossParent != null) {
         NPC finalBoss = finalBossParent.GetComponentInChildren<NPC>(true);
