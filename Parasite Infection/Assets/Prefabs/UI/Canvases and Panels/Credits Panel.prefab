@@ -76,7 +76,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: View Online
+  m_Text: View Game Website
 --- !u!1 &1765353971762289394
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,24 +889,35 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Parasite Infection\r\n\r\nSloan Lipman (sloan.lipman@gmail.com)\r\nVisit
-    https://github.com/sloanlipman/parasite-infection to see directly navigate to
-    the asset sources listed below!\n\nThird-party assets sources\r\n\r\nSome custom
-    sprites generated with the help of the Universal LPC Spritesheet Character Generator
-    \n(https://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/)\r\n\n
-    Many C# scripts were based on tutorials provided by Zenva Academy (https://academy.zenva.com/)\r\n\nhttps://opengameart.org/content/32x32-sci-fi-tileset\r\niktor.Hahn@web.de,
+  m_Text: "    Some custom sprites generated with the help of the Universal LPC Spritesheet
+    Character Generator https://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/\r\n
+    \   Many C# scripts were based on tutorials provided by Zenva Academy https://academy.zenva.com/\r\n
+    \   https://opengameart.org/content/32x32-sci-fi-tileset by Viktor.Hahn@web.de,
     licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
-    \nhttp://creativecommons.org/licenses/by-sa/4.0/\r\nhttps://opengameart.org/content/character-sprite-walk-animation
-    -@dbhvk\r\nhttps://opengameart.org/content/3x-updated-32x32-scifi-roguelike-enemies\r\nhttps://opengameart.org/content/more-rpg-enemies\r\nhttps://opengameart.org/content/biomech-dragon-splice
-    -Stephen Challener shrike)\r\n https://www.freepik.com/premium-photo/view-planet-earth-from-huge-spaceship-window-3d-rendering-elements-this-image-furnished-by-nasa_5074337.htm\r\nhttps://thkaspar.itch.io/sci-fi-robot-parts\r\nhttps://adamatomic.itch.io/sci-fi-inventory\r\nhttps://icons8.com/icons/set/integrated-circuit\r\nhttps://icons8.com/icons/set/battery\r\n\nhttps://assetstore.unity.com/packages/2d/textures-materials/2d-sci-fi-weapons-pack-22679\r\n\nhttps://opengameart.org/content/set-faction9-spacestations
-    -By MillionthVector (http://millionthvector.blogspot.de) -ArMM1998 \n(https://opengameart.org/content/zelda-like-tilesets-and-sprites)
-    -LPC-style Farm Animals by Daniel Eddeland (https://opengameart.org/content/lpc-style-farm-animals)\r\n\r\nhttps://opengameart.org/content/monster-sound-effects-pack\r\nhttps://opengameart.org/content/spell-sounds-starter-pack\r\r\n\nThe
-    following music from sound-image.org by Eric Matyas\r\n\rhttp://soundimage.org/wp-content/uploads/2016/04/Laser-Shot-1.mp3\r\n\rhttp://soundimage.org/wp-content/uploads/2016/04/Explosion7.mp3\nhttp://soundimage.org/wp-content/uploads/2014/09/Lost-Forever.mp3\r\r
-    \      http://soundimage.org/wp-content/uploads/2014/08/Star-Light.mp3\r\nhttp://soundimage.org/wp-content/uploads/2014/07/Machine-Madness.mp3\r
-    \    http://soundimage.org/wp-content/uploads/2014/07/Dystopic-Dreamscape.mp3\r\nhttp://soundimage.org/wp-content/uploads/2015/05/Escape-From-the-Insane-Machines.mp3\r\nhttp://soundimage.org/wp-content/uploads/2015/04/Off-to-Another-Heist.mp3\r\nhttp://soundimage.org/wp-content/uploads/2016/06/Tronic-Trouble_v001.mp3\r
-    \   http://soundimage.org/wp-content/uploads/2017/03/Grunge-Bot_Looping.mp3\nhttp://soundimage.org/wp-content/uploads/2016/03/Once-Around-the-Solar-System_Looping.mp3
-    \   http://soundimage.org/wp-content/uploads/2017/05/Monsters-on-Board-3.mp3\r
-    \  http://soundimage.org/wp-content/uploads/2017/09/Dark-Future-Factory.mp3\r\nhttp://soundimage.org/wp-content/uploads/2016/02/Theyre-Here_Looping.mp3\r"
+    http://creativecommons.org/licenses/by-sa/4.0/\r\n    https://opengameart.org/content/character-sprite-walk-animation
+    by @dbhvk\r\n    https://www.freepik.com/premium-photo/view-planet-earth-from-huge-spaceship-window-3d-rendering-elements-this-image-furnished-by-nasa_5074337.htm\r\n
+    \   https://icons8.com/icons/set/integrated-circuit\r\n    https://icons8.com/icons/set/battery\r\n\r\n\r\nVarious
+    assets by Stephen Challener (Redshrike)\r\n\r\n    https://opengameart.org/content/more-rpg-enemies\r\n
+    \   https://opengameart.org/content/biomech-dragon-splice\r\n    https://opengameart.org/content/3x-updated-32x32-scifi-roguelike-enemies\r\n\r\n\r\nVarious
+    assets by Adam Saltsman\r\n\r\n    https://thkaspar.itch.io/sci-fi-robot-parts\r\n
+    \   https://adamatomic.itch.io/sci-fi-inventory\r\n\r\n\r\n    https://assetstore.unity.com/packages/2d/textures-materials/2d-sci-fi-weapons-pack-22679
+    https://opengameart.org/content/set-faction9-spacestations -By MillionthVector
+    (http://millionthvector.blogspot.de)\r\n    https://opengameart.org/content/zelda-like-tilesets-and-sprites
+    by ArMM1998\r\n    https://opengameart.org/content/lpc-style-farm-animals LPC-style
+    Farm Animals by Daniel Eddeland\r\n\r\n\r\nMisc sound effects:\r\n\r\n    https://opengameart.org/content/monster-sound-effects-pack\r\n
+    \   https://opengameart.org/content/spell-sounds-starter-pack\r\n\r\nThe following
+    music is from sound-image.org by Eric Matyas\r\n\r\n    http://soundimage.org/wp-content/uploads/2016/04/Laser-Shot-1.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2016/04/Explosion7.mp3\r\n    http://soundimage.org/wp-content/uploads/2014/09/Lost-Forever.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2014/08/Star-Light.mp3\r\n    http://soundimage.org/wp-content/uploads/2014/07/Machine-Madness.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2014/07/Dystopic-Dreamscape.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2015/05/Escape-From-the-Insane-Machines.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2015/04/Off-to-Another-Heist.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2016/06/Tronic-Trouble_v001.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2017/03/Grunge-Bot_Looping.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2016/03/Once-Around-the-Solar-System_Looping.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2017/05/Monsters-on-Board-3.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2017/09/Dark-Future-Factory.mp3\r\n
+    \   http://soundimage.org/wp-content/uploads/2016/02/Theyre-Here_Looping.mp3"
 --- !u!1 &8024783967986654137
 GameObject:
   m_ObjectHideFlags: 0

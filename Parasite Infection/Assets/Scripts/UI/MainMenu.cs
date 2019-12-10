@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour {
   }
 
   public void ViewCreditsOnline() {
-    Application.OpenURL("https://github.com/sloanlipman/parasite-infection");
+    Application.OpenURL("https://sites.google.com/view/parasiteinfection/home");
   }
 
   public void Quit() {
