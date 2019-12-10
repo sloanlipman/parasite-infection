@@ -1,6 +1,7 @@
 # Parasite Infection
 
 Sloan Lipman (sloan.lipman@gmail.com)
+Visit <https://sites.google.com/view/parasiteinfection/home> to download a ZIP containing an executable for this game. Enjoy!
 
 ## Third-party assets sources
 
@@ -12,20 +13,24 @@ Sloan Lipman (sloan.lipman@gmail.com)
 - <https://icons8.com/icons/set/integrated-circuit>
 - <https://icons8.com/icons/set/battery>
 
+
 Various assets by Stephen Challener (Redshrike)
 - <https://opengameart.org/content/more-rpg-enemies>
 - <https://opengameart.org/content/biomech-dragon-splice>
 - <https://opengameart.org/content/3x-updated-32x32-scifi-roguelike-enemies>
 
 
+
 Various assets by Adam Saltsman
 - <https://thkaspar.itch.io/sci-fi-robot-parts>
 - <https://adamatomic.itch.io/sci-fi-inventory>
+
 
 - <https://assetstore.unity.com/packages/2d/textures-materials/2d-sci-fi-weapons-pack-22679>
 <https://opengameart.org/content/set-faction9-spacestations> -By MillionthVector (<http://millionthvector.blogspot.de>)
 - <https://opengameart.org/content/zelda-like-tilesets-and-sprites> by ArMM1998
 - <https://opengameart.org/content/lpc-style-farm-animals> LPC-style Farm Animals by Daniel Eddeland
+
 
 Misc sound effects:
 
